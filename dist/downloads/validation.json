@@ -1,17 +1,18 @@
 {
-  "revision": 11,
+  "revision": 12,
   "spring_carrier": {
     "integral_with_chassis": true,
     "free_stl_valid": true,
     "free_stl_solid_count": 1,
     "preload_deflection_mm": 0.3,
     "leaf_thickness_mm": 1.4,
-    "leaf_width_mm": 18.0,
+    "leaf_width_mm": 22.1,
     "root_radius_mm": 1.2,
-    "downward_stop_deflection_mm": 0.8,
-    "at_stop_overlap_mm3": 5.964896928640216e-06,
-    "beyond_stop_overlap_mm3": 20.509006339891155,
-    "method": "Prescribed nominal displacement, not finite element analysis. Chassis STL is relaxed; STEP/viewer start deflected."
+    "wall_local_blend_checks_passed": 8,
+    "rigid_lower_deck": false,
+    "mechanical_downward_stop": false,
+    "checked_deflection_mm": 0.8,
+    "method": "Prescribed nominal displacement, not finite element analysis. Chassis STL is relaxed; STEP/viewer start deflected. No mechanical travel stop."
   },
   "root_relief": {
     "shape": "semicircular caps tangent to straight slot walls",
@@ -50,7 +51,7 @@
   "upper_bearing_angle_deg": 45,
   "spring_preload_mm": 0.3,
   "spring_thickness_mm": 1.4,
-  "spring_limit_mm": 0.8,
+  "checked_spring_deflection_mm": 0.8,
   "spring_free_stl": true,
   "chassis_mounts_mm": [
     [
@@ -4656,11 +4657,13 @@
     ]
   },
   "spring_mesh_validation": {
-    "method": "Animated chassis mesh compared to relaxed CAD surfaces; moving and fixed regions sampled.",
-    "samples": 288,
-    "max_surface_distance_mm": 6.937473382630525e-06,
+    "method": "Exact sampled CAD meshes replace linear warping of wall fillets. Fully relaxed viewer mesh checked against relaxed CAD surfaces.",
+    "samples": 282,
+    "max_surface_distance_mm": 6.453268944167513e-06,
     "tolerance_mm": 0.015,
+    "cad_shape_states_including_loaded": 9,
+    "maximum_shape_quantization_mm": 0.0375,
     "free_chassis_solid_count": 1
   },
-  "source_sha256": "dac03fb5a80c8780900d54f0f33ace141c9ee6fc1926d95d6e2540c3a961bfff"
+  "source_sha256": "6c8a16a204f9affbd4c1d53c9d2e5962aa05b378140e5185b8249a3ab3bffd88"
 }

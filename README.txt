@@ -1,10 +1,12 @@
-FLEX17 revision 11 — integral chassis spring floors
+FLEX17 revision 12 — full-width wall-blended spring floors, open underside
 CadQuery 2.7, millimetres. Mechanical prototype; force and life untested.
 
 WHAT CHANGED
-The lower bearing seats are solid lands on two broad spring floors formed
-in the chassis itself. Rounded reliefs let the floors bend downward as the
-rack is inserted, supplying upward preload to the lower bearings.
+The lower bearing seats remain integral with the chassis. The floors now
+extend to the full front/rear chassis boundaries and meet the axle-block
+walls. Rounded blends exist only along actual wall-to-floor joints; the
+unsupported floor has no raised curved ridge. The rigid lower deck is
+removed, leaving the underside open.
 No separate flexure frames, eccentric bushes, mounting bolts or mounting
 nuts are used. There are only three printed parts: chassis, rack and pinion.
 The bearing bolts/nuts clamp the inner races directly to the integral seats.
@@ -15,10 +17,11 @@ GUIDANCE / SPRINGS
 Six 625ZZ bearings (5 x 16 x 5 mm). Four upper rollers at 45 degrees react
 downward/inward; two lower rollers react upward. Stations X=-23/+23 mm
 are 46 mm apart, with lower contact Y=31/33 mm to resist rocking.
-Nominal spring deflection is 0.30 mm. Floors are 18 mm wide and 1.4 mm
-thick, with rounded 1.2 mm transitions into the central chassis spine.
-A continuous deck below braces the chassis and stops downward travel at
-0.8 mm from the relaxed position (0.5 mm beyond nominal assembly).
+Nominal spring deflection is 0.30 mm. Floors are 22.1 mm wide and 1.4 mm
+thick, with 1.2 mm blends at the central spine and the axle-block walls.
+The open underside has no mechanical downward stop. Geometry is also
+checked at 0.8 mm deflection; that is a check condition, not a load rating
+or a physical travel limit.
 A 4 mm-long, 0.8 mm-high ramp at the rack's insertion end depresses the
 lower bearings. They rise independently as the rack is withdrawn.
 The broad floors support solid axle blocks; compliance is confined to the
@@ -28,12 +31,11 @@ require a physical test. The prescribed CAD deflection is not an FEA result.
 IMPORTANT: Chassis STL is RELAXED for printing. STEP and viewer show the
 assembled deflection. PETG/PA are starting materials; PLA is a poor choice
 for sustained preload. If contact is lost or motion binds, revisit the fit,
-material or source dimensions. Do not force deflection past the stops.
+material or source dimensions. Do not force insertion or overbend the floors.
 
 PARTS / HARDWARE
-From revision 10: reprint only the chassis; reuse the rack, pinion, motor,
+From revision 11: reprint only the chassis; reuse the rack, pinion, motor,
 six bearings, M5 axles, thin M5 nuts, washers and motor screws.
-Discard the two separate cartridges and their four M3x20 bolts/M3 nuts.
 From revision 09: the rack also needs the new insertion ramp.
 Total hardware: 6 x 625ZZ; 4 x M5x16 upper + 2 x M5x25 lower axles;
 6 thin M5 nuts (2.7 mm), 6 inner-race washers (0.3 mm);
@@ -47,9 +49,9 @@ PRINT / ASSEMBLY
 Print the one-piece chassis so floor length and bending direction lie
 within the layer plane (Y-normal print orientation). The chassis already
 needs support under the motor overhang; use accessible local support under
-the spring floors/axle seats as required by the slicer. Clear relief gaps
-carefully without gouging the roots. Verify the 0.8 mm free gap above the
-lower stop deck; test spring return by hand before installing bearings.
+the spring floors/axle seats as required by the slicer. Clear supports
+through the open underside without gouging the wall-to-floor blends.
+Test spring return by hand before installing bearings.
 Print the pinion gear-face down and rack tooth-face down; the output pad
 shares that flat print plane. Keep the fine tooth slots and rounded roots clear.
 Fit the lower bearings and front inner-race washers to their integral
@@ -65,14 +67,14 @@ Withdraw rack; remove pinion screw and gear. Withdraw front angled axles,
 park clear, then rear axles. Lift upper rollers. Remove motor screws,
 lower motor, then remove angled nuts. Remove the lower M5 nuts, withdraw
 lower axle bolts and lift bearings/washers through the open top windows.
-Both spring floors and the lower stop deck remain part of the chassis.
+The spring floors stay with the one-piece chassis; no rigid deck is below them.
 
 RACK / DRIVE
 40 mm initial stroke; source accepts 20..80 mm.
 112 mm guide + 14 mm output pad; 166 mm swept length at 40 mm stroke.
 68 x 81 mm footprint; centered envelope 126 x 81 x 52 mm.
-Motor spacer remains integral. Lower chassis deck is flush with the
-reference motor's lowest face, so overall height is unchanged.
+Motor spacer remains integral. Removing the rigid deck leaves the reference
+motor as the lowest component, so the overall envelope is unchanged.
 Continuous beveled rail, 14.5 mm upper backbone, 0.60 mm tooth walls,
 8 mm face and 0.10 mm oversize per flank. Smooth reliefs R1.98072 / R0.56087;
 no internal tooth fingers. 18T module-2, 20-degree pinion, pitch radius 18 mm.
@@ -86,7 +88,7 @@ python model.py --stroke 40 --preload 0.10 --spring-preload 0.30 --spring-thickn
 --preload is tooth oversize; --spring-preload is nominal chassis deflection.
 Spring preload range 0.10..0.40 mm; thickness range 1.2..1.8 mm.
 validation.json records assembled pairs, travel, staged service, free
-single-solid chassis and positive stop checks. Viewer uses the same paths.
+single-solid chassis, wall-local blends and open-underside checks. Viewer uses the same paths.
 Sampled geometry checks are not continuous swept-volume or physical fit
 proof. No load, stiffness, life, backlash or accuracy rating is implied.
 Changed dimensions and materials require fresh geometry and print tests.

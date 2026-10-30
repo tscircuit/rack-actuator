@@ -1,6 +1,6 @@
 # Rack actuator
 
-A compact, 3D-printable NEMA17 rack actuator with compliant teeth and six 625ZZ guide bearings. This is the FLEX17 revision 11 design, with an integral motor mount and broad integral chassis spring floors that preload the lower bearings.
+A compact, 3D-printable NEMA17 rack actuator with compliant teeth and six 625ZZ guide bearings. This is the FLEX17 revision 12 design, with an integral motor mount and broad integral chassis spring floors that preload the lower bearings.
 
 [Open the interactive 3D viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) to actuate the rack, inspect bearing contacts, and explore the staged assembly explosion.
 
@@ -9,13 +9,13 @@ A compact, 3D-printable NEMA17 rack actuator with compliant teeth and six 625ZZ 
 - Configurable stroke; 40 mm initially.
 - Four upper bearings at 45° react downward/inward; two lower bearings support upward.
 - Bearing stations spaced 46 mm apart; lower contacts staggered ±1 mm to resist rocking.
-- Two broad spring floors are part of the chassis itself. They support solid lower axle seats with 0.30 mm nominal deflection and 0.8 mm stops. There are no separate spring frames or additional mounting screws/nuts.
+- Two broad spring floors are part of the chassis itself. They support solid lower axle seats with 0.30 mm nominal deflection and wall-local rounded blends. The rigid lower deck is removed, leaving an open underside with no mechanical downward stop. There are no separate spring frames or additional mounting screws/nuts.
 - A ramp at the rack insertion end gently depresses the spring-supported rollers.
 - One-piece chassis with integral 5 mm motor mounting land.
 - Rounded compliant-tooth reliefs, oversized tooth flanks, and an oversized D-shaped pinion bore with a set screw normal to the shaft flat.
 - Mounting holes on both the chassis and moving output pad.
 
-See [printing, hardware, assembly and adjustment instructions](README.txt) before printing. From revision 10, reprint only the chassis. Reuse the ramped rack, pinion, bearings and M5 hardware; remove the cartridges and their extra mounting hardware. Only three printed parts remain.
+See [printing, hardware, assembly and adjustment instructions](README.txt) before printing. From revision 11, reprint only the chassis. Reuse the ramped rack, pinion, bearings and M5 hardware. Only three printed parts remain.
 
 ## Files
 
@@ -51,7 +51,7 @@ Open <http://localhost:8000>. The viewer is static and needs no API keys or back
 
 ## Validation and limitations
 
-The generated report records assembled-pair, travel, staged-removal, unloaded-print and spring-stop checks. Each lower bearing follows the rack lead-in during insertion/removal; the integral chassis floor deforms with it. Only intentional elastic tooth contact is allowed. Spring deformation is prescribed geometry, not a finite element prediction. The viewer uses the same CAD motion tracks; actuation, all six bearing rotations, mobile layout and reference explosion poses were also checked.
+The generated report records assembled-pair, travel, staged-removal, unloaded-print and wall-blend checks. Each lower bearing follows the rack lead-in during insertion/removal; the integral chassis floor deforms with it. Only intentional elastic tooth contact is allowed. Spring deformation is prescribed geometry, not a finite element prediction. The viewer uses the same CAD motion tracks; actuation, all six bearing rotations, mobile layout and reference explosion poses were also checked.
 
 These are sampled geometry checks, not a continuous swept-volume proof or physical load test. Backlash, stiffness, preload force, fatigue life and positioning accuracy remain unmeasured. Use controller travel limits; the rack insertion end is open. The motor is a dimensional reference, and electronics, driver, wiring and limit switches are not included.
 

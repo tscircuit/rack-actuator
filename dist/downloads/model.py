@@ -1,4 +1,4 @@
-"""FLEX17 revision 11: integral broad spring floors beneath the lower bearing seats.
+"""FLEX17 revision 12: wall-terminated spring floors and no rigid lower deck.
 CadQuery 2.7, millimetres. python model.py --stroke 40 --preload .10 --check
 """
 import cadquery as cq
@@ -7,7 +7,7 @@ P=argparse.ArgumentParser();P.add_argument('--stroke',type=float,default=40);P.a
 assert 20<=a.stroke<=80 and 0<=a.preload<=.2
 assert 4<=a.shaft_diameter<=6 and .2<=a.shaft_flat_depth<=1 and .05<=a.shaft_clearance<=.3
 assert .1<=a.spring_preload<=.4 and 1.2<=a.spring_thickness<=1.8
-SPRING_PRELOAD=a.spring_preload;SPRING_THICKNESS=a.spring_thickness;SPRING_LIMIT=.8;RAMP_LENGTH=4.;RAMP_RISE=.8
+SPRING_PRELOAD=a.spring_preload;SPRING_THICKNESS=a.spring_thickness;SPRING_CHECK_TRAVEL=.8;RAMP_LENGTH=4.;RAMP_RISE=.8
 SHAFT_R=a.shaft_diameter/2; FLAT_Y=-SHAFT_R+a.shaft_flat_depth; BORE_R=SHAFT_R+a.shaft_clearance; BORE_FLAT_Y=FLAT_Y-a.shaft_clearance; SET_Z=6.5
 def d_profile(r,flat_y,z,h):
  return cyl(r,h,0,0,z).intersect(box(2*r+2,r-flat_y,h,(0,(r+flat_y)/2,z+h/2)))
@@ -123,35 +123,43 @@ for x in STATIONS:
  base=base.cut(box(31,22.1,19.5,((19.5 if x>0 else -19.5),32.45,-19.35)))
  # An open-top service window lets the bearing/washer lift out after axle removal.
  base=base.cut(box(16.8,6.8,60,(x,y,3.5)))
-# A continuous lower deck braces the chassis and supplies the positive spring stops.
-base=base.fuse(box(68,22.1,3.2,(0,32.45,-29.4)))
+# The spring floors are open underneath: there is no rigid lower deck.
 base=base.fuse(motor_land).clean()
 frame=base
 
 def floor_profile(deflection):
- x0=3.;x1=18.;r=1.2;h=SPRING_THICKNESS/2;z=-27+h
- w=cq.Workplane('XZ').moveTo(x0,z+h+r)
- w=w.threePointArc((x0+r-r/math.sqrt(2),z+h+r-r/math.sqrt(2)),(x0+r,z+h))
+ # Plain full-width floor. Fillets are added only at actual wall intersections.
+ x0=4.;x1=18.;h=SPRING_THICKNESS/2;z=-27+h
  def center(u):return z-deflection*(3*u*u-2*u*u*u)
- top=[(x0+r+(x1-x0-2*r)*k/16,center(k/16)+h) for k in range(1,17)]
- w=w.spline(top,includeCurrent=True).threePointArc((x1-r+r/math.sqrt(2),z-deflection+h+r-r/math.sqrt(2)),(x1,z-deflection+h+r))
- w=w.lineTo(x1,z-deflection-h)
- bottom=[(x0+r+(x1-x0-2*r)*k/16,center(k/16)-h) for k in range(15,-1,-1)]
- w=w.spline(bottom,includeCurrent=True).threePointArc((x0+r-r/math.sqrt(2),z-h-r+r/math.sqrt(2)),(x0,z-h-r)).close()
- return w.extrude(18).val()
+ w=cq.Workplane('XZ').moveTo(3,z+h).lineTo(x0,z+h)
+ w=w.spline([(x0+(x1-x0)*k/20,center(k/20)+h) for k in range(1,21)],includeCurrent=True)
+ w=w.lineTo(28,z-deflection+h).lineTo(28,z-deflection-h).lineTo(x1,z-deflection-h)
+ w=w.spline([(x0+(x1-x0)*k/20,center(k/20)-h) for k in range(19,-1,-1)],includeCurrent=True)
+ return w.lineTo(3,z-h).close().extrude(22.1).val()
 def spring_seat(spec,deflection):
  x=spec['x'];y=spec['center'][1];free_z=-17+SPRING_PRELOAD
- leaf=floor_profile(deflection).translate((0,y+9,0))
+ leaf=floor_profile(deflection).translate((0,43.5,0))
  if x<0:leaf=leaf.mirror('YZ')
- foot=box(10,43.5-y+9,SPRING_THICKNESS,(x,(43.5+y-9)/2,-27+SPRING_THICKNESS/2-deflection))
  body=box(10,43.5-y-3.1,16.5,(x,(43.5+y+3.1)/2,-18.75-deflection))
  body=body.fuse(ycyl(3.5,.6,x,y+2.5,free_z-deflection))
  body=body.cut(ycyl(2.6,20,x,y+2.4,free_z-deflection))
- return leaf.fuse(foot).fuse(body).clean()
+ return leaf.fuse(body).clean()
 def chassis(deflections):
  v=frame
  for p,d in zip(BOTTOM,deflections):v=v.fuse(spring_seat(p,d))
- return v.clean()
+ v=v.clean();blends=[]
+ for edge in v.Edges():
+  if edge.geomType()!='LINE':continue
+  c=edge.Center();bb=edge.BoundingBox()
+  if abs(abs(c.x)-4)<1e-5 and abs(c.z-(-27+SPRING_THICKNESS))<1e-5 and bb.ylen>1:
+   blends.append(edge);continue
+  for p,d in zip(BOTTOM,deflections):
+   z=-27+SPRING_THICKNESS-d
+   inner=abs(c.x-(18 if p['x']>0 else -18))<1e-5 and bb.ylen>1 and c.y>p['center'][1]+3.1
+   front=abs(c.y-(p['center'][1]+3.1))<1e-5 and abs(c.x-p['x'])<1 and bb.xlen>1
+   if abs(c.z-z)<1e-5 and (inner or front):blends.append(edge);break
+ assert len(blends)==6,('Expected wall-to-floor intersections',[(tuple(e.Center()),e.Length()) for e in blends])
+ return cq.Workplane(obj=v).newObject(blends).fillet(1.2).val()
 base=chassis((SPRING_PRELOAD,SPRING_PRELOAD))
 base_print=chassis((0,0))
 motor=box(42,42,23,(0,0,-19.5)).fuse(cyl(11,2,0,0,-8))
@@ -242,14 +250,21 @@ parts[-1]['flex_chassis']=True
 expected={p['name'].replace(' ','_')+'.stl' for p in parts if p['printed']}
 for f in (out/'downloads').glob('*.stl'):
  if f.name not in expected:f.unlink()
-scene=[];assembly=cq.Assembly(name='FLEX17_R11')
+scene=[];assembly=cq.Assembly(name='FLEX17_R12')
 for p in parts:
  s=p['shape'];vs,ts=s.tessellate(.06,.12)
  scene.append({k:p[k] for k in ['name','color','group','printed']}|{k:p[k] for k in ['spinAxis','spinCenter','spinSign','flex_chassis'] if k in p}|{'vertices':[[round(v.x,5),round(v.y,5),round(v.z,5)] for v in vs],'triangles':ts})
  assembly.add(s,name=p['name'].replace(' ','_'),color=cq.Color(p['color']))
  if p['printed']:cq.exporters.export(base_print if p.get('flex_chassis') else s,str(out/'downloads'/(p['name'].replace(' ','_')+'.stl')),tolerance=.04,angularTolerance=.1)
 assembly.save(str(out/'downloads'/'FLEX17.step'))
-data={'revision':11,'stroke':a.stroke,'rackLength':L,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'stationSpacing':46,'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springLimit':SPRING_LIMIT,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
+data={'revision':12,'stroke':a.stroke,'rackLength':L,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'stationSpacing':46,'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springTravelCheck':SPRING_CHECK_TRAVEL,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
+# Exact sampled CAD states preserve wall fillets while the floors relax.
+states=[]
+for l,r in [(SPRING_PRELOAD*k/4,0) for k in range(1,5)]+[(SPRING_PRELOAD,SPRING_PRELOAD*k/4) for k in range(1,5)]:
+ shape=chassis((SPRING_PRELOAD-l,SPRING_PRELOAD-r));vs,ts=shape.tessellate(.08,.18)
+ states.append({'leftLift':l,'rightLift':r,'vertices':[[round(v.x,5),round(v.y,5),round(v.z,5)] for v in vs],'triangles':ts})
+(out/'assets'/'spring-states.json').write_text(json.dumps(states,separators=(',',':')))
+data['springStateStep']=SPRING_PRELOAD/4
 (out/'assets'/'assembly.json').write_text(json.dumps(data,separators=(',',':')))
 print('Exported',len(parts),'parts / six 625ZZ bearings',flush=True)
 if a.check:
@@ -342,21 +357,21 @@ if a.check:
   for dy in [0]:
    for dz in [0]:gap.append({'x':dx,'y':dy,'z':dz,'part':'01 Integral spring chassis','gap_mm':round(rack.translate((dx,dy,dz)).distance(base),4)})
  print('Minimum rack/chassis clearance:',min(p['gap_mm'] for p in gap),flush=True)
- # Check free manufactured chassis and hard stops at the broad moving pads.
+ # Check wall-local blends and clearance without a rigid lower stop deck.
  assert base_print.isValid() and len(base_print.Solids())==1
- def stop_overlap_at(d):
-  total=0
-  for p in BOTTOM:
-   pad=spring_seat(p,d).intersect(box(10.01,24,30,(p['x'],32.45,-20)))
-   total+=overlap(pad,frame)
-  return total
- stop_overlap=stop_overlap_at(SPRING_LIMIT)
- beyond_overlap=stop_overlap_at(SPRING_LIMIT+.05)
- assert stop_overlap<tolerance,('Spring hits its stop early',stop_overlap)
- assert beyond_overlap>.1,('Missing positive spring stop',beyond_overlap)
- spring_check={'integral_with_chassis':True,'free_stl_valid':True,'free_stl_solid_count':1,'preload_deflection_mm':SPRING_PRELOAD,'leaf_thickness_mm':SPRING_THICKNESS,'leaf_width_mm':18.,'root_radius_mm':1.2,'downward_stop_deflection_mm':SPRING_LIMIT,'at_stop_overlap_mm3':stop_overlap,'beyond_stop_overlap_mm3':beyond_overlap,'method':'Prescribed nominal displacement, not finite element analysis. Chassis STL is relaxed; STEP/viewer start deflected.'}
+ wall_blend_checks=[]
+ for p in BOTTOM:
+  sign=1 if p['x']>0 else -1;front=p['center'][1]+3.1
+  # No raised fillet/ridge is allowed in the unsupported floor in front of the axle wall.
+  for x in [15.,17.8,18.2,23.]:
+   wall_blend_checks.append(not base_print.isInside(cq.Vector(sign*x,front-3,-27+SPRING_THICKNESS+.2),1e-7))
+ assert all(wall_blend_checks),'A blend extends beyond its supporting wall'
+ compressed=chassis((SPRING_CHECK_TRAVEL,SPRING_CHECK_TRAVEL))
+ assert compressed.isValid() and len(compressed.Solids())==1
+ spring_check={'integral_with_chassis':True,'free_stl_valid':True,'free_stl_solid_count':1,'preload_deflection_mm':SPRING_PRELOAD,'leaf_thickness_mm':SPRING_THICKNESS,'leaf_width_mm':22.1,'root_radius_mm':1.2,'wall_local_blend_checks_passed':len(wall_blend_checks),'rigid_lower_deck':False,'mechanical_downward_stop':False,'checked_deflection_mm':SPRING_CHECK_TRAVEL,'method':'Prescribed nominal displacement, not finite element analysis. Chassis STL is relaxed; STEP/viewer start deflected. No mechanical travel stop.'}
  references={str(e):{g:{'translation':list(offset(g,e)),'rotation_z_deg':angle(g,e)} for g in tracks} for e in [0,.05,.18,.35,.4,.45,.5,.55,.6,.625,.65,.7,.75,.8,.82,.87,.9,.95,1]}
- report={'revision':11,'spring_carrier':spring_check,'root_relief':{'shape':'semicircular caps tangent to straight slot walls','central_radius_mm':central_relief_radius,'intertooth_radius_mm':intertooth_relief_radius,'maximum_y_mm':25,'arc_geometry_checked':True},'shaft_fit':d_fit,'bearing_count':6,'bearing_type':'625ZZ','bearing_dimensions_mm':[5,16,5],'station_spacing_mm':46,'upper_bearing_angle_deg':45,'spring_preload_mm':SPRING_PRELOAD,'spring_thickness_mm':SPRING_THICKNESS,'spring_limit_mm':SPRING_LIMIT,'spring_free_stl':True,'chassis_mounts_mm':CHASSIS_MOUNTS,'motor_face_z_mm':-8,'integral_motor_land_mm':5,'chassis_solid_count':len(base.Solids()),'rack_solid_count':len(rack.Solids()),'insertion_side':'right/output side, plain left end first','rack_withdrawal_mm':WITHDRAW,'contact_checks_passed':len(contact_checks),'upper_force_normals':[[0,SQ,-SQ],[0,-SQ,-SQ]],'lower_force_normal':[0,0,1],'preload_per_flank_mm':a.preload,'nominal_mesh_max_overlap_mm3':max(nominal_vol),'elastic_mesh_limit_mm3':elastic_limit,'elastic_mesh_volume_mm3_range':[min(mesh_volumes),max(mesh_volumes)],'method':'All assembled pairs and moving relative rigid poses, with translation/rotation tip motion sampled <=0.5 mm. Same tracks drive viewer. Nominal tooth profile checked separately.','intersection_tolerance_mm3':tolerance,'explosion_samples':len(times),'motion_samples':41,'explosion_failures':fail,'motion_failures':motion_fail,'intentional_contacts':allowed,'minimum_rack_frame_gap_mm':min(p['gap_mm'] for p in gap),'plastic_clearance_samples':gap,'viewer_reference_poses':references,'limits':['Sampled rigid geometry, not continuous swept-volume proof or a physical fit test.','Oversized teeth require elastic deflection. No load, backlash or fatigue rating.','The plain insertion end has no axial hard stop; enforce software travel limits.','Pinion is free to turn during rack insertion. Remove front and rear angled axles in sequence. Spring carrier supplies passive preload; force, creep and fatigue have not been measured. STL is unloaded; STEP is assembled and deflected.']}
+ report={'revision':12,'spring_carrier':spring_check,'root_relief':{'shape':'semicircular caps tangent to straight slot walls','central_radius_mm':central_relief_radius,'intertooth_radius_mm':intertooth_relief_radius,'maximum_y_mm':25,'arc_geometry_checked':True},'shaft_fit':d_fit,'bearing_count':6,'bearing_type':'625ZZ','bearing_dimensions_mm':[5,16,5],'station_spacing_mm':46,'upper_bearing_angle_deg':45,'spring_preload_mm':SPRING_PRELOAD,'spring_thickness_mm':SPRING_THICKNESS,'checked_spring_deflection_mm':SPRING_CHECK_TRAVEL,'spring_free_stl':True,'chassis_mounts_mm':CHASSIS_MOUNTS,'motor_face_z_mm':-8,'integral_motor_land_mm':5,'chassis_solid_count':len(base.Solids()),'rack_solid_count':len(rack.Solids()),'insertion_side':'right/output side, plain left end first','rack_withdrawal_mm':WITHDRAW,'contact_checks_passed':len(contact_checks),'upper_force_normals':[[0,SQ,-SQ],[0,-SQ,-SQ]],'lower_force_normal':[0,0,1],'preload_per_flank_mm':a.preload,'nominal_mesh_max_overlap_mm3':max(nominal_vol),'elastic_mesh_limit_mm3':elastic_limit,'elastic_mesh_volume_mm3_range':[min(mesh_volumes),max(mesh_volumes)],'method':'All assembled pairs and moving relative rigid poses, with translation/rotation tip motion sampled <=0.5 mm. Same tracks drive viewer. Nominal tooth profile checked separately.','intersection_tolerance_mm3':tolerance,'explosion_samples':len(times),'motion_samples':41,'explosion_failures':fail,'motion_failures':motion_fail,'intentional_contacts':allowed,'minimum_rack_frame_gap_mm':min(p['gap_mm'] for p in gap),'plastic_clearance_samples':gap,'viewer_reference_poses':references,'limits':['Sampled rigid geometry, not continuous swept-volume proof or a physical fit test.','Oversized teeth require elastic deflection. No load, backlash or fatigue rating.','The plain insertion end has no axial hard stop; enforce software travel limits.','Viewer chassis uses exact CAD shape samples at one quarter of the spring preload; bearing translations follow the CAD tracks continuously.',
+ 'Pinion is free to turn during rack insertion. Remove front and rear angled axles in sequence. Spring carrier supplies passive preload; force, creep and fatigue have not been measured. STL is unloaded; STEP is assembled and deflected.']}
  (out/'downloads'/'validation.json').write_text(json.dumps(report,indent=2))
  assert not fail and not motion_fail,'See validation report'
  assert min(p['gap_mm'] for p in gap)>.25,'Rack rubs frame'
