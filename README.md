@@ -1,15 +1,16 @@
 # Rack actuator
 
-FLEX revision 13: printable NEMA17 and NEMA14 linear actuators with compliant rack teeth and six 625ZZ bearings. Three printed parts per variant: an integral spring chassis, rack and pinion.
+FLEX revision 14: printable NEMA17 and NEMA14 linear actuators with compliant rack teeth and six 625ZZ bearings. Three printed parts per variant: an integral spring chassis, rack and pinion.
 
 [Open the interactive viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) or [open the NEMA14 prototype](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14). The motor selector changes the actual CAD, resolution table, collision report and downloads. Both have actuation and staged assembly animations.
 
-## Revision 13
+## Revision 14
 
-- Spring preload increased from 0.3 to **2.3 mm** nominal deflection. The relaxed chassis STL preloads when the rack is installed; assembled STEP shows the deflected shape.
+- Spring preload remains **2.3 mm** nominal deflection. The relaxed chassis STL preloads when the rack is installed; assembled STEP shows the deflected shape.
 - Bearing pockets have **0.8 mm radial and axial clearance** around rotating faces, with integral shoulders supporting only the inner races. Rack/chassis nominal clearance is **1 mm**.
-- Full-length rack channels clear socket-head axle bolts by **0.8 mm**. Bolt heads are modeled conservatively as Ø9.5 × 5 mm, replacing the old 2.75 mm-high head models.
-- A 10 mm-long, 2.8 mm-high lead-in engages the higher spring preload. The floor remains attached to the actual walls, with an open underside and no rigid lower deck or travel stop.
+- Rack backbone widened from **14.5 to 16 mm**, adding material behind the tooth roots.
+- Socket-head relief is shallower, with **0.5 mm** clearance instead of 0.8 mm. It stops 7.75 mm before the output end of the guide, leaving the entire 14 mm mounting pad uncut by the head slot. Bolt heads remain modeled conservatively as Ø9.5 × 5 mm.
+- The insertion end is square: the former 10 mm underside ramp/chamfer is removed. The curved lower bearing rims engage the square edge during insertion; support the spring seats by hand if needed. The floor remains attached to the actual walls, with an open underside and no rigid lower deck or travel stop.
 - Service order removes the lower axles before the angled nuts to clear their removal paths at the higher preload.
 - Both retain six 625ZZ bearings, four upper at 45° and two lower, 46 mm station spacing, staggered lower contacts, integral motor land, output mounting pad, oversized D bore and circular tooth-root reliefs.
 
@@ -26,7 +27,7 @@ FLEX revision 13: printable NEMA17 and NEMA14 linear actuators with compliant ra
 
 The NEMA14 gear produces 22.2% smaller commanded increments. This is theoretical resolution, not measured accuracy. Its matched 25° rack and pinion avoid the standard 20° undercut issue at 14 teeth. **Do not mix NEMA14 and NEMA17 racks/pinions.** Reference motor dimensions and shaft length must be checked against the actual motor drawing.
 
-From revision 12, reprint the NEMA17 chassis **and rack**; its existing 18T pinion can be reused. Print all three matching parts for NEMA14. Bearings and specified axle hardware remain the same.
+From revision 13, **reprint only the rack** for your selected variant. Reuse its chassis and matching pinion. From revision 12, the updated chassis is also needed. Print all three matching parts for a new NEMA14 build. Bearings and specified axle hardware remain the same.
 
 ## Files and regeneration
 
@@ -48,7 +49,7 @@ python -m http.server 8000 --directory dist
 
 Packaging verifies that both passing reports match the current source before updating the downloadable source and ZIPs. Checks can take several minutes.
 
-Parameters: `--stroke 40` (20–80 mm), `--preload 0.10` (tooth oversize), `--spring-preload 2.3` (0.1–2.5 mm), `--spring-thickness 1.4` (1.2–1.8 mm), `--bearing-clearance 0.8` and `--hardware-clearance 0.8` (0.5–1.2 mm). Shaft defaults: `--shaft-diameter 5 --shaft-flat-depth 0.5 --shaft-clearance 0.15`. Changed dimensions require fresh checks.
+Parameters: `--stroke 40` (20–80 mm), `--preload 0.10` (tooth oversize), `--spring-preload 2.3` (0.1–2.5 mm), `--spring-thickness 1.4` (1.2–1.8 mm), `--bearing-clearance 0.8` and `--hardware-clearance 0.5` (0.5–1.2 mm). `--rack-backbone-width 16` accepts 14.5–18 mm. Shaft defaults: `--shaft-diameter 5 --shaft-flat-depth 0.5 --shaft-clearance 0.15`. Changed dimensions require fresh checks.
 
 ## Validation and physical testing
 

@@ -1,10 +1,15 @@
 {
-  "revision": 13,
+  "revision": 14,
+  "rack_backbone_width_mm": 16.0,
+  "head_relief_end_x_mm": 48.25,
+  "solid_rack_end_length_mm": 7.75,
+  "square_insertion_end": true,
+  "rack_restoration_checks_passed": 4,
   "motor": "NEMA14",
   "pinion_teeth": 14,
   "pressure_angle_deg": 25,
   "bearing_clearance_mm": 0.8,
-  "hardware_clearance_mm": 0.8,
+  "hardware_clearance_mm": 0.5,
   "socket_head_envelope_mm": [
     9.5,
     5.0
@@ -126,7 +131,7 @@
     {
       "travel_mm": -20.0,
       "part": "M5x16 angled axle front -23.0",
-      "gap_mm": 0.7999999999999947
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": -20.0,
@@ -141,7 +146,7 @@
     {
       "travel_mm": -20.0,
       "part": "M5x16 angled axle front 23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": -20.0,
@@ -156,7 +161,7 @@
     {
       "travel_mm": -20.0,
       "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999946
     },
     {
       "travel_mm": -20.0,
@@ -171,7 +176,7 @@
     {
       "travel_mm": -20.0,
       "part": "M5x16 angled axle rear 23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": -20.0,
@@ -216,7 +221,7 @@
     {
       "travel_mm": 0,
       "part": "M5x16 angled axle front -23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": 0,
@@ -231,7 +236,7 @@
     {
       "travel_mm": 0,
       "part": "M5x16 angled axle front 23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": 0,
@@ -246,7 +251,7 @@
     {
       "travel_mm": 0,
       "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.7999999999999947
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": 0,
@@ -261,7 +266,7 @@
     {
       "travel_mm": 0,
       "part": "M5x16 angled axle rear 23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999946
     },
     {
       "travel_mm": 0,
@@ -306,7 +311,7 @@
     {
       "travel_mm": 20.0,
       "part": "M5x16 angled axle front -23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": 20.0,
@@ -321,7 +326,7 @@
     {
       "travel_mm": 20.0,
       "part": "M5x16 angled axle front 23.0",
-      "gap_mm": 0.7999999999999972
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": 20.0,
@@ -336,7 +341,7 @@
     {
       "travel_mm": 20.0,
       "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.7999999999999944
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": 20.0,
@@ -351,7 +356,7 @@
     {
       "travel_mm": 20.0,
       "part": "M5x16 angled axle rear 23.0",
-      "gap_mm": 0.7999999999999925
+      "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": 20.0,
@@ -389,8 +394,8 @@
       "gap_mm": 8.354648223959998
     }
   ],
-  "minimum_rack_hardware_gap_mm": 0.7999999999999925,
-  "source_sha256": "69ce62db618fbb59c77e9c1bc7f7885fc0af0b7fd62a669298ab01ae7d2522a6",
+  "minimum_rack_hardware_gap_mm": 0.4999999999999946,
+  "source_sha256": "8cb3c34f46455c4d01564b1fa9d517e39d62e024acc03d9cb28c5be3bd4171c1",
   "method": "All assembled pairs and moving relative rigid poses, with translation/rotation tip motion sampled <=0.5 mm. Same tracks drive viewer. Nominal tooth profile checked separately.",
   "intersection_tolerance_mm3": 0.01,
   "explosion_samples": 1327,
@@ -677,7 +682,7 @@
         "translation": [
           0.0,
           0.0,
-          0.1296826301349583
+          0
         ],
         "rotation_z_deg": 0
       },
@@ -685,7 +690,7 @@
         "translation": [
           0.0,
           0.0,
-          0.1296826301349583
+          0
         ],
         "rotation_z_deg": 0
       },
@@ -693,7 +698,7 @@
         "translation": [
           0.0,
           0.0,
-          0.1296826301349583
+          0
         ],
         "rotation_z_deg": 0
       },
@@ -3215,85 +3220,8 @@
   ],
   "sample_coverage": {
     "complete": true,
+    "disjoint_batches": 2,
     "explosion_positions": 1327,
-    "travel_positions": 41,
-    "unchanged_geometry_and_tracks_before_explosion": 0.72,
-    "unchanged_prefix_positions": 946,
-    "rechecked_service_positions": 381,
-    "explanation": "All shapes and follower equations are unchanged from the full sweep. Prefix sample times and every group transform were compared exactly. The revised lower-axle-before-angled-nut order was checked for all remaining poses."
-  },
-  "expanded_bearing_clearance_checks": [
-    {
-      "state": "assembled",
-      "bearing": "upper front -23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "assembled",
-      "bearing": "upper front 23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "assembled",
-      "bearing": "upper rear -23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "assembled",
-      "bearing": "upper rear 23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "assembled",
-      "bearing": "lower -23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "assembled",
-      "bearing": "lower 23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "free",
-      "bearing": "upper front -23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "free",
-      "bearing": "upper front 23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "free",
-      "bearing": "upper rear -23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "free",
-      "bearing": "upper rear 23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "free",
-      "bearing": "lower -23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    },
-    {
-      "state": "free",
-      "bearing": "lower 23.0",
-      "expanded_outer_race_overlap_mm3": 0
-    }
-  ],
-  "viewer_checks": {
-    "variants_tested": [
-      "NEMA17",
-      "NEMA14"
-    ],
-    "actuation": true,
-    "six_bearing_rotations": true,
-    "motor_rotation_pivot": true,
-    "spring_relaxation": true,
-    "mobile_layout": true,
-    "variant_selector": true
+    "travel_positions": 41
   }
 }

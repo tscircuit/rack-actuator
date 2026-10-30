@@ -5,7 +5,7 @@ root=Path(__file__).resolve().parent
 source_hash=hashlib.sha256((root/'model.py').read_bytes()).hexdigest()
 for motor,folder in [('FLEX17',root/'dist'),('FLEX14',root/'dist/variants/nema14')]:
  dest=folder/'downloads';report=json.loads((dest/'validation.json').read_text())
- assert report['revision']==13 and report['source_sha256']==source_hash,(motor,'Run current model.py --check first')
+ assert report['revision']==14 and report['source_sha256']==source_hash,(motor,'Run current model.py --check first')
  assert not report['explosion_failures'] and not report['motion_failures'],(motor,'Collision checks failed')
  for filename in ['model.py','README.txt','requirements.txt','package_designs.py']:
   shutil.copyfile(root/filename,dest/filename)

@@ -1,13 +1,14 @@
-"""FLEX revision 13: 2.3 mm spring preload, print clearances, NEMA17 / NEMA14.
+"""FLEX revision 14: wider rack, bounded socket relief and square insertion end.
 CadQuery 2.7, millimetres. python model.py --stroke 40 --preload .10 --check
 """
 import cadquery as cq
 import math,json,argparse,pathlib,itertools
-P=argparse.ArgumentParser();P.add_argument('--motor',choices=['nema17','nema14'],default='nema17');P.add_argument('--bearing-clearance',type=float,default=.8);P.add_argument('--hardware-clearance',type=float,default=.8);P.add_argument('--stroke',type=float,default=40);P.add_argument('--preload',type=float,default=.10);P.add_argument('--shaft-diameter',type=float,default=5.0);P.add_argument('--shaft-flat-depth',type=float,default=.5);P.add_argument('--shaft-clearance',type=float,default=.15);P.add_argument('--spring-preload',type=float,default=2.30);P.add_argument('--spring-thickness',type=float,default=1.4);P.add_argument('--out',default='dist');P.add_argument('--check',action='store_true');a=P.parse_args()
+P=argparse.ArgumentParser();P.add_argument('--motor',choices=['nema17','nema14'],default='nema17');P.add_argument('--bearing-clearance',type=float,default=.8);P.add_argument('--hardware-clearance',type=float,default=.5);P.add_argument('--rack-backbone-width',type=float,default=16.0);P.add_argument('--stroke',type=float,default=40);P.add_argument('--preload',type=float,default=.10);P.add_argument('--shaft-diameter',type=float,default=5.0);P.add_argument('--shaft-flat-depth',type=float,default=.5);P.add_argument('--shaft-clearance',type=float,default=.15);P.add_argument('--spring-preload',type=float,default=2.30);P.add_argument('--spring-thickness',type=float,default=1.4);P.add_argument('--out',default='dist');P.add_argument('--check',action='store_true');a=P.parse_args()
 assert 20<=a.stroke<=80 and 0<=a.preload<=.2
 assert 4<=a.shaft_diameter<=6 and .2<=a.shaft_flat_depth<=1 and .05<=a.shaft_clearance<=.3
 assert .1<=a.spring_preload<=2.5 and 1.2<=a.spring_thickness<=1.8
-SPRING_PRELOAD=a.spring_preload;SPRING_THICKNESS=a.spring_thickness;SPRING_CHECK_TRAVEL=max(2.6,SPRING_PRELOAD+.3);RAMP_LENGTH=10.;RAMP_RISE=SPRING_PRELOAD+.5
+SPRING_PRELOAD=a.spring_preload;SPRING_THICKNESS=a.spring_thickness;SPRING_CHECK_TRAVEL=max(2.6,SPRING_PRELOAD+.3);RAMP_LENGTH=0.;RAMP_RISE=0.
+assert 14.5<=a.rack_backbone_width<=18
 assert .5<=a.bearing_clearance<=1.2 and .5<=a.hardware_clearance<=1.2
 IS14=a.motor=='nema14';LABEL='FLEX14' if IS14 else 'FLEX17';MOTOR_NAME='NEMA14' if IS14 else 'NEMA17'
 MOTOR_SIZE=35.2 if IS14 else 42.;MOTOR_PITCH=26. if IS14 else 31.;MOTOR_DEPTH=20. if IS14 else 23.
@@ -79,7 +80,7 @@ def lower_lift(x,e):
  # The roller can rise until its free spring height or the rack underside stops it.
  dx=WITHDRAW*max(0,min(1,e/.18));edge=-(a.stroke+RACK_EXTRA)/2+dx
  candidates=[-17+SPRING_PRELOAD]
- for x0,x1,z0,slope in [(edge,edge+RAMP_LENGTH,-9+RAMP_RISE,-RAMP_RISE/RAMP_LENGTH),(edge+RAMP_LENGTH,edge+a.stroke+RACK_EXTRA,-9,0)]:
+ for x0,x1,z0,slope in [(edge,edge+a.stroke+RACK_EXTRA,-9,0)]:
   lo=max(x0,x-8);hi=min(x1,x+8)
   if lo>hi:continue
   tangent=max(lo,min(hi,x-8*slope/math.sqrt(1+slope*slope)))
@@ -180,7 +181,7 @@ shaft=d_profile(SHAFT_R,FLAT_Y,-6,17).translate((0,MOTOR_Y,0));add(MOTOR_NAME+' 
 for x,y in motor_holes:
  screw=cyl(1.45,10.5,x,y,-12).fuse(cq.Solid.makeCone(1.45,2.9,1.5,cq.Vector(x,y,-1.5),cq.Vector(0,0,1)))
  add(f'M3 motor screw {x} {y}',screw,'#9da9b3','motor_screws')
-# Sampled 20-degree involute, 18 teeth, module 2.
+# Sampled involute, module 2; tooth count and pressure angle follow motor variant.
 m=2;n=N;rp=RP;rb=rp*math.cos(math.radians(PRESSURE_ANGLE));ra=rp+m;rr=rp-1.25*m
 inv=lambda r:math.sqrt(max(0,(r/rb)**2-1))-math.acos(min(1,rb/r))
 half_base=math.pi/(2*n)+inv(rp);points=[]
@@ -208,7 +209,7 @@ centers=[i*pitch for i in range(-math.floor((L-8)/(2*pitch)),math.floor((L-8)/(2
 def make_rack(preload):
  half=lambda y:pitch/4+(y-18)*alpha+preload
  h0=half(16);h1=half(20.5)
- rack=box(L,14.5,8,(0,27.75,17)) # y=20.5..33.5
+ rack=box(L,a.rack_backbone_width,8,(0,20.5+a.rack_backbone_width/2,17)) # grow the continuous backbone away from the tooth roots
  for x in centers:
   tooth=cq.Workplane('XY').polyline([(x-h0,16),(x+h0,16),(x+h1,20.5),(x-h1,20.5)]).close().extrude(8).translate((0,0,13)).val()
   radius=h1-wall;cap_y=25-radius
@@ -228,17 +229,17 @@ def make_rack(preload):
   rack=rack.cut(relief)
  # Beveled faces carry downward/inward reactions; the bottom is a flat raceway.
  rack=rack.fuse(rail_shape(L))
- ramp=cq.Workplane('XZ').polyline([(left-.1,-12),(left+RAMP_LENGTH,-12),(left+RAMP_LENGTH,-9),(left,-9+RAMP_RISE),(left-.1,-9+RAMP_RISE)]).close().extrude(70).translate((0,60,0)).val()
- rack=rack.cut(ramp)
+ # Square insertion end: no ramp/chamfer cut. The roller rim cams the spring down.
  # The pad shares the Z=21 tooth face, so it starts on the print bed.
  pad=holes(box(14,16,18,(right+7,25.5,12)),[(right+7,20),(right+7,29)],1.7,2,20)
  rack=rack.fuse(pad)
- # Full-length head-clearance channels: expanded projected envelopes of full-height M5 socket heads.
- # Keep the bearing raceways intact up to 2.0 mm from their center plane.
+ # Head relief is open at the insertion end and stops at the required travel envelope.
+ # The output end and mounting pad remain solid; leave only the requested head margin.
+ slot_end=max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP
  for p in UPPER:
   c,u=p['center'],p['axis'];v=(0,-u[2],u[1]);r=4.75+HARDWARE_GAP
-  yz=[(c[1]+u[1]*t+v[1]*q,c[2]+u[2]*t+v[2]*q) for t,q in [(2.5-HARDWARE_GAP,-r),(7.8+HARDWARE_GAP,-r),(7.8+HARDWARE_GAP,r),(2.5-HARDWARE_GAP,r)]]
-  channel=cq.Workplane('YZ').polyline(yz).close().extrude(L+16).translate((left-1,0,0)).val()
+  yz=[(c[1]+u[1]*t+v[1]*q,c[2]+u[2]*t+v[2]*q) for t,q in [(2.8-HARDWARE_GAP,-r),(7.8+HARDWARE_GAP,-r),(7.8+HARDWARE_GAP,r),(2.8-HARDWARE_GAP,r)]]
+  channel=cq.Workplane('YZ').polyline(yz).close().extrude(slot_end-left+1).translate((left-1,0,0)).val()
   rack=rack.cut(channel)
  # Plain open left end permits insertion from the output/right side.
  return rack.clean()
@@ -270,7 +271,7 @@ parts[-1]['flex_chassis']=True
 expected={p['name'].replace(' ','_')+'.stl' for p in parts if p['printed']}
 for f in (out/'downloads').glob('*.stl'):
  if f.name not in expected:f.unlink()
-scene=[];assembly=cq.Assembly(name=LABEL+'_R13')
+scene=[];assembly=cq.Assembly(name=LABEL+'_R14')
 for p in parts:
  s=p['shape'];vs,ts=s.tessellate(.06,.12)
  scene.append({k:p[k] for k in ['name','color','group','printed']}|{k:p[k] for k in ['spinAxis','spinCenter','spinSign','flex_chassis'] if k in p}|{'vertices':[[round(v.x,5),round(v.y,5),round(v.z,5)] for v in vs],'triangles':ts})
@@ -279,7 +280,7 @@ for p in parts:
 assembly.save(str(out/'downloads'/(LABEL+'.step')))
 bounds=[p['shape'].BoundingBox() for p in parts]
 envelope=[max(getattr(b,k+'max') for b in bounds)-min(getattr(b,k+'min') for b in bounds) for k in ['x','y','z']]
-data={'revision':13,'envelope':envelope,'motor':MOTOR_NAME,'motorSize':MOTOR_SIZE,'motorPitch':MOTOR_PITCH,'motorDepth':MOTOR_DEPTH,'rotationPivot':list(PIVOT),'pinionTeeth':N,'pressureAngle':PRESSURE_ANGLE,'withdrawal':WITHDRAW,'bearingClearance':BEARING_GAP,'hardwareClearance':HARDWARE_GAP,'chassisFootprint':[68,58-CHASSIS_FRONT],'stroke':a.stroke,'rackLength':L,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'stationSpacing':46,'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springTravelCheck':SPRING_CHECK_TRAVEL,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
+data={'revision':14,'envelope':envelope,'motor':MOTOR_NAME,'motorSize':MOTOR_SIZE,'motorPitch':MOTOR_PITCH,'motorDepth':MOTOR_DEPTH,'rotationPivot':list(PIVOT),'pinionTeeth':N,'pressureAngle':PRESSURE_ANGLE,'withdrawal':WITHDRAW,'bearingClearance':BEARING_GAP,'hardwareClearance':HARDWARE_GAP,'chassisFootprint':[68,58-CHASSIS_FRONT],'stroke':a.stroke,'rackLength':L,'rackBackboneWidth':a.rack_backbone_width,'headReliefEndX':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solidRackEndLength':L/2-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'squareInsertionEnd':True,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'stationSpacing':46,'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springTravelCheck':SPRING_CHECK_TRAVEL,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
 # Exact sampled CAD states preserve wall fillets while the floors relax.
 states=[]
 for l,r in [(SPRING_PRELOAD*k/12,0) for k in range(1,13)]+[(SPRING_PRELOAD,SPRING_PRELOAD*k/12) for k in range(1,13)]:
@@ -298,6 +299,13 @@ if a.check:
  for wanted in [central_relief_radius,intertooth_relief_radius]:
   arcs=[e for e in rack.Edges() if e.geomType()=='CIRCLE' and abs(e.radius()-wanted)<1e-6]
   assert len(arcs)>=2*(len(centers)-1),(wanted,len(arcs))
+ # Confirm restored end material and the square underside, not merely mesh appearance.
+ square_end_check=rack.isInside(cq.Vector(left+.05,32,-8.95),1e-7)
+ assert square_end_check,'Insertion end still has a ramp'
+ rack_restoration_checks=[rack.isInside(cq.Vector(x,y,z),1e-7) for x,y,z in [(right-1,30,6),(right+4,30,6),(0,20.5+a.rack_backbone_width-.05,17)]]
+ assert all(rack_restoration_checks),'Missing restored end or backbone material'
+ end_solid_probe=box(L/2-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),.1,.1,((L/2+max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP)/2,32,5))
+ assert abs(end_solid_probe.intersect(rack).Volume()-end_solid_probe.Volume())<1e-7,'Head relief reaches solid end'
  # Explicit fit and axis checks, in addition to the general collision scan.
  assert shaft.distance(gear)>=a.shaft_clearance-1e-6
  assert abs(shaft.distance(set_screw))<1e-6
@@ -399,7 +407,7 @@ if a.check:
     hardware_gaps.append({'travel_mm':dx,'part':p['name'],'gap_mm':r.distance(p['shape'])})
  assert min(q['gap_mm'] for q in hardware_gaps)>=HARDWARE_GAP-1e-5,('Hardware clearance',sorted(hardware_gaps,key=lambda q:q['gap_mm'])[:5])
  references={str(e):{g:{'translation':list(offset(g,e)),'rotation_z_deg':angle(g,e)} for g in tracks} for e in [0,.05,.18,.35,.4,.45,.5,.55,.6,.625,.65,.7,.75,.8,.82,.87,.9,.95,1]}
- report={'revision':13,'motor':MOTOR_NAME,'pinion_teeth':N,'pressure_angle_deg':PRESSURE_ANGLE,'bearing_clearance_mm':BEARING_GAP,'hardware_clearance_mm':HARDWARE_GAP,'socket_head_envelope_mm':[9.5,5.0],'chassis_footprint_mm':[68,58-CHASSIS_FRONT],'spring_carrier':spring_check,'root_relief':{'shape':'semicircular caps tangent to straight slot walls','central_radius_mm':central_relief_radius,'intertooth_radius_mm':intertooth_relief_radius,'maximum_y_mm':25,'arc_geometry_checked':True},'shaft_fit':d_fit,'bearing_count':6,'bearing_type':'625ZZ','bearing_dimensions_mm':[5,16,5],'station_spacing_mm':46,'upper_bearing_angle_deg':45,'spring_preload_mm':SPRING_PRELOAD,'spring_thickness_mm':SPRING_THICKNESS,'checked_spring_deflection_mm':SPRING_CHECK_TRAVEL,'spring_free_stl':True,'chassis_mounts_mm':CHASSIS_MOUNTS,'motor_face_z_mm':-8,'integral_motor_land_mm':5,'chassis_solid_count':len(base.Solids()),'rack_solid_count':len(rack.Solids()),'insertion_side':'right/output side, plain left end first','rack_withdrawal_mm':WITHDRAW,'contact_checks_passed':len(contact_checks),'upper_force_normals':[[0,SQ,-SQ],[0,-SQ,-SQ]],'lower_force_normal':[0,0,1],'preload_per_flank_mm':a.preload,'nominal_mesh_max_overlap_mm3':max(nominal_vol),'elastic_mesh_limit_mm3':elastic_limit,'elastic_mesh_volume_mm3_range':[min(mesh_volumes),max(mesh_volumes)],'hardware_clearance_samples':hardware_gaps,'minimum_rack_hardware_gap_mm':min(q['gap_mm'] for q in hardware_gaps),'source_sha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),'method':'All assembled pairs and moving relative rigid poses, with translation/rotation tip motion sampled <=0.5 mm. Same tracks drive viewer. Nominal tooth profile checked separately.','intersection_tolerance_mm3':tolerance,'explosion_samples':len(times),'motion_samples':41,'explosion_failures':fail,'motion_failures':motion_fail,'intentional_contacts':allowed,'minimum_rack_frame_gap_mm':min(p['gap_mm'] for p in gap),'plastic_clearance_samples':gap,'viewer_reference_poses':references,'limits':['2.3 mm default spring deflection is an aggressive physical prototype. Force, elastic recovery and fatigue require testing in the chosen print material.','Sampled rigid geometry, not continuous swept-volume proof or a physical fit test.','Oversized teeth require elastic deflection. No load, backlash or fatigue rating.','The plain insertion end has no axial hard stop; enforce software travel limits.','Viewer chassis uses exact CAD shape samples at one twelfth of the spring preload; bearing translations follow the CAD tracks continuously.',
+ report={'revision':14,'rack_backbone_width_mm':a.rack_backbone_width,'head_relief_end_x_mm':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solid_rack_end_length_mm':L/2-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'square_insertion_end':True,'rack_restoration_checks_passed':len(rack_restoration_checks)+int(square_end_check),'motor':MOTOR_NAME,'pinion_teeth':N,'pressure_angle_deg':PRESSURE_ANGLE,'bearing_clearance_mm':BEARING_GAP,'hardware_clearance_mm':HARDWARE_GAP,'socket_head_envelope_mm':[9.5,5.0],'chassis_footprint_mm':[68,58-CHASSIS_FRONT],'spring_carrier':spring_check,'root_relief':{'shape':'semicircular caps tangent to straight slot walls','central_radius_mm':central_relief_radius,'intertooth_radius_mm':intertooth_relief_radius,'maximum_y_mm':25,'arc_geometry_checked':True},'shaft_fit':d_fit,'bearing_count':6,'bearing_type':'625ZZ','bearing_dimensions_mm':[5,16,5],'station_spacing_mm':46,'upper_bearing_angle_deg':45,'spring_preload_mm':SPRING_PRELOAD,'spring_thickness_mm':SPRING_THICKNESS,'checked_spring_deflection_mm':SPRING_CHECK_TRAVEL,'spring_free_stl':True,'chassis_mounts_mm':CHASSIS_MOUNTS,'motor_face_z_mm':-8,'integral_motor_land_mm':5,'chassis_solid_count':len(base.Solids()),'rack_solid_count':len(rack.Solids()),'insertion_side':'right/output side, plain left end first','rack_withdrawal_mm':WITHDRAW,'contact_checks_passed':len(contact_checks),'upper_force_normals':[[0,SQ,-SQ],[0,-SQ,-SQ]],'lower_force_normal':[0,0,1],'preload_per_flank_mm':a.preload,'nominal_mesh_max_overlap_mm3':max(nominal_vol),'elastic_mesh_limit_mm3':elastic_limit,'elastic_mesh_volume_mm3_range':[min(mesh_volumes),max(mesh_volumes)],'hardware_clearance_samples':hardware_gaps,'minimum_rack_hardware_gap_mm':min(q['gap_mm'] for q in hardware_gaps),'source_sha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),'method':'All assembled pairs and moving relative rigid poses, with translation/rotation tip motion sampled <=0.5 mm. Same tracks drive viewer. Nominal tooth profile checked separately.','intersection_tolerance_mm3':tolerance,'explosion_samples':len(times),'motion_samples':41,'explosion_failures':fail,'motion_failures':motion_fail,'intentional_contacts':allowed,'minimum_rack_frame_gap_mm':min(p['gap_mm'] for p in gap),'plastic_clearance_samples':gap,'viewer_reference_poses':references,'limits':['2.3 mm default spring deflection is an aggressive physical prototype. Force, elastic recovery and fatigue require testing in the chosen print material.','Sampled rigid geometry, not continuous swept-volume proof or a physical fit test.','Oversized teeth require elastic deflection. No load, backlash or fatigue rating.','The plain insertion end has no axial hard stop; enforce software travel limits.','Viewer chassis uses exact CAD shape samples at one twelfth of the spring preload; bearing translations follow the CAD tracks continuously.',
  'Pinion is free to turn during rack insertion. Remove front and rear angled axles in sequence. Spring carrier supplies passive preload; force, creep and fatigue have not been measured. STL is unloaded; STEP is assembled and deflected.']}
  (out/'downloads'/'validation.json').write_text(json.dumps(report,indent=2))
  assert not fail and not motion_fail,'See validation report'

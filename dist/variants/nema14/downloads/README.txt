@@ -1,13 +1,15 @@
-FLEX revision 13 — NEMA17 and NEMA14; increased preload and print clearances
+FLEX revision 14 — wider rack, bounded head relief and square insertion end
 CadQuery 2.7, millimetres. Mechanical prototypes; force and life untested.
 
 CHANGES / REPRINTING
-Spring deflection is now 2.30 mm, 2 mm more than revision 12.
-Reprint the chassis AND rack for NEMA17; reuse its 18T pinion and hardware.
-For NEMA14 print the matching chassis, 25-degree rack and 14T pinion.
-Do not mix tooth profiles between variants.
-Three printed parts per variant. No added flexure parts, eccentric bushes
-or bearing-preload set screws. The pinion retains its M3 drive set screw.
+From revision 13, reprint ONLY the rack for your motor variant.
+The backbone is now 16 mm wide (was 14.5); head clearance is 0.5 mm
+(was 0.8). Head relief stops 7.75 mm before the output end of the guide,
+leaving the mounting pad uncut by the head slot. The underside ramp/chamfer
+at the opposite insertion end is removed, leaving a square end.
+Use the matching NEMA17 20-degree or NEMA14 25-degree rack and pinion.
+Spring preload remains 2.30 mm. Three printed parts; no new hardware.
+From revision 12, the updated chassis is also required.
 
 GUIDANCE / SPRINGS / CLEARANCE
 Six 625ZZ (5 x 16 x 5 mm), four upper at 45 degrees and two lower.
@@ -16,10 +18,11 @@ Spring floors are 1.4 mm thick, 22.1 mm wide for NEMA17 and 20.9 mm wide
 for NEMA14 to clear the reference motor. Wall-local root blends R1.2 mm.
 No rigid lower deck or downward stop. Geometry is checked at 2.6 mm
 prescribed deflection; this is not a safe travel or load rating.
-A 10 mm-long, 2.8 mm-high rack lead-in depresses the lower bearings.
+The square rack end engages the curved rims of the lower bearings; no
+underside ramp or end chamfer is cut into the rack.
 Bearing recesses give 0.8 mm radial and axial relief around rotating faces.
 Only inner races clamp against the integral shoulders. The rack/chassis
-nominal gap is 1 mm. Full-length channels give 0.8 mm clearance to the
+nominal gap is 1 mm. Bounded head channels give 0.5 mm clearance to the
 conservative full-height axle head envelope (diameter 9.5, height 5 mm).
 These are CAD gaps; actual print accuracy and hardware dimensions vary.
 Clear bores and seats after printing. Do not sand the raceways unevenly.
@@ -52,8 +55,9 @@ under-pad support. Print pinion gear-face down. Keep 0.6 mm tooth walls
 and fine circular relief slots open; qualify nozzle/material on a coupon.
 Install lower rollers with front washers, through-axles and rear nuts.
 Install upper rollers, motor and pinion. Insert the rack from the output/
-right side, plain end first, with the motor free to turn. The ramp brings
-the lower floors to 2.3 mm deflection. Check that all six bearings turn
+right side, square end first, with the motor free to turn. The curved
+bearing rims engage the edge, bringing the floors to 2.3 mm deflection.
+Support the seats by hand if needed; do not force insertion. Check that all six bearings turn
 through the whole stroke and that heads do not scrape the relief channels.
 Use controller travel limits. No axial stop is provided at the plain end.
 
@@ -93,7 +97,7 @@ python model.py --motor nema17 --out dist --check
 python model.py --motor nema14 --out dist/variants/nema14 --check
 python package_designs.py
 --spring-preload 2.3; --spring-thickness 1.4; --bearing-clearance .8;
---hardware-clearance .8; --preload .10 is tooth oversize, not spring travel.
+--hardware-clearance .5; --rack-backbone-width 16; --preload .10 is tooth oversize, not spring travel.
 Spring deflection range .1..2.5; stroke range 20..80 mm.
 All parameter changes require fresh collision checks and a physical fit test.
 Validation reports cover assembled pairs, sampled travel/staged service,
