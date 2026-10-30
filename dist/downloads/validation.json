@@ -1,18 +1,17 @@
 {
-  "revision": 10,
+  "revision": 11,
   "spring_carrier": {
+    "integral_with_chassis": true,
     "free_stl_valid": true,
-    "free_stl_solid_count": 2,
+    "free_stl_solid_count": 1,
     "preload_deflection_mm": 0.3,
-    "leaf_thickness_mm": 1.0,
-    "leaf_width_mm": 2.4,
-    "leaves_per_bearing": 4,
-    "flexible_span_mm": 13.4,
-    "root_radius_mm": 0.8,
+    "leaf_thickness_mm": 1.4,
+    "leaf_width_mm": 18.0,
+    "root_radius_mm": 1.2,
     "downward_stop_deflection_mm": 0.8,
-    "at_stop_overlap_mm3": 0,
-    "beyond_stop_overlap_mm3": 2.8340000000000383,
-    "method": "Prescribed fixed-guided shape, not finite element analysis. Printed STL is unloaded; STEP and viewer start deflected."
+    "at_stop_overlap_mm3": 5.964896928640216e-06,
+    "beyond_stop_overlap_mm3": 20.509006339891155,
+    "method": "Prescribed nominal displacement, not finite element analysis. Chassis STL is relaxed; STEP/viewer start deflected."
   },
   "root_relief": {
     "shape": "semicircular caps tangent to straight slot walls",
@@ -50,7 +49,7 @@
   "station_spacing_mm": 46,
   "upper_bearing_angle_deg": 45,
   "spring_preload_mm": 0.3,
-  "spring_thickness_mm": 1.0,
+  "spring_thickness_mm": 1.4,
   "spring_limit_mm": 0.8,
   "spring_free_stl": true,
   "chassis_mounts_mm": [
@@ -104,7 +103,7 @@
   ],
   "method": "All assembled pairs and moving relative rigid poses, with translation/rotation tip motion sampled <=0.5 mm. Same tracks drive viewer. Nominal tooth profile checked separately.",
   "intersection_tolerance_mm3": 0.01,
-  "explosion_samples": 1353,
+  "explosion_samples": 1237,
   "motion_samples": 41,
   "explosion_failures": [],
   "motion_failures": [],
@@ -122,21 +121,21 @@
       "x": -20.0,
       "y": 0,
       "z": 0,
-      "part": "01 Six roller chassis",
+      "part": "01 Integral spring chassis",
       "gap_mm": 0.8
     },
     {
       "x": 0,
       "y": 0,
       "z": 0,
-      "part": "01 Six roller chassis",
+      "part": "01 Integral spring chassis",
       "gap_mm": 0.8
     },
     {
       "x": 20.0,
       "y": 0,
       "z": 0,
-      "part": "01 Six roller chassis",
+      "part": "01 Integral spring chassis",
       "gap_mm": 0.8
     }
   ],
@@ -231,30 +230,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -408,30 +383,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -571,30 +522,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -748,30 +675,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -911,30 +814,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -1088,30 +967,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -1251,30 +1106,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -1428,30 +1259,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -1591,30 +1398,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -1768,30 +1551,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -1931,30 +1690,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -2108,30 +1843,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -2271,30 +1982,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -2448,30 +2135,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -2611,30 +2274,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -2788,30 +2427,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -2951,30 +2566,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -3128,30 +2719,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -3291,30 +2858,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -3468,30 +3011,6 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -3631,30 +3150,6 @@
         "rotation_z_deg": 0
       },
       "rear_nuts": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
         "translation": [
           0.0,
           0.0,
@@ -3808,30 +3303,6 @@
         ],
         "rotation_z_deg": 0.0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
@@ -3978,37 +3449,13 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -18.6666666666667
-        ],
-        "rotation_z_deg": 0.0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          0.0,
+          30.000000000000053,
           0.3
         ],
-        "rotation_z_deg": 0
+        "rotation_z_deg": 0.0
       },
       "lower_left_axles": {
         "translation": [
@@ -4029,10 +3476,10 @@
       "lower_right_nuts": {
         "translation": [
           0.0,
-          0.0,
+          30.000000000000053,
           0.3
         ],
-        "rotation_z_deg": 0
+        "rotation_z_deg": 0.0
       },
       "lower_right_axles": {
         "translation": [
@@ -4148,34 +3595,10 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -28.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          0.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          0.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4199,7 +3622,7 @@
       "lower_right_nuts": {
         "translation": [
           0.0,
-          0.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4318,42 +3741,18 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -28.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          18.75,
-          0.0
-        ],
-        "rotation_z_deg": 0.0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          18.75,
-          0.0
-        ],
-        "rotation_z_deg": 0.0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          18.75,
+          45.0,
           0.3
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "lower_left_axles": {
         "translation": [
           0.0,
-          18.75,
+          -21.875,
           0.3
         ],
         "rotation_z_deg": 0.0
@@ -4361,23 +3760,23 @@
       "lower_left_rollers": {
         "translation": [
           0.0,
-          18.75,
+          0.0,
           0.3
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "lower_right_nuts": {
         "translation": [
           0.0,
-          18.75,
+          45.0,
           0.3
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "lower_right_axles": {
         "translation": [
           0.0,
-          18.75,
+          -21.875,
           0.3
         ],
         "rotation_z_deg": 0.0
@@ -4385,10 +3784,10 @@
       "lower_right_rollers": {
         "translation": [
           0.0,
-          18.75,
+          0.0,
           0.3
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       }
     },
     "0.9": {
@@ -4488,34 +3887,10 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -28.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          30.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4523,7 +3898,7 @@
       "lower_left_axles": {
         "translation": [
           0.0,
-          30.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4531,7 +3906,7 @@
       "lower_left_rollers": {
         "translation": [
           0.0,
-          30.0,
+          0.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4539,7 +3914,7 @@
       "lower_right_nuts": {
         "translation": [
           0.0,
-          30.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4547,7 +3922,7 @@
       "lower_right_axles": {
         "translation": [
           0.0,
-          30.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4555,7 +3930,7 @@
       "lower_right_rollers": {
         "translation": [
           0.0,
-          30.0,
+          0.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4658,34 +4033,10 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -28.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4693,7 +4044,7 @@
       "lower_left_axles": {
         "translation": [
           0.0,
-          30.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4701,15 +4052,15 @@
       "lower_left_rollers": {
         "translation": [
           0.0,
-          30.0,
-          0.3
+          0.0,
+          7.800000000000008
         ],
-        "rotation_z_deg": 0
+        "rotation_z_deg": 0.0
       },
       "lower_right_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4717,7 +4068,7 @@
       "lower_right_axles": {
         "translation": [
           0.0,
-          30.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4725,10 +4076,10 @@
       "lower_right_rollers": {
         "translation": [
           0.0,
-          30.0,
-          0.3
+          0.0,
+          7.800000000000008
         ],
-        "rotation_z_deg": 0
+        "rotation_z_deg": 0.0
       }
     },
     "0.95": {
@@ -4828,34 +4179,10 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -28.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4863,23 +4190,23 @@
       "lower_left_axles": {
         "translation": [
           0.0,
-          12.50000000000005,
-          0.3
-        ],
-        "rotation_z_deg": 0.0
-      },
-      "lower_left_rollers": {
-        "translation": [
-          0.0,
-          30.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
       },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          12.799999999999986
+        ],
+        "rotation_z_deg": 0.0
+      },
       "lower_right_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -4887,18 +4214,18 @@
       "lower_right_axles": {
         "translation": [
           0.0,
-          12.50000000000005,
+          -35.0,
           0.3
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "lower_right_rollers": {
         "translation": [
           0.0,
-          30.0,
-          0.3
+          0.0,
+          12.799999999999986
         ],
-        "rotation_z_deg": 0
+        "rotation_z_deg": 0.0
       }
     },
     "0.97": {
@@ -4998,34 +4325,10 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -28.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5033,7 +4336,7 @@
       "lower_left_axles": {
         "translation": [
           0.0,
-          -5.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5041,15 +4344,15 @@
       "lower_left_rollers": {
         "translation": [
           0.0,
-          30.0,
-          0.3
+          0.0,
+          17.79999999999999
         ],
-        "rotation_z_deg": 0
+        "rotation_z_deg": 0.0
       },
       "lower_right_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5057,7 +4360,7 @@
       "lower_right_axles": {
         "translation": [
           0.0,
-          -5.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5065,10 +4368,10 @@
       "lower_right_rollers": {
         "translation": [
           0.0,
-          30.0,
-          0.3
+          0.0,
+          17.79999999999999
         ],
-        "rotation_z_deg": 0
+        "rotation_z_deg": 0.0
       }
     },
     "1.0": {
@@ -5168,34 +4471,10 @@
         ],
         "rotation_z_deg": 0
       },
-      "carrier_screws": {
-        "translation": [
-          0.0,
-          0.0,
-          -28.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_left": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
-      "spring_right": {
-        "translation": [
-          0.0,
-          30.0,
-          0.0
-        ],
-        "rotation_z_deg": 0
-      },
       "lower_left_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5203,7 +4482,7 @@
       "lower_left_axles": {
         "translation": [
           0.0,
-          -5.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5211,7 +4490,7 @@
       "lower_left_rollers": {
         "translation": [
           0.0,
-          30.0,
+          0.0,
           25.3
         ],
         "rotation_z_deg": 0
@@ -5219,7 +4498,7 @@
       "lower_right_nuts": {
         "translation": [
           0.0,
-          75.0,
+          45.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5227,7 +4506,7 @@
       "lower_right_axles": {
         "translation": [
           0.0,
-          -5.0,
+          -35.0,
           0.3
         ],
         "rotation_z_deg": 0
@@ -5235,7 +4514,7 @@
       "lower_right_rollers": {
         "translation": [
           0.0,
-          30.0,
+          0.0,
           25.3
         ],
         "rotation_z_deg": 0
@@ -5250,7 +4529,7 @@
   ],
   "parallel_validation": {
     "batches": 4,
-    "unique_explosion_positions": 1353,
+    "unique_explosion_positions": 1237,
     "unique_travel_positions": 41,
     "complete_index_coverage": true
   },
@@ -5377,12 +4656,11 @@
     ]
   },
   "spring_mesh_validation": {
-    "method": "Loaded viewer mesh deformed by the exact centerline function and compared to free CAD surfaces; 180+ vertex samples per cartridge.",
-    "max_surface_distance_mm": [
-      5.522918643128445e-06,
-      5.522918643128445e-06
-    ],
-    "tolerance_mm": 0.015
+    "method": "Animated chassis mesh compared to relaxed CAD surfaces; moving and fixed regions sampled.",
+    "samples": 288,
+    "max_surface_distance_mm": 6.937473382630525e-06,
+    "tolerance_mm": 0.015,
+    "free_chassis_solid_count": 1
   },
-  "source_sha256": "57fce608c5dbf0eb792869b7b174f33027a6538b91caded8f9352fc74a0f32d2"
+  "source_sha256": "dac03fb5a80c8780900d54f0f33ace141c9ee6fc1926d95d6e2540c3a961bfff"
 }
