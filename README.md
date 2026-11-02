@@ -1,43 +1,33 @@
 # Rack actuator
 
-FLEX revision 14: printable NEMA17 and NEMA14 linear actuators with compliant rack teeth and six 625ZZ bearings. Three printed parts per variant: an integral spring chassis, rack and pinion.
+Revision 15: CadQuery NEMA17/NEMA14 rack actuators with compliant teeth, six 625ZZ bearings and a printable mounting enclosure.
 
-[Open the interactive viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) or [open the NEMA14 prototype](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14). The motor selector changes the actual CAD, resolution table, collision report and downloads. Both have actuation and staged assembly animations.
+[Interactive viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [NEMA14 viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14)
 
-## Revision 14
+## Configurable enclosed module
 
-- Spring preload remains **2.3 mm** nominal deflection. The relaxed chassis STL preloads when the rack is installed; assembled STEP shows the deflected shape.
-- Bearing pockets have **0.8 mm radial and axial clearance** around rotating faces, with integral shoulders supporting only the inner races. Rack/chassis nominal clearance is **1 mm**.
-- Rack backbone widened from **14.5 to 16 mm**, adding material behind the tooth roots.
-- Socket-head relief is shallower, with **0.5 mm** clearance instead of 0.8 mm. It stops 7.75 mm before the output end of the guide, leaving the entire 14 mm mounting pad uncut by the head slot. Bolt heads remain modeled conservatively as Ø9.5 × 5 mm.
-- The insertion end is square: the former 10 mm underside ramp/chamfer is removed. The curved lower bearing rims engage the square edge during insertion; support the spring seats by hand if needed. The floor remains attached to the actual walls, with an open underside and no rigid lower deck or travel stop.
-- Service order removes the lower axles before the angled nuts to clear their removal paths at the higher preload.
-- Both retain six 625ZZ bearings, four upper at 45° and two lower, 46 mm station spacing, staggered lower contacts, integral motor land, output mounting pad, oversized D bore and circular tooth-root reliefs.
+- Tooth module controls both matched rack and pinion profiles (default 2 mm).
+- Usable stroke and fixed housing length are separate parameters: defaults 40 mm and 132 mm. Omit housing length to calculate its minimum.
+- Standard-depth motors: 40 mm NEMA17 and 34 mm NEMA14. Motor rear projects 4 mm outside the case; rear-mounted drivers remain exposed and are not assigned guessed dimensions.
+- Two new printed enclosure parts: mounting tray and removable lid. Four reinforced M4 slots on a flat side face attach the module to a fixture.
+- A shortened tooth segment and extended smooth output tongue keep all teeth covered throughout normal travel.
+- Actuation, 16-stage service animation, enclosure visibility, mounting-face/driver views, resolution table and downloadable parameter JSON are available in the viewer. The parameter form generates CAD configuration; browser geometry remains the checked default.
 
-| Default 40 mm-stroke variant | NEMA17 | NEMA14 development prototype |
+The tested six-bearing chassis, integral spring floors, 2.3 mm preload, 0.8 mm bearing relief and 0.5 mm axle-head clearance are retained. At module 2, reuse the revision-14 chassis and matching pinion; print the new rack, tray and lid. Five printed parts total. The enclosure adds four M3×25 screws/nuts and two low-head M4×12 screws/nuts; see [printing and assembly instructions](README.txt).
+
+| Default | NEMA17 | NEMA14 |
 | --- | --- | --- |
-| Reference motor | 42 × 42 × 23 mm | 35.2 × 35.2 × 20 mm |
-| Motor mounting pitch | 31 mm | 26 mm |
-| Chassis footprint | 68 × 81 mm | 68 × 75 mm |
-| Pinion, module 2 | 18 teeth / 20° | 14 teeth / 25° |
-| Pinion outside diameter | 40 mm | 32 mm |
-| Travel / motor revolution | 113.097336 mm | 87.964594 mm |
-| Full step at 200 steps/rev | 0.565487 mm | 0.439823 mm |
-| 1/16 command increment | 0.035343 mm | 0.027489 mm |
+| Motor body | 42 × 42 × 40 mm | 35.2 × 35.2 × 34 mm |
+| Housing body | 132 × 88.8 × 68.9 mm | 132 × 82.8 × 62.9 mm |
+| Pinion | 18T / 20° | 14T / 25° |
+| Full-step increment, 200 steps/rev | 0.565487 mm | 0.439823 mm |
+| 1/16 increment | 0.035343 mm | 0.027489 mm |
 
-The NEMA14 gear produces 22.2% smaller commanded increments. This is theoretical resolution, not measured accuracy. Its matched 25° rack and pinion avoid the standard 20° undercut issue at 14 teeth. **Do not mix NEMA14 and NEMA17 racks/pinions.** Reference motor dimensions and shaft length must be checked against the actual motor drawing.
+Housing dimensions exclude 3 mm mounting pads, moving output and exposed motor/driver. Increments are theoretical, not measured accuracy. Do not mix variant racks/pinions. Verify the actual motor shaft, pilot and hole dimensions.
 
-From revision 13, **reprint only the rack** for your selected variant. Reuse its chassis and matching pinion. From revision 12, the updated chassis is also needed. Print all three matching parts for a new NEMA14 build. Bearings and specified axle hardware remain the same.
+## Generate CAD
 
-## Files and regeneration
-
-- [model.py](model.py): shared parametric CadQuery source.
-- [NEMA17 downloads](dist/downloads): STEP, three STL files, source, validation and ZIP bundle.
-- [NEMA14 downloads](dist/variants/nema14/downloads): equivalent variant-specific files.
-- [README.txt](README.txt): printing, hardware, assembly and fit guidance.
-- [dist](dist): standalone Three.js viewer, no API keys or backend.
-
-Use Python 3.12 and CadQuery 2.7.0:
+Use Python 3.12 / CadQuery 2.7.0:
 
 ```sh
 pip install -r requirements.txt
@@ -47,16 +37,39 @@ python package_designs.py
 python -m http.server 8000 --directory dist
 ```
 
-Packaging verifies that both passing reports match the current source before updating the downloadable source and ZIPs. Checks can take several minutes.
+For a custom build:
 
-Parameters: `--stroke 40` (20–80 mm), `--preload 0.10` (tooth oversize), `--spring-preload 2.3` (0.1–2.5 mm), `--spring-thickness 1.4` (1.2–1.8 mm), `--bearing-clearance 0.8` and `--hardware-clearance 0.5` (0.5–1.2 mm). `--rack-backbone-width 16` accepts 14.5–18 mm. Shaft defaults: `--shaft-diameter 5 --shaft-flat-depth 0.5 --shaft-clearance 0.15`. Changed dimensions require fresh checks.
+```sh
+python model.py --motor nema14 --tooth-module 1.8 --stroke 60 --actuator-length 180 --motor-depth 34 --out build/custom --check
+# Or use a downloaded JSON; explicit CLI arguments override JSON values:
+python model.py --config configuration.json --out build/custom --check
+```
 
-## Validation and physical testing
+| Parameter | Range / behavior |
+| --- | --- |
+| `--tooth-module` | 1.5–2.5 mm; default 2, circular pitch = π × module |
+| `--stroke` | 20–120 mm; default 40 |
+| `--actuator-length` | Housing X length, automatic minimum when omitted; maximum 350 mm |
+| `--motor-depth` | 32–60 mm; defaults 40 / 34 |
+| `--spring-preload` | 0.1–2.5 mm; default 2.3 |
+| `--spring-thickness` | 1.2–1.8 mm; default 1.4 |
+| `--bearing-clearance` | Default 0.8 mm |
+| `--hardware-clearance` | 0.5–1.2 mm; default 0.5 |
+| `--rack-backbone-width` | 14.5–18 mm requested minimum; default 16 |
+| `--preload` | Tooth oversize per flank, default 0.10 mm |
 
-Generated reports check all assembled pairs, sampled travel and staged service, unloaded single-solid chassis, wall-local blends, rack-to-hardware clearances and nominal tooth mesh. Only the intended elastic tooth contact is allowed. Viewer and CAD use the same motion tracks. The viewer uses exact sampled chassis shapes at one twelfth of the spring preload while hardware follows the continuous tracks.
+Short housing requests are rejected. Fine reliefs at smaller modules need printer qualification. Changed parameters need regenerated geometry, fresh checks and a fit test. Download bundles contain STEP, five STL files, configuration JSON, source and reports. Packaging verifies that both default reports match the current source.
 
-**2.3 mm is an aggressive spring prototype.** Prescribed CAD displacement does not establish elastic recovery, preload force, fatigue life or creep. Test a spring-floor coupon in the chosen print orientation/material before the full chassis. There is no lower mechanical stop. Sampled rigid intersections are not a continuous swept-volume proof or physical tolerance test. Use controller travel limits; the rack insertion end is open. Backlash, stiffness, load capacity and positioning accuracy remain unmeasured.
+## Assembly and checks
 
-## License and inspiration
+Fit captive nuts and attach the open tray to the fixture. The chassis sits on front supports and a broad rear ledge; two M4 screws retain the front, and the lid clamps the existing rear recesses. Install motor screws before the upper rollers. Insert the rack with the motor free to turn, check all six bearings rotate, then attach the lid.
 
-MIT; see [LICENSE](LICENSE). The rack adapts the spring-wall principle from [seveibar/compliant-spur-gear](https://github.com/seveibar/compliant-spur-gear); its license is included in both bundles.
+For service, remove lid, rack, pinion and upper bearings; lower the motor with its driver attached before lowering the tray. The tray remains at least 4 mm ahead of the motor rear plane throughout the checked service sequence. Electronics/connectors must stay behind that plane. Complete hardware, print orientations and assembly order are in [README.txt](README.txt).
+
+[Default NEMA17 report](dist/downloads/validation.json) and [NEMA14 report](dist/variants/nema14/downloads/validation.json) check all assembled pairs, dense sampled service/travel, nominal tooth mesh, captive-nut insertion and hardware gaps. Additional parameter cases are recorded separately with their smaller sample counts. Viewer and CAD share motion tracks.
+
+The builder has physically tested the core mechanism. The new enclosure and new parameter combinations still need fit, thermal and load testing. Sampled intersections are not continuous swept-volume proof or a physical tolerance test. Prescribed spring displacement does not establish elastic recovery, creep or fatigue life. The chassis STL is relaxed; STEP/viewer show the installed deflection. Use controller travel limits; no axial hard stop is provided.
+
+## License
+
+MIT; see [LICENSE](LICENSE). Compliant tooth principle inspired by [seveibar/compliant-spur-gear](https://github.com/seveibar/compliant-spur-gear); its license is included in both bundles.

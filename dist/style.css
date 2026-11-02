@@ -9,3 +9,5 @@
 .two{row-gap:35px}
 
 #motorVariant{display:block;width:100%;margin:10px 0;padding:12px;background:#15232e;color:#e9f1f6;border:1px solid #405564;border-radius:6px;font:inherit}#variantSummary{min-height:2.5em}
+
+.config-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin:24px 0}.config-grid label{font-size:13px;color:#9badbb}.config-grid input{display:block;width:100%;box-sizing:border-box;margin-top:8px;padding:12px;background:#15232e;border:1px solid #405564;color:#e9f1f6;border-radius:6px;font:inherit}#configCommand{white-space:pre-wrap;overflow-wrap:anywhere;background:#15232e;padding:18px;border-radius:8px;font-size:13px}.config-actions{display:flex;gap:12px}.config-actions button{padding:10px 16px}.config-actions button:disabled{opacity:.4}.view-bottom>div{display:flex;flex-wrap:wrap;gap:4px}@media(max-width:700px){.config-grid{grid-template-columns:1fr 1fr}.view-bottom{gap:10px;flex-wrap:wrap}}

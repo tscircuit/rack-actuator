@@ -1,0 +1,7 @@
+{
+  "motor": "nema14",
+  "tooth_module": 2.0,
+  "stroke": 40,
+  "actuator_length": 132.0,
+  "motor_depth": 34.0
+}
