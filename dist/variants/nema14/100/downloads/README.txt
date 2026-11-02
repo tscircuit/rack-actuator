@@ -114,6 +114,9 @@ Half             0.282743                0.219911
 Stroke does not change resolution. These are commanded increments, not
 measured positioning accuracy. Match the actual motor full-step angle.
 
+Large standalone STEP downloads use gzip (.step.gz); every ZIP bundle
+contains an ordinary STEP file.
+
 SOURCE / CHECKS
 pip install -r requirements.txt
 python model.py --config configuration.json --out build/custom --check

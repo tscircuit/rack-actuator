@@ -27,7 +27,7 @@ for motor in ['nema17','nema14']:
   bom={'motor':motor,'stroke_mm':stroke,'printed_parts':[p['name'] for p in data['parts'] if p['printed']], 'heat_set_inserts':{'thread':'M3','quantity':data['insertCount'],'outer_diameter_mm':data['insertOD'],'length_mm':data['insertLength'],'pilot_diameter_mm':data['insertPilot']},'lid_screws':{'type':'M3x20 socket','quantity':data['coverScrewCount']},'chassis_screws':{'type':'M3x10 socket','quantity':2},'bearings':{'type':'625ZZ','quantity':6},'bearing_axles':['4 x M5x16 socket','2 x M5x25 socket','6 x thin M5 nuts (2.7 mm)','6 x inner-race washers (0.3 mm / 7.5 mm OD)'],'motor_screws':'4 x M3x12 countersunk','pinion_set_screw':'M3x4 flat point','top_mounting':'4 x application-length M3 screws; 3–5 mm insert engagement','side_mounting':'4 x application-length M4 fasteners through slots'}
   (dest/'bill-of-materials.json').write_text(json.dumps(bom,indent=2)+'\n')
   step=dest/(label+'.step');gz=dest/(label+'.step.gz')
-  compressed=not step.exists() or step.stat().st_size>24*1024**2
+  compressed=not step.exists() or step.stat().st_size>8*1024**2
   if compressed and step.exists():
    with step.open('rb') as src,gzip.open(gz,'wb') as target:shutil.copyfileobj(src,target)
   if not compressed:gz.unlink(missing_ok=True)

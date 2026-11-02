@@ -30,7 +30,7 @@ At 200 full steps/revolution, default NEMA17/NEMA14 increments are 0.565487 / 0.
 
 Five printed parts: chassis, rack, pinion, tray and lid. The front chassis mounting holes now fit M3 screws. From revision 15, **reprint the chassis, tray and lid**; reuse the matching 40 mm rack and pinion. A different stroke needs its own rack and enclosure.
 
-Enclosure hardware: M3 inserts as listed above, M3×20 socket lid screws, and two M3×10 socket chassis screws. The tested M5 bearing through-bolts, thin nuts and inner-race washers remain. Each preset includes a bill of materials and configuration JSON.
+Enclosure hardware: M3 inserts as listed above, M3×20 socket lid screws, and two M3×10 socket chassis screws. The tested M5 bearing through-bolts, thin nuts and inner-race washers remain. Each preset includes a bill of materials and configuration JSON. Large standalone STEP downloads are gzip-compressed; ZIP bundles contain ordinary STEP files.
 
 Top mounting uses four application-length M3 screws with 3–5 mm thread engagement. For the default 40 mm model, the top pattern is 117 × 75.8 mm (NEMA17) or 117 × 69.8 mm (NEMA14). Side mounting uses four M4 slots. Top-mounted modules must be detached from their fixture before lid removal; the service animation excludes the fixture.
 
