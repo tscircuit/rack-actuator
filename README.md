@@ -1,75 +1,83 @@
 # Rack actuator
 
-Revision 15: CadQuery NEMA17/NEMA14 rack actuators with compliant teeth, six 625ZZ bearings and a printable mounting enclosure.
+CadQuery NEMA17/NEMA14 linear actuators with compliant rack teeth, six 625ZZ bearings and a printed enclosure.
 
-[Interactive viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [NEMA14 viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14)
+[Open the viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [NEMA14 / 400 mm](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14&stroke=400)
 
-## Configurable enclosed module
+## Revision 16
 
-- Tooth module controls both matched rack and pinion profiles (default 2 mm).
-- Usable stroke and fixed housing length are separate parameters: defaults 40 mm and 132 mm. Omit housing length to calculate its minimum.
-- Standard-depth motors: 40 mm NEMA17 and 34 mm NEMA14. Motor rear projects 4 mm outside the case; rear-mounted drivers remain exposed and are not assigned guessed dimensions.
-- Two new printed enclosure parts: mounting tray and removable lid. Four reinforced M4 slots on a flat side face attach the module to a fixture.
-- A shortened tooth segment and extended smooth output tongue keep all teeth covered throughout normal travel.
-- Actuation, 16-stage service animation, per-part hiding, transparent enclosure, mounting-face/driver views, resolution table and downloadable parameter JSON are available in the viewer. Right-click a part to hide it; Show all restores visibility. Touch users can select a part and use Hide selected. The parameter form generates CAD configuration; browser geometry remains the checked default.
+- **M3 heat-set inserts** replace the enclosure's trapped nuts. Default insert: 4.6 mm outside diameter × 5 mm long, with a 4.2 mm printed pilot. These dimensions are configurable; match the insert manufacturer's specification.
+- **Top or side mounting.** Four M3 top inserts sit in full-height posts connected to the tray. Mounting loads bypass the removable lid. Four M4 side slots remain available. Lid screw heads are recessed below the top face.
+- **Six actual stroke presets** for each motor: 40, 100, 150, 200, 250 and 400 mm. Selecting a preset loads its CadQuery geometry, motion, staged explosion, measurements and downloads. Longer housings receive additional lid fasteners.
+- White viewer, right-click hiding, Show all, transparent enclosure and dedicated side/top mounting views.
 
-The tested six-bearing chassis, integral spring floors, 2.3 mm preload, 0.8 mm bearing relief and 0.5 mm axle-head clearance are retained. At module 2, reuse the revision-14 chassis and matching pinion; print the new rack, tray and lid. Five printed parts total. The enclosure adds four M3×25 screws/nuts and two low-head M4×12 screws/nuts; see [printing and assembly instructions](README.txt).
+| Stroke | Housing length | M3×20 lid screws | M3 inserts, total |
+| --- | --- | --- | --- |
+| 40 mm | 132 mm | 4 | 10 |
+| 100 mm | 247 mm | 6 | 12 |
+| 150 mm | 347 mm | 6 | 12 |
+| 200 mm | 447 mm | 8 | 14 |
+| 250 mm | 547 mm | 10 | 16 |
+| 400 mm | 848 mm | 16 | 22 |
 
-| Default | NEMA17 | NEMA14 |
-| --- | --- | --- |
-| Motor body | 42 × 42 × 40 mm | 35.2 × 35.2 × 34 mm |
-| Housing body | 132 × 88.8 × 68.9 mm | 132 × 82.8 × 62.9 mm |
-| Pinion | 18T / 20° | 14T / 25° |
-| Full-step increment, 200 steps/rev | 0.565487 mm | 0.439823 mm |
-| 1/16 increment | 0.035343 mm | 0.027489 mm |
+Lengths are for module 2 and apply to both motors. Housing length is separate from usable stroke. The rack extends beyond the housing; the longest printed part in the 400 mm preset is about 860 mm. Long presets require a sufficiently large printer; they are not split into short-bed segments. Stiffness and load capacity at long extension have not been physically established.
 
-Housing dimensions exclude 3 mm mounting pads, moving output and exposed motor/driver. Increments are theoretical, not measured accuracy. Do not mix variant racks/pinions. Verify the actual motor shaft, pilot and hole dimensions.
+Default NEMA17 motor: 42 × 42 × 40 mm body, 31 mm mounting pitch, 18T / 20° pinion. NEMA14: 35.2 × 35.2 × 34 mm body, 26 mm mounting pitch, 14T / 25° pinion. Both use module 2 and 40 mm stroke initially. The motor rear projects 4 mm outside the housing; a back-mounted driver stays exposed. Verify actual motor shaft, pilot and hole dimensions.
+
+At 200 full steps/revolution, default NEMA17/NEMA14 increments are 0.565487 / 0.439823 mm per full step and 0.035343 / 0.027489 mm at 1/16. These are commanded increments, not measured accuracy. Stroke does not change the drive ratio. Do not mix the two variants' racks and pinions.
+
+## Hardware and printing
+
+Five printed parts: chassis, rack, pinion, tray and lid. The front chassis mounting holes now fit M3 screws. From revision 15, **reprint the chassis, tray and lid**; reuse the matching 40 mm rack and pinion. A different stroke needs its own rack and enclosure.
+
+Enclosure hardware: M3 inserts as listed above, M3×20 socket lid screws, and two M3×10 socket chassis screws. The tested M5 bearing through-bolts, thin nuts and inner-race washers remain. Each preset includes a bill of materials and configuration JSON.
+
+Top mounting uses four application-length M3 screws with 3–5 mm thread engagement. For the default 40 mm model, the top pattern is 117 × 75.8 mm (NEMA17) or 117 × 69.8 mm (NEMA14). Side mounting uses four M4 slots. Top-mounted modules must be detached from their fixture before lid removal; the service animation excludes the fixture.
+
+Install inserts vertically into the open tray before installing the chassis or lid. Use the insert maker's pilot/temperature guidance and test fit in your print material. Print tray floor-down, lid roof-down, rack tooth-face down and pinion gear-face down. Preserve the successful chassis orientation/material; the chassis STL is relaxed, while STEP and viewer show installed spring deflection. See [README.txt](README.txt) for assembly and full hardware details.
 
 ## Generate CAD
 
-Use Python 3.12 / CadQuery 2.7.0:
+Python 3.12 / CadQuery 2.7.0:
 
 ```sh
 pip install -r requirements.txt
-python model.py --motor nema17 --out dist --check
-python model.py --motor nema14 --out dist/variants/nema14 --check
+# All 12 checked presets, then downloadable bundles and viewer manifest:
+python build_presets.py --jobs 4
 python package_designs.py
 python -m http.server 8000 --directory dist
-```
 
-For a custom build:
-
-```sh
-python model.py --motor nema14 --tooth-module 1.8 --stroke 60 --actuator-length 180 --motor-depth 34 --out build/custom --check
-# Or use a downloaded JSON; explicit CLI arguments override JSON values:
+# One custom configuration:
+python model.py --motor nema14 --stroke 150 --tooth-module 2 --out build/custom --check
 python model.py --config configuration.json --out build/custom --check
 ```
 
-| Parameter | Range / behavior |
+Explicit CLI options override JSON values. `build_presets.py` reuses passing reports only when their source hash and preset match.
+
+| Parameter | Behavior |
 | --- | --- |
-| `--tooth-module` | 1.5–2.5 mm; default 2, circular pitch = π × module |
-| `--stroke` | 20–120 mm; default 40 |
-| `--actuator-length` | Housing X length, automatic minimum when omitted; maximum 350 mm |
+| `--stroke` | 20–400 mm; default 40 |
+| `--tooth-module` | 1.5–2.5 mm; default 2 |
+| `--actuator-length` | Fixed housing length, calculated minimum when omitted; maximum 1000 mm |
 | `--motor-depth` | 32–60 mm; defaults 40 / 34 |
-| `--spring-preload` | 0.1–2.5 mm; default 2.3 |
-| `--spring-thickness` | 1.2–1.8 mm; default 1.4 |
+| `--insert-od` | M3 insert outside diameter, default 4.6 mm |
+| `--insert-length` | M3 insert length, default 5 mm |
+| `--insert-pilot` | Printed pilot diameter, default 4.2 mm |
+| `--spring-preload` | Default 2.3 mm; range 0.1–2.5 |
+| `--spring-thickness` | Default 1.4 mm; range 1.2–1.8 |
 | `--bearing-clearance` | Default 0.8 mm |
-| `--hardware-clearance` | 0.5–1.2 mm; default 0.5 |
-| `--rack-backbone-width` | 14.5–18 mm requested minimum; default 16 |
+| `--hardware-clearance` | Default 0.5 mm |
+| `--rack-backbone-width` | Default 16 mm minimum |
 | `--preload` | Tooth oversize per flank, default 0.10 mm |
 
-Short housing requests are rejected. Fine reliefs at smaller modules need printer qualification. Changed parameters need regenerated geometry, fresh checks and a fit test. Download bundles contain STEP, five STL files, configuration JSON, source and reports. Packaging verifies that both default reports match the current source.
+Custom parameters need regenerated geometry, fresh checks and physical fit testing. The parameter form exports JSON/CLI; the stroke selector loads the generated preset models.
 
-## Assembly and checks
+## Validation
 
-Fit captive nuts and attach the open tray to the fixture. The chassis sits on front supports and a broad rear ledge; two M4 screws retain the front, and the lid clamps the existing rear recesses. Install motor screws before the upper rollers. Insert the rack with the motor free to turn, check all six bearings rotate, then attach the lid.
+Each preset has its own `validation.json`: all assembled pairs, enclosure/fastener service poses at ≤0.5 mm spacing, core mechanism poses at 1% slider intervals plus stage boundaries/midpoints and bearing-release positions, 41 travel positions, nominal tooth mesh, insert installation access, spring geometry and hardware clearances. Heat-set knurls intentionally overlap their own printed pilot before installation; that specific host/insert overlap is recorded separately from unintended intersections. All parts are valid single solids. Conservative enclosure bounds are verified against the solids, lid-screw removal uses continuous swept outer envelopes, and repeated tooth phases are reused only after exact periodicity checks.
 
-For service, remove lid, rack, pinion and upper bearings; lower the motor with its driver attached before lowering the tray. The tray remains at least 4 mm ahead of the motor rear plane throughout the checked service sequence. Electronics/connectors must stay behind that plane. Complete hardware, print orientations and assembly order are in [README.txt](README.txt).
-
-[Default NEMA17 report](dist/downloads/validation.json) and [NEMA14 report](dist/variants/nema14/downloads/validation.json) check all assembled pairs, dense sampled service/travel, nominal tooth mesh, captive-nut insertion and hardware gaps. Additional parameter cases are recorded separately with their smaller sample counts. Viewer and CAD share motion tracks.
-
-The builder has physically tested the core mechanism. The new enclosure and new parameter combinations still need fit, thermal and load testing. Sampled intersections are not continuous swept-volume proof or a physical tolerance test. Prescribed spring displacement does not establish elastic recovery, creep or fatigue life. The chassis STL is relaxed; STEP/viewer show the installed deflection. Use controller travel limits; no axial hard stop is provided.
+The core mechanism has been tested by the builder. New enclosure details and long-stroke models still require fit and load testing. Sampled intersections are not a continuous swept-volume proof or a physical tolerance test. Prescribed spring displacement does not establish force, creep or fatigue life. Use controller travel limits; no axial hard stop is provided.
 
 ## License
 
-MIT; see [LICENSE](LICENSE). Compliant tooth principle inspired by [seveibar/compliant-spur-gear](https://github.com/seveibar/compliant-spur-gear); its license is included in both bundles.
+MIT; see [LICENSE](LICENSE). Compliant tooth principle inspired by [seveibar/compliant-spur-gear](https://github.com/seveibar/compliant-spur-gear); its license is included in the bundles.

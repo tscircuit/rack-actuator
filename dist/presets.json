@@ -1,0 +1,149 @@
+{
+  "revision": 16,
+  "presets": [
+    {
+      "motor": "nema17",
+      "stroke": 40,
+      "basePath": "./",
+      "housingLength": 132.0,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_40mm_bundle.zip",
+      "partCount": 52,
+      "insertCount": 10,
+      "coverScrewCount": 4,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema17",
+      "stroke": 100,
+      "basePath": "./variants/nema17/100/",
+      "housingLength": 247.0,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_100mm_bundle.zip",
+      "partCount": 56,
+      "insertCount": 12,
+      "coverScrewCount": 6,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema17",
+      "stroke": 150,
+      "basePath": "./variants/nema17/150/",
+      "housingLength": 347.0,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_150mm_bundle.zip",
+      "partCount": 56,
+      "insertCount": 12,
+      "coverScrewCount": 6,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema17",
+      "stroke": 200,
+      "basePath": "./variants/nema17/200/",
+      "housingLength": 447.0,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_200mm_bundle.zip",
+      "partCount": 60,
+      "insertCount": 14,
+      "coverScrewCount": 8,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema17",
+      "stroke": 250,
+      "basePath": "./variants/nema17/250/",
+      "housingLength": 547.0,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_250mm_bundle.zip",
+      "partCount": 64,
+      "insertCount": 16,
+      "coverScrewCount": 10,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema17",
+      "stroke": 400,
+      "basePath": "./variants/nema17/400/",
+      "housingLength": 848.0,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_400mm_bundle.zip",
+      "partCount": 76,
+      "insertCount": 22,
+      "coverScrewCount": 16,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema14",
+      "stroke": 40,
+      "basePath": "./variants/nema14/",
+      "housingLength": 132.0,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_40mm_bundle.zip",
+      "partCount": 52,
+      "insertCount": 10,
+      "coverScrewCount": 4,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema14",
+      "stroke": 100,
+      "basePath": "./variants/nema14/100/",
+      "housingLength": 247.0,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_100mm_bundle.zip",
+      "partCount": 56,
+      "insertCount": 12,
+      "coverScrewCount": 6,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema14",
+      "stroke": 150,
+      "basePath": "./variants/nema14/150/",
+      "housingLength": 347.0,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_150mm_bundle.zip",
+      "partCount": 56,
+      "insertCount": 12,
+      "coverScrewCount": 6,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema14",
+      "stroke": 200,
+      "basePath": "./variants/nema14/200/",
+      "housingLength": 447.0,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_200mm_bundle.zip",
+      "partCount": 60,
+      "insertCount": 14,
+      "coverScrewCount": 8,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema14",
+      "stroke": 250,
+      "basePath": "./variants/nema14/250/",
+      "housingLength": 547.0,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_250mm_bundle.zip",
+      "partCount": 64,
+      "insertCount": 16,
+      "coverScrewCount": 10,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    },
+    {
+      "motor": "nema14",
+      "stroke": 400,
+      "basePath": "./variants/nema14/400/",
+      "housingLength": 848.0,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_400mm_bundle.zip",
+      "partCount": 76,
+      "insertCount": 22,
+      "coverScrewCount": 16,
+      "sourceSha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e"
+    }
+  ]
+}
