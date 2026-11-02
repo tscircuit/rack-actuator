@@ -11,7 +11,7 @@ Revision 15: CadQuery NEMA17/NEMA14 rack actuators with compliant teeth, six 625
 - Standard-depth motors: 40 mm NEMA17 and 34 mm NEMA14. Motor rear projects 4 mm outside the case; rear-mounted drivers remain exposed and are not assigned guessed dimensions.
 - Two new printed enclosure parts: mounting tray and removable lid. Four reinforced M4 slots on a flat side face attach the module to a fixture.
 - A shortened tooth segment and extended smooth output tongue keep all teeth covered throughout normal travel.
-- Actuation, 16-stage service animation, enclosure visibility, mounting-face/driver views, resolution table and downloadable parameter JSON are available in the viewer. The parameter form generates CAD configuration; browser geometry remains the checked default.
+- Actuation, 16-stage service animation, per-part hiding, transparent enclosure, mounting-face/driver views, resolution table and downloadable parameter JSON are available in the viewer. Right-click a part to hide it; Show all restores visibility. Touch users can select a part and use Hide selected. The parameter form generates CAD configuration; browser geometry remains the checked default.
 
 The tested six-bearing chassis, integral spring floors, 2.3 mm preload, 0.8 mm bearing relief and 0.5 mm axle-head clearance are retained. At module 2, reuse the revision-14 chassis and matching pinion; print the new rack, tray and lid. Five printed parts total. The enclosure adds four M3×25 screws/nuts and two low-head M4×12 screws/nuts; see [printing and assembly instructions](README.txt).
 
