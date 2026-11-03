@@ -1,6 +1,7 @@
 {
-  "source_sha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a",
+  "source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
   "motor": "nema14",
+  "enclosure_variant": "enclosed",
   "stroke": 100,
   "parking_distance_mm": 180,
   "screw_sweep_checks": [
@@ -46,9 +47,5 @@
   "all_other_parts_continuous_minimum_y_mm": -105.75,
   "limiting_part": "M3x10 chassis screw -39.0",
   "minimum_separating_y_gap_mm": 15.099999999999994,
-  "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing.",
-  "unchanged_proof_basis": {
-    "prior_source_sha256": "b61d2c6391d78b3eb06221bba80a428a86ff5ee6975bf5d2cc71f0f2b3d2e8ac",
-    "reason": "The sole edit raises removed motor screws after 60%. Assembled solids, lid extraction and all Y motion bounds used by this proof are unchanged."
-  }
+  "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing."
 }

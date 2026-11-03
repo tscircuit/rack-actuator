@@ -1,14 +1,22 @@
-RACK ACTUATOR — REVISION 23
+RACK ACTUATOR — REVISION 24
 CadQuery 2.7.0, dimensions in mm. See configuration.json for this preset.
 
-CHANGES / REPRINTING
-Rear chassis holes now have floor-supported, wall-braced tray standoffs.
-Install M3 inserts 6 mm below their post tops to clear adjacent M5 hardware.
-Use M3x16 rear chassis screws; front chassis screws remain M3x10.
-The 40 mm versions add 2 rear inserts/screws; 100/150 mm versions add 3.
-Reprint tray and lid from this revision. The old lid clamps are removed.
-Reuse the revision 22 chassis, centered rack, pinion and bearing hardware.
-Housing dimensions and mounting positions are unchanged.
+ENCLOSURE VARIANTS / REPRINTING
+Select Enclosed rack or Rear pass-through in the viewer's Variant dropdown.
+The pass-through case removes the rear chamber and provides a rear opening
+for the rack AND its teeth. Motor, bearing positions and stroke stay fixed.
+Stroke    Enclosed length    Pass-through length    Maximum rear projection
+40        146                125                    17
+100       256                175                    77
+150       356                225                    127
+Dimensions in mm at module 2, for both motors. Keep the rear travel envelope
+clear: opening Y=15..41, Z=-10..22 in CAD coordinates. The shorter housing
+still needs the same rack length and swept working space.
+Use the matching enclosure/motor/stroke bundle. The tray, lid, mounting
+coordinates and chassis lid-post clearance slots vary with enclosure.
+Default enclosed parts retain revision 23 geometry.
+Both variants include wall-braced rear chassis posts with M3 inserts 6 mm
+below their tops and M3x16 screws; front chassis screws remain M3x10.
 
 RETAINED BEARING LAYOUT
 One arrangement replaces the former Standard/Short alternatives. The motor
@@ -26,8 +34,7 @@ in the enclosure posts. An internal lid screw moves inboard. For service, the re
 bearing subassembly lifts 6 mm and slides 10 mm rearward after the lower
 axles back out 10 mm, before the tray lowers. Four M3
 inserts remain on the exit face, side face, top and moving output pad.
-Revision 23 reuses the revision 22 chassis, rack, pinion, motor and
-bearing hardware. Use parts from the same motor/stroke preset. NEMA17 rack/pinion use
+Use parts from the same enclosure/motor/stroke preset. NEMA17 rack/pinion use
 20-degree pressure angle; NEMA14 use 25 degrees. Do not mix variants.
 
 PRESETS (MODULE 2; BOTH MOTORS)
@@ -36,10 +43,9 @@ Stroke   Bearing centers X   Bearing span   Housing length   Rack print
 100      -32, 94             126            256              271.5
 150      -32, 144            176            356              371.5
 Housing width: 90.8 mm NEMA17 / 84.8 mm NEMA14, at all three strokes.
-These lengths match the previous pictured compact housings. Width shrinks
-by 12.9..22.9 mm (NEMA17) or 16.9..28.9 mm (NEMA14) versus revision 20.
+The table lists enclosed housing lengths; pass-through lengths appear above.
 Only 40, 100 and 150 mm presets are supplied. Maximum custom stroke: 150.
-All teeth remain enclosed. Bearing-center-to-guide-end margin is at least
+Enclosed variants keep all teeth inside. Bearing-to-guide-end margin is at least
 13 mm throughout travel; at full retraction the exit margin is 14.5 mm.
 Parts are single-piece; check your printer's build volume. Housing length
 can be increased independently above the minimum for the selected stroke.
@@ -88,7 +94,8 @@ keep it behind the motor rear plane with cooling and connector clearance.
 Motor and driver leave before the tray in the service sequence.
 Default tooth module 2; 0.6 mm tooth walls; 8 mm tooth face; 0.10 mm oversize
 per flank. Circular root reliefs, no internal fingers. All teeth remain
-inside the enclosure; a smooth tongue passes through its exit.
+inside the front of the enclosure; a smooth tongue passes through its exit.
+The pass-through variant exposes the rear rack/teeth during retraction.
 5.30 mm D bore for 5 mm shaft with 0.5 mm-deep flat; 0.15 mm wall clearance.
 Tap the 2.5 mm radial pilot M3. Use M3x4 flat-point screw normal to the flat.
 4 x M3x12 countersunk motor screws; 5 mm mounting land integral to chassis.
@@ -147,9 +154,10 @@ not measured accuracy. Match your motor's actual full-step angle.
 SOURCE / CHECKS
 pip install -r requirements.txt
 python model.py --config configuration.json --out build/custom --check
-python model.py --motor nema14 --stroke 100 --out build/custom --check
+python model.py --motor nema14 --stroke 100 --enclosure pass-through --out build/custom --check
 python build_presets.py --jobs 4
 python check_flexure_service.py --jobs 4
+python check_lid_screw_parking.py --all
 python package_designs.py
 CLI options override JSON. Stroke 20..150;
 tooth module 1.5..2.5; housing length calculated minimum..2000;
@@ -159,11 +167,10 @@ Restored free flexure span: 14 mm. Thickness: 1.8 mm by default;
 insertion force and need testing in the selected print material.
 --spring-preload 2.3 --bearing-clearance .8 --hardware-clearance .5
 --rack-backbone-width 16 --preload .10
-Revision 23 adds exact assembly/insert support checks and a fresh dense
-service scan for the new posts, screws and lift/slide sequence.
-Revision 22 rechecks the shifted pad with exact local insert/solid checks
-and continuous separation bounds; unchanged revision 21 mechanism checks
-are retained. See output_centering_validation in the reports.
+All twelve presets are regenerated and checked against revision 24 source.
+Reports identify retained native scans across the assertion-only correction
+for rear containment; geometry and collision-scan code are unchanged.
+--enclosure selects enclosed (default) or pass-through.
 Each preset has a sampled collision report, including all six contacts at
 41 travel positions. Enclosure/fastener paths use <=0.5 mm sampling;
 core paths use 1% slider intervals, boundaries/midpoints and 0.5 mm

@@ -1,5 +1,6 @@
 {
   "motor": "nema14",
+  "enclosure": "enclosed",
   "flexure": {
     "integral_with_chassis": true,
     "free_stl_valid": true,
