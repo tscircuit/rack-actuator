@@ -10,6 +10,12 @@ The viewer provides actuation, a staged exploded assembly, right-click part hidi
 
 [Models](#choose-a-model) · [Mechanism](#how-the-mechanism-works) · [Mounting](#mounting-the-module-and-its-load) · [Hardware & printing](#hardware-and-printing) · [Assembly](#assembly-and-service) · [Resolution](#resolution) · [Customize](#download-and-customize) · [Validation](#validation-and-practical-limits)
 
+## Experimental worm drive
+
+A separate **NEMA17 / 40 mm** direct worm-to-compliant-rack prototype is available in the [experimental viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). It uses a matched helical tooth profile, an open test fixture and a removable drive cartridge. Its single-start lead is 6.283 mm/rev, giving 18× finer command increments than the 18T spur drive. It has not been physically tested. See the [experiment notes, CAD source and test procedure](experiments/worm-rack/README.md). The twelve spur presets below are unchanged.
+
+[![Separate NEMA17 40 mm worm-drive prototype with an open fixture and removable motor cartridge](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
+
 ## Choose a model
 
 All twelve combinations are generated and available to view and download:

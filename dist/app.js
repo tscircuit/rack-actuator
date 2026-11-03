@@ -114,6 +114,7 @@ renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label','3D
 renderer.domElement.addEventListener('keydown',e=>{if(e.key==='ContextMenu'||(e.shiftKey&&e.key==='F10')){e.preventDefault();const r=renderer.domElement.getBoundingClientRect();openPartMenu(selected,r.left+r.width/2,r.top+r.height/2)}});
 
 function applyVariant(){
+ $('driveTypeControl').hidden=variant!=='nema17'||data.stroke!==40;
  const short=variant==='nema14'?'FLEX14':'FLEX17',is14=variant==='nema14',circ=2*Math.PI*data.pitchRadius;
  $('motorVariant').value=variant;$('enclosureVariant').value=enclosureVariant;$('strokePreset').value=data.stroke;$('stroke').max=data.stroke;$('stroke').value=data.stroke;$('travel').max=data.stroke;$('travel').value=enclosureVariant==='pass-through'?0:data.stroke/2;document.title=short+' | Compliant linear motion';
  document.querySelector('.brand').textContent='Rack actuator';
@@ -177,3 +178,5 @@ try{const [report,service]=await Promise.all(['validation.json','flexure-service
  $('checkTitle').textContent='Validation';$('checkSummary').textContent=`${report.explosion_samples.toLocaleString()} explosion poses · ${service.samples} service poses · ${report.motion_samples} travel positions · ${n} unexpected intersections. Sampled CAD checks.`;
 }catch(e){$('checkSummary').textContent='Check report unavailable.'}
 function animate(time){requestAnimationFrame(animate);const dt=Math.min(.05,(time-last)/1000);last=time;if(playing&&mode==='motion'){phase+=dt*.65;$('travel').value=(.5+.5*Math.sin(phase))*+$('stroke').value;update()}controls.update();grid.visible=camera.position.z>grid.position.z;renderer.render(scene,camera)}requestAnimationFrame(animate);
+
+$('driveVariant').onchange=()=>{if($('driveVariant').value==='worm')location.href='./experiments/worm-rack/'};

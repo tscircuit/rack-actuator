@@ -1,0 +1,137 @@
+{
+  "experiment": "worm-rack-nema17-40",
+  "geometry_cache_sha256": "9cc66e2689a63c315072ad1f25ae83b9eb1641dab73a7f0227fd25e0a9048d3b",
+  "source_sha256": "d681c01b0c04b9220684b9b8e28926d77aa52a18314aff1fe3a80e298cc50c8a",
+  "validation_source_sha256": "5d0b6530bea97fe9851775a880fc481f7110b9fe147f3094b1a345bdc165a11d",
+  "method": "All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA.",
+  "motor": "NEMA17",
+  "stroke_mm": 40,
+  "module_mm": 2,
+  "axial_pressure_angle_deg": 20,
+  "starts": 1,
+  "lead_mm": 6.283185307179586,
+  "worm_pitch_diameter_mm": 24,
+  "worm_outside_diameter_mm": 28,
+  "rack_preload_per_flank_mm": 0.1,
+  "worm_flank_clearance_mm": 0.03,
+  "parts": 63,
+  "limits": [
+    "Unprinted experimental prototype",
+    "No load, wear, efficiency, thermal, self-locking, thrust-bearing life or motor-torque validation",
+    "Module separation only; guide hardware remains assembled",
+    "Nominal command increments are not measured accuracy"
+  ],
+  "worm_set_screw_tool_access_collisions": [],
+  "assembled_collisions": [],
+  "intentional_insert_intersections": [
+    {
+      "parts": [
+        "Matched compliant rack",
+        "M3 heat-set insert output 83 24"
+      ],
+      "overlap_mm3": 13.823007675795012
+    },
+    {
+      "parts": [
+        "Matched compliant rack",
+        "M3 heat-set insert output 83 33"
+      ],
+      "overlap_mm3": 13.82300767579499
+    },
+    {
+      "parts": [
+        "Matched compliant rack",
+        "M3 heat-set insert output 92 24"
+      ],
+      "overlap_mm3": 13.823007675795012
+    },
+    {
+      "parts": [
+        "Matched compliant rack",
+        "M3 heat-set insert output 92 33"
+      ],
+      "overlap_mm3": 13.82300767579499
+    },
+    {
+      "parts": [
+        "Open guide fixture",
+        "M3 cartridge heat-set -80"
+      ],
+      "overlap_mm3": 13.823007675795
+    },
+    {
+      "parts": [
+        "Open guide fixture",
+        "M3 cartridge heat-set 0"
+      ],
+      "overlap_mm3": 13.823007675795077
+    }
+  ],
+  "dense_mesh": {
+    "phase_samples": 97,
+    "full_stroke_samples": 41,
+    "distinct_samples": 137,
+    "nominal_triangle_intersections_at_mm": [],
+    "preloaded_loss_of_engagement_at_mm": [],
+    "tessellation_linear_tolerance_mm": 0.002,
+    "tessellation_angular_tolerance_rad": 0.04,
+    "absolute_tolerance": true
+  },
+  "mesh_pose_checks": [
+    {
+      "travel_from_center_mm": -20,
+      "unchanged_straight_nominal_overlap_mm3": 5.375134798146727,
+      "matched_nominal_overlap_mm3": 0.0,
+      "matched_preloaded_overlap_mm3": 14.736684962833515
+    },
+    {
+      "travel_from_center_mm": 0,
+      "unchanged_straight_nominal_overlap_mm3": 6.8397985954132565,
+      "matched_nominal_overlap_mm3": 0.0,
+      "matched_preloaded_overlap_mm3": 18.272201940472286
+    },
+    {
+      "travel_from_center_mm": 1.0869910581420683,
+      "unchanged_straight_nominal_overlap_mm3": 6.266681323865162,
+      "matched_nominal_overlap_mm3": 0.0,
+      "matched_preloaded_overlap_mm3": 17.12289145474823
+    },
+    {
+      "travel_from_center_mm": 3.248406803811846,
+      "unchanged_straight_nominal_overlap_mm3": 6.764063543782193,
+      "matched_nominal_overlap_mm3": 0.0,
+      "matched_preloaded_overlap_mm3": 17.982706949289934
+    },
+    {
+      "travel_from_center_mm": 20,
+      "unchanged_straight_nominal_overlap_mm3": 5.375137391588616,
+      "matched_nominal_overlap_mm3": 0.0,
+      "matched_preloaded_overlap_mm3": 14.736682621016428
+    }
+  ],
+  "mesh": {
+    "solid_pose_samples": 5,
+    "phase_samples": 97,
+    "full_stroke_samples": 41,
+    "unchanged_straight_rack_nominal_overlap_mm3": [
+      5.375134798146727,
+      6.8397985954132565
+    ],
+    "matched_nominal_max_overlap_mm3": 0.0,
+    "matched_preloaded_overlap_mm3": [
+      14.736682621016428,
+      18.272201940472286
+    ],
+    "tolerance_mm3": 0.01
+  },
+  "unchanged_lower_guide_difference_mm3": 0.0,
+  "unchanged_output_mount_difference_mm3": 0.0,
+  "valid_single_solids": true,
+  "rigid_backbone_clearance_mm": 5.0,
+  "motion_samples": 41,
+  "motion_collisions": [],
+  "module_separation_samples": 241,
+  "module_separation_collisions": [],
+  "nominal_mesh_separation_triangle_collisions": [],
+  "passed": true
+}

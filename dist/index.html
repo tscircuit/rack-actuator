@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff">
 <title>Rack actuator</title><meta name="description" content="NEMA17 and NEMA14 rack actuator CAD viewer and configuration.">
-<link rel="stylesheet" href="style.css?v=24"><script type="importmap">{"imports":{"three":"./assets/three.module.js"}}</script>
+<link rel="stylesheet" href="style.css?v=27"><script type="importmap">{"imports":{"three":"./assets/three.module.js"}}</script>
 </head>
 <body>
 <header><a class="brand" href="#">Rack actuator</a><nav><a href="#configure">Configure</a><a href="#resolution">Resolution</a><a href="#files">Downloads</a></nav><a class="repo-link" href="https://github.com/tscircuit/rack-actuator">GitHub ↗</a></header>
@@ -16,7 +16,7 @@
 </div>
 <aside>
  <div class="panel-head"><h1>Rack actuator</h1><button id="reset" title="Reset view and controls">Reset</button></div>
- <label for="motorVariant">Motor</label><select id="motorVariant"><option value="nema17">NEMA17 · 18T</option><option value="nema14">NEMA14 · 14T</option></select><p id="variantSummary" class="hint"></p><label for="enclosureVariant">Variant</label><select id="enclosureVariant"><option value="enclosed">Enclosed rack</option><option value="pass-through">Rear pass-through · shorter</option></select><label for="strokePreset">Stroke preset</label><select id="strokePreset"><option value="40">40 mm</option><option value="100">100 mm</option><option value="150">150 mm</option></select><p id="presetNote" class="hint"></p>
+ <div id="driveTypeControl" hidden><label for="driveVariant">Drive type</label><select id="driveVariant"><option value="spur">Spur rack</option><option value="worm">Worm rack · experimental</option></select></div><label for="motorVariant">Motor</label><select id="motorVariant"><option value="nema17">NEMA17 · 18T</option><option value="nema14">NEMA14 · 14T</option></select><p id="variantSummary" class="hint"></p><label for="enclosureVariant">Variant</label><select id="enclosureVariant"><option value="enclosed">Enclosed rack</option><option value="pass-through">Rear pass-through · shorter</option></select><label for="strokePreset">Stroke preset</label><select id="strokePreset"><option value="40">40 mm</option><option value="100">100 mm</option><option value="150">150 mm</option></select><p id="presetNote" class="hint"></p>
  <div class="tabs" role="tablist"><button id="motionTab" class="active" role="tab" aria-selected="true">Actuate</button><button id="explodeTab" role="tab" aria-selected="false">Explode</button></div>
  <div id="motionControls">
   <div class="control-label"><label for="travel">Position</label><output id="travelValue">20.0 <small>mm</small></output></div><input id="travel" type="range" min="0" max="40" step="0.1" value="20"><div class="range-labels"><span>0 mm</span><span id="strokeEnd">40 mm</span></div>
@@ -44,5 +44,5 @@
 </main>
 <footer><span>Rack actuator</span><span>CAD revision 24 · mm</span></footer>
 <div id="partMenu" role="menu" aria-label="Part actions" hidden><div id="menuPartName"></div><button id="menuHide" role="menuitem">Hide part</button><button id="menuShowAll" role="menuitem">Show all parts</button></div>
-<script type="module" src="app.js?v=26"></script>
+<script type="module" src="app.js?v=27"></script>
 </body></html>
