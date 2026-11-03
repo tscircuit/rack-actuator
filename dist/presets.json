@@ -1,5 +1,5 @@
 {
-  "revision": 18,
+  "revision": 19,
   "presets": [
     {
       "motor": "nema17",
@@ -12,10 +12,10 @@
       "chassisScrewCount": 2,
       "stepFile": "FLEX17.step",
       "bundleFile": "FLEX17_40mm_bundle.zip",
-      "partCount": 56,
-      "insertCount": 14,
+      "partCount": 60,
+      "insertCount": 18,
       "coverScrewCount": 4,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema17",
@@ -28,10 +28,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX17.step",
       "bundleFile": "FLEX17_100mm_bundle.zip",
-      "partCount": 64,
-      "insertCount": 18,
+      "partCount": 68,
+      "insertCount": 22,
       "coverScrewCount": 6,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema17",
@@ -44,10 +44,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX17.step",
       "bundleFile": "FLEX17_150mm_bundle.zip",
-      "partCount": 68,
-      "insertCount": 20,
+      "partCount": 72,
+      "insertCount": 24,
       "coverScrewCount": 8,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema17",
@@ -60,10 +60,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX17.step.gz",
       "bundleFile": "FLEX17_200mm_bundle.zip",
-      "partCount": 76,
-      "insertCount": 24,
+      "partCount": 80,
+      "insertCount": 28,
       "coverScrewCount": 12,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema17",
@@ -76,10 +76,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX17.step.gz",
       "bundleFile": "FLEX17_250mm_bundle.zip",
-      "partCount": 80,
-      "insertCount": 26,
+      "partCount": 84,
+      "insertCount": 30,
       "coverScrewCount": 14,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema17",
@@ -92,10 +92,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX17.step.gz",
       "bundleFile": "FLEX17_400mm_bundle.zip",
-      "partCount": 96,
-      "insertCount": 34,
+      "partCount": 100,
+      "insertCount": 38,
       "coverScrewCount": 22,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema14",
@@ -108,10 +108,10 @@
       "chassisScrewCount": 2,
       "stepFile": "FLEX14.step",
       "bundleFile": "FLEX14_40mm_bundle.zip",
-      "partCount": 56,
-      "insertCount": 14,
+      "partCount": 60,
+      "insertCount": 18,
       "coverScrewCount": 4,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema14",
@@ -124,10 +124,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX14.step",
       "bundleFile": "FLEX14_100mm_bundle.zip",
-      "partCount": 64,
-      "insertCount": 18,
+      "partCount": 68,
+      "insertCount": 22,
       "coverScrewCount": 6,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema14",
@@ -140,10 +140,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX14.step",
       "bundleFile": "FLEX14_150mm_bundle.zip",
-      "partCount": 68,
-      "insertCount": 20,
+      "partCount": 72,
+      "insertCount": 24,
       "coverScrewCount": 8,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema14",
@@ -156,10 +156,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX14.step.gz",
       "bundleFile": "FLEX14_200mm_bundle.zip",
-      "partCount": 76,
-      "insertCount": 24,
+      "partCount": 80,
+      "insertCount": 28,
       "coverScrewCount": 12,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema14",
@@ -172,10 +172,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX14.step.gz",
       "bundleFile": "FLEX14_250mm_bundle.zip",
-      "partCount": 80,
-      "insertCount": 26,
+      "partCount": 84,
+      "insertCount": 30,
       "coverScrewCount": 14,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     },
     {
       "motor": "nema14",
@@ -188,10 +188,10 @@
       "chassisScrewCount": 4,
       "stepFile": "FLEX14.step.gz",
       "bundleFile": "FLEX14_400mm_bundle.zip",
-      "partCount": 96,
-      "insertCount": 34,
+      "partCount": 100,
+      "insertCount": 38,
       "coverScrewCount": 22,
-      "sourceSha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875"
+      "sourceSha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67"
     }
   ]
 }

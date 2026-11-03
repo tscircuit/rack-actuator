@@ -1,5 +1,107 @@
 {
-  "revision": 18,
+  "revision": 19,
+  "output_mount": {
+    "thread": "M3",
+    "count": 4,
+    "pattern_xy_mm": [
+      [
+        313.0,
+        21.0
+      ],
+      [
+        313.0,
+        30.0
+      ],
+      [
+        322.0,
+        21.0
+      ],
+      [
+        322.0,
+        30.0
+      ]
+    ],
+    "pitch_xy_mm": [
+      9.0,
+      9.0
+    ],
+    "pad_size_mm": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "face_z_mm": 21.0,
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "maximum_screw_penetration_mm": 5.3,
+    "minimum_knurl_edge_wall_mm": 2.2,
+    "minimum_retracted_enclosure_gap_mm": 1.5,
+    "checks": [
+      {
+        "position_mm": [
+          313.0,
+          21.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795061,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      },
+      {
+        "position_mm": [
+          313.0,
+          30.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795061,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      },
+      {
+        "position_mm": [
+          322.0,
+          21.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795061,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      },
+      {
+        "position_mm": [
+          322.0,
+          30.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795061,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      }
+    ]
+  },
   "tooth_module_mm": 2.0,
   "tooth_pitch_mm": 6.283185307179586,
   "actuator_length_mm": 606.0,
@@ -904,7 +1006,7 @@
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.49999999999999434,
-  "source_sha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875",
+  "source_sha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -932,73 +1034,73 @@
   "lid_screw_swept_envelope_checks": [
     {
       "part": "M3x20 recessed lid screw -391.5 -3.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -391.5 46.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 199.5 -3.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 199.5 46.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -298 -13.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -298 56.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -214 -13.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -214 56.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -96 -13.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -96 56.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 106 -13.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 106 56.4",
-      "stationary_part_pairs": 64,
+      "stationary_part_pairs": 68,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     }
@@ -1016,6 +1118,34 @@
       "a": "03 Involute pinion 14T",
       "b": "04 Beveled compliant rack",
       "volume_mm3": 2.51364
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 313 21",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 313 30",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 322 21",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 322 30",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",

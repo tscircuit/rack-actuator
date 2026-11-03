@@ -1,7 +1,11 @@
-RACK ACTUATOR — REVISION 18
+RACK ACTUATOR — REVISION 19
 CadQuery 2.7.0, dimensions in mm. See configuration.json for this preset.
 
 CHANGES / REPRINTING
+The moving output pad is now 18 x 18 mm with four M3 heat-set inserts on
+a 9 x 9 mm pattern, replacing the two through-holes. Inserts enter from
+the same Z=21 mounting face and sit 0.3 mm below it. Default blind-pocket
+backing is 12.3 mm. The pad remains on the rack's printing plane.
 The side face is flat, with four recessed M3 heat-set inserts replacing
 the projecting slotted pads. Reinforcement is inside the tray and joins
 the floor/corner structure; blind pockets retain 2 mm of backing.
@@ -15,24 +19,25 @@ chassis have attachments near the bearing stations and the centered motor.
 Local spring floors retain the prior dimensions, preload and wall blends.
 M3 heat-set enclosure inserts and reinforced top/side mounting are retained.
 Five printed components: chassis, rack, pinion, tray and lid.
-From revision 17, reprint only the enclosure tray and add four M3 inserts.
-Reuse the matching chassis, rack, pinion, lid and bearing hardware. Each stroke has its own chassis;
+From revision 18, reprint only the rack and add four M3 inserts.
+Reuse the matching chassis, pinion, tray, lid and bearing hardware. Each stroke has its own chassis;
 do not mix preset components. NEMA17 pinion/rack: 20 degrees; NEMA14: 25.
 
 PRESETS (MODULE 2; BOTH MOTORS)
 Stroke   Bearing span   Housing   Rack print   Lid screws   M3 inserts
-40       54             136       147.5        4            14
-100      164            306       317.5        6            18
-150      264            456       467.5        8            20
-200      364            606       617.5        12           24
-250      464            756       767.5        14           26
-400      766            1208      1219.5       22           34
+40       54             136       151.5        4            18
+100      164            306       321.5        6            22
+150      264            456       471.5        8            24
+200      364            606       621.5        12           28
+250      464            756       771.5        14           30
+400      766            1208      1223.5       22           38
 Centering the gear while covering the teeth and maintaining full-stroke
 bearing engagement requires longer racks and housings. At 400 mm stroke,
-allow about 1220 mm of print length. These are single-piece parts; no
+allow about 1224 mm of print length. These are single-piece parts; no
 segmentation is provided. Revised layouts require fit, sag and load tests.
 
-ENCLOSURE HARDWARE
+INSERTS / ENCLOSURE HARDWARE
+The table includes enclosure inserts plus four output-pad inserts.
 M3 inserts: default 4.6 mm OD x 5 mm long; printed pilot diameter 4.2 mm,
 with 0.4 mm extra pocket depth. Match your insert manufacturer's guidance;
 OD, length and pilot are configurable. Nominal knurl-to-pilot overlap is
@@ -56,7 +61,9 @@ unchanged. Exact coordinates are in the STEP, viewer and validation.json.
 A top-mounted module must be detached from its fixture before the lid can
 be lifted. For the full service animation, detach the module from any
 external mounting fixture before lowering the tray.
-Two output mounting holes: diameter 3.4, pitch 9 mm.
+Output: four M3 inserts on a 9 x 9 mm pattern in an 18 x 18 mm face.
+Use 3–5 mm thread engagement, or 3.3–5.3 mm penetration from the pad face.
+Remove the attached load before withdrawing the rack for service.
 
 MOTOR / DRIVE
 NEMA17: 42 x 42 x 40 mm body, 31 mm mounting pitch, 18T / 20-degree pinion.
@@ -94,8 +101,9 @@ a new chassis, keep floor length and bending in the layer plane (Y-normal
 print). Remove local supports without damaging the floor root blends.
 IMPORTANT: chassis STL is RELAXED; STEP and viewer show installed deflection.
 
-Install the four side inserts horizontally from outside to 0.3 mm below
-the outer face. Install the other inserts from above into the open tray
+Install the four output inserts from the Z=21 pad face, recessed 0.3 mm,
+before inserting the rack. Install the four side inserts horizontally from outside to 0.3 mm below
+the outer face. Install the other enclosure inserts from above into the open tray
 before installing the chassis or lid. Use the insert manufacturer's process and qualify the
 pilot in your material. Do not force cold inserts into printed pockets.
 Attach the open tray to a side fixture if used. Assemble lower guide

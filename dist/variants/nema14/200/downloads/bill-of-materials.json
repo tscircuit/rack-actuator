@@ -10,7 +10,9 @@
   ],
   "heat_set_inserts": {
     "thread": "M3",
-    "quantity": 24,
+    "quantity": 28,
+    "enclosure_quantity": 24,
+    "output_quantity": 4,
     "outer_diameter_mm": 4.6,
     "length_mm": 5.0,
     "pilot_diameter_mm": 4.2
@@ -33,6 +35,25 @@
     "6 x thin M5 nuts (2.7 mm)",
     "6 x inner-race washers (0.3 mm / 7.5 mm OD)"
   ],
+  "output_mounting": {
+    "thread": "M3",
+    "quantity": 4,
+    "pitch_xy_mm": [
+      9.0,
+      9.0
+    ],
+    "pad_size_mm": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "maximum_screw_penetration_from_pad_face_mm": 5.3
+  },
   "motor_screws": "4 x M3x12 countersunk",
   "pinion_set_screw": "M3x4 flat point",
   "top_mounting": "4 x application-length M3 screws; 3\u20135 mm insert engagement",
