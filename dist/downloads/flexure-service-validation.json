@@ -1,36 +1,18 @@
 {
-  "revision": 23,
+  "revision": 24,
+  "enclosure_variant": "enclosed",
   "motor": "nema17",
   "stroke_mm": 40,
-  "source_sha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a",
-  "checker_sha256": "7968d11cf5b88fa42c240e4a5cb10dd6fa042a00f25773cea83492808f9aa08c",
+  "source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
+  "checker_sha256": "a8a76d3695edda65d49728187e167673f8030e3ed40441ffdb087aab8c455f2e",
   "explosion_interval": [
     0.38,
     1.0
   ],
   "maximum_translation_increment_mm": 0.5,
-  "samples": 1638,
+  "samples": 1644,
   "part_pairs": 1956,
-  "exact_intersections": 7030,
+  "exact_intersections": 7394,
   "failures": [],
-  "method": "Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers angled axle extraction and parking, roller and motor removal, the chassis slide and tray withdrawal, and lower bearing hardware removal. Sampled geometry, not a continuous proof. Motor-screw path subsequently rechecked separately at <=0.5 mm over 60\u2013100%; all other geometry/tracks remain unchanged. See motor_screw_parking_validation.",
-  "motor_screw_parking_validation": {
-    "baseline_source_sha256": "b61d2c6391d78b3eb06221bba80a428a86ff5ee6975bf5d2cc71f0f2b3d2e8ac",
-    "new_source_sha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a",
-    "changed_expression": [
-      "'motor_screws':[{'start':.60,'end':.62,'delta':[0,0,18]}",
-      "'motor_screws':[{'start':.60,'end':.62,'delta':[0,0,21]}"
-    ],
-    "group": "motor_screws",
-    "interval": [
-      0.6,
-      1.0
-    ],
-    "samples": 1184,
-    "maximum_translation_increment_mm": 0.5,
-    "exact_intersections": 1148,
-    "failures": [],
-    "method": "Rechecked all pairs involving motor screws over the complete affected interval at <=0.5 mm translation increments. Only their Z extraction changes, from 18 to 21 mm; geometry, all other tracks and Y envelopes are unchanged.",
-    "superseded_motor_screw_intersections": 40
-  }
+  "method": "Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers angled axle extraction and parking, roller and motor removal, the chassis slide and tray withdrawal, and lower bearing hardware removal. Sampled geometry, not a continuous proof."
 }

@@ -1,11 +1,14 @@
 {
-  "revision": 23,
+  "revision": 24,
   "presets": [
     {
       "motor": "nema17",
+      "enclosure": "enclosed",
       "stroke": 40,
       "basePath": "./",
       "housingLength": 146.0,
+      "rearOpeningYZ": null,
+      "maximumRearProjection": 0,
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 76.0,
       "exitBearingOffset": 13,
@@ -15,13 +18,40 @@
       "partCount": 68,
       "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
     },
     {
       "motor": "nema17",
+      "enclosure": "pass-through",
+      "stroke": 40,
+      "basePath": "./variants/nema17/pass-through/40/",
+      "housingLength": 125.0,
+      "rearOpeningYZ": [
+        15.0,
+        41,
+        -10,
+        22
+      ],
+      "maximumRearProjection": 17.0,
+      "assemblyFile": "assembly.json.gz",
+      "stationSpacing": 76.0,
+      "exitBearingOffset": 13,
+      "chassisScrewCount": 4,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_pass-through_40mm_bundle.zip",
+      "partCount": 68,
+      "insertCount": 24,
+      "coverScrewCount": 4,
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+    },
+    {
+      "motor": "nema17",
+      "enclosure": "enclosed",
       "stroke": 100,
       "basePath": "./variants/nema17/100/",
       "housingLength": 256.0,
+      "rearOpeningYZ": null,
+      "maximumRearProjection": 0,
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 126.0,
       "exitBearingOffset": 13,
@@ -31,13 +61,40 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
     },
     {
       "motor": "nema17",
+      "enclosure": "pass-through",
+      "stroke": 100,
+      "basePath": "./variants/nema17/pass-through/100/",
+      "housingLength": 175.0,
+      "rearOpeningYZ": [
+        15.0,
+        41,
+        -10,
+        22
+      ],
+      "maximumRearProjection": 77.0,
+      "assemblyFile": "assembly.json.gz",
+      "stationSpacing": 126.0,
+      "exitBearingOffset": 13,
+      "chassisScrewCount": 6,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_pass-through_100mm_bundle.zip",
+      "partCount": 72,
+      "insertCount": 26,
+      "coverScrewCount": 4,
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+    },
+    {
+      "motor": "nema17",
+      "enclosure": "enclosed",
       "stroke": 150,
       "basePath": "./variants/nema17/150/",
       "housingLength": 356.0,
+      "rearOpeningYZ": null,
+      "maximumRearProjection": 0,
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 176.0,
       "exitBearingOffset": 13,
@@ -47,13 +104,40 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+    },
+    {
+      "motor": "nema17",
+      "enclosure": "pass-through",
+      "stroke": 150,
+      "basePath": "./variants/nema17/pass-through/150/",
+      "housingLength": 225.0,
+      "rearOpeningYZ": [
+        15.0,
+        41,
+        -10,
+        22
+      ],
+      "maximumRearProjection": 127.0,
+      "assemblyFile": "assembly.json.gz",
+      "stationSpacing": 176.0,
+      "exitBearingOffset": 13,
+      "chassisScrewCount": 6,
+      "stepFile": "FLEX17.step",
+      "bundleFile": "FLEX17_pass-through_150mm_bundle.zip",
+      "partCount": 76,
+      "insertCount": 28,
+      "coverScrewCount": 6,
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
     },
     {
       "motor": "nema14",
+      "enclosure": "enclosed",
       "stroke": 40,
       "basePath": "./variants/nema14/",
       "housingLength": 146.0,
+      "rearOpeningYZ": null,
+      "maximumRearProjection": 0,
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 76.0,
       "exitBearingOffset": 13,
@@ -63,13 +147,40 @@
       "partCount": 68,
       "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
     },
     {
       "motor": "nema14",
+      "enclosure": "pass-through",
+      "stroke": 40,
+      "basePath": "./variants/nema14/pass-through/40/",
+      "housingLength": 125.0,
+      "rearOpeningYZ": [
+        15.0,
+        41,
+        -10,
+        22
+      ],
+      "maximumRearProjection": 17.0,
+      "assemblyFile": "assembly.json.gz",
+      "stationSpacing": 76.0,
+      "exitBearingOffset": 13,
+      "chassisScrewCount": 4,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_pass-through_40mm_bundle.zip",
+      "partCount": 68,
+      "insertCount": 24,
+      "coverScrewCount": 4,
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+    },
+    {
+      "motor": "nema14",
+      "enclosure": "enclosed",
       "stroke": 100,
       "basePath": "./variants/nema14/100/",
       "housingLength": 256.0,
+      "rearOpeningYZ": null,
+      "maximumRearProjection": 0,
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 126.0,
       "exitBearingOffset": 13,
@@ -79,13 +190,40 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
     },
     {
       "motor": "nema14",
+      "enclosure": "pass-through",
+      "stroke": 100,
+      "basePath": "./variants/nema14/pass-through/100/",
+      "housingLength": 175.0,
+      "rearOpeningYZ": [
+        15.0,
+        41,
+        -10,
+        22
+      ],
+      "maximumRearProjection": 77.0,
+      "assemblyFile": "assembly.json.gz",
+      "stationSpacing": 126.0,
+      "exitBearingOffset": 13,
+      "chassisScrewCount": 6,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_pass-through_100mm_bundle.zip",
+      "partCount": 72,
+      "insertCount": 26,
+      "coverScrewCount": 4,
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+    },
+    {
+      "motor": "nema14",
+      "enclosure": "enclosed",
       "stroke": 150,
       "basePath": "./variants/nema14/150/",
       "housingLength": 356.0,
+      "rearOpeningYZ": null,
+      "maximumRearProjection": 0,
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 176.0,
       "exitBearingOffset": 13,
@@ -95,7 +233,31 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+    },
+    {
+      "motor": "nema14",
+      "enclosure": "pass-through",
+      "stroke": 150,
+      "basePath": "./variants/nema14/pass-through/150/",
+      "housingLength": 225.0,
+      "rearOpeningYZ": [
+        15.0,
+        41,
+        -10,
+        22
+      ],
+      "maximumRearProjection": 127.0,
+      "assemblyFile": "assembly.json.gz",
+      "stationSpacing": 176.0,
+      "exitBearingOffset": 13,
+      "chassisScrewCount": 6,
+      "stepFile": "FLEX14.step",
+      "bundleFile": "FLEX14_pass-through_150mm_bundle.zip",
+      "partCount": 76,
+      "insertCount": 28,
+      "coverScrewCount": 6,
+      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
     }
   ]
 }

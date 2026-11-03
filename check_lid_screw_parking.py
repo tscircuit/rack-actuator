@@ -1,13 +1,22 @@
 """Prove lid screw removal/parking continuously.
-Usage: python check_lid_screw_parking.py nema17 40
+Usage: python check_lid_screw_parking.py nema17 40 pass-through
+       python check_lid_screw_parking.py --all
 Run from the directory containing model.py.
 """
 import sys,math,json,itertools,hashlib
 from pathlib import Path
 sys.path.insert(0,str(Path.cwd()))
 from build_presets import folder_for
-motor,stroke=sys.argv[1],int(sys.argv[2]);source=Path('model.py').read_text()
-sys.argv=['model.py','--motor',motor,'--stroke',str(stroke),'--skip-export']
+if sys.argv[1:]==['--all']:
+ import subprocess,concurrent.futures
+ def run(item):
+  motor,stroke,enclosure=item
+  return subprocess.run([sys.executable,str(Path(__file__).resolve()),motor,str(stroke),enclosure]).returncode
+ with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+  results=list(pool.map(run,itertools.product(['nema17','nema14'],[40,100,150],['enclosed','pass-through'])))
+ sys.exit(1 if any(results) else 0)
+motor,stroke=sys.argv[1],int(sys.argv[2]);enclosure=sys.argv[3] if len(sys.argv)>3 else 'enclosed';source=Path('model.py').read_text()
+sys.argv=['model.py','--motor',motor,'--stroke',str(stroke),'--enclosure',enclosure,'--skip-export']
 ns={'__file__':str(Path('model.py').resolve()),'__name__':'cad_geometry'}
 exec(compile(source.split('\n# Clear obsolete generated meshes')[0],'model.py','exec'),ns)
 parts=ns['parts'];cyl=ns['cyl'];cq=ns['cq'];tracks=ns['tracks'];offset=ns['offset'];angle=ns['angle']
@@ -41,6 +50,6 @@ for p in parts:
  maximum_y=max(maximum_y,p['shape'].BoundingBox().ymax-park)
  checks.append({'part':p['name'],'stationary_part_pairs':count,'path':'Z +35 mm, then Y -180 mm','maximum_intersection_mm3':worst})
 assert minimum_y-maximum_y>.5,(critical,minimum_y,maximum_y)
-result={'source_sha256':hashlib.sha256(source.encode()).hexdigest(),'motor':motor,'stroke':stroke,'parking_distance_mm':park,'screw_sweep_checks':checks,'stationary_after_fraction':.05,'parked_screws_maximum_y_mm':maximum_y,'all_other_parts_continuous_minimum_y_mm':minimum_y,'limiting_part':critical,'minimum_separating_y_gap_mm':minimum_y-maximum_y,'method':'Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing.'}
-(folder_for(motor,stroke)/'downloads/lid-screw-clearance.json').write_text(json.dumps(result,indent=2)+'\n')
+result={'source_sha256':hashlib.sha256(source.encode()).hexdigest(),'motor':motor,'enclosure_variant':enclosure,'stroke':stroke,'parking_distance_mm':park,'screw_sweep_checks':checks,'stationary_after_fraction':.05,'parked_screws_maximum_y_mm':maximum_y,'all_other_parts_continuous_minimum_y_mm':minimum_y,'limiting_part':critical,'minimum_separating_y_gap_mm':minimum_y-maximum_y,'method':'Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing.'}
+(folder_for(motor,stroke,enclosure)/'downloads/lid-screw-clearance.json').write_text(json.dumps(result,indent=2)+'\n')
 print(motor,stroke,'continuous parking proof gap',minimum_y-maximum_y,flush=True)

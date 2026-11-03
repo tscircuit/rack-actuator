@@ -4,13 +4,19 @@ CadQuery NEMA17/NEMA14 actuators with compliant rack teeth, six 625ZZ bearings a
 
 [Viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [NEMA14 / 150 mm](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14&stroke=150)
 
-## Revision 23
+## Revision 24
 
-The rear chassis holes now have wall-braced, floor-supported tray standoffs and M3 heat-set inserts. The lid clamps are removed, so both rows bolt directly to the tray. Rear inserts sit 6 mm below their post tops to clear the neighboring M5 nut; use **M3×16 rear screws** and the existing **M3×10 front screws**. The 40 mm models gain two inserts/screws; 100 and 150 mm models gain three.
+The **Variant** dropdown selects **Enclosed rack** or **Rear pass-through · shorter** for either motor and every stroke preset. The shorter housing has a rear opening for the rack and teeth. The motor, bearing stations, output pad and usable stroke retain their positions. Reserve the rear clearance shown below across the full stroke.
 
-Upgrading from revision 22 requires a **new tray and lid**, plus the rear inserts and screws. Reuse the chassis, centered-output rack, pinion and bearing hardware. Housing dimensions and mounting positions are unchanged.
+| Stroke | Enclosed housing | Pass-through housing | Reduction | Maximum rear rack projection |
+| --- | --- | --- | --- | --- |
+| 40 mm | 146 mm | 125 mm | 21 mm | 17 mm |
+| 100 mm | 256 mm | 175 mm | 81 mm | 77 mm |
+| 150 mm | 356 mm | 225 mm | 131 mm | 127 mm |
 
-The output pad retains its centered 18 × 18 mm face and 9 × 9 mm insert pattern, at Y=28.5 mm for the default presets.
+[Open the shorter variant](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?enclosure=pass-through). Dimensions are at module 2, for both motors. The rear opening spans Y=15…41, Z=−10…22 in CAD coordinates. The rack is exposed behind the case; a fixture must leave this travel envelope clear. Housing length can still be increased independently. Shortening the enclosure does not shorten the rack or its swept working space.
+
+Use the selected variant's complete CAD bundle: tray, lid, mounting coordinates and chassis lid-post clearance slots depend on the enclosure. The default enclosed models retain revision 23 geometry. Both variants retain the floor-supported rear chassis posts, recessed M3 inserts and M3×16 rear screws; front screws are M3×10. The centered output pad is 18 × 18 mm with a 9 × 9 mm insert pattern.
 
 ### Retained bearing layout
 
@@ -24,13 +30,13 @@ The earlier **single broad flexure floor** is restored, with its 14 mm free span
 | 100 mm | −32, 94 mm | 126 mm | 256 mm | 271.5 mm |
 | 150 mm | −32, 144 mm | 176 mm | 356 mm | 371.5 mm |
 
-At module 2, housing width is **90.8 mm for NEMA17** and **84.8 mm for NEMA14**. Lengths match the former pictured compact housings; widths shrink by 12.9–22.9 mm and 16.9–28.9 mm respectively, depending on stroke. All teeth remain enclosed, and every guide retains at least 13 mm from the bearing center to either end over full travel. Parts are single-piece; check your printer's build volume.
+At module 2, housing width is **90.8 mm for NEMA17** and **84.8 mm for NEMA14**. The table above gives enclosed lengths; the pass-through reductions are listed at the top. The enclosed variant keeps all teeth inside; every guide retains at least 13 mm from the bearing center to either end over full travel. Parts are single-piece; check your printer's build volume.
 
-Six presets remain: 40, 100 and 150 mm strokes for each motor. The viewer includes actuation, staged explosion, right-click hiding and CAD downloads. Legacy `layout=short` links load the single current model.
+Twelve presets cover 40, 100 and 150 mm strokes for each motor and enclosure. The viewer includes actuation, staged explosion, right-click hiding and CAD downloads. Legacy `layout=short` links use the current bearing layout.
 
 ## Hardware and printing
 
-Five printed parts: chassis, rack, pinion, tray and lid. Use parts from the same motor/stroke preset. Revision 23 reuses the revision 22 chassis, rack, pinion and bearing hardware. NEMA17 rack/pinion use 20° pressure angle; NEMA14 use 25°.
+Five printed parts: chassis, rack, pinion, tray and lid. Use parts from the same motor, stroke and enclosure preset. NEMA17 rack/pinion use 20° pressure angle; NEMA14 use 25°.
 
 NEMA17 defaults: 42 × 42 × 40 mm body, 31 mm mounting pitch, 18T pinion. NEMA14: 35.2 × 35.2 × 34 mm body, 26 mm pitch, 14T pinion. Both initially use module 2 and 40 mm stroke. The rear-mounted driver remains outside the case. Verify your motor's shaft, pilot and mounting dimensions.
 
@@ -57,17 +63,19 @@ Python 3.12 / CadQuery 2.7.0:
 pip install -r requirements.txt
 python build_presets.py --jobs 4
 python check_flexure_service.py --jobs 4
+python check_lid_screw_parking.py --all
 python package_designs.py
 python -m http.server 8000 --directory dist
 
-python model.py --motor nema14 --stroke 100 --out build/custom --check
+python model.py --motor nema14 --stroke 100 --enclosure pass-through --out build/custom --check
 python model.py --config configuration.json --out build/custom --check
 ```
 
-Explicit CLI options override JSON. Build caching requires a matching source hash, motor and stroke. The viewer's selectors load generated models; custom parameters export JSON/CLI and require regeneration.
+Explicit CLI options override JSON. Build caching requires a matching source hash, motor, stroke and enclosure. The viewer's selectors load generated models; custom parameters export JSON/CLI and require regeneration.
 
 | Parameter | Behavior |
 | --- | --- |
+| `--enclosure` | `enclosed` (default) or `pass-through` |
 | `--stroke` | 20–150 mm; default 40 |
 | `--tooth-module` | 1.5–2.5 mm; default 2 |
 | `--actuator-length` | Calculated minimum when omitted; maximum 2000 mm |
@@ -83,13 +91,11 @@ Default NEMA17/NEMA14 commanded increments at 200 full steps/revolution: 0.56548
 
 ## Validation
 
-Revision 23 checks all assembled pairs, enclosure insert access and support, and all changed service paths at ≤0.5 mm translation increments. New standoff material stays outside the rack, drive and flexure motion envelopes. Unchanged mechanism checks are retained from revision 22; see `rear_chassis_validation`.
+All twelve presets are regenerated and checked against revision 24 source. Reports identify retained native collision scans when only the rear-containment validation rule changed; geometry and scan code remain identical, and subsequent checks are rerun.
 
-Revision 22 rechecks output-insert fit/access/backing and valid rack geometry. An exact rack difference confines changed material to the output pad, and continuous X bounds keep the entire pad and inserts clear throughout travel and explosion. The source-bound revision 21 checks for unchanged mechanism geometry are retained; see `output_centering_validation` in each report.
+Each preset includes `validation.json`: all assembled pairs; enclosure/fastener service poses at ≤0.5 mm spacing; mechanism poses at 1% slider intervals, stage boundaries/midpoints and 0.5 mm bearing-release transitions; 41 travel positions with all six guide contacts; nominal tooth mesh; insert installation access; blind-pocket backing; valid single solids; hardware and flexure travel clearances. Bounds used to skip empty regions are checked against the solids. Lid-screw removal uses continuous swept outer envelopes. Removed lid screws park 180 mm sideways; a separate continuous motion-envelope proof keeps them clear of all later stages (`python check_lid_screw_parking.py nema17 40 pass-through`). Heat-set knurl/host interference and elastic tooth preload are recorded separately.
 
-Each preset includes `validation.json`: all assembled pairs; enclosure/fastener service poses at ≤0.5 mm spacing; mechanism poses at 1% slider intervals, stage boundaries/midpoints and 0.5 mm bearing-release transitions; 41 travel positions with all six guide contacts; nominal tooth mesh; insert installation access; blind-pocket backing; valid single solids; hardware and flexure travel clearances. Bounds used to skip empty regions are checked against the solids. Lid-screw removal uses continuous swept outer envelopes. Removed lid screws park 180 mm sideways; a separate continuous motion-envelope proof keeps them clear of all later stages (`python check_lid_screw_parking.py nema17 40`). Heat-set knurl/host interference and elastic tooth preload are recorded separately.
-
-`flexure-service-validation.json` additionally checks bearing hardware removal at ≤0.5 mm increments from 38–100% explosion. End-post clearance checks include the lower axle rising as the flexure relaxes. Housing dimensions, motor position, rear bearing location and rack endpoints are compared against the pictured revision 20 arrangement during release verification.
+`flexure-service-validation.json` additionally checks bearing hardware removal at ≤0.5 mm increments from 38–100% explosion. End-post clearance checks include the lower axle rising as the flexure relaxes. Release verification checks both housing lengths and unchanged bearing/motor positions.
 
 The thicker restored flexure needs physical fit, insertion-force, recovery and fatigue testing. Its CAD deformation is prescribed and does not establish carrier angle or a load rating. Sampled checks are not a continuous collision proof or a physical tolerance test. Use controller travel limits; no axial hard stop is provided.
 
