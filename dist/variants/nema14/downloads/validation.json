@@ -1,5 +1,6 @@
 {
-  "revision": 23,
+  "revision": 24,
+  "enclosure_variant": "enclosed",
   "output_mount": {
     "center_y_mm": 28.5,
     "rack_backbone_center_y_mm": 28.5,
@@ -191,6 +192,10 @@
       1,
       0
     ],
+    "enclosure_variant": "enclosed",
+    "rear_pass_through": false,
+    "rear_opening_yz_mm": null,
+    "maximum_rear_rack_projection_mm": 0,
     "minimum_controller_plane_separation_mm": 4.0,
     "side_mount_thread": "M3",
     "side_mounts_xz_mm": [
@@ -393,7 +398,7 @@
             1
           ],
           "interference_mm3": 13.82300767579764,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "chassis",
@@ -408,7 +413,7 @@
             1
           ],
           "interference_mm3": 13.823007675797633,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "rear chassis",
@@ -453,7 +458,7 @@
             1
           ],
           "interference_mm3": 13.823007675795246,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
@@ -468,7 +473,7 @@
             1
           ],
           "interference_mm3": 13.823007675795097,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
@@ -483,7 +488,7 @@
             1
           ],
           "interference_mm3": 13.823007675795125,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
@@ -498,7 +503,7 @@
             1
           ],
           "interference_mm3": 13.823007675795026,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
@@ -513,7 +518,7 @@
             1
           ],
           "interference_mm3": 13.823007675794926,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
@@ -528,7 +533,7 @@
             1
           ],
           "interference_mm3": 13.823007675794926,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
@@ -543,7 +548,7 @@
             1
           ],
           "interference_mm3": 13.823007675795125,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
@@ -558,7 +563,7 @@
             1
           ],
           "interference_mm3": 13.823007675795083,
-          "approach_intersection_mm3": 0
+          "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "side mount",
@@ -736,6 +741,8 @@
     5
   ],
   "chassis_release_shift_mm": 10.0,
+  "chassis_release_lift_mm": 6.0,
+  "lower_axle_service_retraction_mm": 10.0,
   "bearing_station_rule": "fixed rear station; front station follows exit",
   "station_spacing_mm": 76.0,
   "bearing_stations_x_mm": [
@@ -797,7 +804,7 @@
   "elastic_mesh_limit_mm3": 3.2507356113237456,
   "elastic_mesh_volume_mm3_range": [
     2.5136440736941905,
-    3.072912147263449
+    3.0729121472634517
   ],
   "hardware_clearance_samples": [
     {
@@ -1072,7 +1079,7 @@
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.49999999999999406,
-  "source_sha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a",
+  "source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -1083,12 +1090,12 @@
   "broadphase_coverage_checks": [
     {
       "part": "cover",
-      "boxes": 21,
+      "boxes": 19,
       "uncovered_volume_mm3": 0
     },
     {
       "part": "tray",
-      "boxes": 35,
+      "boxes": 39,
       "uncovered_volume_mm3": 0
     },
     {
@@ -1123,10 +1130,10 @@
       "maximum_intersection_mm3": 0.0
     }
   ],
-  "mechanism_explosion_samples": 147,
-  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately. Lid screw parking was subsequently extended to 180 mm and revalidated by continuous swept envelopes plus a separating Y envelope through the remaining sequence; see parking_path_revalidation. Other scan results remain unchanged. Revision 22 output-pad change validated separately by exact local geometry checks and continuous separation bounds; see output_centering_validation. Revision 23 enclosure additions and revised service sequence validated separately; see rear_chassis_validation and the fresh service report. Motor-screw extraction increased from 18 to 21 mm; every pair involving that group was rechecked at <=0.5 mm over the affected interval. See motor_screw_parking_validation.",
+  "mechanism_explosion_samples": 152,
+  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.",
   "intersection_tolerance_mm3": 0.01,
-  "explosion_samples": 2597,
+  "explosion_samples": 2922,
   "motion_samples": 41,
   "explosion_failures": [],
   "motion_failures": [],
@@ -1141,169 +1148,169 @@
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
       "b": "M3 heat-set insert output 83 24",
-      "volume_mm3": 13.823007675795012,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
       "b": "M3 heat-set insert output 83 33",
-      "volume_mm3": 13.82300767579499,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
       "b": "M3 heat-set insert output 92 24",
-      "volume_mm3": 13.823007675795012,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
       "b": "M3 heat-set insert output 92 33",
-      "volume_mm3": 13.82300767579499,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert chassis -39 -13",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.82300767579764,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert chassis 39 -13",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675797633,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert rear chassis -39 54",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795047,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert rear chassis 27 54",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795026,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert top mount -81.5 -13.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795246,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert top mount -81.5 56.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795097,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert top mount 49.5 -13.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795125,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert top mount 49.5 56.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795026,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert lid -81.5 -3.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675794926,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert lid -81.5 46.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675794926,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert lid 49.5 -3.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795125,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert lid 2 46.4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795083,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert side mount -81.5 -28",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795054,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert side mount -81.5 -4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795061,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert side mount 49.5 -28",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795026,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert side mount 49.5 -4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795061,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert front mount -11.9 -28",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795033,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert front mount -11.9 -4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795068,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert front mount 54.9 -28",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795012,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "M3 heat-set insert front mount 54.9 -4",
       "b": "05 Mounting enclosure tray",
-      "volume_mm3": 13.823007675795054,
-      "reason": "Intentional heat-set knurl/pilot interference"
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     }
   ],
   "minimum_rack_frame_gap_mm": 1.0,
@@ -1392,7 +1399,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -1570,7 +1577,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -1748,7 +1755,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -1926,7 +1933,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -2104,7 +2111,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -2282,7 +2289,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -2460,7 +2467,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -2638,7 +2645,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -2816,7 +2823,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -2994,7 +3001,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -3172,7 +3179,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -3350,7 +3357,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -3528,7 +3535,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -3706,7 +3713,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -3884,7 +3891,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -4062,7 +4069,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -4240,7 +4247,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -4418,7 +4425,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -4596,7 +4603,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          0.0
         ],
         "rotation_z_deg": 0
       },
@@ -4774,7 +4781,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -4952,7 +4959,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -5130,7 +5137,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -5308,7 +5315,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -5486,7 +5493,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -5664,7 +5671,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -5842,7 +5849,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -6020,7 +6027,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -6198,7 +6205,7 @@
         "translation": [
           0.0,
           -80.0,
-          21
+          21.0
         ],
         "rotation_z_deg": 0
       },
@@ -6324,179 +6331,9 @@
     "Viewer chassis uses exact CAD shape samples at one twelfth of the spring preload; bearing translations follow the CAD tracks continuously.",
     "Pinion is free to turn during rack insertion. Remove front and rear angled axles in sequence. Spring carrier supplies passive preload; force, creep and fatigue have not been measured. STL is unloaded; STEP is assembled and deflected."
   ],
-  "parking_path_revalidation": {
-    "prior_source_sha256": "e1bb986fe54f152a0d88aa2c954e05141962f9066d5bd6ee250c77cd2355fc29",
-    "changed_source_expressions": {
-      "'delta':[0,-120,0]": "'delta':[0,-180,0]",
-      "slot2D(120+2*r,2*r,90)": "slot2D(180+2*r,2*r,90)",
-      "translate((x,y-60,z))": "translate((x,y-90,z))",
-      "'path':'Z +35 mm, then Y -120 mm'": "'path':'Z +35 mm, then Y -180 mm'"
-    },
-    "resolved_screw_parking_intersections": 0,
-    "validation": "Only cover_screws parking changes. All other geometry, tracks, travel and checks are unchanged. The revised screw path is covered by the attached continuous swept-envelope and global motion-envelope proof, replacing sampled results involving that group.",
-    "continuous_proof": {
-      "motor": "nema14",
-      "stroke": 40,
-      "parking_distance_mm": 180,
-      "screw_sweep_checks": [
-        {
-          "part": "M3x20 recessed lid screw -81.5 -3.4",
-          "stationary_part_pairs": 60,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        },
-        {
-          "part": "M3x20 recessed lid screw -81.5 46.4",
-          "stationary_part_pairs": 60,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        },
-        {
-          "part": "M3x20 recessed lid screw 49.5 -3.4",
-          "stationary_part_pairs": 60,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        },
-        {
-          "part": "M3x20 recessed lid screw 2 46.4",
-          "stationary_part_pairs": 60,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        }
-      ],
-      "stationary_after_fraction": 0.05,
-      "parked_screws_maximum_y_mm": -130.85,
-      "all_other_parts_continuous_minimum_y_mm": -105.75,
-      "limiting_part": "M3x10 chassis screw -39.0",
-      "minimum_separating_y_gap_mm": 25.099999999999994,
-      "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing."
-    }
-  },
-  "output_centering_validation": {
-    "baseline_source_sha256": "62e113765de4502e9f5d1fd56842764e8359ed51bee91edf2fa5d1b462ae90a1",
-    "baseline_revision": 21,
-    "pad_center_y_mm": 28.5,
-    "previous_center_y_mm": 25.5,
-    "shift_y_mm": 3.0,
-    "rack_backbone_bounds_y_mm": [
-      20.5,
-      36.5
-    ],
-    "continuous_travel_x_gap_mm": 1.5,
-    "continuous_explosion_x_gap_mm": 21.5,
-    "changed_geometry_minimum_x_mm": 78.5,
-    "working_rack_end_x_mm": 78.5,
-    "rack_valid_single_solid": true,
-    "method": "Source comparison proves the pad-center expression is the sole geometry change. Exact symmetric difference confines changed rack material to the output pad. Whole-pad X envelopes, including its four inserts, are continuously separated from every other part throughout travel and all piecewise-linear explosion stages; rotating parts use full-circle bounds. Insert seating, screw access and blind-pocket backing are rechecked exactly. Unchanged mechanism checks are retained from the source-bound revision 21 reports."
-  },
-  "rear_chassis_validation": {
-    "baseline_revision": 22,
-    "baseline_source_sha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a",
-    "new_parts": [
-      "M3 heat-set insert rear chassis -39 54",
-      "M3 heat-set insert rear chassis 27 54",
-      "M3x16 rear chassis screw -39.0",
-      "M3x16 rear chassis screw 27.0"
-    ],
-    "new_material_minimum_y_mm": 49.9999999,
-    "rack_sweep_y_gap_mm": 9.999999899999999,
-    "rotating_drive_sweep_y_gap_mm": 23.591605769687128,
-    "assembled_unexpected_intersections": [],
-    "rear_standoffs": [
-      {
-        "position_xy_mm": [
-          -39.0,
-          54.0
-        ],
-        "post_top_z_mm": -3,
-        "post_diameter_mm": 8,
-        "wall_tie_width_mm": 4,
-        "insert_top_z_mm": -9,
-        "insert_recess_mm": 6,
-        "screw": "M3x16 socket",
-        "insert_engagement_mm": 5.0,
-        "minimum_insert_side_wall_mm": 1,
-        "supported_seat_fraction": 0.8222020119165293
-      },
-      {
-        "position_xy_mm": [
-          27.0,
-          54.0
-        ],
-        "post_top_z_mm": -3,
-        "post_diameter_mm": 8,
-        "wall_tie_width_mm": 4,
-        "insert_top_z_mm": -9,
-        "insert_recess_mm": 6,
-        "screw": "M3x16 socket",
-        "insert_engagement_mm": 5.0,
-        "minimum_insert_side_wall_mm": 1,
-        "supported_seat_fraction": 1.0
-      }
-    ],
-    "method": "All assembled part pairs checked. Exact enclosure difference confines added tray material to Y>=50; the cover only loses material. New solids are separated in Y from full rack/drive motion and the flexure sweep band, and the raised cover remains separated in Z from new hardware. Lid screw swept envelopes are checked separately. All part pairs involving moving groups from 38\u2013100% explosion are rechecked at <=0.5 mm increments in flexure-service-validation.json, including changed motor-screw parking, partial lower-axle withdrawal, chassis lift/slide and tray removal. Unchanged rack/drive/guide checks are retained from the source-bound baseline.",
-    "lid_screw_clearance": {
-      "source_sha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a",
-      "motor": "nema14",
-      "stroke": 40,
-      "parking_distance_mm": 180,
-      "screw_sweep_checks": [
-        {
-          "part": "M3x20 recessed lid screw -81.5 -3.4",
-          "stationary_part_pairs": 64,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        },
-        {
-          "part": "M3x20 recessed lid screw -81.5 46.4",
-          "stationary_part_pairs": 64,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        },
-        {
-          "part": "M3x20 recessed lid screw 49.5 -3.4",
-          "stationary_part_pairs": 64,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        },
-        {
-          "part": "M3x20 recessed lid screw 2 46.4",
-          "stationary_part_pairs": 64,
-          "path": "Z +35 mm, then Y -180 mm",
-          "maximum_intersection_mm3": 0.0
-        }
-      ],
-      "stationary_after_fraction": 0.05,
-      "parked_screws_maximum_y_mm": -130.85,
-      "all_other_parts_continuous_minimum_y_mm": -105.75,
-      "limiting_part": "M3x10 chassis screw -39.0",
-      "minimum_separating_y_gap_mm": 25.099999999999994,
-      "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing.",
-      "unchanged_proof_basis": {
-        "prior_source_sha256": "b61d2c6391d78b3eb06221bba80a428a86ff5ee6975bf5d2cc71f0f2b3d2e8ac",
-        "reason": "The sole edit raises removed motor screws after 60%. Assembled solids, lid extraction and all Y motion bounds used by this proof are unchanged."
-      }
-    }
-  },
-  "chassis_release_lift_mm": 6.0,
-  "lower_axle_service_retraction_mm": 10.0,
-  "motor_screw_parking_validation": {
-    "baseline_source_sha256": "b61d2c6391d78b3eb06221bba80a428a86ff5ee6975bf5d2cc71f0f2b3d2e8ac",
-    "new_source_sha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a",
-    "changed_expression": [
-      "'motor_screws':[{'start':.60,'end':.62,'delta':[0,0,18]}",
-      "'motor_screws':[{'start':.60,'end':.62,'delta':[0,0,21]}"
-    ],
-    "group": "motor_screws",
-    "interval": [
-      0.6,
-      1.0
-    ],
-    "samples": 1184,
-    "maximum_translation_increment_mm": 0.5,
-    "exact_intersections": 1078,
-    "failures": [],
-    "method": "Rechecked all pairs involving motor screws over the complete affected interval at <=0.5 mm translation increments. Only their Z extraction changes, from 18 to 21 mm; geometry, all other tracks and Y envelopes are unchanged.",
-    "superseded_motor_screw_intersections": 40
+  "validation_rule_update": {
+    "checked_source_sha256": "656335e70af9c756393131a4890c871f97b7fe4eb6d2e5b0a64fefd6a422485d",
+    "geometry_and_motion_code_unchanged": true,
+    "change": "Rear containment assertion now applies only to enclosed variant. For this enclosed model, the identical assertion and all other checks still apply."
   }
 }

@@ -3,17 +3,17 @@ Run after build_presets.py; emits a separate source-bound report per preset.
 """
 from pathlib import Path
 import argparse,concurrent.futures,hashlib,itertools,json,math,subprocess,sys
-from build_presets import PRESETS,folder_for
+from build_presets import PRESETS,ENCLOSURES,folder_for
 ROOT=Path(__file__).resolve().parent
 
-def check(motor,stroke):
+def check(motor,stroke,enclosure="enclosed"):
  source=(ROOT/'model.py').read_text();sha=hashlib.sha256(source.encode()).hexdigest()
- out=folder_for(motor,stroke);dest=out/'downloads/flexure-service-validation.json'
+ out=folder_for(motor,stroke,enclosure);dest=out/'downloads/flexure-service-validation.json'
  if dest.exists():
   old=json.loads(dest.read_text())
   if old.get('source_sha256')==sha and old.get('checker_sha256')==hashlib.sha256(Path(__file__).read_bytes()).hexdigest() and not old['failures']:
    print('Cached service paths',motor,stroke,flush=True);return
- sys.argv=['model.py','--motor',motor,'--stroke',str(stroke),'--skip-export','--out',str(out)]
+ sys.argv=['model.py','--motor',motor,'--stroke',str(stroke),'--enclosure',enclosure,'--skip-export','--out',str(out)]
  ns={'__file__':str(ROOT/'model.py'),'__name__':'cad_geometry'}
  exec(compile(source.split('\n# Clear obsolete generated meshes')[0],str(ROOT/'model.py'),'exec'),ns)
  parts=ns['parts'];tracks=ns['tracks'];offset=ns['offset'];angle=ns['angle']
@@ -45,17 +45,17 @@ def check(motor,stroke):
     relative[key]=v
    v=relative[key]
    if v>.01:fail.append({'at':round(e,8),'a':p['name'],'b':q['name'],'volume_mm3':round(v,6)})
- report={'revision':23,'motor':motor,'stroke_mm':stroke,'source_sha256':sha,'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'explosion_interval':[.38,1.],'maximum_translation_increment_mm':.5,'samples':len(times),'part_pairs':len(pairs),'exact_intersections':exact,'failures':fail,'method':'Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers angled axle extraction and parking, roller and motor removal, the chassis slide and tray withdrawal, and lower bearing hardware removal. Sampled geometry, not a continuous proof.'}
+ report={'revision':24,'enclosure_variant':enclosure,'motor':motor,'stroke_mm':stroke,'source_sha256':sha,'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'explosion_interval':[.38,1.],'maximum_translation_increment_mm':.5,'samples':len(times),'part_pairs':len(pairs),'exact_intersections':exact,'failures':fail,'method':'Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers angled axle extraction and parking, roller and motor removal, the chassis slide and tray withdrawal, and lower bearing hardware removal. Sampled geometry, not a continuous proof.'}
  dest.write_text(json.dumps(report,indent=2)+'\n')
  print('Service paths',motor,stroke,len(times),'samples;',len(fail),'failures',flush=True)
  assert not fail,fail[:8]
 
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--motor',choices=['nema17','nema14']);p.add_argument('--stroke',type=int,choices=PRESETS);p.add_argument('--jobs',type=int,default=4);a=p.parse_args()
- if a.motor and a.stroke:check(a.motor,a.stroke)
+ p=argparse.ArgumentParser();p.add_argument('--motor',choices=['nema17','nema14']);p.add_argument('--stroke',type=int,choices=PRESETS);p.add_argument('--jobs',type=int,default=4);p.add_argument('--enclosure',choices=ENCLOSURES);a=p.parse_args()
+ if a.motor and a.stroke:check(a.motor,a.stroke,a.enclosure or "enclosed")
  else:
   def run(item):
-   m,s=item
-   return subprocess.run([sys.executable,str(Path(__file__).resolve()),'--motor',m,'--stroke',str(s)],cwd=ROOT).returncode
-  with concurrent.futures.ThreadPoolExecutor(max_workers=a.jobs) as pool:results=list(pool.map(run,itertools.product(['nema17','nema14'],PRESETS)))
+   m,s,e=item
+   return subprocess.run([sys.executable,str(Path(__file__).resolve()),'--motor',m,'--stroke',str(s),'--enclosure',e],cwd=ROOT).returncode
+  with concurrent.futures.ThreadPoolExecutor(max_workers=a.jobs) as pool:results=list(pool.map(run,itertools.product(['nema17','nema14'],PRESETS,[a.enclosure] if a.enclosure else ENCLOSURES)))
   assert not any(results),'Service-path check failed'
