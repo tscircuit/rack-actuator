@@ -1,9 +1,8 @@
 {
   "motor": "nema14",
-  "layout": "standard",
   "tooth_module": 2.0,
   "stroke": 40,
-  "actuator_length": 166.0,
+  "actuator_length": 146.0,
   "motor_depth": 34.0,
   "insert_od": 4.6,
   "insert_length": 5.0,

@@ -11,7 +11,7 @@ if a.span is not None:
  stations=[-a.span/2,a.span/2]
 else:
  data=json.loads(a.report.read_text());stations=data['bearing_stations_x_mm']
-assert len(stations)==2 and stations[0]<stations[1] and abs(sum(stations))<1e-9
+assert len(stations)==2 and stations[0]<stations[1] and all(math.isfinite(x) for x in stations)
 q=math.sqrt(.5);rows=[]
 for side in [-1,1]:
  for x in stations:

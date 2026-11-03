@@ -1,18 +1,65 @@
 {
-  "revision": 20,
+  "revision": 21,
   "motor": "nema14",
   "stroke_mm": 40,
-  "layout": "standard",
-  "source_sha256": "dda1cfebc0fadcafadd5d939abf031d6406a41c8ba5a0d9be044d2cf1ab98106",
-  "checker_sha256": "3c37e073f0f4d83d94f46ba62909b3b86819926aacf8674570a15ae3cfefc0e6",
+  "source_sha256": "62e113765de4502e9f5d1fd56842764e8359ed51bee91edf2fa5d1b462ae90a1",
+  "checker_sha256": "062f779c69ba164fe6552e7f21ed318a9cf9df2e4fecd1bac9016f5877689f96",
   "explosion_interval": [
-    0.82,
+    0.38,
     1.0
   ],
   "maximum_translation_increment_mm": 0.5,
-  "samples": 564,
-  "part_pairs": 686,
-  "exact_intersections": 1176,
+  "samples": 1441,
+  "part_pairs": 1738,
+  "exact_intersections": 5570,
   "failures": [],
-  "method": "Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers lower nut/axle removal, angled nut extraction through root windows, and lower roller lift. Sampled geometry, not a continuous proof."
+  "method": "Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers angled axle extraction and parking, roller and motor removal, the chassis slide and tray withdrawal, and lower bearing hardware removal. Sampled geometry, not a continuous proof.",
+  "parking_path_revalidation": {
+    "prior_source_sha256": "e1bb986fe54f152a0d88aa2c954e05141962f9066d5bd6ee250c77cd2355fc29",
+    "changed_source_expressions": {
+      "'delta':[0,-120,0]": "'delta':[0,-180,0]",
+      "slot2D(120+2*r,2*r,90)": "slot2D(180+2*r,2*r,90)",
+      "translate((x,y-60,z))": "translate((x,y-90,z))",
+      "'path':'Z +35 mm, then Y -120 mm'": "'path':'Z +35 mm, then Y -180 mm'"
+    },
+    "resolved_screw_parking_intersections": 0,
+    "validation": "Only cover_screws parking changes. All other geometry, tracks, travel and checks are unchanged. The revised screw path is covered by the attached continuous swept-envelope and global motion-envelope proof, replacing sampled results involving that group.",
+    "continuous_proof": {
+      "motor": "nema14",
+      "stroke": 40,
+      "parking_distance_mm": 180,
+      "screw_sweep_checks": [
+        {
+          "part": "M3x20 recessed lid screw -81.5 -3.4",
+          "stationary_part_pairs": 60,
+          "path": "Z +35 mm, then Y -180 mm",
+          "maximum_intersection_mm3": 0.0
+        },
+        {
+          "part": "M3x20 recessed lid screw -81.5 46.4",
+          "stationary_part_pairs": 60,
+          "path": "Z +35 mm, then Y -180 mm",
+          "maximum_intersection_mm3": 0.0
+        },
+        {
+          "part": "M3x20 recessed lid screw 49.5 -3.4",
+          "stationary_part_pairs": 60,
+          "path": "Z +35 mm, then Y -180 mm",
+          "maximum_intersection_mm3": 0.0
+        },
+        {
+          "part": "M3x20 recessed lid screw 2 46.4",
+          "stationary_part_pairs": 60,
+          "path": "Z +35 mm, then Y -180 mm",
+          "maximum_intersection_mm3": 0.0
+        }
+      ],
+      "stationary_after_fraction": 0.05,
+      "parked_screws_maximum_y_mm": -130.85,
+      "all_other_parts_continuous_minimum_y_mm": -105.75,
+      "limiting_part": "M3x10 chassis screw -39.0",
+      "minimum_separating_y_gap_mm": 25.099999999999994,
+      "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing."
+    }
+  }
 }

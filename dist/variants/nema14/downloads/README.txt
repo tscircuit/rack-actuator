@@ -1,45 +1,40 @@
-RACK ACTUATOR — REVISION 20
+RACK ACTUATOR — REVISION 21
 CadQuery 2.7.0, dimensions in mm. See configuration.json for this preset.
 
 CHANGES / REPRINTING
-Four M3 heat-set inserts now mount the enclosure from its exit (+X) face.
-The moving output pad retains its four M3 inserts on a 9 x 9 mm pattern.
-Each lower bearing carrier now has two opposed leaves connected to fixed
-walls. Their symmetry reduces carrier pitch under centered bearing load.
-The central moving cradle is 4 mm thick; there is no stationary lower deck.
-Rounded roots sit on supported flat lands. No extra printed parts or
-spring hardware are added: five printed parts remain.
-Leaves grow with stroke: length 22 to 28 mm; thickness 2 to 2.67 mm;
-width 12 mm. Default installed deflection remains 2.3 mm. The nominal
-maximum leaf slope falls from 8.9 to 7.0 degrees (previous 14 mm leaf:
-13.8 degrees). The ideal symmetric linear model has zero carrier pitch;
-actual print tilt, stiffness, recovery, creep and fatigue are unmeasured.
-The CAD prescribes the deformed shape; it is not FEA or a load rating.
-
-Reprint chassis, tray and lid. Use the matching rack for the selected
-stroke/layout (40 mm standard and all short layouts change rack length).
-Do not mix preset parts. The existing matching motor/pinion and bearing
-hardware are reusable. NEMA17 rack/pinion: 20 degrees; NEMA14: 25 degrees.
+One arrangement replaces the former Standard/Short alternatives. The motor
+and rear bearing group stay at their pictured positions (pinion X=0,
+rear group X=-32). Only the exit group moves: centers are 13 mm behind
+the exit face; the bearing rim is 5 mm behind it. The gear is deliberately
+not centered between the two bearing groups.
+The earlier single broad flexure floor is restored, with its 14 mm free
+span and supported R1.2 wall blends. Thickness increases from 1.4 to 1.8 mm.
+Default preload remains 2.3 mm. No opposed leaves, extra spring parts or
+stationary lower deck. CAD displacement is prescribed, not a measured
+carrier angle, force, recovery, creep or fatigue rating.
+Moving the exit group requires relief around the existing axle/nut ends
+in the enclosure posts. An internal lid screw moves inboard. For service, the retained chassis and
+bearing subassembly slides 10 mm rearward before the tray lowers. Four M3
+inserts remain on the exit face, side face, top and moving output pad.
+Reprint chassis, rack, tray and lid from the same preset. The rack's axle
+head relief changes even though its overall length is preserved. Reuse
+the matching pinion, motor and bearing hardware. NEMA17 rack/pinion use
+20-degree pressure angle; NEMA14 use 25 degrees. Do not mix variants.
 
 PRESETS (MODULE 2; BOTH MOTORS)
-Stroke   Layout      Bearing span   Housing length   Rack print length
-40       Standard    84             166              181.5
-40       Short       64             146              161.5
-100      Standard    164            306              321.5
-100      Short       64             256              271.5
-150      Standard    264            456              471.5
-150      Short       64             356              371.5
+Stroke   Bearing centers X   Bearing span   Housing length   Rack print
+40       -32, 44             76             146              161.5
+100      -32, 94             126            256              271.5
+150      -32, 144            176            356              371.5
+Housing width: 90.8 mm NEMA17 / 84.8 mm NEMA14, at all three strokes.
+These lengths match the previous pictured compact housings. Width shrinks
+by 12.9..22.9 mm (NEMA17) or 16.9..28.9 mm (NEMA14) versus revision 20.
 Only 40, 100 and 150 mm presets are supplied. Maximum custom stroke: 150.
-Standard: exit bearing center 25 mm behind the front face. The other
-station mirrors it around the centered pinion. Span grows with stroke.
-Short: stations stay at X=-32/+32; the exit overhang grows with stroke.
-Short saves length but reduces leverage against rack tilt and increases
-unsupported output length. Prefer standard for larger side/moment loads;
-no load capacity is rated for either layout.
-Both layouts keep all teeth covered and maintain at least 13 mm from each
-bearing center to the guide end throughout travel. Parts are single-piece;
-select a printer that fits the actual STL. Housing length is independently
-configurable above the minimum needed for the chosen layout and stroke.
+All teeth remain enclosed. Bearing-center-to-guide-end margin is at least
+13 mm throughout travel; at full retraction the exit margin is 14.5 mm.
+Parts are single-piece; check your printer's build volume. Housing length
+can be increased independently above the minimum for the selected stroke.
+Physical fit, side-load and fatigue testing are required for the revision.
 
 INSERTS / ENCLOSURE HARDWARE
 M3 inserts: default 4.6 mm OD x 5 mm long; printed pilot diameter 4.2 mm,
@@ -101,14 +96,14 @@ There is no axial hard stop or downward flexure stop; use controller limits.
 PRINT / ASSEMBLE
 Tray: outer floor down. Lid: roof down. Rack: tooth face down, output pad
 on the same plane. Pinion: gear face down. Keep tooth relief cuts clear.
-New chassis: orient X normal to the bed so the YZ leaf length/bending plane
+Chassis: orient Y normal to the bed so the XZ leaf length/bending plane
 lies within the layers. Use local supports where required at passages;
-remove them without damaging leaf roots or blocking service windows.
+remove them without damaging the supported floor blends.
 Chassis STL is RELAXED. STEP and viewer show installed spring deflection.
 Install front and side inserts from outside, 0.3 mm recessed. Install the
 four output inserts from Z=21 before inserting the rack. Install vertical
 tray inserts before chassis/lid. Use heat, not cold interference forcing.
-Assemble lower bearing hardware through the root service windows. Seat
+Assemble the lower bearing hardware on the single-floor seats. Seat
 chassis and install M3x10 screws. Install motor/screws BEFORE upper rollers
 and axles. Fit pinion and set screw. Insert rack from the output side,
 square insertion end first, with motor free to turn; support spring seats
@@ -117,15 +112,15 @@ Fit lid over top mounting posts and install M3x20 screws. Attach load and
 mounting fixture last. Test low-speed full travel before applying load.
 
 SERVICE (REMOVE EXTERNAL FIXTURES AND LOAD FIRST)
-Remove/park lid screws, lift lid and rear chassis clamps. Withdraw rack;
+Remove/park lid screws 180 mm sideways; lift lid and rear chassis clamps. Withdraw rack;
 leaves relax. Remove set screw, lift/clear pinion. Withdraw front angled
-axles, then rear axles; lift upper rollers. Remove motor screws and lower
-motor/driver. Remove/park chassis screws; lower tray with installed inserts.
-Remove lower nuts through rear root windows, then park them outward in X.
-Withdraw lower axles through front windows until fully clear, then park
-outward in X. Angled nuts first move 12 mm along their axes, then 45 mm
-in Y through the root windows. Finally lift lower rollers. Reverse to
-assemble. The animation shows clearance paths, not gravity/workholding.
+axles, lift them another 20 mm and park; repeat for rear axles. Lift upper
+rollers. Remove motor screws and lower motor/driver. Remove/park chassis screws; slide the chassis and remaining bearings
+10 mm rearward to clear the end posts, then lower the tray with its inserts.
+Remove lower nuts rearward, withdraw lower axles forward, then park the
+axles outward in X. Remove angled nuts down along their axes and lift
+lower rollers. Reverse to assemble. The animation shows clearance paths,
+not gravity/workholding.
 
 RESOLUTION (200 FULL STEPS/REV, MODULE 2)
 Setting       NEMA17 mm/command       NEMA14 mm/command
@@ -134,21 +129,22 @@ Half             0.282743                0.219911
 1/4              0.141372                0.109956
 1/8              0.070686                0.054978
 1/16             0.035343                0.027489
-Stroke/layout do not change drive ratio. These are commanded increments,
+Stroke does not change drive ratio. These are commanded increments,
 not measured accuracy. Match your motor's actual full-step angle.
 
 SOURCE / CHECKS
 pip install -r requirements.txt
 python model.py --config configuration.json --out build/custom --check
-python model.py --motor nema14 --stroke 100 --layout short --out build/custom --check
+python model.py --motor nema14 --stroke 100 --out build/custom --check
 python build_presets.py --jobs 4
 python check_flexure_service.py --jobs 4
 python package_designs.py
-CLI options override JSON. Stroke 20..150; layout standard|short;
+CLI options override JSON. Stroke 20..150;
 tooth module 1.5..2.5; housing length calculated minimum..2000;
 motor depth 32..60; insert defaults OD4.6 / length5 / pilot4.2.
-Default leaf length: 22 + 6*max(0,(stroke-40)/110).
-Default thickness: 2*(leaf_length/22)^1.2, override --spring-thickness 1.6..3.2.
+Restored free flexure span: 14 mm. Thickness: 1.8 mm by default;
+--spring-thickness accepts 1.6..2.2 mm. Thicker floors increase required
+insertion force and need testing in the selected print material.
 --spring-preload 2.3 --bearing-clearance .8 --hardware-clearance .5
 --rack-backbone-width 16 --preload .10
 Each preset has a sampled collision report, including all six contacts at
@@ -158,11 +154,9 @@ bearing-release transitions. Nominal tooth mesh is checked separately.
 Intentional elastic tooth contact and heat-set/host overlap are recorded.
 Insert approaches on all three axes, blind-pocket backing, single-solid
 validity, guide/hardware gaps and flexure travel clearance are checked.
-flexure-service-validation.json additionally checks changed root-window
-hardware paths at <=0.5 mm increments from 82..100% explosion.
-The symmetric beam proxy predicts zero carrier pitch under centered load;
-max leaf slope, stiffness per material modulus and estimated strain are
-reported. These are ideal small-deflection estimates, not physical ratings.
+flexure-service-validation.json additionally checks bearing hardware
+removal at <=0.5 mm increments from 38..100% explosion. Local enclosure
+reliefs cover the lower axle rise as the rack leaves the flexure.
 Recheck custom parameters. Print-test fit, side load, sag and fatigue.
 Large standalone STEP files use gzip; ZIP bundles contain ordinary STEP.
 Inspiration: https://github.com/seveibar/compliant-spur-gear

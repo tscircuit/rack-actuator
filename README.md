@@ -2,45 +2,44 @@
 
 CadQuery NEMA17/NEMA14 actuators with compliant rack teeth, six 625ZZ bearings and a printed enclosure.
 
-[Viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [Short NEMA14 / 100 mm](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14&stroke=100&layout=short)
+[Viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [NEMA14 / 150 mm](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14&stroke=150)
 
-## Revision 20
+## Revision 21
 
-- Four M3 heat-set inserts on the enclosure's exit face, carried by reinforced columns inside the tray. Front, side and output inserts are recessed 0.3 mm; top inserts are flush.
-- Two opposed flexure leaves per lower bearing carrier reduce pitch under centered load. Each leaf is 12 mm wide, with supported rounded roots. Length grows from 22 to 28 mm and thickness from 2 to 2.67 mm over the 40–150 mm stroke range. The moving cradle is 4 mm thick; no stationary deck or extra spring parts are added.
-- Default preload remains 2.3 mm. Maximum nominal leaf slope is 8.9° at 40 mm and 7.0° at 150 mm, versus 13.8° for the previous 14 mm leaf. The symmetric linear beam proxy predicts zero carrier pitch under centered load; this is an ideal estimate, not a measured print result or FEA.
-- **Standard** keeps the exit bearing center 25 mm behind the front face, with the pinion midway between the two stations. **Short** keeps the stations at X=±32 mm, reducing housing length while retaining full tooth coverage. It has more unsupported output length and less leverage against tilt.
-- Only **40, 100 and 150 mm** stroke presets remain, for both motors and both layouts: 12 models with actuation, staged explosion, right-click hiding, STEP/STL downloads and collision reports.
+One arrangement replaces the Standard/Short alternatives. The motor and rear bearing group stay where shown in the reference image: pinion at X=0, rear group at X=−32 mm. The exit group moves forward, with its centers **13 mm behind the opening** and its bearing rims 5 mm behind the face. The pinion is deliberately offset toward the rear group.
 
-| Stroke | Layout | Bearing span | Housing length | Rack print length |
+The earlier **single broad flexure floor** is restored, with its 14 mm free span and supported R1.2 wall blends. Thickness increases from **1.4 to 1.8 mm**; preload remains 2.3 mm. There is no stationary lower deck and no additional spring hardware. The narrower support allows a smaller enclosure. Local reliefs clear the existing axle/nut ends from the enclosure posts, and an internal lid fastener moves inboard. During service, each extracted angled axle lifts 20 mm before parking sideways; the retained chassis/bearing subassembly slides 10 mm rearward before the tray is lowered.
+
+| Stroke | Bearing centers X | Bearing span | Housing length | Rack print length |
 | --- | --- | --- | --- | --- |
-| 40 mm | Standard | 84 mm | 166 mm | 181.5 mm |
-| 40 mm | Short | 64 mm | 146 mm | 161.5 mm |
-| 100 mm | Standard | 164 mm | 306 mm | 321.5 mm |
-| 100 mm | Short | 64 mm | 256 mm | 271.5 mm |
-| 150 mm | Standard | 264 mm | 456 mm | 471.5 mm |
-| 150 mm | Short | 64 mm | 356 mm | 371.5 mm |
+| 40 mm | −32, 44 mm | 76 mm | 146 mm | 161.5 mm |
+| 100 mm | −32, 94 mm | 126 mm | 256 mm | 271.5 mm |
+| 150 mm | −32, 144 mm | 176 mm | 356 mm | 371.5 mm |
 
-Module 2 dimensions apply to both motors. Each guide retains at least 13 mm from the bearing center to either end throughout travel. Parts are single-piece; check your printer's build volume. Housing length can be increased independently. Standard is preferable for larger side/moment loads, but neither layout has a rated load capacity.
+At module 2, housing width is **90.8 mm for NEMA17** and **84.8 mm for NEMA14**. Lengths match the former pictured compact housings; widths shrink by 12.9–22.9 mm and 16.9–28.9 mm respectively, depending on stroke. All teeth remain enclosed, and every guide retains at least 13 mm from the bearing center to either end over full travel. Parts are single-piece; check your printer's build volume.
 
-NEMA17 defaults: 42 × 42 × 40 mm body, 31 mm mounting pitch, 18T / 20° pinion. NEMA14: 35.2 × 35.2 × 34 mm body, 26 mm pitch, 14T / 25° pinion. Both initially use module 2 and 40 mm stroke. The rear-mounted driver remains outside the case. Verify your motor's shaft, pilot and mounting dimensions.
+Six presets remain: 40, 100 and 150 mm strokes for each motor. The viewer includes actuation, staged explosion, right-click hiding and CAD downloads. Legacy `layout=short` links load the single current model.
 
-## Hardware and mounting
+## Hardware and printing
 
-Five printed parts: chassis, rack, pinion, tray and lid. **Reprint chassis, tray and lid**, and use the matching rack for the selected layout/stroke. The 40 mm standard and all short layouts change rack length. Matching pinion, motor and bearing hardware remain reusable. Do not mix preset components or NEMA14/NEMA17 rack and pinion profiles.
+Five printed parts: chassis, rack, pinion, tray and lid. **Reprint chassis, rack, tray and lid** from the same preset. The rack's bolt-head relief changes even though overall rack length is preserved. Reuse the matching pinion, motor and bearing hardware. NEMA17 rack/pinion use 20° pressure angle; NEMA14 use 25°.
 
-M3 inserts default to 4.6 mm OD × 5 mm long, with a 4.2 mm printed pilot. Each preset's `bill-of-materials.json` gives quantities, including four inserts each for front, side, top and moving output mounts, plus chassis and lid fasteners. Enclosure screws are M3×20 socket for the lid and M3×10 socket for the chassis. Bearing hardware remains four M5×16 upper axles, two M5×25 lower axles, six thin M5 nuts and six inner-race washers.
+NEMA17 defaults: 42 × 42 × 40 mm body, 31 mm mounting pitch, 18T pinion. NEMA14: 35.2 × 35.2 × 34 mm body, 26 mm pitch, 14T pinion. Both initially use module 2 and 40 mm stroke. The rear-mounted driver remains outside the case. Verify your motor's shaft, pilot and mounting dimensions.
 
-| Face | Four-insert pattern | Insert position |
+M3 inserts default to 4.6 mm OD × 5 mm long, with a 4.2 mm printed pilot. Each preset's `bill-of-materials.json` gives quantities. Four inserts remain on each mounting face:
+
+| Face | Pattern | Insert position |
 | --- | --- | --- |
 | Front / exit (+X) | Housing width − 18 mm by motor depth − 10 mm | 0.3 mm recessed |
 | Side (+Y) | Housing length − 15 mm by motor depth − 10 mm | 0.3 mm recessed |
 | Top (+Z) | Housing length − 15 mm by housing width − 15 mm | Flush, full-height tray posts |
 | Moving output (+Z) | 9 × 9 mm in an 18 × 18 mm pad | 0.3 mm recessed |
 
-Use 3–5 mm screw engagement: 3.3–5.3 mm penetration from recessed mounting faces, or 3–5 mm from the top face. Front and side blind pockets retain 2 mm backing. A front fixture must clear the full output pad at retraction: at module 2, provide a minimum opening Y=15.5…41 and Z=−10…22 in CAD coordinates (25.5 × 32 mm). Exact coordinates and configuration-specific opening bounds are in the report and STEP. Detach external fixtures and load before full service.
+Use 3–5 mm screw engagement: 3.3–5.3 mm penetration from recessed faces, or 3–5 mm from the top face. A front fixture must clear the full output pad at retraction: at module 2, the minimum opening spans Y=15.5…41 and Z=−10…22 in CAD coordinates. Mounting coordinates change with the narrower housing; use the new STEP/report. Remove external fixtures and load before full service.
 
-Print the chassis with X normal to the bed so flexure bending in the YZ plane lies within the layers; remove local supports carefully. STL chassis is relaxed; STEP/viewer show installed deflection. Print tray floor-down, lid roof-down, rack tooth-face down and pinion gear-face down. See [printing and assembly instructions](README.txt) for insert installation, service-window paths and full hardware details.
+Enclosure screws are M3×20 socket for the lid and M3×10 socket for the chassis. Bearing hardware remains four M5×16 upper axles, two M5×25 lower axles, six thin M5 nuts and six inner-race washers. Clamp only the bearing inner races.
+
+Print the chassis with **Y normal to the bed**, keeping flexure bending in the XZ plane within the layers. STL chassis is relaxed; STEP/viewer show installed deflection. Print tray floor-down, lid roof-down, rack tooth-face down and pinion gear-face down. See [printing and assembly instructions](README.txt) for insert installation and the service sequence.
 
 ## Generate CAD
 
@@ -53,37 +52,34 @@ python check_flexure_service.py --jobs 4
 python package_designs.py
 python -m http.server 8000 --directory dist
 
-python model.py --motor nema14 --stroke 100 --layout short --out build/custom --check
+python model.py --motor nema14 --stroke 100 --out build/custom --check
 python model.py --config configuration.json --out build/custom --check
 ```
 
-Explicit CLI options override JSON. Build caching requires matching source hash, motor, stroke and layout. The viewer's selectors load generated models; custom parameters export JSON/CLI and require regeneration.
+Explicit CLI options override JSON. Build caching requires a matching source hash, motor and stroke. The viewer's selectors load generated models; custom parameters export JSON/CLI and require regeneration.
 
 | Parameter | Behavior |
 | --- | --- |
 | `--stroke` | 20–150 mm; default 40 |
-| `--layout` | `standard` (default) or `short` |
 | `--tooth-module` | 1.5–2.5 mm; default 2 |
 | `--actuator-length` | Calculated minimum when omitted; maximum 2000 mm |
 | `--motor-depth` | 32–60 mm; defaults 40 / 34 |
 | `--insert-od`, `--insert-length`, `--insert-pilot` | Defaults 4.6 / 5 / 4.2 mm |
 | `--spring-preload` | Default 2.3 mm; range 0.1–2.5 |
-| `--spring-thickness` | Automatic: `2*(leaf_length/22)^1.2`; override 1.6–3.2 mm |
+| `--spring-thickness` | Default 1.8 mm; range 1.6–2.2 |
 | `--bearing-clearance`, `--hardware-clearance` | Defaults 0.8 / 0.5 mm |
 | `--rack-backbone-width` | Default 16 mm minimum |
 | `--preload` | Tooth oversize per flank, default 0.10 mm |
 
-Leaf length is `22 + 6*max(0,(stroke-40)/110)` mm. The length/thickness scaling increases the ideal vertical stiffness per material modulus while reducing leaf angle and nominal bending strain.
-
-Default NEMA17/NEMA14 commanded increments at 200 full steps/revolution: 0.565487 / 0.439823 mm per full step and 0.035343 / 0.027489 mm at 1/16. Stroke and layout do not change the drive ratio. These increments are not measured positioning accuracy.
+Default NEMA17/NEMA14 commanded increments at 200 full steps/revolution: 0.565487 / 0.439823 mm per full step and 0.035343 / 0.027489 mm at 1/16. Stroke does not change the drive ratio. These are command increments, not measured positioning accuracy.
 
 ## Validation
 
-Each preset includes `validation.json`: all assembled pairs; enclosure/fastener service poses at ≤0.5 mm spacing; mechanism poses at 1% slider intervals, stage boundaries/midpoints and 0.5 mm bearing-release transitions; 41 travel positions with all six guide contacts; nominal tooth mesh; insert installation access on all three axes; blind-pocket backing; valid single solids; hardware and flexure travel clearances. Bounds used to skip empty regions are verified against the exact solids. Lid-screw removal uses continuous swept outer envelopes. Heat-set knurl/host interference and elastic tooth preload are recorded separately.
+Each preset includes `validation.json`: all assembled pairs; enclosure/fastener service poses at ≤0.5 mm spacing; mechanism poses at 1% slider intervals, stage boundaries/midpoints and 0.5 mm bearing-release transitions; 41 travel positions with all six guide contacts; nominal tooth mesh; insert installation access; blind-pocket backing; valid single solids; hardware and flexure travel clearances. Bounds used to skip empty regions are checked against the solids. Lid-screw removal uses continuous swept outer envelopes. Removed lid screws park 180 mm sideways; a separate continuous motion-envelope proof keeps them clear of all later stages (`python check_lid_screw_parking.py nema17 40`). Heat-set knurl/host interference and elastic tooth preload are recorded separately.
 
-`flexure-service-validation.json` additionally checks every changed root-window hardware path at ≤0.5 mm increments from 82–100% explosion.
+`flexure-service-validation.json` additionally checks bearing hardware removal at ≤0.5 mm increments from 38–100% explosion. End-post clearance checks include the lower axle rising as the flexure relaxes. Housing dimensions, motor position, rear bearing location and rack endpoints are compared against the pictured revision 20 arrangement during release verification.
 
-The flexure report includes nominal leaf slope, estimated strain and ideal stiffness per material modulus. Symmetry cancels translation/pitch coupling under centered load in the linear proxy. Printed tolerances, load eccentricity and creep can still cause tilt. Physical fit, side-load, recovery and fatigue testing remain necessary; CAD sampling is not continuous collision proof or a load rating. Use controller travel limits; no axial hard stop is provided.
+The thicker restored flexure needs physical fit, insertion-force, recovery and fatigue testing. Its CAD deformation is prescribed and does not establish carrier angle or a load rating. Sampled checks are not a continuous collision proof or a physical tolerance test. Use controller travel limits; no axial hard stop is provided.
 
 ## License
 
