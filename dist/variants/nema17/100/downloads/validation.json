@@ -1,5 +1,5 @@
 {
-  "revision": 17,
+  "revision": 18,
   "tooth_module_mm": 2.0,
   "tooth_pitch_mm": 6.283185307179586,
   "actuator_length_mm": 306.0,
@@ -40,30 +40,72 @@
       104.6
     ],
     "tooth_concealment_pass": true,
-    "mounting_slots_xz_mm": [
-      [
-        -183.0,
-        -35.0
-      ],
-      [
-        -183.0,
-        -12.0
-      ],
-      [
-        91,
-        -35.0
-      ],
-      [
-        91,
-        -12.0
-      ]
-    ],
     "mounting_face_normal": [
       0,
       1,
       0
     ],
     "minimum_controller_plane_separation_mm": 4.0,
+    "side_mount_thread": "M3",
+    "side_mounts_xz_mm": [
+      [
+        -191.5,
+        -34.0
+      ],
+      [
+        -191.5,
+        -4.0
+      ],
+      [
+        99.5,
+        -34.0
+      ],
+      [
+        99.5,
+        -4.0
+      ]
+    ],
+    "side_mount_plane_y_mm": 63.9,
+    "side_mount_insert_recess_mm": 0.3,
+    "side_mount_engagement_mm": [
+      3,
+      5.0
+    ],
+    "side_mount_flush": true,
+    "side_mount_checks": [
+      {
+        "position_xz_mm": [
+          -191.5,
+          -34.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_xz_mm": [
+          -191.5,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_xz_mm": [
+          99.5,
+          -34.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_xz_mm": [
+          99.5,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      }
+    ],
     "top_mount_thread": "M3",
     "top_mounts_xy_mm": [
       [
@@ -97,7 +139,7 @@
       "outer_diameter_mm": 4.6,
       "length_mm": 5.0,
       "printed_pilot_diameter_mm": 4.2,
-      "count": 14,
+      "count": 18,
       "checks": [
         {
           "purpose": "chassis",
@@ -105,6 +147,11 @@
             -89.0,
             -13,
             -3
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
           ],
           "interference_mm3": 13.823007675791338,
           "approach_intersection_mm3": 0.0
@@ -116,6 +163,11 @@
             -13,
             -3
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.823007675793406,
           "approach_intersection_mm3": 0.0
         },
@@ -125,6 +177,11 @@
             30.0,
             -13,
             -3
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
           ],
           "interference_mm3": 13.823007675795978,
           "approach_intersection_mm3": 0.0
@@ -136,6 +193,11 @@
             -13,
             -3
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.823007675791352,
           "approach_intersection_mm3": 0.0
         },
@@ -145,6 +207,11 @@
             -191.5,
             -19.4,
             24.9
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
           ],
           "interference_mm3": 13.823007675795154,
           "approach_intersection_mm3": 0.0
@@ -156,6 +223,11 @@
             56.4,
             24.9
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.823007675795147,
           "approach_intersection_mm3": 0.0
         },
@@ -166,6 +238,11 @@
             -19.4,
             24.9
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.823007675795083,
           "approach_intersection_mm3": 0.0
         },
@@ -175,6 +252,11 @@
             99.5,
             56.4,
             24.9
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
           ],
           "interference_mm3": 13.823007675795068,
           "approach_intersection_mm3": 0.0
@@ -186,6 +268,11 @@
             -9.399999999999999,
             7.0
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.823007675795473,
           "approach_intersection_mm3": 0.0
         },
@@ -195,6 +282,11 @@
             -191.5,
             46.4,
             7.0
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
           ],
           "interference_mm3": 13.823007675795466,
           "approach_intersection_mm3": 0.0
@@ -206,6 +298,11 @@
             -9.399999999999999,
             7.0
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.823007675794933,
           "approach_intersection_mm3": 0.0
         },
@@ -215,6 +312,11 @@
             99.5,
             46.4,
             7.0
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
           ],
           "interference_mm3": 13.82300767579492,
           "approach_intersection_mm3": 0.0
@@ -226,6 +328,11 @@
             -19.4,
             7.0
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.823007675795083,
           "approach_intersection_mm3": 0.0
         },
@@ -236,8 +343,73 @@
             56.4,
             7.0
           ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
           "interference_mm3": 13.82300767579509,
           "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            -191.5,
+            63.6,
+            -34.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            -191.5,
+            63.6,
+            -4.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            99.5,
+            63.6,
+            -34.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            99.5,
+            63.6,
+            -4.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
         }
       ]
     }
@@ -642,7 +814,7 @@
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.49999999999999273,
-  "source_sha256": "30a0504aa0185f696d0bcee3354e1d19e06e241e73e831a0cba3b9c09afa6cd7",
+  "source_sha256": "2b72da592655ce627c01d5471b9b1d2a7e661ca4f78a506e979b693ae9fc8875",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -658,7 +830,7 @@
     },
     {
       "part": "tray",
-      "boxes": 43,
+      "boxes": 41,
       "uncovered_volume_mm3": 0
     },
     {
@@ -670,37 +842,37 @@
   "lid_screw_swept_envelope_checks": [
     {
       "part": "M3x20 recessed lid screw -191.5 -9.4",
-      "stationary_part_pairs": 54,
+      "stationary_part_pairs": 58,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -191.5 46.4",
-      "stationary_part_pairs": 54,
+      "stationary_part_pairs": 58,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 99.5 -9.4",
-      "stationary_part_pairs": 54,
+      "stationary_part_pairs": 58,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 99.5 46.4",
-      "stationary_part_pairs": 54,
+      "stationary_part_pairs": 58,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -114 -19.4",
-      "stationary_part_pairs": 54,
+      "stationary_part_pairs": 58,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw -114 56.4",
-      "stationary_part_pairs": 54,
+      "stationary_part_pairs": 58,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     }
@@ -813,6 +985,34 @@
     {
       "phase": "assembled",
       "a": "M3 heat-set insert lid -114 56.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount -191.5 -34",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount -191.5 -4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount 99.5 -34",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount 99.5 -4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"

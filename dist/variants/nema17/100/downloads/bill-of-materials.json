@@ -10,7 +10,7 @@
   ],
   "heat_set_inserts": {
     "thread": "M3",
-    "quantity": 14,
+    "quantity": 18,
     "outer_diameter_mm": 4.6,
     "length_mm": 5.0,
     "pilot_diameter_mm": 4.2
@@ -36,5 +36,32 @@
   "motor_screws": "4 x M3x12 countersunk",
   "pinion_set_screw": "M3x4 flat point",
   "top_mounting": "4 x application-length M3 screws; 3\u20135 mm insert engagement",
-  "side_mounting": "4 x application-length M4 fasteners through slots"
+  "side_mounting": {
+    "thread": "M3",
+    "quantity": 4,
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "maximum_screw_penetration_from_side_face_mm": 5.3,
+    "pattern_xz_mm": [
+      [
+        -191.5,
+        -34.0
+      ],
+      [
+        -191.5,
+        -4.0
+      ],
+      [
+        99.5,
+        -34.0
+      ],
+      [
+        99.5,
+        -4.0
+      ]
+    ]
+  }
 }

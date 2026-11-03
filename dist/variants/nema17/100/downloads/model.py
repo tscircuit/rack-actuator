@@ -1,4 +1,4 @@
-"""FLEX revision 17: exit-supported rack, stroke-dependent bearing spacing and centered drive.
+"""FLEX revision 18: flush M3 heat-set side mounting on the exit-supported enclosure.
 CadQuery 2.7, millimetres. python model.py --stroke 40 --preload .10 --check
 """
 import cadquery as cq
@@ -55,7 +55,9 @@ for i in range(1,math.ceil(CASE_LENGTH/120)):
 INSERT_OD=a.insert_od;INSERT_LENGTH=a.insert_length;INSERT_PILOT=a.insert_pilot
 assert 4.3<=INSERT_OD<=5 and 4<=INSERT_LENGTH<=5.5 and 3.8<=INSERT_PILOT<INSERT_OD
 INSERTS=[]
-CASE_MOUNTS=[(x,z) for x in [CASE_LEFT+16,max(36,CASE_RIGHT-16)] for z in [CASE_BOTTOM+9,-12.]]
+SIDE_INSERT_RECESS=.3
+SIDE_BOSS_DEPTH=INSERT_LENGTH+SIDE_INSERT_RECESS+.4+2.
+CASE_MOUNTS=[(x,z) for x in [CASE_LEFT+7.5,CASE_RIGHT-7.5] for z in [CASE_BOTTOM+10,-4.]]
 BEARING_GAP=a.bearing_clearance;HARDWARE_GAP=a.hardware_clearance;POCKET_R=8+BEARING_GAP
 BODY_FRONT=2.5+BEARING_GAP;CHASSIS_FRONT=-17 if IS14 else -23
 GEAR_NAME=f'03 Involute pinion {N}T'
@@ -341,7 +343,7 @@ def heat_insert(shape,x,y,top,purpose):
  name=f'M3 heat-set insert {purpose} {x:g} {y:g}'
  add(name,insert,'#d4a54a','tray')
  parts[-1]['embedded_host']='05 Mounting enclosure tray'
- INSERTS.append(dict(name=name,x=x,y=y,top=top,purpose=purpose))
+ INSERTS.append(dict(name=name,position=[x,y,top],axis=[0,0,1],purpose=purpose))
  return shape
 # M3 chassis fasteners replace enclosure nuts. Bearing through-bolts remain M5.
 for x in MOUNT_XS:
@@ -392,14 +394,18 @@ tray=tray.cut(rect_cut(-3,3,CASE_YMIN-1,CASE_YMIN+CASE_WALL+1,3.5,CASE_SPLIT+1))
 # Ventilate the front motor wall while leaving the rear driver exposed.
 for z in [CASE_BOTTOM+10,CASE_BOTTOM+17,CASE_BOTTOM+24]:
  if z<-9:tray=tray.cut(rect_cut(-10,10,CASE_YMIN-1,CASE_YMIN+CASE_WALL+1,z-1,z+1))
-# Flat side-mount pads and four M4 slots, parallel to the motor axis. The mounting
-# surface stays clear of the rear driver, and the lid can be removed while mounted.
+# Reinforcement stays inside the flat side wall. Floor-connected columns print
+# upward without a projecting ledge and join the existing corner-post structure.
+for x in [CASE_LEFT+7.5,CASE_RIGHT-7.5]:
+ tray=tray.fuse(rect_cut(x-5,x+5,CASE_YMAX-SIDE_BOSS_DEPTH,CASE_YMAX,CASE_BOTTOM,1.))
 for x,z in CASE_MOUNTS:
- tray=tray.fuse(rect_cut(x-7,x+7,CASE_YMAX-3,CASE_YMAX+3,z-6,z+6))
- slot=cq.Workplane('XZ').slot2D(8,4.5).extrude(16).translate((x,CASE_YMAX+4,z)).val()
- # XZ normal points -Y. Through slot and accessible interior head/tool clearance.
- tray=tray.cut(slot)
- tray=tray.cut(ycyl(4.3,9,x,CASE_YMAX-12,z))
+ face=CASE_YMAX-SIDE_INSERT_RECESS
+ tray=tray.cut(ycyl(INSERT_PILOT/2,INSERT_LENGTH+.4+SIDE_INSERT_RECESS+.1,x,face-INSERT_LENGTH-.4,z))
+ tray=tray.cut(ycyl(INSERT_OD/2+.1,SIDE_INSERT_RECESS+.1,x,face,z))
+ insert=ycyl(INSERT_OD/2,INSERT_LENGTH,x,face-INSERT_LENGTH,z).cut(ycyl(1.6,INSERT_LENGTH,x,face-INSERT_LENGTH,z))
+ name=f'M3 heat-set insert side mount {x:g} {z:g}'
+ add(name,insert,'#d4a54a','tray');parts[-1]['embedded_host']='05 Mounting enclosure tray'
+ INSERTS.append(dict(name=name,position=[x,face,z],axis=[0,1,0],purpose='side mount'))
 tray=tray.clean();cover=cover.clean()
 add('05 Mounting enclosure tray',tray,'#314959','tray',True)
 add('06 Removable enclosure cover',cover,'#d4dee5','cover',True)
@@ -431,7 +437,7 @@ tray_boxes += [bounds_box(x-5,x+5,y-5,y+5,CASE_BOTTOM,CASE_TOP) for x,y in CASE_
 tray_boxes += [bounds_box(x-4.5,x+4.5,y-4.5,y+4.5,CASE_BOTTOM,CASE_SPLIT) for x,y in COVER_SEATS]
 for x in MOUNT_XS:
  tray_boxes.extend([bounds_box(x-6,x+6,-19,-7,CASE_BOTTOM,-3),bounds_box(x-2,x+2,CASE_YMIN,-13,CASE_BOTTOM,-3)])
-tray_boxes += [bounds_box(x-7,x+7,CASE_YMAX-3,CASE_YMAX+3,z-6,z+6) for x,z in CASE_MOUNTS]+tray_webs
+tray_boxes += [bounds_box(x-5,x+5,CASE_YMAX-SIDE_BOSS_DEPTH,CASE_YMAX,CASE_BOTTOM,1.) for x in [CASE_LEFT+7.5,CASE_RIGHT-7.5]]+tray_webs
 
 
 # Clear obsolete generated meshes rather than leave old-bearing parts in the bundle.
@@ -439,7 +445,7 @@ if not a.skip_export:
  expected={p['name'].replace(' ','_')+'.stl' for p in parts if p['printed']}
  for f in (out/'downloads').glob('*.stl'):
   if f.name not in expected:f.unlink()
- scene=[];assembly=cq.Assembly(name=LABEL+'_R16')
+ scene=[];assembly=cq.Assembly(name=LABEL+'_R18')
  for p in parts:
   s=p['shape'];vs,ts=s.tessellate(.06,.12)
   scene.append({k:p[k] for k in ['name','color','group','printed']}|{k:p[k] for k in ['spinAxis','spinCenter','spinSign','flex_chassis','embedded_host'] if k in p}|{'vertices':[[round(v.x,5),round(v.y,5),round(v.z,5)] for v in vs],'triangles':ts})
@@ -448,7 +454,7 @@ if not a.skip_export:
  assembly.save(str(out/'downloads'/(LABEL+'.step')))
  bounds=[p['shape'].BoundingBox() for p in parts]
  envelope=[max(getattr(b,k+'max') for b in bounds)-min(getattr(b,k+'min') for b in bounds) for k in ['x','y','z']]
- data={'geometrySourceSha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_text().split('\n# Clear obsolete generated meshes')[0].encode()).hexdigest(),'revision':17,'envelope':envelope,'motor':MOTOR_NAME,'motorSize':MOTOR_SIZE,'motorPitch':MOTOR_PITCH,'motorDepth':MOTOR_DEPTH,'rotationPivot':list(PIVOT),'pinionTeeth':N,'pressureAngle':PRESSURE_ANGLE,'withdrawal':WITHDRAW,'bearingClearance':BEARING_GAP,'hardwareClearance':HARDWARE_GAP,'chassisFootprint':[CHASSIS_WIDTH,58-CHASSIS_FRONT],'stroke':a.stroke,'rackLength':right-left,'rackLeft':left,'rackRight':right,'rackWithdrawalStart':.10,'rackWithdrawalEnd':.28,'toothModule':MODULE,'toothPitch':pitch,'actuatorLength':CASE_LENGTH,'minimumActuatorLength':MIN_CASE_LENGTH,'caseBounds':[CASE_LEFT,CASE_RIGHT,CASE_YMIN,CASE_YMAX,CASE_BOTTOM,CASE_TOP],'caseMounts':CASE_MOUNTS,'topMounts':CASE_CORNERS,'topMountZ':CASE_TOP,'coverScrewCount':len(COVER_SEATS),'insertCount':len(INSERTS),'insertOD':INSERT_OD,'insertLength':INSERT_LENGTH,'insertPilot':INSERT_PILOT,'motorRearZ':-8-MOTOR_DEPTH,'driverOpening':[MOTOR_SIZE+2,MOTOR_SIZE+2],'toothTravelRight':TOOTH_XMAX+a.stroke/2,'rackBackboneWidth':a.rack_backbone_width,'headReliefEndX':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solidRackEndLength':right-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'squareInsertionEnd':True,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'stationSpacing':2*STATION_HALF,'stationXs':STATIONS,'exitBearingOffset':CASE_RIGHT-STATION_HALF,'chassisScrewCount':len(MOUNT_XS),'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springTravelCheck':SPRING_CHECK_TRAVEL,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
+ data={'geometrySourceSha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_text().split('\n# Clear obsolete generated meshes')[0].encode()).hexdigest(),'revision':18,'envelope':envelope,'motor':MOTOR_NAME,'motorSize':MOTOR_SIZE,'motorPitch':MOTOR_PITCH,'motorDepth':MOTOR_DEPTH,'rotationPivot':list(PIVOT),'pinionTeeth':N,'pressureAngle':PRESSURE_ANGLE,'withdrawal':WITHDRAW,'bearingClearance':BEARING_GAP,'hardwareClearance':HARDWARE_GAP,'chassisFootprint':[CHASSIS_WIDTH,58-CHASSIS_FRONT],'stroke':a.stroke,'rackLength':right-left,'rackLeft':left,'rackRight':right,'rackWithdrawalStart':.10,'rackWithdrawalEnd':.28,'toothModule':MODULE,'toothPitch':pitch,'actuatorLength':CASE_LENGTH,'minimumActuatorLength':MIN_CASE_LENGTH,'caseBounds':[CASE_LEFT,CASE_RIGHT,CASE_YMIN,CASE_YMAX,CASE_BOTTOM,CASE_TOP],'caseMounts':CASE_MOUNTS,'sideMountThread':'M3','sideMountY':CASE_YMAX,'sideMountInsertRecess':SIDE_INSERT_RECESS,'topMounts':CASE_CORNERS,'topMountZ':CASE_TOP,'coverScrewCount':len(COVER_SEATS),'insertCount':len(INSERTS),'insertOD':INSERT_OD,'insertLength':INSERT_LENGTH,'insertPilot':INSERT_PILOT,'motorRearZ':-8-MOTOR_DEPTH,'driverOpening':[MOTOR_SIZE+2,MOTOR_SIZE+2],'toothTravelRight':TOOTH_XMAX+a.stroke/2,'rackBackboneWidth':a.rack_backbone_width,'headReliefEndX':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solidRackEndLength':right-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'squareInsertionEnd':True,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'stationSpacing':2*STATION_HALF,'stationXs':STATIONS,'exitBearingOffset':CASE_RIGHT-STATION_HALF,'chassisScrewCount':len(MOUNT_XS),'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springTravelCheck':SPRING_CHECK_TRAVEL,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
  # Exact sampled CAD states preserve wall fillets while the floors relax.
  states=[]
  for l,r in [(SPRING_PRELOAD*k/12,0) for k in range(1,13)]+[(SPRING_PRELOAD,SPRING_PRELOAD*k/12) for k in range(1,13)]:
@@ -695,7 +701,7 @@ if a.check:
    if 'axle' in p['name'] or 'washer' in p['name'] or 'nut' in p['name']:
     hardware_gaps.append({'travel_mm':dx,'part':p['name'],'gap_mm':r.distance(p['shape'])})
  assert min(q['gap_mm'] for q in hardware_gaps)>=HARDWARE_GAP-1e-5,('Hardware clearance',sorted(hardware_gaps,key=lambda q:q['gap_mm'])[:5])
- enclosure_checks={'printed_parts':5,'case_length_mm':CASE_LENGTH,'motor_rear_projection_mm':4,'driver_dimensions_modeled':False,'toothed_rack_extremes_x_mm':[-TOOTH_XMAX-a.stroke/2,TOOTH_XMAX+a.stroke/2],'inner_case_x_mm':[CASE_LEFT+CASE_WALL,CASE_RIGHT-CASE_WALL],'tooth_concealment_pass':TOOTH_XMAX+a.stroke/2<CASE_RIGHT-CASE_WALL,'mounting_slots_xz_mm':CASE_MOUNTS,'mounting_face_normal':[0,1,0]}
+ enclosure_checks={'printed_parts':5,'case_length_mm':CASE_LENGTH,'motor_rear_projection_mm':4,'driver_dimensions_modeled':False,'toothed_rack_extremes_x_mm':[-TOOTH_XMAX-a.stroke/2,TOOTH_XMAX+a.stroke/2],'inner_case_x_mm':[CASE_LEFT+CASE_WALL,CASE_RIGHT-CASE_WALL],'tooth_concealment_pass':TOOTH_XMAX+a.stroke/2<CASE_RIGHT-CASE_WALL,'mounting_face_normal':[0,1,0]}
  assert enclosure_checks['tooth_concealment_pass'] and -TOOTH_XMAX-a.stroke/2>CASE_LEFT+CASE_WALL
  controller_gap=min(CASE_BOTTOM+offset('tray',e)[2]-(-8-MOTOR_DEPTH+offset('motor',e)[2]) for e in times)
  assert controller_gap>=4-1e-6,'Enclosure moves through the unmodeled controller region'
@@ -706,15 +712,29 @@ if a.check:
   embedded=overlap(part['shape'],tray)
   nominal=math.pi*((INSERT_OD/2)**2-(INSERT_PILOT/2)**2)*INSERT_LENGTH
   assert abs(embedded-nominal)<.02,('Insert pilot interference',spec,embedded,nominal)
-  # Full insert envelope above its installed top must be unobstructed before
-  # fitting the chassis/lid; soldering tip access follows the same vertical axis.
-  swept=cyl(INSERT_OD/2,30,spec['x'],spec['y'],spec['top'])
+  # Follow each insert's installation axis: +Z for top/internal inserts,
+  # +Y for side mounts. The full insert envelope must approach unobstructed.
+  swept=acyl(INSERT_OD/2,30,spec['position'],spec['axis'])
   approach=overlap(swept,tray)
   assert approach<.01,('Insert installation approach blocked',spec)
-  insert_checks.append(dict(purpose=spec['purpose'],position_mm=[spec['x'],spec['y'],spec['top']],interference_mm3=embedded,approach_intersection_mm3=approach))
+  insert_checks.append(dict(purpose=spec['purpose'],position_mm=spec['position'],installation_axis=spec['axis'],interference_mm3=embedded,approach_intersection_mm3=approach))
+ side_mount_checks=[]
+ # Tessellated BRep bounds include modeling tolerance; test real material
+ # outside the nominal mounting plane rather than its padded bounding box.
+ outside_side=rect_cut(CASE_LEFT-1,CASE_RIGHT+1,CASE_YMAX+1e-5,CASE_YMAX+10,CASE_BOTTOM-1,CASE_TOP+1)
+ assert max(0,tray.intersect(outside_side).Volume())<.01,'Side mounting face protrudes'
+ for x,z in CASE_MOUNTS:
+  face=CASE_YMAX-SIDE_INSERT_RECESS
+  # Maximum permitted M3 screw penetration stays inside the blind pocket.
+  screw=ycyl(1.5,INSERT_LENGTH+SIDE_INSERT_RECESS,x,face-INSERT_LENGTH,z)
+  assert overlap(screw,tray)<.01,'Side screw strikes the blind pocket'
+  inner_probe=box(.1,.1,.1,(x,face-INSERT_LENGTH-.4-1,z))
+  assert abs(overlap(inner_probe,tray)-inner_probe.Volume())<1e-7,'Missing pocket backing'
+  side_mount_checks.append(dict(position_xz_mm=[x,z],maximum_screw_penetration_mm=INSERT_LENGTH+SIDE_INSERT_RECESS,blind_backing_mm=2.))
+ enclosure_checks.update(side_mount_thread='M3',side_mounts_xz_mm=CASE_MOUNTS,side_mount_plane_y_mm=CASE_YMAX,side_mount_insert_recess_mm=SIDE_INSERT_RECESS,side_mount_engagement_mm=[3,INSERT_LENGTH],side_mount_flush=True,side_mount_checks=side_mount_checks)
  enclosure_checks.update(top_mount_thread='M3',top_mounts_xy_mm=CASE_CORNERS,top_mount_plane_z_mm=CASE_TOP,top_mount_load_path='Directly into full-height tray posts; removable cover is bypassed',top_mount_engagement_mm=[3,INSERT_LENGTH],cover_screw_count=len(COVER_SEATS),lid_screw='M3x20 socket, recessed 0.3 mm below mounting face',chassis_screw='M3x10 socket',heat_set_inserts={'thread':'M3','outer_diameter_mm':INSERT_OD,'length_mm':INSERT_LENGTH,'printed_pilot_diameter_mm':INSERT_PILOT,'count':len(INSERTS),'checks':insert_checks})
  references={str(e):{g:{'translation':list(offset(g,e)),'rotation_z_deg':angle(g,e)} for g in tracks} for e in [0,.025,.04,.075,.10,.15,.18,.20,.24,.26,.28,.30,.33,.36,.40,.45,.50,.53,.57,.64,.70,.79,.84,.89,.92,.95,.98,1]}
- report={'revision':17,'tooth_module_mm':MODULE,'tooth_pitch_mm':pitch,'actuator_length_mm':CASE_LENGTH,'minimum_actuator_length_mm':MIN_CASE_LENGTH,'motor_depth_mm':MOTOR_DEPTH,'controller_rear_plane_z_mm':-8-MOTOR_DEPTH,'controller_dimensions_modeled':False,'rack_backbone_width_mm':a.rack_backbone_width,'head_relief_end_x_mm':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solid_rack_end_length_mm':right-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'square_insertion_end':True,'rack_restoration_checks_passed':len(rack_restoration_checks)+int(square_end_check),'stroke_mm':a.stroke,'motor':MOTOR_NAME,'pinion_teeth':N,'pressure_angle_deg':PRESSURE_ANGLE,'bearing_clearance_mm':BEARING_GAP,'hardware_clearance_mm':HARDWARE_GAP,'socket_head_envelope_mm':[9.5,5.0],'chassis_footprint_mm':[CHASSIS_WIDTH,58-CHASSIS_FRONT],'enclosure':enclosure_checks,'spring_carrier':spring_check,'root_relief':{'shape':'semicircular caps tangent to straight slot walls','central_radius_mm':central_relief_radius,'intertooth_radius_mm':intertooth_relief_radius,'maximum_y_mm':RELIEF_Y,'arc_geometry_checked':True},'shaft_fit':d_fit,'bearing_count':6,'bearing_type':'625ZZ','bearing_dimensions_mm':[5,16,5],'station_spacing_mm':2*STATION_HALF,'bearing_stations_x_mm':STATIONS,'exit_bearing_center_offset_mm':CASE_RIGHT-STATION_HALF,'gear_center_x_mm':0,'minimum_guide_edge_margin_mm':13,'upper_bearing_angle_deg':45,'spring_preload_mm':SPRING_PRELOAD,'spring_thickness_mm':SPRING_THICKNESS,'checked_spring_deflection_mm':SPRING_CHECK_TRAVEL,'spring_free_stl':True,'chassis_mounts_mm':CHASSIS_MOUNTS,'motor_face_z_mm':-8,'integral_motor_land_mm':5,'chassis_solid_count':len(base.Solids()),'rack_solid_count':len(rack.Solids()),'insertion_side':'right/output side, plain left end first','rack_withdrawal_mm':WITHDRAW,'contact_checks_passed':len(contact_checks),'upper_force_normals':[[0,SQ,-SQ],[0,-SQ,-SQ]],'lower_force_normal':[0,0,1],'preload_per_flank_mm':a.preload,'nominal_mesh_max_overlap_mm3':max(nominal_vol),'elastic_mesh_limit_mm3':elastic_limit,'elastic_mesh_volume_mm3_range':[min(mesh_volumes),max(mesh_volumes)],'hardware_clearance_samples':hardware_gaps,'minimum_rack_hardware_gap_mm':min(q['gap_mm'] for q in hardware_gaps),'source_sha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),'mesh_periodicity':periodic_check|{'cache_hits':phase_hits,'exact_phase_evaluations':len(phase_cache)},'broadphase_coverage_checks':proxy_checks,'lid_screw_swept_envelope_checks':screw_sweep_checks,'mechanism_explosion_samples':len(core_times),'method':'All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.','intersection_tolerance_mm3':tolerance,'explosion_samples':len(times),'motion_samples':41,'explosion_failures':fail,'motion_failures':motion_fail,'intentional_contacts':allowed,'minimum_rack_frame_gap_mm':min(p['gap_mm'] for p in gap),'plastic_clearance_samples':gap,'viewer_reference_poses':references,'limits':['2.3 mm default spring deflection is an aggressive physical prototype. Force, elastic recovery and fatigue require testing in the chosen print material.','Sampled rigid geometry, not continuous swept-volume proof or a physical fit test.','Oversized teeth require elastic deflection. No load, backlash or fatigue rating.','The plain insertion end has no axial hard stop; enforce software travel limits.','Viewer chassis uses exact CAD shape samples at one twelfth of the spring preload; bearing translations follow the CAD tracks continuously.',
+ report={'revision':18,'tooth_module_mm':MODULE,'tooth_pitch_mm':pitch,'actuator_length_mm':CASE_LENGTH,'minimum_actuator_length_mm':MIN_CASE_LENGTH,'motor_depth_mm':MOTOR_DEPTH,'controller_rear_plane_z_mm':-8-MOTOR_DEPTH,'controller_dimensions_modeled':False,'rack_backbone_width_mm':a.rack_backbone_width,'head_relief_end_x_mm':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solid_rack_end_length_mm':right-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'square_insertion_end':True,'rack_restoration_checks_passed':len(rack_restoration_checks)+int(square_end_check),'stroke_mm':a.stroke,'motor':MOTOR_NAME,'pinion_teeth':N,'pressure_angle_deg':PRESSURE_ANGLE,'bearing_clearance_mm':BEARING_GAP,'hardware_clearance_mm':HARDWARE_GAP,'socket_head_envelope_mm':[9.5,5.0],'chassis_footprint_mm':[CHASSIS_WIDTH,58-CHASSIS_FRONT],'enclosure':enclosure_checks,'spring_carrier':spring_check,'root_relief':{'shape':'semicircular caps tangent to straight slot walls','central_radius_mm':central_relief_radius,'intertooth_radius_mm':intertooth_relief_radius,'maximum_y_mm':RELIEF_Y,'arc_geometry_checked':True},'shaft_fit':d_fit,'bearing_count':6,'bearing_type':'625ZZ','bearing_dimensions_mm':[5,16,5],'station_spacing_mm':2*STATION_HALF,'bearing_stations_x_mm':STATIONS,'exit_bearing_center_offset_mm':CASE_RIGHT-STATION_HALF,'gear_center_x_mm':0,'minimum_guide_edge_margin_mm':13,'upper_bearing_angle_deg':45,'spring_preload_mm':SPRING_PRELOAD,'spring_thickness_mm':SPRING_THICKNESS,'checked_spring_deflection_mm':SPRING_CHECK_TRAVEL,'spring_free_stl':True,'chassis_mounts_mm':CHASSIS_MOUNTS,'motor_face_z_mm':-8,'integral_motor_land_mm':5,'chassis_solid_count':len(base.Solids()),'rack_solid_count':len(rack.Solids()),'insertion_side':'right/output side, plain left end first','rack_withdrawal_mm':WITHDRAW,'contact_checks_passed':len(contact_checks),'upper_force_normals':[[0,SQ,-SQ],[0,-SQ,-SQ]],'lower_force_normal':[0,0,1],'preload_per_flank_mm':a.preload,'nominal_mesh_max_overlap_mm3':max(nominal_vol),'elastic_mesh_limit_mm3':elastic_limit,'elastic_mesh_volume_mm3_range':[min(mesh_volumes),max(mesh_volumes)],'hardware_clearance_samples':hardware_gaps,'minimum_rack_hardware_gap_mm':min(q['gap_mm'] for q in hardware_gaps),'source_sha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),'mesh_periodicity':periodic_check|{'cache_hits':phase_hits,'exact_phase_evaluations':len(phase_cache)},'broadphase_coverage_checks':proxy_checks,'lid_screw_swept_envelope_checks':screw_sweep_checks,'mechanism_explosion_samples':len(core_times),'method':'All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.','intersection_tolerance_mm3':tolerance,'explosion_samples':len(times),'motion_samples':41,'explosion_failures':fail,'motion_failures':motion_fail,'intentional_contacts':allowed,'minimum_rack_frame_gap_mm':min(p['gap_mm'] for p in gap),'plastic_clearance_samples':gap,'viewer_reference_poses':references,'limits':['2.3 mm default spring deflection is an aggressive physical prototype. Force, elastic recovery and fatigue require testing in the chosen print material.','Sampled rigid geometry, not continuous swept-volume proof or a physical fit test.','Oversized teeth require elastic deflection. No load, backlash or fatigue rating.','The plain insertion end has no axial hard stop; enforce software travel limits.','Viewer chassis uses exact CAD shape samples at one twelfth of the spring preload; bearing translations follow the CAD tracks continuously.',
  'Pinion is free to turn during rack insertion. Remove front and rear angled axles in sequence. Spring carrier supplies passive preload; force, creep and fatigue have not been measured. STL is unloaded; STEP is assembled and deflected.']}
  (out/'downloads'/'validation.json').write_text(json.dumps(report,indent=2))
  assert not fail and not motion_fail,'See validation report'
