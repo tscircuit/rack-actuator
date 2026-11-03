@@ -1,9 +1,9 @@
 {
-  "revision": 21,
+  "revision": 22,
   "motor": "nema17",
   "stroke_mm": 150,
-  "source_sha256": "62e113765de4502e9f5d1fd56842764e8359ed51bee91edf2fa5d1b462ae90a1",
-  "checker_sha256": "062f779c69ba164fe6552e7f21ed318a9cf9df2e4fecd1bac9016f5877689f96",
+  "source_sha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a",
+  "checker_sha256": "f1b7ba1adcf630df0a55e639d9eb5ce6d25b9f32a17c007c438bd3b153b81fe2",
   "explosion_interval": [
     0.38,
     1.0
@@ -73,5 +73,22 @@
       "minimum_separating_y_gap_mm": 15.099999999999994,
       "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing."
     }
+  },
+  "output_centering_validation": {
+    "baseline_source_sha256": "62e113765de4502e9f5d1fd56842764e8359ed51bee91edf2fa5d1b462ae90a1",
+    "baseline_revision": 21,
+    "pad_center_y_mm": 28.5,
+    "previous_center_y_mm": 25.5,
+    "shift_y_mm": 3.0,
+    "rack_backbone_bounds_y_mm": [
+      20.5,
+      36.5
+    ],
+    "continuous_travel_x_gap_mm": 1.5,
+    "continuous_explosion_x_gap_mm": 76.5,
+    "changed_geometry_minimum_x_mm": 233.5,
+    "working_rack_end_x_mm": 233.5,
+    "rack_valid_single_solid": true,
+    "method": "Source comparison proves the pad-center expression is the sole geometry change. Exact symmetric difference confines changed rack material to the output pad. Whole-pad X envelopes, including its four inserts, are continuously separated from every other part throughout travel and all piecewise-linear explosion stages; rotating parts use full-circle bounds. Insert seating, screw access and blind-pocket backing are rechecked exactly. Unchanged mechanism checks are retained from the source-bound revision 21 reports."
   }
 }

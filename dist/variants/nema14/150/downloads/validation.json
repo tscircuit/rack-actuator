@@ -1,24 +1,26 @@
 {
-  "revision": 21,
+  "revision": 22,
   "output_mount": {
+    "center_y_mm": 28.5,
+    "rack_backbone_center_y_mm": 28.5,
     "thread": "M3",
     "count": 4,
     "pattern_xy_mm": [
       [
         238.0,
-        21.0
+        24.0
       ],
       [
         238.0,
-        30.0
+        33.0
       ],
       [
         247.0,
-        21.0
+        24.0
       ],
       [
         247.0,
-        30.0
+        33.0
       ]
     ],
     "pitch_xy_mm": [
@@ -43,7 +45,7 @@
       {
         "position_mm": [
           238.0,
-          21.0,
+          24.0,
           20.7
         ],
         "installation_axis": [
@@ -58,7 +60,22 @@
       {
         "position_mm": [
           238.0,
-          30.0,
+          33.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795147,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      },
+      {
+        "position_mm": [
+          247.0,
+          24.0,
           20.7
         ],
         "installation_axis": [
@@ -73,7 +90,7 @@
       {
         "position_mm": [
           247.0,
-          21.0,
+          33.0,
           20.7
         ],
         "installation_axis": [
@@ -82,21 +99,6 @@
           1
         ],
         "interference_mm3": 13.82300767579516,
-        "approach_intersection_mm3": 0,
-        "backing_mm": 12.299999999999999
-      },
-      {
-        "position_mm": [
-          247.0,
-          30.0,
-          20.7
-        ],
-        "installation_axis": [
-          0,
-          0,
-          1
-        ],
-        "interference_mm3": 13.823007675795175,
         "approach_intersection_mm3": 0,
         "backing_mm": 12.299999999999999
       }
@@ -306,7 +308,7 @@
       }
     ],
     "front_fixture_opening_yz_mm": [
-      15.5,
+      18.5,
       41,
       -10,
       22
@@ -1061,7 +1063,7 @@
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.4999999999999952,
-  "source_sha256": "62e113765de4502e9f5d1fd56842764e8359ed51bee91edf2fa5d1b462ae90a1",
+  "source_sha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -1125,7 +1127,7 @@
     }
   ],
   "mechanism_explosion_samples": 147,
-  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately. Lid screw parking was subsequently extended to 180 mm and revalidated by continuous swept envelopes plus a separating Y envelope through the remaining sequence; see parking_path_revalidation. Other scan results remain unchanged.",
+  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately. Lid screw parking was subsequently extended to 180 mm and revalidated by continuous swept envelopes plus a separating Y envelope through the remaining sequence; see parking_path_revalidation. Other scan results remain unchanged. Revision 22 output-pad change validated separately by exact local geometry checks and continuous separation bounds; see output_centering_validation.",
   "intersection_tolerance_mm3": 0.01,
   "explosion_samples": 3017,
   "motion_samples": 41,
@@ -1141,28 +1143,28 @@
     {
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
-      "b": "M3 heat-set insert output 238 21",
+      "b": "M3 heat-set insert output 238 24",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
-      "b": "M3 heat-set insert output 238 30",
+      "b": "M3 heat-set insert output 238 33",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
-      "b": "M3 heat-set insert output 247 21",
+      "b": "M3 heat-set insert output 247 24",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
       "a": "04 Beveled compliant rack",
-      "b": "M3 heat-set insert output 247 30",
+      "b": "M3 heat-set insert output 247 33",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
@@ -6391,5 +6393,22 @@
       "minimum_separating_y_gap_mm": 15.099999999999994,
       "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing."
     }
+  },
+  "output_centering_validation": {
+    "baseline_source_sha256": "62e113765de4502e9f5d1fd56842764e8359ed51bee91edf2fa5d1b462ae90a1",
+    "baseline_revision": 21,
+    "pad_center_y_mm": 28.5,
+    "previous_center_y_mm": 25.5,
+    "shift_y_mm": 3.0,
+    "rack_backbone_bounds_y_mm": [
+      20.5,
+      36.5
+    ],
+    "continuous_travel_x_gap_mm": 1.5,
+    "continuous_explosion_x_gap_mm": 76.5,
+    "changed_geometry_minimum_x_mm": 233.5,
+    "working_rack_end_x_mm": 233.5,
+    "rack_valid_single_solid": true,
+    "method": "Source comparison proves the pad-center expression is the sole geometry change. Exact symmetric difference confines changed rack material to the output pad. Whole-pad X envelopes, including its four inserts, are continuously separated from every other part throughout travel and all piecewise-linear explosion stages; rotating parts use full-circle bounds. Insert seating, screw access and blind-pocket backing are rechecked exactly. Unchanged mechanism checks are retained from the source-bound revision 21 reports."
   }
 }

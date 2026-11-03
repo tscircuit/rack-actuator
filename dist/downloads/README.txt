@@ -1,7 +1,13 @@
-RACK ACTUATOR — REVISION 21
+RACK ACTUATOR — REVISION 22
 CadQuery 2.7.0, dimensions in mm. See configuration.json for this preset.
 
 CHANGES / REPRINTING
+Output pad and four M3 inserts are centered on the flat rack backbone.
+Center Y=(ROOT_Y+BACK_Y)/2; defaults shift +3 mm to Y=28.5 mm.
+The 18 x 18 mm pad and 9 x 9 mm insert pitch are unchanged.
+Upgrading from revision 21 requires only a new rack print.
+
+RETAINED BEARING LAYOUT
 One arrangement replaces the former Standard/Short alternatives. The motor
 and rear bearing group stay at their pictured positions (pinion X=0,
 rear group X=-32). Only the exit group moves: centers are 13 mm behind
@@ -16,9 +22,8 @@ Moving the exit group requires relief around the existing axle/nut ends
 in the enclosure posts. An internal lid screw moves inboard. For service, the retained chassis and
 bearing subassembly slides 10 mm rearward before the tray lowers. Four M3
 inserts remain on the exit face, side face, top and moving output pad.
-Reprint chassis, rack, tray and lid from the same preset. The rack's axle
-head relief changes even though its overall length is preserved. Reuse
-the matching pinion, motor and bearing hardware. NEMA17 rack/pinion use
+Revision 22 reuses the revision 21 chassis, pinion, tray, lid, motor and
+bearing hardware. Use parts from the same motor/stroke preset. NEMA17 rack/pinion use
 20-degree pressure angle; NEMA14 use 25 degrees. Do not mix variants.
 
 PRESETS (MODULE 2; BOTH MOTORS)
@@ -55,7 +60,7 @@ Any attached front fixture must clear the entire moving output pad and
 guide, including when fully retracted. Use frontFixtureOpeningYZ in the
 assembly metadata or front_fixture_opening_yz_mm in validation.json for
 the minimum rectangular opening with 1 mm margin. At module 2 it spans
-Y=15.5..41 and Z=-10..22 (25.5 x 32 mm), referenced to the CAD coordinates.
+Y=18.5..41 and Z=-10..22 (22.5 x 32 mm), referenced to the CAD coordinates.
 Side (+Y): four M3 inserts, recessed 0.3 mm into a flat wall. X spacing =
 housing length minus 15 mm; Z spacing = motor depth minus 10 mm. All
 reinforcement is inside the tray; blind pockets have 2 mm backing.
@@ -147,6 +152,9 @@ Restored free flexure span: 14 mm. Thickness: 1.8 mm by default;
 insertion force and need testing in the selected print material.
 --spring-preload 2.3 --bearing-clearance .8 --hardware-clearance .5
 --rack-backbone-width 16 --preload .10
+Revision 22 rechecks the shifted pad with exact local insert/solid checks
+and continuous separation bounds; unchanged revision 21 mechanism checks
+are retained. See output_centering_validation in the reports.
 Each preset has a sampled collision report, including all six contacts at
 41 travel positions. Enclosure/fastener paths use <=0.5 mm sampling;
 core paths use 1% slider intervals, boundaries/midpoints and 0.5 mm
