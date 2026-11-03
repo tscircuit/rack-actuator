@@ -4,15 +4,19 @@ CadQuery NEMA17/NEMA14 actuators with compliant rack teeth, six 625ZZ bearings a
 
 [Viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [NEMA14 / 150 mm](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14&stroke=150)
 
-## Revision 22
+## Revision 23
 
-The moving output pad and its four M3 inserts are centered on the rack’s flat backbone. The center is calculated as `(ROOT_Y + BACK_Y) / 2`; for all six default presets this shifts the pad 3 mm in +Y to Y=28.5 mm. The 18 × 18 mm pad and 9 × 9 mm insert pattern are preserved. Upgrading from revision 21 requires **only a new rack print**.
+The rear chassis holes now have wall-braced, floor-supported tray standoffs and M3 heat-set inserts. The lid clamps are removed, so both rows bolt directly to the tray. Rear inserts sit 6 mm below their post tops to clear the neighboring M5 nut; use **M3×16 rear screws** and the existing **M3×10 front screws**. The 40 mm models gain two inserts/screws; 100 and 150 mm models gain three.
+
+Upgrading from revision 22 requires a **new tray and lid**, plus the rear inserts and screws. Reuse the chassis, centered-output rack, pinion and bearing hardware. Housing dimensions and mounting positions are unchanged.
+
+The output pad retains its centered 18 × 18 mm face and 9 × 9 mm insert pattern, at Y=28.5 mm for the default presets.
 
 ### Retained bearing layout
 
 One arrangement replaces the Standard/Short alternatives. The motor and rear bearing group stay where shown in the reference image: pinion at X=0, rear group at X=−32 mm. The exit group moves forward, with its centers **13 mm behind the opening** and its bearing rims 5 mm behind the face. The pinion is deliberately offset toward the rear group.
 
-The earlier **single broad flexure floor** is restored, with its 14 mm free span and supported R1.2 wall blends. Thickness increases from **1.4 to 1.8 mm**; preload remains 2.3 mm. There is no stationary lower deck and no additional spring hardware. The narrower support allows a smaller enclosure. Local reliefs clear the existing axle/nut ends from the enclosure posts, and an internal lid fastener moves inboard. During service, each extracted angled axle lifts 20 mm before parking sideways; the retained chassis/bearing subassembly slides 10 mm rearward before the tray is lowered.
+The earlier **single broad flexure floor** is restored, with its 14 mm free span and supported R1.2 wall blends. Thickness increases from **1.4 to 1.8 mm**; preload remains 2.3 mm. There is no stationary lower deck and no additional spring hardware. The narrower support allows a smaller enclosure. Local reliefs clear the existing axle/nut ends from the enclosure posts, and an internal lid fastener moves inboard. During service, each extracted angled axle lifts 20 mm before parking sideways; the lower axles first back out 10 mm, then the retained chassis/bearing subassembly lifts 6 mm and slides 10 mm rearward before the tray is lowered.
 
 | Stroke | Bearing centers X | Bearing span | Housing length | Rack print length |
 | --- | --- | --- | --- | --- |
@@ -26,7 +30,7 @@ Six presets remain: 40, 100 and 150 mm strokes for each motor. The viewer includ
 
 ## Hardware and printing
 
-Five printed parts: chassis, rack, pinion, tray and lid. Use parts from the same motor/stroke preset. Revision 22 reuses the revision 21 chassis, pinion, tray, lid and bearing hardware. NEMA17 rack/pinion use 20° pressure angle; NEMA14 use 25°.
+Five printed parts: chassis, rack, pinion, tray and lid. Use parts from the same motor/stroke preset. Revision 23 reuses the revision 22 chassis, rack, pinion and bearing hardware. NEMA17 rack/pinion use 20° pressure angle; NEMA14 use 25°.
 
 NEMA17 defaults: 42 × 42 × 40 mm body, 31 mm mounting pitch, 18T pinion. NEMA14: 35.2 × 35.2 × 34 mm body, 26 mm pitch, 14T pinion. Both initially use module 2 and 40 mm stroke. The rear-mounted driver remains outside the case. Verify your motor's shaft, pilot and mounting dimensions.
 
@@ -41,7 +45,7 @@ M3 inserts default to 4.6 mm OD × 5 mm long, with a 4.2 mm printed pilot. Each 
 
 Use 3–5 mm screw engagement: 3.3–5.3 mm penetration from recessed faces, or 3–5 mm from the top face. A front fixture must clear the full output pad at retraction: at module 2, the minimum opening spans Y=18.5…41 and Z=−10…22 in CAD coordinates. Mounting coordinates change with the narrower housing; use the new STEP/report. Remove external fixtures and load before full service.
 
-Enclosure screws are M3×20 socket for the lid and M3×10 socket for the chassis. Bearing hardware remains four M5×16 upper axles, two M5×25 lower axles, six thin M5 nuts and six inner-race washers. Clamp only the bearing inner races.
+Enclosure screws are M3×20 socket for the lid and M3×10 socket for the front chassis row and M3×16 for the rear row. Bearing hardware remains four M5×16 upper axles, two M5×25 lower axles, six thin M5 nuts and six inner-race washers. Clamp only the bearing inner races.
 
 Print the chassis with **Y normal to the bed**, keeping flexure bending in the XZ plane within the layers. STL chassis is relaxed; STEP/viewer show installed deflection. Print tray floor-down, lid roof-down, rack tooth-face down and pinion gear-face down. See [printing and assembly instructions](README.txt) for insert installation and the service sequence.
 
@@ -78,6 +82,8 @@ Explicit CLI options override JSON. Build caching requires a matching source has
 Default NEMA17/NEMA14 commanded increments at 200 full steps/revolution: 0.565487 / 0.439823 mm per full step and 0.035343 / 0.027489 mm at 1/16. Stroke does not change the drive ratio. These are command increments, not measured positioning accuracy.
 
 ## Validation
+
+Revision 23 checks all assembled pairs, enclosure insert access and support, and all changed service paths at ≤0.5 mm translation increments. New standoff material stays outside the rack, drive and flexure motion envelopes. Unchanged mechanism checks are retained from revision 22; see `rear_chassis_validation`.
 
 Revision 22 rechecks output-insert fit/access/backing and valid rack geometry. An exact rack difference confines changed material to the output pad, and continuous X bounds keep the entire pad and inserts clear throughout travel and explosion. The source-bound revision 21 checks for unchanged mechanism geometry are retained; see `output_centering_validation` in each report.
 

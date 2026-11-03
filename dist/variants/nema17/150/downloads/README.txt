@@ -1,11 +1,14 @@
-RACK ACTUATOR — REVISION 22
+RACK ACTUATOR — REVISION 23
 CadQuery 2.7.0, dimensions in mm. See configuration.json for this preset.
 
 CHANGES / REPRINTING
-Output pad and four M3 inserts are centered on the flat rack backbone.
-Center Y=(ROOT_Y+BACK_Y)/2; defaults shift +3 mm to Y=28.5 mm.
-The 18 x 18 mm pad and 9 x 9 mm insert pitch are unchanged.
-Upgrading from revision 21 requires only a new rack print.
+Rear chassis holes now have floor-supported, wall-braced tray standoffs.
+Install M3 inserts 6 mm below their post tops to clear adjacent M5 hardware.
+Use M3x16 rear chassis screws; front chassis screws remain M3x10.
+The 40 mm versions add 2 rear inserts/screws; 100/150 mm versions add 3.
+Reprint tray and lid from this revision. The old lid clamps are removed.
+Reuse the revision 22 chassis, centered rack, pinion and bearing hardware.
+Housing dimensions and mounting positions are unchanged.
 
 RETAINED BEARING LAYOUT
 One arrangement replaces the former Standard/Short alternatives. The motor
@@ -20,9 +23,10 @@ stationary lower deck. CAD displacement is prescribed, not a measured
 carrier angle, force, recovery, creep or fatigue rating.
 Moving the exit group requires relief around the existing axle/nut ends
 in the enclosure posts. An internal lid screw moves inboard. For service, the retained chassis and
-bearing subassembly slides 10 mm rearward before the tray lowers. Four M3
+bearing subassembly lifts 6 mm and slides 10 mm rearward after the lower
+axles back out 10 mm, before the tray lowers. Four M3
 inserts remain on the exit face, side face, top and moving output pad.
-Revision 22 reuses the revision 21 chassis, pinion, tray, lid, motor and
+Revision 23 reuses the revision 22 chassis, rack, pinion, motor and
 bearing hardware. Use parts from the same motor/stroke preset. NEMA17 rack/pinion use
 20-degree pressure angle; NEMA14 use 25 degrees. Do not mix variants.
 
@@ -46,7 +50,7 @@ M3 inserts: default 4.6 mm OD x 5 mm long; printed pilot diameter 4.2 mm,
 with 0.4 mm extra pocket depth. OD, length and pilot are configurable.
 Qualify the pilot/installation temperature for your insert and material.
 Nominal knurl-to-pilot overlap is intentional; heat displaces the plastic.
-M3x20 socket lid screws; M3x10 socket chassis screws. Modeled M3 heads:
+M3x20 socket lid screws; M3x10 front / M3x16 rear socket chassis screws. Modeled M3 heads:
 5.5 mm diameter x 3 mm high. Quantities vary by preset; use the included
 bill-of-materials.json. Insert count includes four each for front, side,
 top and moving output mounts, plus lid and chassis fastening inserts.
@@ -108,8 +112,10 @@ Chassis STL is RELAXED. STEP and viewer show installed spring deflection.
 Install front and side inserts from outside, 0.3 mm recessed. Install the
 four output inserts from Z=21 before inserting the rack. Install vertical
 tray inserts before chassis/lid. Use heat, not cold interference forcing.
-Assemble the lower bearing hardware on the single-floor seats. Seat
-chassis and install M3x10 screws. Install motor/screws BEFORE upper rollers
+Fit lower bearings with axles backed out 10 mm and hold the nuts loose.
+Position the chassis 6 mm above and 10 mm behind its seated location;
+slide forward 10 mm, lower 6 mm, then advance the axles and tighten nuts.
+Install front M3x10 and rear M3x16 chassis screws. Install motor/screws BEFORE upper rollers
 and axles. Fit pinion and set screw. Insert rack from the output side,
 square insertion end first, with motor free to turn; support spring seats
 by hand if necessary. Check all six bearings rotate without rubbing.
@@ -117,10 +123,11 @@ Fit lid over top mounting posts and install M3x20 screws. Attach load and
 mounting fixture last. Test low-speed full travel before applying load.
 
 SERVICE (REMOVE EXTERNAL FIXTURES AND LOAD FIRST)
-Remove/park lid screws 180 mm sideways; lift lid and rear chassis clamps. Withdraw rack;
+Remove/park lid screws 180 mm sideways; lift lid. Withdraw rack;
 leaves relax. Remove set screw, lift/clear pinion. Withdraw front angled
 axles, lift them another 20 mm and park; repeat for rear axles. Lift upper
-rollers. Remove motor screws and lower motor/driver. Remove/park chassis screws; slide the chassis and remaining bearings
+rollers. Remove and park motor screws; lower motor/driver. Remove/park chassis screws; back lower axles out 10 mm while holding
+their nuts. Lift the chassis and remaining bearings 6 mm, then slide
 10 mm rearward to clear the end posts, then lower the tray with its inserts.
 Remove lower nuts rearward, withdraw lower axles forward, then park the
 axles outward in X. Remove angled nuts down along their axes and lift
@@ -152,6 +159,8 @@ Restored free flexure span: 14 mm. Thickness: 1.8 mm by default;
 insertion force and need testing in the selected print material.
 --spring-preload 2.3 --bearing-clearance .8 --hardware-clearance .5
 --rack-backbone-width 16 --preload .10
+Revision 23 adds exact assembly/insert support checks and a fresh dense
+service scan for the new posts, screws and lift/slide sequence.
 Revision 22 rechecks the shifted pad with exact local insert/solid checks
 and continuous separation bounds; unchanged revision 21 mechanism checks
 are retained. See output_centering_validation in the reports.

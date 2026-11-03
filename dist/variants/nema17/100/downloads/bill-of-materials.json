@@ -62,8 +62,8 @@
   ],
   "heat_set_inserts": {
     "thread": "M3",
-    "quantity": 25,
-    "enclosure_quantity": 21,
+    "quantity": 28,
+    "enclosure_quantity": 24,
     "output_quantity": 4,
     "outer_diameter_mm": 4.6,
     "length_mm": 5.0,
@@ -74,8 +74,16 @@
     "quantity": 6
   },
   "chassis_screws": {
-    "type": "M3x10 socket",
-    "quantity": 3
+    "quantity": 6,
+    "front": {
+      "type": "M3x10 socket",
+      "quantity": 3
+    },
+    "rear": {
+      "type": "M3x16 socket",
+      "quantity": 3,
+      "insert_recess_mm": 6
+    }
   },
   "bearings": {
     "type": "625ZZ",

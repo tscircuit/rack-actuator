@@ -1,5 +1,5 @@
 {
-  "revision": 22,
+  "revision": 23,
   "presets": [
     {
       "motor": "nema17",
@@ -9,13 +9,13 @@
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 76.0,
       "exitBearingOffset": 13,
-      "chassisScrewCount": 2,
+      "chassisScrewCount": 4,
       "stepFile": "FLEX17.step",
       "bundleFile": "FLEX17_40mm_bundle.zip",
-      "partCount": 64,
-      "insertCount": 22,
+      "partCount": 68,
+      "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a"
+      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
     },
     {
       "motor": "nema17",
@@ -25,13 +25,13 @@
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 126.0,
       "exitBearingOffset": 13,
-      "chassisScrewCount": 3,
+      "chassisScrewCount": 6,
       "stepFile": "FLEX17.step",
       "bundleFile": "FLEX17_100mm_bundle.zip",
-      "partCount": 70,
-      "insertCount": 25,
+      "partCount": 76,
+      "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a"
+      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
     },
     {
       "motor": "nema17",
@@ -41,13 +41,13 @@
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 176.0,
       "exitBearingOffset": 13,
-      "chassisScrewCount": 3,
+      "chassisScrewCount": 6,
       "stepFile": "FLEX17.step",
       "bundleFile": "FLEX17_150mm_bundle.zip",
-      "partCount": 70,
-      "insertCount": 25,
+      "partCount": 76,
+      "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a"
+      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
     },
     {
       "motor": "nema14",
@@ -57,13 +57,13 @@
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 76.0,
       "exitBearingOffset": 13,
-      "chassisScrewCount": 2,
+      "chassisScrewCount": 4,
       "stepFile": "FLEX14.step",
       "bundleFile": "FLEX14_40mm_bundle.zip",
-      "partCount": 64,
-      "insertCount": 22,
+      "partCount": 68,
+      "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a"
+      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
     },
     {
       "motor": "nema14",
@@ -73,13 +73,13 @@
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 126.0,
       "exitBearingOffset": 13,
-      "chassisScrewCount": 3,
+      "chassisScrewCount": 6,
       "stepFile": "FLEX14.step",
       "bundleFile": "FLEX14_100mm_bundle.zip",
-      "partCount": 70,
-      "insertCount": 25,
+      "partCount": 76,
+      "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a"
+      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
     },
     {
       "motor": "nema14",
@@ -89,13 +89,13 @@
       "assemblyFile": "assembly.json.gz",
       "stationSpacing": 176.0,
       "exitBearingOffset": 13,
-      "chassisScrewCount": 3,
+      "chassisScrewCount": 6,
       "stepFile": "FLEX14.step",
       "bundleFile": "FLEX14_150mm_bundle.zip",
-      "partCount": 70,
-      "insertCount": 25,
+      "partCount": 76,
+      "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "d2bdca772f16c0c355b9f3b113a9a1ae325b07b0cef1d3833856c333f410722a"
+      "sourceSha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a"
     }
   ]
 }

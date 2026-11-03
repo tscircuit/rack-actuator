@@ -1,0 +1,54 @@
+{
+  "source_sha256": "2e183160205c6ddac4e1306fa8accd5cddc950ff85dc1130e66a4e32eacb2c9a",
+  "motor": "nema17",
+  "stroke": 150,
+  "parking_distance_mm": 180,
+  "screw_sweep_checks": [
+    {
+      "part": "M3x20 recessed lid screw -191.5 -9.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw -191.5 46.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 149.5 -9.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 102 46.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw -80.3333 -19.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw -80.3333 56.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    }
+  ],
+  "stationary_after_fraction": 0.05,
+  "parked_screws_maximum_y_mm": -120.85,
+  "all_other_parts_continuous_minimum_y_mm": -105.75,
+  "limiting_part": "M3x10 chassis screw -39.0",
+  "minimum_separating_y_gap_mm": 15.099999999999994,
+  "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing.",
+  "unchanged_proof_basis": {
+    "prior_source_sha256": "b61d2c6391d78b3eb06221bba80a428a86ff5ee6975bf5d2cc71f0f2b3d2e8ac",
+    "reason": "The sole edit raises removed motor screws after 60%. Assembled solids, lid extraction and all Y motion bounds used by this proof are unchanged."
+  }
+}

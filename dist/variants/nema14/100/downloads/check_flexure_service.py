@@ -45,7 +45,7 @@ def check(motor,stroke):
     relative[key]=v
    v=relative[key]
    if v>.01:fail.append({'at':round(e,8),'a':p['name'],'b':q['name'],'volume_mm3':round(v,6)})
- report={'revision':22,'motor':motor,'stroke_mm':stroke,'source_sha256':sha,'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'explosion_interval':[.38,1.],'maximum_translation_increment_mm':.5,'samples':len(times),'part_pairs':len(pairs),'exact_intersections':exact,'failures':fail,'method':'Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers angled axle extraction and parking, roller and motor removal, the chassis slide and tray withdrawal, and lower bearing hardware removal. Sampled geometry, not a continuous proof.'}
+ report={'revision':23,'motor':motor,'stroke_mm':stroke,'source_sha256':sha,'checker_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),'explosion_interval':[.38,1.],'maximum_translation_increment_mm':.5,'samples':len(times),'part_pairs':len(pairs),'exact_intersections':exact,'failures':fail,'method':'Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers angled axle extraction and parking, roller and motor removal, the chassis slide and tray withdrawal, and lower bearing hardware removal. Sampled geometry, not a continuous proof.'}
  dest.write_text(json.dumps(report,indent=2)+'\n')
  print('Service paths',motor,stroke,len(times),'samples;',len(fail),'failures',flush=True)
  assert not fail,fail[:8]
