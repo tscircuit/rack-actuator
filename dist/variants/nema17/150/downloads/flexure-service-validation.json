@@ -1,0 +1,18 @@
+{
+  "revision": 20,
+  "motor": "nema17",
+  "stroke_mm": 150,
+  "layout": "standard",
+  "source_sha256": "dda1cfebc0fadcafadd5d939abf031d6406a41c8ba5a0d9be044d2cf1ab98106",
+  "checker_sha256": "3c37e073f0f4d83d94f46ba62909b3b86819926aacf8674570a15ae3cfefc0e6",
+  "explosion_interval": [
+    0.82,
+    1.0
+  ],
+  "maximum_translation_increment_mm": 0.5,
+  "samples": 576,
+  "part_pairs": 830,
+  "exact_intersections": 1272,
+  "failures": [],
+  "method": "Exact solid intersections at <=0.5 mm hardware increments; relative-pose cache and bounding-box rejection. Covers lower nut/axle removal, angled nut extraction through root windows, and lower roller lift. Sampled geometry, not a continuous proof."
+}

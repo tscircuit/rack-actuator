@@ -1,0 +1,186 @@
+{
+  "motor": "nema14",
+  "layout": "short",
+  "flexure": {
+    "integral_with_chassis": true,
+    "design": "two opposed leaves per lower bearing carrier",
+    "free_stl_valid": true,
+    "free_stl_solid_count": 1,
+    "preload_deflection_mm": 2.3,
+    "leaf_thickness_mm": 2.0,
+    "leaf_width_mm": 12.0,
+    "leaf_length_mm": 22.0,
+    "leaves_per_carrier": 2,
+    "root_land_mm": 1.2,
+    "root_radius_mm": 1.0,
+    "moving_cradle_thickness_mm": 4.0,
+    "nominal_max_leaf_slope_deg": 8.912434969522739,
+    "previous_14mm_leaf_slope_deg": 13.843491362414788,
+    "ideal_centered_load_carrier_pitch_deg": 0,
+    "linear_vertical_stiffness_per_modulus_mm": 0.018031555221637866,
+    "linear_pitch_stiffness_per_modulus_mm3": 11.728144252441773,
+    "estimated_outer_fiber_strain": 0.028512396694214875,
+    "travel_clearance_checks": [
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0,
+        "tray_gap_mm": 3.055385138137416,
+        "motor_gap_mm": 8.399999999999999
+      },
+      {
+        "station_x_mm": 32.0,
+        "deflection_mm": 0,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 8.399999999999999
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.3,
+        "tray_gap_mm": 3.055385138137416,
+        "motor_gap_mm": 8.399999999999999
+      },
+      {
+        "station_x_mm": 32.0,
+        "deflection_mm": 2.3,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 8.399999999999999
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.6,
+        "tray_gap_mm": 3.055385138137416,
+        "motor_gap_mm": 8.399999999999999
+      },
+      {
+        "station_x_mm": 32.0,
+        "deflection_mm": 2.6,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 8.399999999999999
+      }
+    ],
+    "rigid_lower_deck": false,
+    "mechanical_downward_stop": false,
+    "checked_deflection_mm": 2.6,
+    "method": "Prescribed displacement with level carrier; symmetric linear beam proxy, not finite element analysis. Actual tilt, stiffness, creep and fatigue require print testing. STL relaxed; STEP/viewer deflected. No mechanical stop."
+  },
+  "front_mounting": {
+    "thread": "M3",
+    "quantity": 4,
+    "pattern_yz_mm": [
+      [
+        -15.899999999999999,
+        -28.0
+      ],
+      [
+        -15.899999999999999,
+        -4.0
+      ],
+      [
+        67.80000000000001,
+        -28.0
+      ],
+      [
+        67.80000000000001,
+        -4.0
+      ]
+    ],
+    "mounting_plane_x_mm": 57.0,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "insert_recess_mm": 0.3,
+    "maximum_screw_penetration_mm": 5.3,
+    "fixture_opening_yz_mm": [
+      15.5,
+      41,
+      -10,
+      22
+    ]
+  },
+  "stroke_mm": 40,
+  "printed_parts": [
+    "03 Involute pinion 14T",
+    "04 Beveled compliant rack",
+    "01 Integral spring chassis",
+    "05 Mounting enclosure tray",
+    "06 Removable enclosure cover"
+  ],
+  "heat_set_inserts": {
+    "thread": "M3",
+    "quantity": 22,
+    "enclosure_quantity": 18,
+    "output_quantity": 4,
+    "outer_diameter_mm": 4.6,
+    "length_mm": 5.0,
+    "pilot_diameter_mm": 4.2
+  },
+  "lid_screws": {
+    "type": "M3x20 socket",
+    "quantity": 4
+  },
+  "chassis_screws": {
+    "type": "M3x10 socket",
+    "quantity": 2
+  },
+  "bearings": {
+    "type": "625ZZ",
+    "quantity": 6
+  },
+  "bearing_axles": [
+    "4 x M5x16 socket",
+    "2 x M5x25 socket",
+    "6 x thin M5 nuts (2.7 mm)",
+    "6 x inner-race washers (0.3 mm / 7.5 mm OD)"
+  ],
+  "output_mounting": {
+    "thread": "M3",
+    "quantity": 4,
+    "pitch_xy_mm": [
+      9.0,
+      9.0
+    ],
+    "pad_size_mm": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "maximum_screw_penetration_from_pad_face_mm": 5.3
+  },
+  "motor_screws": "4 x M3x12 countersunk",
+  "pinion_set_screw": "M3x4 flat point",
+  "top_mounting": "4 x application-length M3 screws; 3\u20135 mm insert engagement",
+  "side_mounting": {
+    "thread": "M3",
+    "quantity": 4,
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "maximum_screw_penetration_from_side_face_mm": 5.3,
+    "pattern_xz_mm": [
+      [
+        -81.5,
+        -28.0
+      ],
+      [
+        -81.5,
+        -4.0
+      ],
+      [
+        49.5,
+        -28.0
+      ],
+      [
+        49.5,
+        -4.0
+      ]
+    ]
+  }
+}

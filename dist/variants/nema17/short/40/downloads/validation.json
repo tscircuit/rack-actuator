@@ -1,0 +1,6251 @@
+{
+  "revision": 20,
+  "output_mount": {
+    "thread": "M3",
+    "count": 4,
+    "pattern_xy_mm": [
+      [
+        83.0,
+        21.0
+      ],
+      [
+        83.0,
+        30.0
+      ],
+      [
+        92.0,
+        21.0
+      ],
+      [
+        92.0,
+        30.0
+      ]
+    ],
+    "pitch_xy_mm": [
+      9.0,
+      9.0
+    ],
+    "pad_size_mm": [
+      18.0,
+      18.0,
+      18.0
+    ],
+    "face_z_mm": 21.0,
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "maximum_screw_penetration_mm": 5.3,
+    "minimum_knurl_edge_wall_mm": 2.2,
+    "minimum_retracted_enclosure_gap_mm": 1.5,
+    "checks": [
+      {
+        "position_mm": [
+          83.0,
+          21.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795118,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      },
+      {
+        "position_mm": [
+          83.0,
+          30.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795118,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      },
+      {
+        "position_mm": [
+          92.0,
+          21.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795097,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      },
+      {
+        "position_mm": [
+          92.0,
+          30.0,
+          20.7
+        ],
+        "installation_axis": [
+          0,
+          0,
+          1
+        ],
+        "interference_mm3": 13.823007675795097,
+        "approach_intersection_mm3": 0,
+        "backing_mm": 12.299999999999999
+      }
+    ]
+  },
+  "tooth_module_mm": 2.0,
+  "tooth_pitch_mm": 6.283185307179586,
+  "actuator_length_mm": 146.0,
+  "minimum_actuator_length_mm": 146,
+  "motor_depth_mm": 40.0,
+  "controller_rear_plane_z_mm": -48.0,
+  "controller_dimensions_modeled": false,
+  "rack_backbone_width_mm": 16.0,
+  "head_relief_end_x_mm": 57.25,
+  "solid_rack_end_length_mm": 21.25,
+  "square_insertion_end": true,
+  "rack_restoration_checks_passed": 4,
+  "stroke_mm": 40.0,
+  "motor": "NEMA17",
+  "layout": "short",
+  "pinion_teeth": 18,
+  "pressure_angle_deg": 20,
+  "bearing_clearance_mm": 0.8,
+  "hardware_clearance_mm": 0.5,
+  "socket_head_envelope_mm": [
+    9.5,
+    5.0
+  ],
+  "chassis_footprint_mm": [
+    86.0,
+    95.9
+  ],
+  "enclosure": {
+    "printed_parts": 5,
+    "case_length_mm": 146.0,
+    "motor_rear_projection_mm": 4,
+    "driver_dimensions_modeled": false,
+    "toothed_rack_extremes_x_mm": [
+      -47.71346314117875,
+      47.71346314117875
+    ],
+    "inner_case_x_mm": [
+      -86.6,
+      54.6
+    ],
+    "tooth_concealment_pass": true,
+    "mounting_face_normal": [
+      0,
+      1,
+      0
+    ],
+    "minimum_controller_plane_separation_mm": 4.0,
+    "side_mount_thread": "M3",
+    "side_mounts_xz_mm": [
+      [
+        -81.5,
+        -34.0
+      ],
+      [
+        -81.5,
+        -4.0
+      ],
+      [
+        49.5,
+        -34.0
+      ],
+      [
+        49.5,
+        -4.0
+      ]
+    ],
+    "side_mount_plane_y_mm": 76.80000000000001,
+    "side_mount_insert_recess_mm": 0.3,
+    "side_mount_engagement_mm": [
+      3,
+      5.0
+    ],
+    "side_mount_flush": true,
+    "side_mount_checks": [
+      {
+        "position_xz_mm": [
+          -81.5,
+          -34.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_xz_mm": [
+          -81.5,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_xz_mm": [
+          49.5,
+          -34.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_xz_mm": [
+          49.5,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      }
+    ],
+    "front_mount_thread": "M3",
+    "front_mounts_yz_mm": [
+      [
+        -17.9,
+        -34.0
+      ],
+      [
+        -17.9,
+        -4.0
+      ],
+      [
+        67.80000000000001,
+        -34.0
+      ],
+      [
+        67.80000000000001,
+        -4.0
+      ]
+    ],
+    "front_mount_plane_x_mm": 57.0,
+    "front_mount_insert_recess_mm": 0.3,
+    "front_mount_checks": [
+      {
+        "position_yz_mm": [
+          -17.9,
+          -34.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_yz_mm": [
+          -17.9,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_yz_mm": [
+          67.80000000000001,
+          -34.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_yz_mm": [
+          67.80000000000001,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      }
+    ],
+    "front_fixture_opening_yz_mm": [
+      15.5,
+      41,
+      -10,
+      22
+    ],
+    "top_mount_thread": "M3",
+    "top_mounts_xy_mm": [
+      [
+        -81.5,
+        -19.4
+      ],
+      [
+        -81.5,
+        69.30000000000001
+      ],
+      [
+        49.5,
+        -19.4
+      ],
+      [
+        49.5,
+        69.30000000000001
+      ]
+    ],
+    "top_mount_plane_z_mm": 24.9,
+    "top_mount_load_path": "Directly into full-height tray posts; removable cover is bypassed",
+    "top_mount_engagement_mm": [
+      3,
+      5.0
+    ],
+    "cover_screw_count": 4,
+    "lid_screw": "M3x20 socket, recessed 0.3 mm below mounting face",
+    "chassis_screw": "M3x10 socket",
+    "heat_set_inserts": {
+      "thread": "M3",
+      "outer_diameter_mm": 4.6,
+      "length_mm": 5.0,
+      "printed_pilot_diameter_mm": 4.2,
+      "count": 18,
+      "checks": [
+        {
+          "purpose": "chassis",
+          "position_mm": [
+            -39.0,
+            -15.899999999999999,
+            -3
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675797783,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "chassis",
+          "position_mm": [
+            39.0,
+            -15.899999999999999,
+            -3
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675797783,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "top mount",
+          "position_mm": [
+            -81.5,
+            -19.4,
+            24.9
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675795097,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "top mount",
+          "position_mm": [
+            -81.5,
+            69.30000000000001,
+            24.9
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675795239,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "top mount",
+          "position_mm": [
+            49.5,
+            -19.4,
+            24.9
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675795033,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "top mount",
+          "position_mm": [
+            49.5,
+            69.30000000000001,
+            24.9
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675795104,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "lid",
+          "position_mm": [
+            -81.5,
+            -9.399999999999999,
+            7.0
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675794926,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "lid",
+          "position_mm": [
+            -81.5,
+            59.30000000000001,
+            7.0
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.82300767579492,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "lid",
+          "position_mm": [
+            49.5,
+            -9.399999999999999,
+            7.0
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675795132,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "lid",
+          "position_mm": [
+            49.5,
+            59.30000000000001,
+            7.0
+          ],
+          "installation_axis": [
+            0,
+            0,
+            1
+          ],
+          "interference_mm3": 13.823007675794962,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            -81.5,
+            76.50000000000001,
+            -34.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795054,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            -81.5,
+            76.50000000000001,
+            -4.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            49.5,
+            76.50000000000001,
+            -34.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795047,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "side mount",
+          "position_mm": [
+            49.5,
+            76.50000000000001,
+            -4.0
+          ],
+          "installation_axis": [
+            0,
+            1,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            56.7,
+            -17.9,
+            -34.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.82300767579504,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            56.7,
+            -17.9,
+            -4.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.823007675795068,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            56.7,
+            67.80000000000001,
+            -34.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.82300767579504,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            56.7,
+            67.80000000000001,
+            -4.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
+        }
+      ]
+    }
+  },
+  "spring_carrier": {
+    "integral_with_chassis": true,
+    "design": "two opposed leaves per lower bearing carrier",
+    "free_stl_valid": true,
+    "free_stl_solid_count": 1,
+    "preload_deflection_mm": 2.3,
+    "leaf_thickness_mm": 2.0,
+    "leaf_width_mm": 12.0,
+    "leaf_length_mm": 22.0,
+    "leaves_per_carrier": 2,
+    "root_land_mm": 1.2,
+    "root_radius_mm": 1.0,
+    "moving_cradle_thickness_mm": 4.0,
+    "nominal_max_leaf_slope_deg": 8.912434969522739,
+    "previous_14mm_leaf_slope_deg": 13.843491362414788,
+    "ideal_centered_load_carrier_pitch_deg": 0,
+    "linear_vertical_stiffness_per_modulus_mm": 0.018031555221637866,
+    "linear_pitch_stiffness_per_modulus_mm3": 11.728144252441773,
+    "estimated_outer_fiber_strain": 0.028512396694214875,
+    "travel_clearance_checks": [
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0,
+        "tray_gap_mm": 3.055385138137416,
+        "motor_gap_mm": 5.0
+      },
+      {
+        "station_x_mm": 32.0,
+        "deflection_mm": 0,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 5.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.3,
+        "tray_gap_mm": 3.055385138137416,
+        "motor_gap_mm": 5.0
+      },
+      {
+        "station_x_mm": 32.0,
+        "deflection_mm": 2.3,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 5.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.6,
+        "tray_gap_mm": 3.055385138137416,
+        "motor_gap_mm": 5.0
+      },
+      {
+        "station_x_mm": 32.0,
+        "deflection_mm": 2.6,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 5.0
+      }
+    ],
+    "rigid_lower_deck": false,
+    "mechanical_downward_stop": false,
+    "checked_deflection_mm": 2.6,
+    "method": "Prescribed displacement with level carrier; symmetric linear beam proxy, not finite element analysis. Actual tilt, stiffness, creep and fatigue require print testing. STL relaxed; STEP/viewer deflected. No mechanical stop."
+  },
+  "root_relief": {
+    "shape": "semicircular caps tangent to straight slot walls",
+    "central_radius_mm": 1.9807219124604023,
+    "intertooth_radius_mm": 0.5608707411293907,
+    "maximum_y_mm": 25.0,
+    "arc_geometry_checked": true
+  },
+  "shaft_fit": {
+    "shaft_diameter_mm": 5.0,
+    "shaft_flat_depth_mm": 0.5,
+    "shaft_flat_y_mm": -2.0,
+    "bore_diameter_mm": 5.3,
+    "bore_flat_y_mm": -2.15,
+    "motor_center_y_mm": 0.0,
+    "bore_flat_world_y_mm": -2.15,
+    "wall_clearance_mm": 0.15,
+    "measured_shaft_gear_gap_mm": 0.14999999999996128,
+    "set_screw": "M3x4 flat point",
+    "tap_pilot_diameter_mm": 2.5,
+    "set_screw_axis": "+Y, normal to flat",
+    "set_screw_axis_z_mm": 6.5,
+    "set_screw_tip_y_mm": -2.0,
+    "set_screw_shaft_gap_mm": 0.0,
+    "shaft_engagement_z_mm": [
+      0,
+      11
+    ]
+  },
+  "bearing_count": 6,
+  "bearing_type": "625ZZ",
+  "bearing_dimensions_mm": [
+    5,
+    16,
+    5
+  ],
+  "station_spacing_mm": 64.0,
+  "bearing_stations_x_mm": [
+    -32.0,
+    32.0
+  ],
+  "exit_bearing_center_offset_mm": 25.0,
+  "gear_center_x_mm": 0,
+  "minimum_guide_edge_margin_mm": 13,
+  "upper_bearing_angle_deg": 45,
+  "spring_preload_mm": 2.3,
+  "spring_thickness_mm": 2.0,
+  "checked_spring_deflection_mm": 2.6,
+  "spring_free_stl": true,
+  "chassis_mounts_mm": [
+    [
+      -39.0,
+      -15.899999999999999
+    ],
+    [
+      39.0,
+      -15.899999999999999
+    ],
+    [
+      -15.0,
+      68.9
+    ],
+    [
+      15.0,
+      68.9
+    ]
+  ],
+  "motor_face_z_mm": -8,
+  "integral_motor_land_mm": 5,
+  "chassis_solid_count": 1,
+  "rack_solid_count": 1,
+  "insertion_side": "right/output side, plain left end first",
+  "rack_withdrawal_mm": 113.09733552923255,
+  "contact_checks_passed": 426,
+  "upper_force_normals": [
+    [
+      0,
+      0.7071067811865476,
+      -0.7071067811865476
+    ],
+    [
+      0,
+      -0.7071067811865476,
+      -0.7071067811865476
+    ]
+  ],
+  "lower_force_normal": [
+    0,
+    0,
+    1
+  ],
+  "preload_per_flank_mm": 0.1,
+  "nominal_mesh_max_overlap_mm3": 0,
+  "elastic_mesh_limit_mm3": 3.8555618722255014,
+  "elastic_mesh_volume_mm3_range": [
+    3.2737460723977927,
+    3.64951624500489
+  ],
+  "hardware_clearance_samples": [
+    {
+      "travel_mm": -20.0,
+      "part": "M5 upper washer front -32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5x16 angled axle front -32.0",
+      "gap_mm": 0.4999999999999977
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 angled nut front -32.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 upper washer front 32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5x16 angled axle front 32.0",
+      "gap_mm": 0.4999999999999978
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 angled nut front 32.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 upper washer rear -32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5x16 angled axle rear -32.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 angled nut rear -32.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 upper washer rear 32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5x16 angled axle rear 32.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 angled nut rear 32.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 lower washer -32.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5x25 lower axle -32.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 lower nut -32.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 lower washer 32.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5x25 lower axle 32.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 lower nut 32.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 upper washer front -32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x16 angled axle front -32.0",
+      "gap_mm": 0.4999999999999965
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 angled nut front -32.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 upper washer front 32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x16 angled axle front 32.0",
+      "gap_mm": 0.499999999999999
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 angled nut front 32.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 upper washer rear -32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x16 angled axle rear -32.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 angled nut rear -32.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 upper washer rear 32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x16 angled axle rear 32.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 angled nut rear 32.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower washer -32.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x25 lower axle -32.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower nut -32.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower washer 32.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x25 lower axle 32.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower nut 32.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 upper washer front -32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x16 angled axle front -32.0",
+      "gap_mm": 0.499999999999999
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 angled nut front -32.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 upper washer front 32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x16 angled axle front 32.0",
+      "gap_mm": 0.4999999999999977
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 angled nut front 32.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 upper washer rear -32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x16 angled axle rear -32.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 angled nut rear -32.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 upper washer rear 32.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x16 angled axle rear 32.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 angled nut rear 32.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower washer -32.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x25 lower axle -32.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower nut -32.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower washer 32.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x25 lower axle 32.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower nut 32.0",
+      "gap_mm": 8.354648223959998
+    }
+  ],
+  "minimum_rack_hardware_gap_mm": 0.4999999999999952,
+  "source_sha256": "dda1cfebc0fadcafadd5d939abf031d6406a41c8ba5a0d9be044d2cf1ab98106",
+  "mesh_periodicity": {
+    "enabled": true,
+    "rack_difference_mm3": 0,
+    "pinion_difference_mm3": 0,
+    "cache_hits": 3,
+    "exact_phase_evaluations": 28
+  },
+  "broadphase_coverage_checks": [
+    {
+      "part": "cover",
+      "boxes": 21,
+      "uncovered_volume_mm3": 0
+    },
+    {
+      "part": "tray",
+      "boxes": 35,
+      "uncovered_volume_mm3": 0
+    },
+    {
+      "part": "rack",
+      "boxes": 3,
+      "uncovered_volume_mm3": 0
+    }
+  ],
+  "lid_screw_swept_envelope_checks": [
+    {
+      "part": "M3x20 recessed lid screw -81.5 -9.4",
+      "stationary_part_pairs": 60,
+      "path": "Z +35 mm, then Y -120 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw -81.5 59.3",
+      "stationary_part_pairs": 60,
+      "path": "Z +35 mm, then Y -120 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 49.5 -9.4",
+      "stationary_part_pairs": 60,
+      "path": "Z +35 mm, then Y -120 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 49.5 59.3",
+      "stationary_part_pairs": 60,
+      "path": "Z +35 mm, then Y -120 mm",
+      "maximum_intersection_mm3": 0.0
+    }
+  ],
+  "mechanism_explosion_samples": 151,
+  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.",
+  "intersection_tolerance_mm3": 0.01,
+  "explosion_samples": 2507,
+  "motion_samples": 41,
+  "explosion_failures": [],
+  "motion_failures": [],
+  "intentional_contacts": [
+    {
+      "phase": "assembled",
+      "a": "03 Involute pinion 18T",
+      "b": "04 Beveled compliant rack",
+      "volume_mm3": 3.29236
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 83 21",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 83 30",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 92 21",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "04 Beveled compliant rack",
+      "b": "M3 heat-set insert output 92 30",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert chassis -39 -15.9",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert chassis 39 -15.9",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert top mount -81.5 -19.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert top mount -81.5 69.3",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert top mount 49.5 -19.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert top mount 49.5 69.3",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert lid -81.5 -9.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert lid -81.5 59.3",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert lid 49.5 -9.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert lid 49.5 59.3",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount -81.5 -34",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount -81.5 -4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount 49.5 -34",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert side mount 49.5 -4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount -17.9 -34",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount -17.9 -4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount 67.8 -34",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount 67.8 -4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    }
+  ],
+  "minimum_rack_frame_gap_mm": 1.0,
+  "plastic_clearance_samples": [
+    {
+      "x": -20.0,
+      "y": 0,
+      "z": 0,
+      "part": "01 Integral spring chassis",
+      "gap_mm": 1.0
+    },
+    {
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "part": "01 Integral spring chassis",
+      "gap_mm": 1.0
+    },
+    {
+      "x": 20.0,
+      "y": 0,
+      "z": 0,
+      "part": "01 Integral spring chassis",
+      "gap_mm": 1.0
+    }
+  ],
+  "viewer_reference_poses": {
+    "0": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.025": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          29.166666666666668
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.04": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -60.0,
+          35.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.075": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          34.99999999999999
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "rack": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.1": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.15": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          31.41592653589792,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -99.99999999999997
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -99.99999999999997
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -99.99999999999997
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.18": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          50.265482457436676,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -159.99999999999994
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -159.99999999999994
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -159.99999999999994
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.2": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          62.831853071795855,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -199.99999999999997
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -199.99999999999997
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -199.99999999999997
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.24": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          87.96459430051418,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -279.99999999999994
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -279.99999999999994
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -279.99999999999994
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.26": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          100.53096491487338,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -320.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -320.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -320.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.821400779404577
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.821400779404577
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.821400779404577
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.28": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.3": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -18.66666666666665,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.33": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          0.0,
+          13.333333333333332
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.36": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -27.49999999999996,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.4": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          8.48528137423858,
+          8.48528137423858
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.45": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -8.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.5": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          -16.97056274847714,
+          16.97056274847714
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.53": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          8.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.57": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          19.99999999999996
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.64": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.7": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.79": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          -90.0,
+          24.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          -40.00000000000007
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.84": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          -90.0,
+          24.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          0.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          0.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.89": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          -90.0,
+          24.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          -45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          0.0,
+          -47.925,
+          2.3
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          0.0,
+          -47.925,
+          2.3
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.92": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          -90.0,
+          24.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          -45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          -30.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          30.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.95": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          -90.0,
+          24.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          -8.485281374238571,
+          -8.485281374238571
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          8.485281374238571,
+          -8.485281374238571
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          -45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          -45.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          45.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      }
+    },
+    "0.98": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          -90.0,
+          24.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          -53.48528137423857,
+          -8.485281374238571
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          53.48528137423857,
+          -8.485281374238571
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          -45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          -45.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          10.633333333333333
+        ],
+        "rotation_z_deg": 0.0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          45.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          10.633333333333333
+        ],
+        "rotation_z_deg": 0.0
+      }
+    },
+    "1": {
+      "fixed": {
+        "translation": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover_screws": {
+        "translation": [
+          0.0,
+          -120.0,
+          35.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "cover": {
+        "translation": [
+          0.0,
+          0.0,
+          70.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "rack": {
+        "translation": [
+          113.09733552923255,
+          0.0,
+          0.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "gear": {
+        "translation": [
+          0.0,
+          -55.0,
+          20.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "shaft": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "set_screw": {
+        "translation": [
+          0.0,
+          -28.0,
+          0.0
+        ],
+        "rotation_z_deg": -360.0
+      },
+      "motor_screws": {
+        "translation": [
+          0.0,
+          0.0,
+          16.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "motor": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "chassis_screws": {
+        "translation": [
+          0.0,
+          -90.0,
+          24.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "tray": {
+        "translation": [
+          0.0,
+          0.0,
+          -80.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_axles": {
+        "translation": [
+          0.0,
+          -23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_axles": {
+        "translation": [
+          0.0,
+          23.786796564403573,
+          21.213203435596427
+        ],
+        "rotation_z_deg": 0
+      },
+      "upper_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          40.0
+        ],
+        "rotation_z_deg": 0
+      },
+      "front_nuts": {
+        "translation": [
+          0.0,
+          -53.48528137423857,
+          -8.485281374238571
+        ],
+        "rotation_z_deg": 0
+      },
+      "rear_nuts": {
+        "translation": [
+          0.0,
+          53.48528137423857,
+          -8.485281374238571
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_nuts": {
+        "translation": [
+          -45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_axles": {
+        "translation": [
+          -45.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_left_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          27.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_nuts": {
+        "translation": [
+          45.0,
+          45.0,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_axles": {
+        "translation": [
+          45.0,
+          -63.9,
+          2.3
+        ],
+        "rotation_z_deg": 0
+      },
+      "lower_right_rollers": {
+        "translation": [
+          0.0,
+          0.0,
+          27.3
+        ],
+        "rotation_z_deg": 0
+      }
+    }
+  },
+  "limits": [
+    "2.3 mm default spring deflection is an aggressive physical prototype. Force, elastic recovery and fatigue require testing in the chosen print material.",
+    "Sampled rigid geometry, not continuous swept-volume proof or a physical fit test.",
+    "Oversized teeth require elastic deflection. No load, backlash or fatigue rating.",
+    "The plain insertion end has no axial hard stop; enforce software travel limits.",
+    "Viewer chassis uses exact CAD shape samples at one twelfth of the spring preload; bearing translations follow the CAD tracks continuously.",
+    "Pinion is free to turn during rack insertion. Remove front and rear angled axles in sequence. Spring carrier supplies passive preload; force, creep and fatigue have not been measured. STL is unloaded; STEP is assembled and deflected."
+  ]
+}

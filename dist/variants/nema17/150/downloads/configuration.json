@@ -1,5 +1,6 @@
 {
   "motor": "nema17",
+  "layout": "standard",
   "tooth_module": 2.0,
   "stroke": 150,
   "actuator_length": 456.0,

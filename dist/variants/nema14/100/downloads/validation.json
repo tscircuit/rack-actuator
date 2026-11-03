@@ -1,5 +1,5 @@
 {
-  "revision": 19,
+  "revision": 20,
   "output_mount": {
     "thread": "M3",
     "count": 4,
@@ -116,6 +116,7 @@
   "rack_restoration_checks_passed": 4,
   "stroke_mm": 100.0,
   "motor": "NEMA14",
+  "layout": "standard",
   "pinion_teeth": 14,
   "pressure_angle_deg": 25,
   "bearing_clearance_mm": 0.8,
@@ -126,7 +127,7 @@
   ],
   "chassis_footprint_mm": [
     186.0,
-    75
+    100.34545454545454
   ],
   "enclosure": {
     "printed_parts": 5,
@@ -167,7 +168,7 @@
         -4.0
       ]
     ],
-    "side_mount_plane_y_mm": 63.9,
+    "side_mount_plane_y_mm": 80.07272727272728,
     "side_mount_insert_recess_mm": 0.3,
     "side_mount_engagement_mm": [
       3,
@@ -208,23 +209,84 @@
         "blind_backing_mm": 2.0
       }
     ],
+    "front_mount_thread": "M3",
+    "front_mounts_yz_mm": [
+      [
+        -19.172727272727272,
+        -28.0
+      ],
+      [
+        -19.172727272727272,
+        -4.0
+      ],
+      [
+        71.07272727272728,
+        -28.0
+      ],
+      [
+        71.07272727272728,
+        -4.0
+      ]
+    ],
+    "front_mount_plane_x_mm": 107,
+    "front_mount_insert_recess_mm": 0.3,
+    "front_mount_checks": [
+      {
+        "position_yz_mm": [
+          -19.172727272727272,
+          -28.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_yz_mm": [
+          -19.172727272727272,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_yz_mm": [
+          71.07272727272728,
+          -28.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      },
+      {
+        "position_yz_mm": [
+          71.07272727272728,
+          -4.0
+        ],
+        "maximum_screw_penetration_mm": 5.3,
+        "blind_backing_mm": 2.0
+      }
+    ],
+    "front_fixture_opening_yz_mm": [
+      15.5,
+      41,
+      -10,
+      22
+    ],
     "top_mount_thread": "M3",
     "top_mounts_xy_mm": [
       [
         -191.5,
-        -13.399999999999999
+        -20.672727272727272
       ],
       [
         -191.5,
-        56.4
+        72.57272727272728
       ],
       [
         99.5,
-        -13.399999999999999
+        -20.672727272727272
       ],
       [
         99.5,
-        56.4
+        72.57272727272728
       ]
     ],
     "top_mount_plane_z_mm": 24.9,
@@ -241,13 +303,13 @@
       "outer_diameter_mm": 4.6,
       "length_mm": 5.0,
       "printed_pilot_diameter_mm": 4.2,
-      "count": 18,
+      "count": 22,
       "checks": [
         {
           "purpose": "chassis",
           "position_mm": [
             -89.0,
-            -13,
+            -19.172727272727272,
             -3
           ],
           "installation_axis": [
@@ -255,14 +317,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675791338,
+          "interference_mm3": 13.823007675791658,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "chassis",
           "position_mm": [
             -30.0,
-            -13,
+            -19.172727272727272,
             -3
           ],
           "installation_axis": [
@@ -270,14 +332,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675793406,
+          "interference_mm3": 13.823007675793441,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "chassis",
           "position_mm": [
             30.0,
-            -13,
+            -19.172727272727272,
             -3
           ],
           "installation_axis": [
@@ -285,14 +347,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675795978,
+          "interference_mm3": 13.823007675796525,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "chassis",
           "position_mm": [
             89.0,
-            -13,
+            -19.172727272727272,
             -3
           ],
           "installation_axis": [
@@ -300,14 +362,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675791352,
+          "interference_mm3": 13.823007675791658,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
           "position_mm": [
             -191.5,
-            -13.399999999999999,
+            -20.672727272727272,
             24.9
           ],
           "installation_axis": [
@@ -315,14 +377,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675795147,
+          "interference_mm3": 13.823007675795154,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
           "position_mm": [
             -191.5,
-            56.4,
+            72.57272727272728,
             24.9
           ],
           "installation_axis": [
@@ -330,14 +392,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675795147,
+          "interference_mm3": 13.82300767579546,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
           "position_mm": [
             99.5,
-            -13.399999999999999,
+            -20.672727272727272,
             24.9
           ],
           "installation_axis": [
@@ -345,14 +407,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675795246,
+          "interference_mm3": 13.82300767579509,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
           "position_mm": [
             99.5,
-            56.4,
+            72.57272727272728,
             24.9
           ],
           "installation_axis": [
@@ -360,14 +422,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675795068,
+          "interference_mm3": 13.823007675795239,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
           "position_mm": [
             -191.5,
-            -3.3999999999999986,
+            -10.672727272727272,
             7.0
           ],
           "installation_axis": [
@@ -382,7 +444,7 @@
           "purpose": "lid",
           "position_mm": [
             -191.5,
-            46.4,
+            62.57272727272728,
             7.0
           ],
           "installation_axis": [
@@ -390,14 +452,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675795466,
+          "interference_mm3": 13.823007675795445,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
           "position_mm": [
             99.5,
-            -3.3999999999999986,
+            -10.672727272727272,
             7.0
           ],
           "installation_axis": [
@@ -405,14 +467,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.823007675794926,
+          "interference_mm3": 13.823007675794933,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
           "position_mm": [
             99.5,
-            46.4,
+            62.57272727272728,
             7.0
           ],
           "installation_axis": [
@@ -420,14 +482,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.82300767579492,
+          "interference_mm3": 13.823007675794905,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
           "position_mm": [
-            -114.0,
-            -13.399999999999999,
+            -106.0,
+            -20.672727272727272,
             7.0
           ],
           "installation_axis": [
@@ -441,8 +503,8 @@
         {
           "purpose": "lid",
           "position_mm": [
-            -114.0,
-            56.4,
+            -106.0,
+            72.57272727272728,
             7.0
           ],
           "installation_axis": [
@@ -450,14 +512,14 @@
             0,
             1
           ],
-          "interference_mm3": 13.82300767579509,
+          "interference_mm3": 13.823007675795083,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "side mount",
           "position_mm": [
             -191.5,
-            63.6,
+            79.77272727272728,
             -28.0
           ],
           "installation_axis": [
@@ -472,7 +534,7 @@
           "purpose": "side mount",
           "position_mm": [
             -191.5,
-            63.6,
+            79.77272727272728,
             -4.0
           ],
           "installation_axis": [
@@ -487,7 +549,7 @@
           "purpose": "side mount",
           "position_mm": [
             99.5,
-            63.6,
+            79.77272727272728,
             -28.0
           ],
           "installation_axis": [
@@ -502,7 +564,7 @@
           "purpose": "side mount",
           "position_mm": [
             99.5,
-            63.6,
+            79.77272727272728,
             -4.0
           ],
           "installation_axis": [
@@ -512,23 +574,131 @@
           ],
           "interference_mm3": 13.823007675795061,
           "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            106.7,
+            -19.172727272727272,
+            -28.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.823007675795047,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            106.7,
+            -19.172727272727272,
+            -4.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.823007675795061,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            106.7,
+            71.07272727272728,
+            -28.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.823007675795047,
+          "approach_intersection_mm3": 0
+        },
+        {
+          "purpose": "front mount",
+          "position_mm": [
+            106.7,
+            71.07272727272728,
+            -4.0
+          ],
+          "installation_axis": [
+            1,
+            0,
+            0
+          ],
+          "interference_mm3": 13.823007675795047,
+          "approach_intersection_mm3": 0
         }
       ]
     }
   },
   "spring_carrier": {
     "integral_with_chassis": true,
+    "design": "two opposed leaves per lower bearing carrier",
     "free_stl_valid": true,
     "free_stl_solid_count": 1,
     "preload_deflection_mm": 2.3,
-    "leaf_thickness_mm": 1.4,
-    "leaf_width_mm": 20.9,
-    "root_radius_mm": 1.2,
-    "wall_local_blend_checks_passed": 8,
+    "leaf_thickness_mm": 2.3621382467694696,
+    "leaf_width_mm": 12.0,
+    "leaf_length_mm": 25.272727272727273,
+    "leaves_per_carrier": 2,
+    "root_land_mm": 1.2,
+    "root_radius_mm": 1.0,
+    "moving_cradle_thickness_mm": 4.0,
+    "nominal_max_leaf_slope_deg": 7.773443296562534,
+    "previous_14mm_leaf_slope_deg": 13.843491362414788,
+    "ideal_centered_load_carrier_pitch_deg": 0,
+    "linear_vertical_stiffness_per_modulus_mm": 0.019596154018875205,
+    "linear_pitch_stiffness_per_modulus_mm3": 14.634994626238658,
+    "estimated_outer_fiber_strain": 0.025518208454891438,
+    "travel_clearance_checks": [
+      {
+        "station_x_mm": -82.0,
+        "deflection_mm": 0,
+        "tray_gap_mm": 3.0553851381374177,
+        "motor_gap_mm": 58.4
+      },
+      {
+        "station_x_mm": 82.0,
+        "deflection_mm": 0,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 58.4
+      },
+      {
+        "station_x_mm": -82.0,
+        "deflection_mm": 2.3,
+        "tray_gap_mm": 3.0553851381374177,
+        "motor_gap_mm": 58.4
+      },
+      {
+        "station_x_mm": 82.0,
+        "deflection_mm": 2.3,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 58.4
+      },
+      {
+        "station_x_mm": -82.0,
+        "deflection_mm": 2.6,
+        "tray_gap_mm": 3.0553851381374177,
+        "motor_gap_mm": 58.4
+      },
+      {
+        "station_x_mm": 82.0,
+        "deflection_mm": 2.6,
+        "tray_gap_mm": 3.5,
+        "motor_gap_mm": 58.4
+      }
+    ],
     "rigid_lower_deck": false,
     "mechanical_downward_stop": false,
     "checked_deflection_mm": 2.6,
-    "method": "Prescribed nominal displacement, not finite element analysis. Chassis STL is relaxed; STEP/viewer start deflected. No mechanical travel stop."
+    "method": "Prescribed displacement with level carrier; symmetric linear beam proxy, not finite element analysis. Actual tilt, stiffness, creep and fatigue require print testing. STL relaxed; STEP/viewer deflected. No mechanical stop."
   },
   "root_relief": {
     "shape": "semicircular caps tangent to straight slot walls",
@@ -575,41 +745,41 @@
   "minimum_guide_edge_margin_mm": 13,
   "upper_bearing_angle_deg": 45,
   "spring_preload_mm": 2.3,
-  "spring_thickness_mm": 1.4,
+  "spring_thickness_mm": 2.3621382467694696,
   "checked_spring_deflection_mm": 2.6,
   "spring_free_stl": true,
   "chassis_mounts_mm": [
     [
       -89.0,
-      -13
-    ],
-    [
-      -89.0,
-      54
+      -19.172727272727272
     ],
     [
       -30.0,
-      -13
+      -19.172727272727272
+    ],
+    [
+      30.0,
+      -19.172727272727272
+    ],
+    [
+      89.0,
+      -19.172727272727272
+    ],
+    [
+      -65.0,
+      72.17272727272727
     ],
     [
       -30.0,
-      54
+      72.17272727272727
     ],
     [
       30.0,
-      -13
+      72.17272727272727
     ],
     [
-      30.0,
-      54
-    ],
-    [
-      89.0,
-      -13
-    ],
-    [
-      89.0,
-      54
+      65.0,
+      72.17272727272727
     ]
   ],
   "motor_face_z_mm": -8,
@@ -916,7 +1086,7 @@
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.49999999999999273,
-  "source_sha256": "822284e5fb6c1a71877ca175fcc0a566f3c8e605d5ed935176e270ddf9b54a67",
+  "source_sha256": "dda1cfebc0fadcafadd5d939abf031d6406a41c8ba5a0d9be044d2cf1ab98106",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -932,7 +1102,7 @@
     },
     {
       "part": "tray",
-      "boxes": 41,
+      "boxes": 43,
       "uncovered_volume_mm3": 0
     },
     {
@@ -943,38 +1113,38 @@
   ],
   "lid_screw_swept_envelope_checks": [
     {
-      "part": "M3x20 recessed lid screw -191.5 -3.4",
-      "stationary_part_pairs": 62,
+      "part": "M3x20 recessed lid screw -191.5 -10.6727",
+      "stationary_part_pairs": 66,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw -191.5 46.4",
-      "stationary_part_pairs": 62,
+      "part": "M3x20 recessed lid screw -191.5 62.5727",
+      "stationary_part_pairs": 66,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw 99.5 -3.4",
-      "stationary_part_pairs": 62,
+      "part": "M3x20 recessed lid screw 99.5 -10.6727",
+      "stationary_part_pairs": 66,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw 99.5 46.4",
-      "stationary_part_pairs": 62,
+      "part": "M3x20 recessed lid screw 99.5 62.5727",
+      "stationary_part_pairs": 66,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw -114 -13.4",
-      "stationary_part_pairs": 62,
+      "part": "M3x20 recessed lid screw -106 -20.6727",
+      "stationary_part_pairs": 66,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw -114 56.4",
-      "stationary_part_pairs": 62,
+      "part": "M3x20 recessed lid screw -106 72.5727",
+      "stationary_part_pairs": 66,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     }
@@ -982,7 +1152,7 @@
   "mechanism_explosion_samples": 151,
   "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.",
   "intersection_tolerance_mm3": 0.01,
-  "explosion_samples": 2705,
+  "explosion_samples": 2894,
   "motion_samples": 41,
   "explosion_failures": [],
   "motion_failures": [],
@@ -1023,98 +1193,98 @@
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert chassis -89 -13",
+      "a": "M3 heat-set insert chassis -89 -19.1727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert chassis -30 -13",
+      "a": "M3 heat-set insert chassis -30 -19.1727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert chassis 30 -13",
+      "a": "M3 heat-set insert chassis 30 -19.1727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert chassis 89 -13",
+      "a": "M3 heat-set insert chassis 89 -19.1727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount -191.5 -13.4",
+      "a": "M3 heat-set insert top mount -191.5 -20.6727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount -191.5 56.4",
+      "a": "M3 heat-set insert top mount -191.5 72.5727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount 99.5 -13.4",
+      "a": "M3 heat-set insert top mount 99.5 -20.6727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount 99.5 56.4",
+      "a": "M3 heat-set insert top mount 99.5 72.5727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -191.5 -3.4",
+      "a": "M3 heat-set insert lid -191.5 -10.6727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -191.5 46.4",
+      "a": "M3 heat-set insert lid -191.5 62.5727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid 99.5 -3.4",
+      "a": "M3 heat-set insert lid 99.5 -10.6727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid 99.5 46.4",
+      "a": "M3 heat-set insert lid 99.5 62.5727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -114 -13.4",
+      "a": "M3 heat-set insert lid -106 -20.6727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -114 56.4",
+      "a": "M3 heat-set insert lid -106 72.5727",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
@@ -1143,6 +1313,34 @@
     {
       "phase": "assembled",
       "a": "M3 heat-set insert side mount 99.5 -4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount -19.1727 -28",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount -19.1727 -4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount 71.0727 -28",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert front mount 71.0727 -4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
@@ -5221,10 +5419,10 @@
       "lower_left_nuts": {
         "translation": [
           0.0,
-          22.5,
+          45.0,
           2.3
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "lower_left_axles": {
         "translation": [
@@ -5245,10 +5443,10 @@
       "lower_right_nuts": {
         "translation": [
           0.0,
-          22.5,
+          45.0,
           2.3
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "lower_right_axles": {
         "translation": [
@@ -5398,7 +5596,7 @@
       },
       "lower_left_nuts": {
         "translation": [
-          0.0,
+          -45.0,
           45.0,
           2.3
         ],
@@ -5407,7 +5605,7 @@
       "lower_left_axles": {
         "translation": [
           0.0,
-          -26.25,
+          -50.37954545454545,
           2.3
         ],
         "rotation_z_deg": 0.0
@@ -5422,7 +5620,7 @@
       },
       "lower_right_nuts": {
         "translation": [
-          0.0,
+          45.0,
           45.0,
           2.3
         ],
@@ -5431,7 +5629,7 @@
       "lower_right_axles": {
         "translation": [
           0.0,
-          -26.25,
+          -50.37954545454545,
           2.3
         ],
         "rotation_z_deg": 0.0
@@ -5576,7 +5774,7 @@
       },
       "lower_left_nuts": {
         "translation": [
-          0.0,
+          -45.0,
           45.0,
           2.3
         ],
@@ -5585,7 +5783,7 @@
       "lower_left_axles": {
         "translation": [
           -30.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0.0
@@ -5600,7 +5798,7 @@
       },
       "lower_right_nuts": {
         "translation": [
-          0.0,
+          45.0,
           45.0,
           2.3
         ],
@@ -5609,7 +5807,7 @@
       "lower_right_axles": {
         "translation": [
           30.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0.0
@@ -5739,22 +5937,22 @@
       "front_nuts": {
         "translation": [
           0.0,
-          -14.142135623730912,
-          -14.142135623730912
+          -8.485281374238571,
+          -8.485281374238571
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "rear_nuts": {
         "translation": [
           0.0,
-          14.142135623730912,
-          -14.142135623730912
+          8.485281374238571,
+          -8.485281374238571
         ],
-        "rotation_z_deg": 0.0
+        "rotation_z_deg": 0
       },
       "lower_left_nuts": {
         "translation": [
-          0.0,
+          -45.0,
           45.0,
           2.3
         ],
@@ -5763,7 +5961,7 @@
       "lower_left_axles": {
         "translation": [
           -45.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0
@@ -5778,7 +5976,7 @@
       },
       "lower_right_nuts": {
         "translation": [
-          0.0,
+          45.0,
           45.0,
           2.3
         ],
@@ -5787,7 +5985,7 @@
       "lower_right_axles": {
         "translation": [
           45.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0
@@ -5917,22 +6115,22 @@
       "front_nuts": {
         "translation": [
           0.0,
-          -28.284271247461902,
-          -28.284271247461902
+          -53.48528137423857,
+          -8.485281374238571
         ],
         "rotation_z_deg": 0
       },
       "rear_nuts": {
         "translation": [
           0.0,
-          28.284271247461902,
-          -28.284271247461902
+          53.48528137423857,
+          -8.485281374238571
         ],
         "rotation_z_deg": 0
       },
       "lower_left_nuts": {
         "translation": [
-          0.0,
+          -45.0,
           45.0,
           2.3
         ],
@@ -5941,7 +6139,7 @@
       "lower_left_axles": {
         "translation": [
           -45.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0
@@ -5956,7 +6154,7 @@
       },
       "lower_right_nuts": {
         "translation": [
-          0.0,
+          45.0,
           45.0,
           2.3
         ],
@@ -5965,7 +6163,7 @@
       "lower_right_axles": {
         "translation": [
           45.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0
@@ -6095,22 +6293,22 @@
       "front_nuts": {
         "translation": [
           0.0,
-          -28.284271247461902,
-          -28.284271247461902
+          -53.48528137423857,
+          -8.485281374238571
         ],
         "rotation_z_deg": 0
       },
       "rear_nuts": {
         "translation": [
           0.0,
-          28.284271247461902,
-          -28.284271247461902
+          53.48528137423857,
+          -8.485281374238571
         ],
         "rotation_z_deg": 0
       },
       "lower_left_nuts": {
         "translation": [
-          0.0,
+          -45.0,
           45.0,
           2.3
         ],
@@ -6119,7 +6317,7 @@
       "lower_left_axles": {
         "translation": [
           -45.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0
@@ -6134,7 +6332,7 @@
       },
       "lower_right_nuts": {
         "translation": [
-          0.0,
+          45.0,
           45.0,
           2.3
         ],
@@ -6143,7 +6341,7 @@
       "lower_right_axles": {
         "translation": [
           45.0,
-          -35.0,
+          -67.17272727272727,
           2.3
         ],
         "rotation_z_deg": 0
