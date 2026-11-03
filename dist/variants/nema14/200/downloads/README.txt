@@ -1,38 +1,41 @@
-RACK ACTUATOR — REVISION 16
+RACK ACTUATOR — REVISION 17
 CadQuery 2.7.0, dimensions in mm. See configuration.json for this preset.
 
 CHANGES / REPRINTING
-M3 heat-set inserts replace all enclosure trapped nuts. The M5 bearing
-through-bolts, nuts and washers are retained. Four top mounting inserts
-are supported by full-height tray posts; lid removal clears these posts.
-Lid screws are recessed 0.3 mm below the top mounting surface.
+Two three-bearing stations: each has two upper 45-degree 625ZZ bearings
+and one lower 625ZZ on an integral spring floor. The output station is
+25 mm behind the enclosure exit. The other station mirrors it around the
+motor/pinion at X=0. Longer strokes increase the station spacing.
+Rack length preserves at least 13 mm from either station center to the
+guide end throughout travel, 5 mm beyond the bearing radius. Longer
+chassis have attachments near the bearing stations and the centered motor.
+Local spring floors retain the prior dimensions, preload and wall blends.
+M3 heat-set enclosure inserts and reinforced top/side mounting are retained.
 Five printed components: chassis, rack, pinion, tray and lid.
-From revision 15, reprint chassis, tray and lid: front chassis holes are
-now 3.4 mm for M3 screws. Reuse its matching 40 mm rack and pinion.
-Other strokes require their own rack and enclosure. Do not mix motor
-variants' racks and pinions: NEMA17 is 20 degrees, NEMA14 is 25 degrees.
+From revision 16, reprint chassis, rack, tray and lid. Reuse the matching
+variant's pinion and bearing hardware. Each stroke has its own chassis;
+do not mix preset components. NEMA17 pinion/rack: 20 degrees; NEMA14: 25.
 
 PRESETS (MODULE 2; BOTH MOTORS)
-Stroke       Housing length       Lid screws       Total M3 inserts
-40           132                  4                10
-100          247                  6                12
-150          347                  6                12
-200          447                  8                14
-250          547                  10               16
-400          848                  16               22
-Housing length excludes the protruding rack. At 400 mm stroke the longest
-printed part is about 860 mm. These are single-piece parts for a suitably
-large printer; no segmentation or joining scheme is provided. Long-stroke
-stiffness, sag, load rating and positional accuracy need physical testing.
-The six-bearing guide station spacing remains 46 mm.
+Stroke   Bearing span   Housing   Rack print   Lid screws   M3 inserts
+40       54             136       147.5        4            10
+100      164            306       317.5        6            14
+150      264            456       467.5        8            16
+200      364            606       617.5        12           20
+250      464            756       767.5        14           22
+400      766            1208      1219.5       22           30
+Centering the gear while covering the teeth and maintaining full-stroke
+bearing engagement requires longer racks and housings. At 400 mm stroke,
+allow about 1220 mm of print length. These are single-piece parts; no
+segmentation is provided. Revised layouts require fit, sag and load tests.
 
 ENCLOSURE HARDWARE
 M3 inserts: default 4.6 mm OD x 5 mm long; printed pilot diameter 4.2 mm,
 with 0.4 mm extra pocket depth. Match your insert manufacturer's guidance;
 OD, length and pilot are configurable. Nominal knurl-to-pilot overlap is
 intentional: plastic is displaced by heat during installation.
-M3x20 socket lid screws, quantity from the table; 2 x M3x10 socket chassis
-screws. Maximum modeled M3 head diameter 5.5 mm, height 3 mm.
+M3x20 socket lid screws, quantity from the table; M3x10 socket chassis
+screws (two for 40 mm stroke, four for the longer presets). Maximum modeled M3 head diameter 5.5 mm, height 3 mm.
 See bill-of-materials.json for the selected preset's quantities.
 
 MOUNTING
@@ -41,7 +44,7 @@ Top: four M3 inserts, flush at Z=24.9, in full-height posts attached to the
 tray. These transfer mounting loads directly to the tray, bypassing the
 removable lid. Use application-length screws with 3–5 mm engagement;
 do not bottom screws in the blind insert pockets.
-Default 40 mm top pattern: 117 x 75.8 mm NEMA17; 117 x 69.8 mm NEMA14.
+Default 40 mm top pattern: 121 x 75.8 mm NEMA17; 121 x 69.8 mm NEMA14.
 Longer presets: X spacing = housing length minus 15 mm. The Y spacing is
 unchanged. Exact coordinates are in the STEP, viewer and validation.json.
 A top-mounted module must be detached from its fixture before the lid can
@@ -88,7 +91,7 @@ Install inserts from above into the open tray before installing the
 chassis or lid. Use the insert manufacturer's process and qualify the
 pilot in your material. Do not force cold inserts into printed pockets.
 Attach the open tray to a side fixture if used. Assemble lower guide
-hardware, seat the chassis, and install its two M3x10 screws. Install the
+hardware, seat the chassis, and install its M3x10 screws. Install the
 motor and screws BEFORE the upper rollers/axles. Fit the pinion and set
 screw. Insert rack from the output/right side, square end first, with the
 motor free to turn. Support spring seats by hand if needed. Check all six
@@ -123,11 +126,13 @@ python model.py --config configuration.json --out build/custom --check
 python build_presets.py --jobs 4
 python package_designs.py
 CLI options override JSON. Stroke 20..400; tooth module 1.5..2.5;
-housing length automatic minimum..1000; motor depth 32..60.
+housing length automatic minimum..2000; motor depth 32..60.
 --insert-od 4.6 --insert-length 5 --insert-pilot 4.2
 --spring-preload 2.3 --spring-thickness 1.4 --bearing-clearance .8
 --hardware-clearance .5 --rack-backbone-width 16 --preload .10
-Each preset has its own sampled collision report. Intentional elastic
+Each preset has its own sampled collision report. All six bearing
+contacts are checked at 41 travel positions, with 0.5 mm samples through
+the bearing-release transitions during assembly. Intentional elastic
 rack/pinion contact and heat-set/host interference are recorded separately.
 Insert installation approach, valid single solids, guide geometry and
 hardware gaps are checked. Recheck custom parameters and print-test fits.

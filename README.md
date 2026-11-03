@@ -4,23 +4,23 @@ CadQuery NEMA17/NEMA14 linear actuators with compliant rack teeth, six 625ZZ bea
 
 [Open the viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site) · [NEMA14 / 400 mm](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema14&stroke=400)
 
-## Revision 16
+## Revision 17
 
-- **M3 heat-set inserts** replace the enclosure's trapped nuts. Default insert: 4.6 mm outside diameter × 5 mm long, with a 4.2 mm printed pilot. These dimensions are configurable; match the insert manufacturer's specification.
-- **Top or side mounting.** Four M3 top inserts sit in full-height posts connected to the tray. Mounting loads bypass the removable lid. Four M4 side slots remain available. Lid screw heads are recessed below the top face.
-- **Six actual stroke presets** for each motor: 40, 100, 150, 200, 250 and 400 mm. Selecting a preset loads its CadQuery geometry, motion, staged explosion, measurements and downloads. Longer housings receive additional lid fasteners.
-- White viewer, right-click hiding, Show all, transparent enclosure and dedicated side/top mounting views.
+- **Exit support.** Each station has two angled upper 625ZZ bearings and one spring-loaded lower 625ZZ. The output station is 25 mm behind the enclosure exit, and the other station mirrors it around the pinion. The gear and motor are centered between the stations.
+- **Spacing grows with stroke.** Rack and chassis lengths grow together. The rack retains at least 13 mm from either bearing center to the guide end throughout the full stroke (5 mm beyond the 8 mm bearing radius).
+- **Local load support.** Longer versions have M3 chassis attachments near both bearing groups and the motor. Clearance notches let intermediate lid posts pass through the chassis. The prior local spring-floor geometry and six-bearing arrangement are retained.
+- M3 heat-set inserts (4.6 mm OD × 5 mm long, 4.2 mm pilot), top/side mounting, six stroke presets for each motor, animation and staged explosion remain available.
 
-| Stroke | Housing length | M3×20 lid screws | M3 inserts, total |
-| --- | --- | --- | --- |
-| 40 mm | 132 mm | 4 | 10 |
-| 100 mm | 247 mm | 6 | 12 |
-| 150 mm | 347 mm | 6 | 12 |
-| 200 mm | 447 mm | 8 | 14 |
-| 250 mm | 547 mm | 10 | 16 |
-| 400 mm | 848 mm | 16 | 22 |
+| Stroke | Bearing span | Housing length | Rack print length | Lid screws | M3 inserts |
+| --- | --- | --- | --- | --- | --- |
+| 40 mm | 54 mm | 136 mm | 147.5 mm | 4 | 10 |
+| 100 mm | 164 mm | 306 mm | 317.5 mm | 6 | 14 |
+| 150 mm | 264 mm | 456 mm | 467.5 mm | 8 | 16 |
+| 200 mm | 364 mm | 606 mm | 617.5 mm | 12 | 20 |
+| 250 mm | 464 mm | 756 mm | 767.5 mm | 14 | 22 |
+| 400 mm | 766 mm | 1208 mm | 1219.5 mm | 22 | 30 |
 
-Lengths are for module 2 and apply to both motors. Housing length is separate from usable stroke. The rack extends beyond the housing; the longest printed part in the 400 mm preset is about 860 mm. Long presets require a sufficiently large printer; they are not split into short-bed segments. Stiffness and load capacity at long extension have not been physically established.
+Dimensions are for module 2 and apply to both motors. Keeping the pinion centered, all teeth covered and both bearing groups engaged increases the rack and housing lengths. The 400 mm preset needs about 1220 mm of print length. These are single-piece parts; no segmentation is provided. Housing length remains separately configurable above its calculated minimum. The wider layouts require physical fit, sag and load testing.
 
 Default NEMA17 motor: 42 × 42 × 40 mm body, 31 mm mounting pitch, 18T / 20° pinion. NEMA14: 35.2 × 35.2 × 34 mm body, 26 mm mounting pitch, 14T / 25° pinion. Both use module 2 and 40 mm stroke initially. The motor rear projects 4 mm outside the housing; a back-mounted driver stays exposed. Verify actual motor shaft, pilot and hole dimensions.
 
@@ -28,11 +28,11 @@ At 200 full steps/revolution, default NEMA17/NEMA14 increments are 0.565487 / 0.
 
 ## Hardware and printing
 
-Five printed parts: chassis, rack, pinion, tray and lid. The front chassis mounting holes now fit M3 screws. From revision 15, **reprint the chassis, tray and lid**; reuse the matching 40 mm rack and pinion. A different stroke needs its own rack and enclosure.
+Five printed parts: chassis, rack, pinion, tray and lid. From revision 16, **reprint the chassis, rack, tray and lid** for the selected stroke. Reuse the matching motor variant’s pinion and six-bearing hardware. Chassis and spring meshes are now specific to each stroke; do not mix preset components.
 
-Enclosure hardware: M3 inserts as listed above, M3×20 socket lid screws, and two M3×10 socket chassis screws. The tested M5 bearing through-bolts, thin nuts and inner-race washers remain. Each preset includes a bill of materials and configuration JSON. Large standalone STEP downloads are gzip-compressed; ZIP bundles contain ordinary STEP files.
+Enclosure hardware: M3 inserts as listed above, M3×20 socket lid screws, and M3×10 socket chassis screws (two at 40 mm stroke, four at the longer presets). The tested M5 bearing through-bolts, thin nuts and inner-race washers remain. Each preset includes a bill of materials and configuration JSON. Large standalone STEP downloads are gzip-compressed; ZIP bundles contain ordinary STEP files.
 
-Top mounting uses four application-length M3 screws with 3–5 mm thread engagement. For the default 40 mm model, the top pattern is 117 × 75.8 mm (NEMA17) or 117 × 69.8 mm (NEMA14). Side mounting uses four M4 slots. Top-mounted modules must be detached from their fixture before lid removal; the service animation excludes the fixture.
+Top mounting uses four application-length M3 screws with 3–5 mm thread engagement. For the default 40 mm model, the top pattern is 121 × 75.8 mm (NEMA17) or 121 × 69.8 mm (NEMA14). Side mounting uses four M4 slots. Top-mounted modules must be detached from their fixture before lid removal; the service animation excludes the fixture.
 
 Install inserts vertically into the open tray before installing the chassis or lid. Use the insert maker's pilot/temperature guidance and test fit in your print material. Print tray floor-down, lid roof-down, rack tooth-face down and pinion gear-face down. Preserve the successful chassis orientation/material; the chassis STL is relaxed, while STEP and viewer show installed spring deflection. See [README.txt](README.txt) for assembly and full hardware details.
 
@@ -58,7 +58,7 @@ Explicit CLI options override JSON values. `build_presets.py` reuses passing rep
 | --- | --- |
 | `--stroke` | 20–400 mm; default 40 |
 | `--tooth-module` | 1.5–2.5 mm; default 2 |
-| `--actuator-length` | Fixed housing length, calculated minimum when omitted; maximum 1000 mm |
+| `--actuator-length` | Fixed housing length, calculated minimum when omitted; maximum 2000 mm |
 | `--motor-depth` | 32–60 mm; defaults 40 / 34 |
 | `--insert-od` | M3 insert outside diameter, default 4.6 mm |
 | `--insert-length` | M3 insert length, default 5 mm |
@@ -74,9 +74,9 @@ Custom parameters need regenerated geometry, fresh checks and physical fit testi
 
 ## Validation
 
-Each preset has its own `validation.json`: all assembled pairs, enclosure/fastener service poses at ≤0.5 mm spacing, core mechanism poses at 1% slider intervals plus stage boundaries/midpoints and bearing-release positions, 41 travel positions, nominal tooth mesh, insert installation access, spring geometry and hardware clearances. Heat-set knurls intentionally overlap their own printed pilot before installation; that specific host/insert overlap is recorded separately from unintended intersections. All parts are valid single solids. Conservative enclosure bounds are verified against the solids, lid-screw removal uses continuous swept outer envelopes, and repeated tooth phases are reused only after exact periodicity checks.
+Each preset has its own `validation.json`: all assembled pairs, enclosure/fastener service poses at ≤0.5 mm spacing, core mechanism poses at 1% slider intervals plus stage boundaries/midpoints and bearing-release transitions at 0.5 mm spacing, 41 travel positions with all six bearing contacts checked, nominal tooth mesh, insert installation access, spring geometry and hardware clearances. Heat-set knurls intentionally overlap their own printed pilot before installation; that specific host/insert overlap is recorded separately from unintended intersections. All parts are valid single solids. Conservative rack and enclosure bounds are verified against the solids, lid-screw removal uses continuous swept outer envelopes, and repeated tooth phases are reused only after exact periodicity checks.
 
-The core mechanism has been tested by the builder. New enclosure details and long-stroke models still require fit and load testing. Sampled intersections are not a continuous swept-volume proof or a physical tolerance test. Prescribed spring displacement does not establish force, creep or fatigue life. Use controller travel limits; no axial hard stop is provided.
+The earlier compact mechanism was tested by the builder. The revised bearing placement, chassis and enclosure require physical fit and load testing. Sampled intersections are not a continuous swept-volume proof or a physical tolerance test. Prescribed spring displacement does not establish force, creep or fatigue life. Use controller travel limits; no axial hard stop is provided.
 
 ## License
 

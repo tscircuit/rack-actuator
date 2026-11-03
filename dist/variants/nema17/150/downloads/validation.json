@@ -1,15 +1,15 @@
 {
-  "revision": 16,
+  "revision": 17,
   "tooth_module_mm": 2.0,
   "tooth_pitch_mm": 6.283185307179586,
-  "actuator_length_mm": 347.0,
-  "minimum_actuator_length_mm": 347,
+  "actuator_length_mm": 456.0,
+  "minimum_actuator_length_mm": 456,
   "motor_depth_mm": 40.0,
   "controller_rear_plane_z_mm": -48.0,
   "controller_dimensions_modeled": false,
   "rack_backbone_width_mm": 16.0,
-  "head_relief_end_x_mm": 103.25,
-  "solid_rack_end_length_mm": 130.25,
+  "head_relief_end_x_mm": 212.25,
+  "solid_rack_end_length_mm": 21.25,
   "square_insertion_end": true,
   "rack_restoration_checks_passed": 4,
   "stroke_mm": 150.0,
@@ -23,12 +23,12 @@
     5.0
   ],
   "chassis_footprint_mm": [
-    68,
+    286.0,
     81
   ],
   "enclosure": {
     "printed_parts": 5,
-    "case_length_mm": 347.0,
+    "case_length_mm": 456.0,
     "motor_rear_projection_mm": 4,
     "driver_dimensions_modeled": false,
     "toothed_rack_extremes_x_mm": [
@@ -36,17 +36,17 @@
       152.97894559861544
     ],
     "inner_case_x_mm": [
-      -187.6,
+      -296.6,
       154.6
     ],
     "tooth_concealment_pass": true,
     "mounting_slots_xz_mm": [
       [
-        -174.0,
+        -283.0,
         -35.0
       ],
       [
-        -174.0,
+        -283.0,
         -12.0
       ],
       [
@@ -67,11 +67,11 @@
     "top_mount_thread": "M3",
     "top_mounts_xy_mm": [
       [
-        -182.5,
+        -291.5,
         -19.4
       ],
       [
-        -182.5,
+        -291.5,
         56.4
       ],
       [
@@ -89,7 +89,7 @@
       3,
       5.0
     ],
-    "cover_screw_count": 6,
+    "cover_screw_count": 8,
     "lid_screw": "M3x20 socket, recessed 0.3 mm below mounting face",
     "chassis_screw": "M3x10 socket",
     "heat_set_inserts": {
@@ -97,12 +97,22 @@
       "outer_diameter_mm": 4.6,
       "length_mm": 5.0,
       "printed_pilot_diameter_mm": 4.2,
-      "count": 12,
+      "count": 16,
       "checks": [
         {
           "purpose": "chassis",
           "position_mm": [
-            -30,
+            -139.0,
+            -13,
+            -3
+          ],
+          "interference_mm3": 13.823007675798287,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "chassis",
+          "position_mm": [
+            -30.0,
             -13,
             -3
           ],
@@ -112,7 +122,7 @@
         {
           "purpose": "chassis",
           "position_mm": [
-            30,
+            30.0,
             -13,
             -3
           ],
@@ -120,23 +130,33 @@
           "approach_intersection_mm3": 0.0
         },
         {
-          "purpose": "top mount",
+          "purpose": "chassis",
           "position_mm": [
-            -182.5,
-            -19.4,
-            24.9
+            139.0,
+            -13,
+            -3
           ],
-          "interference_mm3": 13.823007675795154,
+          "interference_mm3": 13.823007675798287,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
           "position_mm": [
-            -182.5,
+            -291.5,
+            -19.4,
+            24.9
+          ],
+          "interference_mm3": 13.82300767579504,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "top mount",
+          "position_mm": [
+            -291.5,
             56.4,
             24.9
           ],
-          "interference_mm3": 13.823007675795147,
+          "interference_mm3": 13.823007675795033,
           "approach_intersection_mm3": 0.0
         },
         {
@@ -162,21 +182,21 @@
         {
           "purpose": "lid",
           "position_mm": [
-            -182.5,
+            -291.5,
             -9.399999999999999,
             7.0
           ],
-          "interference_mm3": 13.823007675795473,
+          "interference_mm3": 13.823007675795054,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
           "position_mm": [
-            -182.5,
+            -291.5,
             46.4,
             7.0
           ],
-          "interference_mm3": 13.823007675795466,
+          "interference_mm3": 13.823007675795033,
           "approach_intersection_mm3": 0.0
         },
         {
@@ -202,21 +222,41 @@
         {
           "purpose": "lid",
           "position_mm": [
-            -74.33333333333333,
+            -185.0,
             -19.4,
             7.0
           ],
-          "interference_mm3": 13.823007675795104,
+          "interference_mm3": 13.82300767579516,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "lid",
           "position_mm": [
-            -74.33333333333333,
+            -185.0,
             56.4,
             7.0
           ],
-          "interference_mm3": 13.82300767579509,
+          "interference_mm3": 13.823007675795147,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "lid",
+          "position_mm": [
+            -71.0,
+            -19.4,
+            7.0
+          ],
+          "interference_mm3": 13.823007675795097,
+          "approach_intersection_mm3": 0.0
+        },
+        {
+          "purpose": "lid",
+          "position_mm": [
+            -71.0,
+            56.4,
+            7.0
+          ],
+          "interference_mm3": 13.823007675795097,
           "approach_intersection_mm3": 0.0
         }
       ]
@@ -271,7 +311,14 @@
     16,
     5
   ],
-  "station_spacing_mm": 46,
+  "station_spacing_mm": 264.0,
+  "bearing_stations_x_mm": [
+    -132.0,
+    132.0
+  ],
+  "exit_bearing_center_offset_mm": 25.0,
+  "gear_center_x_mm": 0,
+  "minimum_guide_edge_margin_mm": 13,
   "upper_bearing_angle_deg": 45,
   "spring_preload_mm": 2.3,
   "spring_thickness_mm": 1.4,
@@ -279,19 +326,35 @@
   "spring_free_stl": true,
   "chassis_mounts_mm": [
     [
-      -30,
+      -139.0,
       -13
     ],
     [
-      -30,
+      -139.0,
       54
     ],
     [
-      30,
+      -30.0,
       -13
     ],
     [
-      30,
+      -30.0,
+      54
+    ],
+    [
+      30.0,
+      -13
+    ],
+    [
+      30.0,
+      54
+    ],
+    [
+      139.0,
+      -13
+    ],
+    [
+      139.0,
       54
     ]
   ],
@@ -300,8 +363,8 @@
   "chassis_solid_count": 1,
   "rack_solid_count": 1,
   "insertion_side": "right/output side, plain left end first",
-  "rack_withdrawal_mm": 226.1946710584651,
-  "contact_checks_passed": 16,
+  "rack_withdrawal_mm": 452.3893421169302,
+  "contact_checks_passed": 426,
   "upper_force_normals": [
     [
       0,
@@ -321,346 +384,363 @@
   ],
   "preload_per_flank_mm": 0.1,
   "nominal_mesh_max_overlap_mm3": 0,
-  "elastic_mesh_limit_mm3": 3.855561872225489,
+  "elastic_mesh_limit_mm3": 3.8555618722256004,
   "elastic_mesh_volume_mm3_range": [
-    2.70256600089518,
-    3.6367814948635275
+    2.702566000895232,
+    3.6367814948636017
   ],
   "hardware_clearance_samples": [
     {
       "travel_mm": -75.0,
-      "part": "M5 upper washer front -23.0",
+      "part": "M5 upper washer front -132.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": -75.0,
-      "part": "M5x16 angled axle front -23.0",
-      "gap_mm": 0.4999999999999952
+      "part": "M5x16 angled axle front -132.0",
+      "gap_mm": 0.49999999999999395
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 angled nut front -23.0",
+      "part": "M5 angled nut front -132.0",
       "gap_mm": 7.180985861254166
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 upper washer front 23.0",
+      "part": "M5 upper washer front 132.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": -75.0,
-      "part": "M5x16 angled axle front 23.0",
+      "part": "M5x16 angled axle front 132.0",
       "gap_mm": 0.499999999999999
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 angled nut front 23.0",
+      "part": "M5 angled nut front 132.0",
       "gap_mm": 7.180985861254166
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 upper washer rear -23.0",
+      "part": "M5 upper washer rear -132.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": -75.0,
-      "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.4999999999999948
+      "part": "M5x16 angled axle rear -132.0",
+      "gap_mm": 0.4999999999999946
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 angled nut rear -23.0",
+      "part": "M5 angled nut rear -132.0",
       "gap_mm": 7.180985861254189
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 upper washer rear 23.0",
+      "part": "M5 upper washer rear 132.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": -75.0,
-      "part": "M5x16 angled axle rear 23.0",
-      "gap_mm": 0.499999999999994
+      "part": "M5x16 angled axle rear 132.0",
+      "gap_mm": 0.49999999999999334
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 angled nut rear 23.0",
+      "part": "M5 angled nut rear 132.0",
       "gap_mm": 7.180985861254189
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 lower washer -23.0",
-      "gap_mm": 4.249999999999998
+      "part": "M5 lower washer -132.0",
+      "gap_mm": 4.25
     },
     {
       "travel_mm": -75.0,
-      "part": "M5x25 lower axle -23.0",
-      "gap_mm": 3.2499999999999982
+      "part": "M5x25 lower axle -132.0",
+      "gap_mm": 3.25
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 lower nut -23.0",
+      "part": "M5 lower nut -132.0",
       "gap_mm": 8.354648223959998
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 lower washer 23.0",
-      "gap_mm": 4.250000000000002
+      "part": "M5 lower washer 132.0",
+      "gap_mm": 4.25
     },
     {
       "travel_mm": -75.0,
-      "part": "M5x25 lower axle 23.0",
-      "gap_mm": 3.2500000000000018
+      "part": "M5x25 lower axle 132.0",
+      "gap_mm": 3.25
     },
     {
       "travel_mm": -75.0,
-      "part": "M5 lower nut 23.0",
+      "part": "M5 lower nut 132.0",
       "gap_mm": 8.354648223959998
     },
     {
       "travel_mm": 0,
-      "part": "M5 upper washer front -23.0",
+      "part": "M5 upper washer front -132.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": 0,
-      "part": "M5x16 angled axle front -23.0",
+      "part": "M5x16 angled axle front -132.0",
       "gap_mm": 0.4999999999999965
     },
     {
       "travel_mm": 0,
-      "part": "M5 angled nut front -23.0",
+      "part": "M5 angled nut front -132.0",
       "gap_mm": 7.180985861254166
     },
     {
       "travel_mm": 0,
-      "part": "M5 upper washer front 23.0",
+      "part": "M5 upper washer front 132.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": 0,
-      "part": "M5x16 angled axle front 23.0",
-      "gap_mm": 0.4999999999999977
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 angled nut front 23.0",
-      "gap_mm": 7.180985861254166
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 upper washer rear -23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.4999999999999952
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 angled nut rear -23.0",
-      "gap_mm": 7.180985861254189
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 upper washer rear 23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x16 angled axle rear 23.0",
-      "gap_mm": 0.4999999999999952
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 angled nut rear 23.0",
-      "gap_mm": 7.180985861254189
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 lower washer -23.0",
-      "gap_mm": 4.249999999999998
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x25 lower axle -23.0",
-      "gap_mm": 3.2499999999999982
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 lower nut -23.0",
-      "gap_mm": 8.354648223959998
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 lower washer 23.0",
-      "gap_mm": 4.250000000000002
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x25 lower axle 23.0",
-      "gap_mm": 3.2500000000000018
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 lower nut 23.0",
-      "gap_mm": 8.354648223959998
-    },
-    {
-      "travel_mm": 75.0,
-      "part": "M5 upper washer front -23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 75.0,
-      "part": "M5x16 angled axle front -23.0",
+      "part": "M5x16 angled axle front 132.0",
       "gap_mm": 0.499999999999999
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5 angled nut front -23.0",
+      "travel_mm": 0,
+      "part": "M5 angled nut front 132.0",
       "gap_mm": 7.180985861254166
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5 upper washer front 23.0",
+      "travel_mm": 0,
+      "part": "M5 upper washer rear -132.0",
       "gap_mm": 3.5253048327204937
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5x16 angled axle front 23.0",
+      "travel_mm": 0,
+      "part": "M5x16 angled axle rear -132.0",
       "gap_mm": 0.4999999999999952
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5 angled nut front 23.0",
-      "gap_mm": 7.180985861254166
-    },
-    {
-      "travel_mm": 75.0,
-      "part": "M5 upper washer rear -23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 75.0,
-      "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.4999999999999947
-    },
-    {
-      "travel_mm": 75.0,
-      "part": "M5 angled nut rear -23.0",
+      "travel_mm": 0,
+      "part": "M5 angled nut rear -132.0",
       "gap_mm": 7.180985861254189
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5 upper washer rear 23.0",
+      "travel_mm": 0,
+      "part": "M5 upper washer rear 132.0",
       "gap_mm": 3.5253048327204937
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5x16 angled axle rear 23.0",
-      "gap_mm": 0.4999999999999952
+      "travel_mm": 0,
+      "part": "M5x16 angled axle rear 132.0",
+      "gap_mm": 0.499999999999995
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5 angled nut rear 23.0",
+      "travel_mm": 0,
+      "part": "M5 angled nut rear 132.0",
       "gap_mm": 7.180985861254189
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5 lower washer -23.0",
-      "gap_mm": 4.249999999999998
+      "travel_mm": 0,
+      "part": "M5 lower washer -132.0",
+      "gap_mm": 4.25
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5x25 lower axle -23.0",
-      "gap_mm": 3.2499999999999982
+      "travel_mm": 0,
+      "part": "M5x25 lower axle -132.0",
+      "gap_mm": 3.25
     },
     {
-      "travel_mm": 75.0,
-      "part": "M5 lower nut -23.0",
+      "travel_mm": 0,
+      "part": "M5 lower nut -132.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower washer 132.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x25 lower axle 132.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower nut 132.0",
       "gap_mm": 8.354648223959998
     },
     {
       "travel_mm": 75.0,
-      "part": "M5 lower washer 23.0",
-      "gap_mm": 4.250000000000002
+      "part": "M5 upper washer front -132.0",
+      "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": 75.0,
-      "part": "M5x25 lower axle 23.0",
-      "gap_mm": 3.2500000000000018
+      "part": "M5x16 angled axle front -132.0",
+      "gap_mm": 0.4999999999999978
     },
     {
       "travel_mm": 75.0,
-      "part": "M5 lower nut 23.0",
+      "part": "M5 angled nut front -132.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 upper washer front 132.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5x16 angled axle front 132.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 angled nut front 132.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 upper washer rear -132.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5x16 angled axle rear -132.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 angled nut rear -132.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 upper washer rear 132.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5x16 angled axle rear 132.0",
+      "gap_mm": 0.4999999999999941
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 angled nut rear 132.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 lower washer -132.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5x25 lower axle -132.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 lower nut -132.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 lower washer 132.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5x25 lower axle 132.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 75.0,
+      "part": "M5 lower nut 132.0",
       "gap_mm": 8.354648223959998
     }
   ],
-  "minimum_rack_hardware_gap_mm": 0.499999999999994,
-  "source_sha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e",
+  "minimum_rack_hardware_gap_mm": 0.49999999999999334,
+  "source_sha256": "30a0504aa0185f696d0bcee3354e1d19e06e241e73e831a0cba3b9c09afa6cd7",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
     "pinion_difference_mm3": 0,
-    "cache_hits": 6,
+    "cache_hits": 4,
     "exact_phase_evaluations": 46
   },
   "broadphase_coverage_checks": [
     {
       "part": "cover",
-      "boxes": 25,
+      "boxes": 31,
       "uncovered_volume_mm3": 0
     },
     {
       "part": "tray",
-      "boxes": 39,
+      "boxes": 47,
+      "uncovered_volume_mm3": 0
+    },
+    {
+      "part": "rack",
+      "boxes": 3,
       "uncovered_volume_mm3": 0
     }
   ],
   "lid_screw_swept_envelope_checks": [
     {
-      "part": "M3x20 recessed lid screw -182.5 -9.4",
-      "stationary_part_pairs": 50,
+      "part": "M3x20 recessed lid screw -291.5 -9.4",
+      "stationary_part_pairs": 56,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw -182.5 46.4",
-      "stationary_part_pairs": 50,
+      "part": "M3x20 recessed lid screw -291.5 46.4",
+      "stationary_part_pairs": 56,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 149.5 -9.4",
-      "stationary_part_pairs": 50,
+      "stationary_part_pairs": 56,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
       "part": "M3x20 recessed lid screw 149.5 46.4",
-      "stationary_part_pairs": 50,
+      "stationary_part_pairs": 56,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw -74.3333 -19.4",
-      "stationary_part_pairs": 50,
+      "part": "M3x20 recessed lid screw -185 -19.4",
+      "stationary_part_pairs": 56,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw -74.3333 56.4",
-      "stationary_part_pairs": 50,
+      "part": "M3x20 recessed lid screw -185 56.4",
+      "stationary_part_pairs": 56,
+      "path": "Z +35 mm, then Y -120 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw -71 -19.4",
+      "stationary_part_pairs": 56,
+      "path": "Z +35 mm, then Y -120 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw -71 56.4",
+      "stationary_part_pairs": 56,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     }
   ],
-  "mechanism_explosion_samples": 121,
-  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and exact bearing-release positions; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.",
+  "mechanism_explosion_samples": 151,
+  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.",
   "intersection_tolerance_mm3": 0.01,
-  "explosion_samples": 2550,
+  "explosion_samples": 3084,
   "motion_samples": 41,
   "explosion_failures": [],
   "motion_failures": [],
@@ -670,6 +750,13 @@
       "a": "03 Involute pinion 18T",
       "b": "04 Beveled compliant rack",
       "volume_mm3": 3.29236
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert chassis -139 -13",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
@@ -687,14 +774,21 @@
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount -182.5 -19.4",
+      "a": "M3 heat-set insert chassis 139 -13",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount -182.5 56.4",
+      "a": "M3 heat-set insert top mount -291.5 -19.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert top mount -291.5 56.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
@@ -715,14 +809,14 @@
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -182.5 -9.4",
+      "a": "M3 heat-set insert lid -291.5 -9.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -182.5 46.4",
+      "a": "M3 heat-set insert lid -291.5 46.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
@@ -743,14 +837,28 @@
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -74.3333 -19.4",
+      "a": "M3 heat-set insert lid -185 -19.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -74.3333 56.4",
+      "a": "M3 heat-set insert lid -185 56.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert lid -71 -19.4",
+      "b": "05 Mounting enclosure tray",
+      "volume_mm3": 13.82301,
+      "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
+    },
+    {
+      "phase": "assembled",
+      "a": "M3 heat-set insert lid -71 56.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
@@ -1698,7 +1806,7 @@
       },
       "rack": {
         "translation": [
-          62.83185307179584,
+          125.66370614359168,
           0.0,
           0.0
         ],
@@ -1710,7 +1818,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -199.99999999999994
+        "rotation_z_deg": -399.9999999999999
       },
       "shaft": {
         "translation": [
@@ -1718,7 +1826,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -199.99999999999994
+        "rotation_z_deg": -399.9999999999999
       },
       "set_screw": {
         "translation": [
@@ -1726,7 +1834,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -199.99999999999994
+        "rotation_z_deg": -399.9999999999999
       },
       "motor_screws": {
         "translation": [
@@ -1804,7 +1912,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          2.3
         ],
         "rotation_z_deg": 0
       },
@@ -1812,7 +1920,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          2.3
         ],
         "rotation_z_deg": 0
       },
@@ -1820,7 +1928,7 @@
         "translation": [
           0.0,
           0.0,
-          0
+          2.3
         ],
         "rotation_z_deg": 0
       },
@@ -1876,7 +1984,7 @@
       },
       "rack": {
         "translation": [
-          100.53096491487335,
+          201.0619298297467,
           0.0,
           0.0
         ],
@@ -1888,7 +1996,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -319.9999999999999
+        "rotation_z_deg": -639.9999999999998
       },
       "shaft": {
         "translation": [
@@ -1896,7 +2004,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -319.9999999999999
+        "rotation_z_deg": -639.9999999999998
       },
       "set_screw": {
         "translation": [
@@ -1904,7 +2012,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -319.9999999999999
+        "rotation_z_deg": -639.9999999999998
       },
       "motor_screws": {
         "translation": [
@@ -2054,7 +2162,7 @@
       },
       "rack": {
         "translation": [
-          125.66370614359171,
+          251.32741228718342,
           0.0,
           0.0
         ],
@@ -2066,7 +2174,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -399.99999999999994
+        "rotation_z_deg": -799.9999999999999
       },
       "shaft": {
         "translation": [
@@ -2074,7 +2182,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -399.99999999999994
+        "rotation_z_deg": -799.9999999999999
       },
       "set_screw": {
         "translation": [
@@ -2082,7 +2190,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -399.99999999999994
+        "rotation_z_deg": -799.9999999999999
       },
       "motor_screws": {
         "translation": [
@@ -2232,7 +2340,7 @@
       },
       "rack": {
         "translation": [
-          175.92918860102836,
+          351.8583772020567,
           0.0,
           0.0
         ],
@@ -2244,7 +2352,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -559.9999999999999
+        "rotation_z_deg": -1119.9999999999998
       },
       "shaft": {
         "translation": [
@@ -2252,7 +2360,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -559.9999999999999
+        "rotation_z_deg": -1119.9999999999998
       },
       "set_screw": {
         "translation": [
@@ -2260,7 +2368,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -559.9999999999999
+        "rotation_z_deg": -1119.9999999999998
       },
       "motor_screws": {
         "translation": [
@@ -2362,7 +2470,7 @@
         "translation": [
           0.0,
           0.0,
-          2.3
+          0
         ],
         "rotation_z_deg": 0
       },
@@ -2370,7 +2478,7 @@
         "translation": [
           0.0,
           0.0,
-          2.3
+          0
         ],
         "rotation_z_deg": 0
       },
@@ -2378,7 +2486,7 @@
         "translation": [
           0.0,
           0.0,
-          2.3
+          0
         ],
         "rotation_z_deg": 0
       }
@@ -2410,7 +2518,7 @@
       },
       "rack": {
         "translation": [
-          201.06192982974676,
+          402.1238596594935,
           0.0,
           0.0
         ],
@@ -2422,7 +2530,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -640.0
+        "rotation_z_deg": -1280.0
       },
       "shaft": {
         "translation": [
@@ -2430,7 +2538,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -640.0
+        "rotation_z_deg": -1280.0
       },
       "set_screw": {
         "translation": [
@@ -2438,7 +2546,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -640.0
+        "rotation_z_deg": -1280.0
       },
       "motor_screws": {
         "translation": [
@@ -2588,7 +2696,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -2600,7 +2708,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -2608,7 +2716,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -2616,7 +2724,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -2766,7 +2874,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -2778,7 +2886,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -2786,7 +2894,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -2794,7 +2902,7 @@
           -18.66666666666665,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -2944,7 +3052,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -2956,7 +3064,7 @@
           0.0,
           13.333333333333332
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -2964,7 +3072,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -2972,7 +3080,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -3122,7 +3230,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -3134,7 +3242,7 @@
           -27.49999999999996,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -3142,7 +3250,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -3150,7 +3258,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -3300,7 +3408,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -3312,7 +3420,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -3320,7 +3428,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -3328,7 +3436,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -3478,7 +3586,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -3490,7 +3598,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -3498,7 +3606,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -3506,7 +3614,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -3656,7 +3764,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -3668,7 +3776,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -3676,7 +3784,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -3684,7 +3792,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -3834,7 +3942,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -3846,7 +3954,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -3854,7 +3962,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -3862,7 +3970,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -4012,7 +4120,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -4024,7 +4132,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -4032,7 +4140,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -4040,7 +4148,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -4190,7 +4298,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -4202,7 +4310,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -4210,7 +4318,7 @@
           0.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -4218,7 +4326,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -4368,7 +4476,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -4380,7 +4488,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -4388,7 +4496,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -4396,7 +4504,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -4546,7 +4654,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -4558,7 +4666,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -4566,7 +4674,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -4574,7 +4682,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -4724,7 +4832,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -4736,7 +4844,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -4744,7 +4852,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -4752,7 +4860,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -4902,7 +5010,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -4914,7 +5022,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -4922,7 +5030,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -4930,7 +5038,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -5080,7 +5188,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -5092,7 +5200,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -5100,7 +5208,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -5108,7 +5216,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -5258,7 +5366,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -5270,7 +5378,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -5278,7 +5386,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -5286,7 +5394,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -5436,7 +5544,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -5448,7 +5556,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -5456,7 +5564,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -5464,7 +5572,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [
@@ -5614,7 +5722,7 @@
       },
       "rack": {
         "translation": [
-          226.1946710584651,
+          452.3893421169302,
           0.0,
           0.0
         ],
@@ -5626,7 +5734,7 @@
           -55.0,
           20.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "shaft": {
         "translation": [
@@ -5634,7 +5742,7 @@
           0.0,
           -80.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "set_screw": {
         "translation": [
@@ -5642,7 +5750,7 @@
           -28.0,
           0.0
         ],
-        "rotation_z_deg": -720.0
+        "rotation_z_deg": -1440.0
       },
       "motor_screws": {
         "translation": [

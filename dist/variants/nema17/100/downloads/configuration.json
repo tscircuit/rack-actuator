@@ -2,7 +2,7 @@
   "motor": "nema17",
   "tooth_module": 2.0,
   "stroke": 100,
-  "actuator_length": 247.0,
+  "actuator_length": 306.0,
   "motor_depth": 40.0,
   "insert_od": 4.6,
   "insert_length": 5.0,

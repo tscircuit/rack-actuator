@@ -1,6 +1,6 @@
 """Generate and check the 12 selectable models. Run package_designs.py afterward."""
 from pathlib import Path
-import argparse,concurrent.futures,hashlib,json,subprocess,sys,threading
+import gzip,argparse,concurrent.futures,hashlib,json,subprocess,sys,threading
 ROOT=Path(__file__).resolve().parent
 PRESETS=[40,100,150,200,250,400]
 def folder_for(motor,stroke):
@@ -19,8 +19,9 @@ if __name__=='__main__':
   if failed.is_set():return False
   print('Building',motor,stroke,flush=True)
   skip=[];mesh=out/'assets/assembly.json'
-  if mesh.exists():
-   d=json.loads(mesh.read_text())
+  compressed=out/'assets/assembly.json.gz'
+  if mesh.exists() or compressed.exists():
+   d=json.loads(mesh.read_text() if mesh.exists() else gzip.decompress(compressed.read_bytes()))
    if d.get('geometrySourceSha256')==geometry_hash and d.get('stroke')==stroke and d.get('motor','').lower()==motor:skip=['--skip-export']
   with (logs/f'{motor}-{stroke}.log').open('w') as log:
    r=subprocess.run([sys.executable,str(ROOT/'model.py'),'--motor',motor,'--stroke',str(stroke),'--out',str(out),'--check',*skip],cwd=ROOT,stdout=log,stderr=subprocess.STDOUT)

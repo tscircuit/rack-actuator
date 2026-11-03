@@ -1,15 +1,15 @@
 {
-  "revision": 16,
+  "revision": 17,
   "tooth_module_mm": 2.0,
   "tooth_pitch_mm": 6.283185307179586,
-  "actuator_length_mm": 132.0,
-  "minimum_actuator_length_mm": 132,
+  "actuator_length_mm": 136.0,
+  "minimum_actuator_length_mm": 136,
   "motor_depth_mm": 40.0,
   "controller_rear_plane_z_mm": -48.0,
   "controller_dimensions_modeled": false,
   "rack_backbone_width_mm": 16.0,
-  "head_relief_end_x_mm": 48.25,
-  "solid_rack_end_length_mm": 25.25,
+  "head_relief_end_x_mm": 52.25,
+  "solid_rack_end_length_mm": 21.25,
   "square_insertion_end": true,
   "rack_restoration_checks_passed": 4,
   "stroke_mm": 40.0,
@@ -23,12 +23,12 @@
     5.0
   ],
   "chassis_footprint_mm": [
-    68,
+    76.0,
     81
   ],
   "enclosure": {
     "printed_parts": 5,
-    "case_length_mm": 132.0,
+    "case_length_mm": 136.0,
     "motor_rear_projection_mm": 4,
     "driver_dimensions_modeled": false,
     "toothed_rack_extremes_x_mm": [
@@ -36,17 +36,17 @@
       47.71346314117875
     ],
     "inner_case_x_mm": [
-      -77.6,
+      -81.6,
       49.6
     ],
     "tooth_concealment_pass": true,
     "mounting_slots_xz_mm": [
       [
-        -64.0,
+        -68.0,
         -35.0
       ],
       [
-        -64.0,
+        -68.0,
         -12.0
       ],
       [
@@ -67,11 +67,11 @@
     "top_mount_thread": "M3",
     "top_mounts_xy_mm": [
       [
-        -72.5,
+        -76.5,
         -19.4
       ],
       [
-        -72.5,
+        -76.5,
         56.4
       ],
       [
@@ -102,27 +102,27 @@
         {
           "purpose": "chassis",
           "position_mm": [
-            -30,
+            -34.0,
             -13,
             -3
           ],
-          "interference_mm3": 13.823007675793406,
+          "interference_mm3": 13.823007675795125,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "chassis",
           "position_mm": [
-            30,
+            34.0,
             -13,
             -3
           ],
-          "interference_mm3": 13.823007675795978,
+          "interference_mm3": 13.82300767579764,
           "approach_intersection_mm3": 0.0
         },
         {
           "purpose": "top mount",
           "position_mm": [
-            -72.5,
+            -76.5,
             -19.4,
             24.9
           ],
@@ -132,7 +132,7 @@
         {
           "purpose": "top mount",
           "position_mm": [
-            -72.5,
+            -76.5,
             56.4,
             24.9
           ],
@@ -162,7 +162,7 @@
         {
           "purpose": "lid",
           "position_mm": [
-            -72.5,
+            -76.5,
             -9.399999999999999,
             7.0
           ],
@@ -172,7 +172,7 @@
         {
           "purpose": "lid",
           "position_mm": [
-            -72.5,
+            -76.5,
             46.4,
             7.0
           ],
@@ -251,7 +251,14 @@
     16,
     5
   ],
-  "station_spacing_mm": 46,
+  "station_spacing_mm": 54.0,
+  "bearing_stations_x_mm": [
+    -27.0,
+    27.0
+  ],
+  "exit_bearing_center_offset_mm": 25.0,
+  "gear_center_x_mm": 0,
+  "minimum_guide_edge_margin_mm": 13,
   "upper_bearing_angle_deg": 45,
   "spring_preload_mm": 2.3,
   "spring_thickness_mm": 1.4,
@@ -259,19 +266,19 @@
   "spring_free_stl": true,
   "chassis_mounts_mm": [
     [
-      -30,
+      -34.0,
       -13
     ],
     [
-      -30,
+      -34.0,
       54
     ],
     [
-      30,
+      34.0,
       -13
     ],
     [
-      30,
+      34.0,
       54
     ]
   ],
@@ -281,7 +288,7 @@
   "rack_solid_count": 1,
   "insertion_side": "right/output side, plain left end first",
   "rack_withdrawal_mm": 113.09733552923255,
-  "contact_checks_passed": 16,
+  "contact_checks_passed": 426,
   "upper_force_normals": [
     [
       0,
@@ -303,283 +310,283 @@
   "nominal_mesh_max_overlap_mm3": 0,
   "elastic_mesh_limit_mm3": 3.8555618722255387,
   "elastic_mesh_volume_mm3_range": [
-    3.2737460723977643,
+    3.2737460723977927,
     3.649516245004904
   ],
   "hardware_clearance_samples": [
     {
       "travel_mm": -20.0,
-      "part": "M5 upper washer front -23.0",
+      "part": "M5 upper washer front -27.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": -20.0,
-      "part": "M5x16 angled axle front -23.0",
+      "part": "M5x16 angled axle front -27.0",
       "gap_mm": 0.4999999999999977
     },
     {
       "travel_mm": -20.0,
-      "part": "M5 angled nut front -23.0",
+      "part": "M5 angled nut front -27.0",
       "gap_mm": 7.180985861254166
     },
     {
       "travel_mm": -20.0,
-      "part": "M5 upper washer front 23.0",
+      "part": "M5 upper washer front 27.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": -20.0,
-      "part": "M5x16 angled axle front 23.0",
+      "part": "M5x16 angled axle front 27.0",
       "gap_mm": 0.499999999999999
     },
     {
       "travel_mm": -20.0,
-      "part": "M5 angled nut front 23.0",
+      "part": "M5 angled nut front 27.0",
       "gap_mm": 7.180985861254166
     },
     {
       "travel_mm": -20.0,
-      "part": "M5 upper washer rear -23.0",
+      "part": "M5 upper washer rear -27.0",
       "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": -20.0,
-      "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.4999999999999946
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5 angled nut rear -23.0",
-      "gap_mm": 7.180985861254189
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5 upper washer rear 23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5x16 angled axle rear 23.0",
+      "part": "M5x16 angled axle rear -27.0",
       "gap_mm": 0.4999999999999952
     },
     {
       "travel_mm": -20.0,
-      "part": "M5 angled nut rear 23.0",
+      "part": "M5 angled nut rear -27.0",
       "gap_mm": 7.180985861254189
     },
     {
       "travel_mm": -20.0,
-      "part": "M5 lower washer -23.0",
-      "gap_mm": 4.249999999999998
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5x25 lower axle -23.0",
-      "gap_mm": 3.2499999999999982
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5 lower nut -23.0",
-      "gap_mm": 8.354648223959998
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5 lower washer 23.0",
-      "gap_mm": 4.250000000000002
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5x25 lower axle 23.0",
-      "gap_mm": 3.2500000000000018
-    },
-    {
-      "travel_mm": -20.0,
-      "part": "M5 lower nut 23.0",
-      "gap_mm": 8.354648223959998
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 upper washer front -23.0",
+      "part": "M5 upper washer rear 27.0",
       "gap_mm": 3.5253048327204937
     },
     {
-      "travel_mm": 0,
-      "part": "M5x16 angled axle front -23.0",
-      "gap_mm": 0.4999999999999965
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 angled nut front -23.0",
-      "gap_mm": 7.180985861254166
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 upper washer front 23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x16 angled axle front 23.0",
-      "gap_mm": 0.4999999999999965
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 angled nut front 23.0",
-      "gap_mm": 7.180985861254166
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 upper washer rear -23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.4999999999999952
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 angled nut rear -23.0",
-      "gap_mm": 7.180985861254189
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 upper washer rear 23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x16 angled axle rear 23.0",
+      "travel_mm": -20.0,
+      "part": "M5x16 angled axle rear 27.0",
       "gap_mm": 0.4999999999999946
     },
     {
-      "travel_mm": 0,
-      "part": "M5 angled nut rear 23.0",
+      "travel_mm": -20.0,
+      "part": "M5 angled nut rear 27.0",
       "gap_mm": 7.180985861254189
     },
     {
-      "travel_mm": 0,
-      "part": "M5 lower washer -23.0",
-      "gap_mm": 4.249999999999998
+      "travel_mm": -20.0,
+      "part": "M5 lower washer -27.0",
+      "gap_mm": 4.25
     },
     {
-      "travel_mm": 0,
-      "part": "M5x25 lower axle -23.0",
-      "gap_mm": 3.2499999999999982
+      "travel_mm": -20.0,
+      "part": "M5x25 lower axle -27.0",
+      "gap_mm": 3.25
     },
     {
-      "travel_mm": 0,
-      "part": "M5 lower nut -23.0",
+      "travel_mm": -20.0,
+      "part": "M5 lower nut -27.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 lower washer 27.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5x25 lower axle 27.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": -20.0,
+      "part": "M5 lower nut 27.0",
       "gap_mm": 8.354648223959998
     },
     {
       "travel_mm": 0,
-      "part": "M5 lower washer 23.0",
-      "gap_mm": 4.250000000000002
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5x25 lower axle 23.0",
-      "gap_mm": 3.2500000000000018
-    },
-    {
-      "travel_mm": 0,
-      "part": "M5 lower nut 23.0",
-      "gap_mm": 8.354648223959998
-    },
-    {
-      "travel_mm": 20.0,
-      "part": "M5 upper washer front -23.0",
+      "part": "M5 upper washer front -27.0",
       "gap_mm": 3.5253048327204937
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5x16 angled axle front -23.0",
-      "gap_mm": 0.4999999999999965
-    },
-    {
-      "travel_mm": 20.0,
-      "part": "M5 angled nut front -23.0",
-      "gap_mm": 7.180985861254166
-    },
-    {
-      "travel_mm": 20.0,
-      "part": "M5 upper washer front 23.0",
-      "gap_mm": 3.5253048327204937
-    },
-    {
-      "travel_mm": 20.0,
-      "part": "M5x16 angled axle front 23.0",
+      "travel_mm": 0,
+      "part": "M5x16 angled axle front -27.0",
       "gap_mm": 0.4999999999999977
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5 angled nut front 23.0",
+      "travel_mm": 0,
+      "part": "M5 angled nut front -27.0",
       "gap_mm": 7.180985861254166
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5 upper washer rear -23.0",
+      "travel_mm": 0,
+      "part": "M5 upper washer front 27.0",
       "gap_mm": 3.5253048327204937
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5x16 angled axle rear -23.0",
-      "gap_mm": 0.4999999999999952
+      "travel_mm": 0,
+      "part": "M5x16 angled axle front 27.0",
+      "gap_mm": 0.4999999999999977
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5 angled nut rear -23.0",
-      "gap_mm": 7.180985861254189
+      "travel_mm": 0,
+      "part": "M5 angled nut front 27.0",
+      "gap_mm": 7.180985861254166
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5 upper washer rear 23.0",
+      "travel_mm": 0,
+      "part": "M5 upper washer rear -27.0",
       "gap_mm": 3.5253048327204937
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5x16 angled axle rear 23.0",
+      "travel_mm": 0,
+      "part": "M5x16 angled axle rear -27.0",
       "gap_mm": 0.4999999999999952
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5 angled nut rear 23.0",
+      "travel_mm": 0,
+      "part": "M5 angled nut rear -27.0",
       "gap_mm": 7.180985861254189
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5 lower washer -23.0",
-      "gap_mm": 4.249999999999998
+      "travel_mm": 0,
+      "part": "M5 upper washer rear 27.0",
+      "gap_mm": 3.5253048327204937
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5x25 lower axle -23.0",
-      "gap_mm": 3.2499999999999982
+      "travel_mm": 0,
+      "part": "M5x16 angled axle rear 27.0",
+      "gap_mm": 0.4999999999999946
     },
     {
-      "travel_mm": 20.0,
-      "part": "M5 lower nut -23.0",
+      "travel_mm": 0,
+      "part": "M5 angled nut rear 27.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower washer -27.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x25 lower axle -27.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower nut -27.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower washer 27.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5x25 lower axle 27.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 0,
+      "part": "M5 lower nut 27.0",
       "gap_mm": 8.354648223959998
     },
     {
       "travel_mm": 20.0,
-      "part": "M5 lower washer 23.0",
-      "gap_mm": 4.250000000000002
+      "part": "M5 upper washer front -27.0",
+      "gap_mm": 3.5253048327204937
     },
     {
       "travel_mm": 20.0,
-      "part": "M5x25 lower axle 23.0",
-      "gap_mm": 3.2500000000000018
+      "part": "M5x16 angled axle front -27.0",
+      "gap_mm": 0.499999999999999
     },
     {
       "travel_mm": 20.0,
-      "part": "M5 lower nut 23.0",
+      "part": "M5 angled nut front -27.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 upper washer front 27.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x16 angled axle front 27.0",
+      "gap_mm": 0.499999999999999
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 angled nut front 27.0",
+      "gap_mm": 7.180985861254166
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 upper washer rear -27.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x16 angled axle rear -27.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 angled nut rear -27.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 upper washer rear 27.0",
+      "gap_mm": 3.5253048327204937
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x16 angled axle rear 27.0",
+      "gap_mm": 0.4999999999999952
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 angled nut rear 27.0",
+      "gap_mm": 7.180985861254189
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower washer -27.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x25 lower axle -27.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower nut -27.0",
+      "gap_mm": 8.354648223959998
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower washer 27.0",
+      "gap_mm": 4.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5x25 lower axle 27.0",
+      "gap_mm": 3.25
+    },
+    {
+      "travel_mm": 20.0,
+      "part": "M5 lower nut 27.0",
       "gap_mm": 8.354648223959998
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.4999999999999946,
-  "source_sha256": "564e350c464e3e9fd784b46df65d30249d6c5c00d76a60c09a61b8ed4a04493e",
+  "source_sha256": "30a0504aa0185f696d0bcee3354e1d19e06e241e73e831a0cba3b9c09afa6cd7",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -597,17 +604,22 @@
       "part": "tray",
       "boxes": 35,
       "uncovered_volume_mm3": 0
+    },
+    {
+      "part": "rack",
+      "boxes": 3,
+      "uncovered_volume_mm3": 0
     }
   ],
   "lid_screw_swept_envelope_checks": [
     {
-      "part": "M3x20 recessed lid screw -72.5 -9.4",
+      "part": "M3x20 recessed lid screw -76.5 -9.4",
       "stationary_part_pairs": 48,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
     },
     {
-      "part": "M3x20 recessed lid screw -72.5 46.4",
+      "part": "M3x20 recessed lid screw -76.5 46.4",
       "stationary_part_pairs": 48,
       "path": "Z +35 mm, then Y -120 mm",
       "maximum_intersection_mm3": 0.0
@@ -625,10 +637,10 @@
       "maximum_intersection_mm3": 0.0
     }
   ],
-  "mechanism_explosion_samples": 121,
-  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and exact bearing-release positions; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.",
+  "mechanism_explosion_samples": 151,
+  "method": "All assembled pairs. Changed enclosure and enclosure-fastener relative motion sampled <=0.5 mm. Mechanism pairs checked at 1% explosion intervals, every stage boundary/midpoint and bearing-release transitions at 0.5 mm spacing; all moving parts checked at 41 travel positions. Exact verified box coverage rejects empty enclosure and rack regions; lid screw removal is proven with continuous swept outer envelopes. Equal-phase mesh intersections are reused only inside an exactly verified periodic rack/pinion region. Same tracks drive viewer. Nominal tooth profile checked separately.",
   "intersection_tolerance_mm3": 0.01,
-  "explosion_samples": 2298,
+  "explosion_samples": 2328,
   "motion_samples": 41,
   "explosion_failures": [],
   "motion_failures": [],
@@ -641,28 +653,28 @@
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert chassis -30 -13",
+      "a": "M3 heat-set insert chassis -34 -13",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert chassis 30 -13",
+      "a": "M3 heat-set insert chassis 34 -13",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount -72.5 -19.4",
+      "a": "M3 heat-set insert top mount -76.5 -19.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert top mount -72.5 56.4",
+      "a": "M3 heat-set insert top mount -76.5 56.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
@@ -683,14 +695,14 @@
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -72.5 -9.4",
+      "a": "M3 heat-set insert lid -76.5 -9.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
     },
     {
       "phase": "assembled",
-      "a": "M3 heat-set insert lid -72.5 46.4",
+      "a": "M3 heat-set insert lid -76.5 46.4",
       "b": "05 Mounting enclosure tray",
       "volume_mm3": 13.82301,
       "reason": "Intentional heat-set knurl/pilot interference; plastic displaced during installation"
@@ -2316,7 +2328,7 @@
         "translation": [
           0.0,
           0.0,
-          2.3
+          0.058365543830696254
         ],
         "rotation_z_deg": 0
       },
@@ -2324,7 +2336,7 @@
         "translation": [
           0.0,
           0.0,
-          2.3
+          0.058365543830696254
         ],
         "rotation_z_deg": 0
       },
@@ -2332,7 +2344,7 @@
         "translation": [
           0.0,
           0.0,
-          2.3
+          0.058365543830696254
         ],
         "rotation_z_deg": 0
       }

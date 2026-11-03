@@ -10,18 +10,18 @@
   ],
   "heat_set_inserts": {
     "thread": "M3",
-    "quantity": 12,
+    "quantity": 16,
     "outer_diameter_mm": 4.6,
     "length_mm": 5.0,
     "pilot_diameter_mm": 4.2
   },
   "lid_screws": {
     "type": "M3x20 socket",
-    "quantity": 6
+    "quantity": 8
   },
   "chassis_screws": {
     "type": "M3x10 socket",
-    "quantity": 2
+    "quantity": 4
   },
   "bearings": {
     "type": "625ZZ",
