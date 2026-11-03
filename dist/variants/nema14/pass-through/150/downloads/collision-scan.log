@@ -1,0 +1,98 @@
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/cadquery/utils.py:82: FutureWarning: save will be removed in the next release.
+  warn(f"{f.__name__} will be removed in the next release.", FutureWarning)
+Exported 76 parts / six 625ZZ bearings
+D shaft fit: {'shaft_diameter_mm': 5.0, 'shaft_flat_depth_mm': 0.5, 'shaft_flat_y_mm': -2.0, 'bore_diameter_mm': 5.3, 'bore_flat_y_mm': -2.15, 'motor_center_y_mm': 4.0, 'bore_flat_world_y_mm': 1.85, 'wall_clearance_mm': 0.15, 'measured_shaft_gear_gap_mm': 0.14999999999996128, 'set_screw': 'M3x4 flat point', 'tap_pilot_diameter_mm': 2.5, 'set_screw_axis': '+Y, normal to flat', 'set_screw_axis_z_mm': 6.5, 'set_screw_tip_y_mm': 2.0, 'set_screw_shaft_gap_mm': 0.0, 'shaft_engagement_z_mm': [0, 11]}
+Assembled rigid failures: 0 [] ; nominal mesh max: 0
+Explosion pose 1 of 3342
+Stage 1 Remove and park lid screws failures: 0
+Explosion pose 51 of 3342
+Explosion pose 101 of 3342
+Explosion pose 151 of 3342
+Explosion pose 201 of 3342
+Explosion pose 251 of 3342
+Explosion pose 301 of 3342
+Explosion pose 351 of 3342
+Explosion pose 401 of 3342
+Stage 2 Lift cover failures: 0
+Explosion pose 451 of 3342
+Explosion pose 501 of 3342
+Explosion pose 551 of 3342
+Stage 3 Withdraw rack; spring floors relax failures: 0
+Explosion pose 601 of 3342
+Explosion pose 651 of 3342
+Explosion pose 701 of 3342
+Explosion pose 751 of 3342
+Explosion pose 801 of 3342
+Explosion pose 851 of 3342
+Explosion pose 901 of 3342
+Explosion pose 951 of 3342
+Explosion pose 1001 of 3342
+Explosion pose 1051 of 3342
+Explosion pose 1101 of 3342
+Explosion pose 1151 of 3342
+Explosion pose 1201 of 3342
+Explosion pose 1251 of 3342
+Explosion pose 1301 of 3342
+Explosion pose 1351 of 3342
+Explosion pose 1401 of 3342
+Explosion pose 1451 of 3342
+Stage 4 Withdraw pinion set screw failures: 0
+Explosion pose 1501 of 3342
+Stage 5 Lift and clear pinion failures: 0
+Explosion pose 1551 of 3342
+Explosion pose 1601 of 3342
+Explosion pose 1651 of 3342
+Stage 6 Withdraw front angled axles failures: 0
+Explosion pose 1701 of 3342
+Explosion pose 1751 of 3342
+Explosion pose 1801 of 3342
+Explosion pose 1851 of 3342
+Stage 7 Withdraw rear angled axles failures: 0
+Explosion pose 1901 of 3342
+Explosion pose 1951 of 3342
+Explosion pose 2001 of 3342
+Explosion pose 2051 of 3342
+Stage 8 Lift upper rollers to access motor screws failures: 0
+Explosion pose 2101 of 3342
+Stage 9 Remove and park motor screws failures: 0
+Explosion pose 2151 of 3342
+Explosion pose 2201 of 3342
+Explosion pose 2251 of 3342
+Explosion pose 2301 of 3342
+Stage 10 Lower motor with its rear-mounted driver failures: 0
+Explosion pose 2351 of 3342
+Explosion pose 2401 of 3342
+Explosion pose 2451 of 3342
+Explosion pose 2501 of 3342
+Stage 11 Remove and park chassis screws failures: 0
+Explosion pose 2551 of 3342
+Explosion pose 2601 of 3342
+Explosion pose 2651 of 3342
+Explosion pose 2701 of 3342
+Stage 12 Back lower axles out 10 mm failures: 0
+Explosion pose 2751 of 3342
+Stage 13 Lift chassis 6 mm above rear standoffs failures: 0
+Stage 14 Slide bearing subassembly clear of end posts failures: 0
+Stage 15 Lower tray with installed inserts failures: 0
+Explosion pose 2801 of 3342
+Explosion pose 2851 of 3342
+Explosion pose 2901 of 3342
+Explosion pose 2951 of 3342
+Stage 16 Remove and park lower axle nuts failures: 0
+Explosion pose 3001 of 3342
+Stage 17 Withdraw and park lower axles failures: 0
+Explosion pose 3051 of 3342
+Explosion pose 3101 of 3342
+Explosion pose 3151 of 3342
+Explosion pose 3201 of 3342
+Stage 18 Remove angled axle nuts failures: 0
+Explosion pose 3251 of 3342
+Stage 19 Lift lower rollers failures: 0
+Explosion pose 3301 of 3342
+Explosion: 3342 samples; 0 rigid failures []
+Motion failures: 0 []
+Traceback (most recent call last):
+  File "/workspace/work/site-flex17/model.py", line 802, in <module>
+    if not PASS_THROUGH:assert left-a.stroke/2>=CASE_LEFT+CASE_WALL+1
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

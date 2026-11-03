@@ -1,0 +1,51 @@
+{
+  "source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
+  "motor": "nema14",
+  "enclosure_variant": "pass-through",
+  "stroke": 150,
+  "parking_distance_mm": 180,
+  "screw_sweep_checks": [
+    {
+      "part": "M3x20 recessed lid screw -60.5 -3.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw -60.5 46.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 149.5 -3.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 102 46.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 44.5 -13.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    },
+    {
+      "part": "M3x20 recessed lid screw 44.5 56.4",
+      "stationary_part_pairs": 70,
+      "path": "Z +35 mm, then Y -180 mm",
+      "maximum_intersection_mm3": 0.0
+    }
+  ],
+  "stationary_after_fraction": 0.05,
+  "parked_screws_maximum_y_mm": -120.85,
+  "all_other_parts_continuous_minimum_y_mm": -105.75,
+  "limiting_part": "M3x10 chassis screw -39.0",
+  "minimum_separating_y_gap_mm": 15.099999999999994,
+  "method": "Continuous solid swept envelopes prove extraction and parking until 5%. Thereafter every parked lid screw lies wholly below the global Y envelope of every other part across all piecewise-linear tracks. Rotating parts use full-circle bounding radii; flexure deformation changes only Z. Cover screws have equal translations and unchanged mutual spacing."
+}
