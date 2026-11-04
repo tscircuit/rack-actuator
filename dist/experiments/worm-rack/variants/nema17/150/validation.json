@@ -1,10 +1,10 @@
 {
   "experiment": "worm-rack-nema17-150",
-  "geometry_cache_sha256": "4761c82bfac14a1f74613f643897eb980a5f73764a7cfc37e3acaeadd79be1e4",
-  "source_sha256": "0a58271a4ffd4d7bbd73ed1f360493f105fe743e8049daeebd24a65e6750b95b",
-  "enclosure_source_sha256": "2961548b5ee1fb933fddc423e911c05f3168a37c844a4aff907a864a329da562",
-  "validation_source_sha256": "14af2850dd7ea07431be0b53659fdf3788850202d161c6d3f65ae2f2fc70cb60",
-  "method": "All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA. Final chassis clearance update certified by exact material removal; see chassis_clearance_update and the included reference report.",
+  "geometry_cache_sha256": "338738ff86cc45138d9d7d9feb904acf4253281930a9daa638706a73a8ff86e5",
+  "source_sha256": "e2fafe9525ff95d671ef9f8512d440a14472e5c70fbfefab9c8d6309c052ac14",
+  "enclosure_source_sha256": "a6f1a1b3fcc581ed3aa8c0a95c44048e7f067469438261679754c019b3ce5962",
+  "validation_source_sha256": "ffc7b38a4f06038c7979e029f51784d4aba4386e6a08fbde050acea4e66d99e0",
+  "method": "All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA.",
   "motor": "NEMA17",
   "stroke_mm": 150,
   "module_mm": 2,
@@ -15,56 +15,62 @@
   "worm_outside_diameter_mm": 26.0,
   "rack_preload_per_flank_mm": 0.1,
   "worm_flank_clearance_mm": 0.03,
-  "parts": 91,
+  "parts": 85,
   "limits": [
     "Unprinted experimental prototype",
+    "Axial fit allowance is 0.3 mm; printed endplay and motor axial load capacity require physical testing",
     "No load, wear, efficiency, thermal, self-locking, thrust-bearing life or motor-torque validation",
-    "Staged drive disassembly; motor and pinion form a removable subassembly",
+    "Staged drive disassembly; motor and worm form a removable subassembly",
     "Nominal command increments are not measured accuracy"
   ],
+  "guide_contact_acceleration": "Exact rack clipping to Y=13..213, Z=-187..13; every guide bearing bounding box, including spring lift, is asserted inside it. This preserves solid intersection volumes.",
   "worm_set_screw_tool_access_collisions": [],
   "end_bolt_tool_access_collisions": [],
-  "geared_drive": {
-    "worm_length_mm": 181.0,
-    "printed_parts": 6,
-    "bearing_count": 8,
-    "worm_teeth": 24,
-    "motor_teeth": 18,
-    "spur_module_mm": 1.0,
-    "spur_pressure_angle_deg": 25,
-    "spur_center_distance_mm": 21.0,
-    "worm_revolutions_per_motor_revolution": 0.75,
-    "travel_per_motor_revolution_mm": 4.71238898038469,
+  "direct_drive": {
+    "worm_length_mm": 191.2,
+    "printed_parts": 5,
+    "bearing_count": 7,
+    "worm_revolutions_per_motor_revolution": 1,
+    "travel_per_motor_revolution_mm": 6.283185307179586,
     "insert_thread": "M5",
-    "insert_count": 2,
+    "insert_count": 1,
     "insert_od_mm": 7.0,
     "insert_length_mm": 8.0,
     "insert_pilot_mm": 6.6,
     "insert_checks": [
       {
         "end": "front",
-        "actual_interference_mm3": 34.18052807105701,
-        "expected_interference_mm3": 34.180528071056976
-      },
-      {
-        "end": "rear",
-        "actual_interference_mm3": 34.18052807105701,
+        "actual_interference_mm3": 34.18052807105698,
         "expected_interference_mm3": 34.180528071056976
       }
     ],
-    "bolts": "2 \u00d7 M5x16",
+    "bolts": "1 \u00d7 M5x16",
     "bolt_to_pocket_bottom_clearance_mm": 0.6,
     "thread_engagement_mm": 8,
-    "motor_socket_engagement_mm": 12,
+    "motor_socket_engagement_mm": 21.2,
     "bearing_seat_diameter_mm": 16.3,
-    "bearing_installation_direction": "outward along X",
-    "opposed_inner_axial_shoulders": true,
+    "bearing_axial_fit_allowance_mm": 0.3,
     "bearing_inner_race_spacer_od_mm": 7.5,
     "spacer_length_mm": 2,
     "keeper_screws": 0,
     "separate_coupling": false,
     "motor_cartridge": false,
-    "bearing_inner_race_relief_diameter_mm": 12
+    "spur_gears": 0,
+    "tooth_drop_mm": 21.0,
+    "motor_axis": [
+      -178,
+      -1.0,
+      -20.0
+    ],
+    "motor_pose_change_from_geared_v32_mm": 0.0,
+    "insert_recess_mm": 0.0,
+    "spacer_metal_contact_area_mm2": 16.42267559663921
+  },
+  "bearing_axial_capture": {
+    "rear_shoulder_overlap_after_0_5mm_shift_mm3": 24.46657561911948,
+    "front_stop_overlap_after_0_5mm_shift_mm3": 29.472147691121805,
+    "nominal_axial_fit_allowance_mm": 0.3,
+    "note": "Geometric capture, not a preload or bearing-life calculation; check actual endplay after printing."
   },
   "assembled_collisions": [],
   "enclosure": {
@@ -188,7 +194,7 @@
       157.0,
       -26.9,
       63.9,
-      -44.0,
+      -44.0000001,
       24.900000100000007
     ],
     "interface_comparisons": [
@@ -343,8 +349,8 @@
     "motor_center_z_mm": -20.0,
     "motor_rear_exposure_mm": 19.0,
     "rear_mount_access_obstruction_mm3": 0.0,
-    "tool_access_configuration": "M3 set screw on motor/pinion subassembly outside housing; M5 end bolts after motor withdrawal",
-    "printed_parts": 6,
+    "tool_access_configuration": "M3 set screw on motor/worm subassembly outside housing; front M5 bolt through enclosure service port",
+    "printed_parts": 5,
     "external_insert_retention": [
       {
         "part": "M3 heat-set insert top mount -191.5 -19.4",
@@ -426,53 +432,46 @@
         "Matched compliant rack",
         "M3 heat-set insert output 238 24"
       ],
-      "overlap_mm3": 13.823007675795246
+      "overlap_mm3": 13.82300767579545
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 238 33"
       ],
-      "overlap_mm3": 13.823007675795232
+      "overlap_mm3": 13.823007675795429
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 247 24"
       ],
-      "overlap_mm3": 13.823007675795246
+      "overlap_mm3": 13.823007675795443
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 247 33"
       ],
-      "overlap_mm3": 13.823007675795246
+      "overlap_mm3": 13.823007675795443
     },
     {
       "parts": [
-        "Worm with integral 24T spur gear",
+        "Direct-shaft worm",
         "M5 front axial heat-set insert"
       ],
-      "overlap_mm3": 34.18052807105705
+      "overlap_mm3": 34.18052807105698
     },
     {
       "parts": [
-        "Worm with integral 24T spur gear",
-        "M5 rear axial heat-set insert"
-      ],
-      "overlap_mm3": 34.18052807105708
-    },
-    {
-      "parts": [
-        "M3 rear motor support insert -157 -16",
+        "M3 rear motor support insert -157 -15",
         "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.82300767579514
     },
     {
       "parts": [
-        "M3 rear motor support insert -157 14",
+        "M3 rear motor support insert -157 13",
         "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.82300767579514
@@ -646,6 +645,11 @@
       "overlap_mm3": 13.823007675795047
     }
   ],
+  "end_bearing_installation": {
+    "configuration": "insert bearing from +X into chassis outside enclosure, then lower chassis into tray",
+    "samples": 290,
+    "collisions": []
+  },
   "chassis_installation": {
     "samples": 161,
     "direction": "+Z",
@@ -662,7 +666,7 @@
     "lower_axle_retraction_mm": 8,
     "initial_lift_mm": 6,
     "rearward_slide_mm": 2.5,
-    "configuration": "unloaded chassis with six bearings and axle hardware; motor, worm, rack and cover absent",
+    "configuration": "unloaded chassis with seven bearings and guide axle hardware; motor, worm, rack and cover absent",
     "collisions": []
   },
   "dense_mesh": {
@@ -670,7 +674,6 @@
     "full_stroke_samples": 41,
     "distinct_samples": 137,
     "nominal_triangle_intersections_at_mm": [],
-    "spur_triangle_intersections_at_mm": [],
     "preloaded_loss_of_engagement_at_mm": [],
     "tessellation_linear_tolerance_mm": 0.002,
     "tessellation_angular_tolerance_rad": 0.04,
@@ -679,47 +682,38 @@
   "mesh_pose_checks": [
     {
       "travel_from_center_mm": -75.0,
-      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 12.233894537849178
+      "matched_preloaded_overlap_mm3": 12.233893529703941
     },
     {
       "travel_from_center_mm": 0,
-      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 16.689188638749584
+      "matched_preloaded_overlap_mm3": 16.689189740790432
     },
     {
       "travel_from_center_mm": 1.0869910581420683,
-      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 17.9152318278028
+      "matched_preloaded_overlap_mm3": 17.915230310487487
     },
     {
       "travel_from_center_mm": 3.248406803811846,
-      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 16.76057973589425
+      "matched_preloaded_overlap_mm3": 16.76058036418515
     },
     {
       "travel_from_center_mm": 75.0,
-      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 10.177110380347791
+      "matched_preloaded_overlap_mm3": 10.177111280141624
     }
   ],
   "mesh": {
     "solid_pose_samples": 5,
     "phase_samples": 97,
     "full_stroke_samples": 41,
-    "unchanged_straight_rack_nominal_overlap_mm3": [
-      0.0,
-      0.0
-    ],
     "matched_nominal_max_overlap_mm3": 0.0,
     "matched_preloaded_overlap_mm3": [
-      10.177110380347791,
-      17.9152318278028
+      10.177111280141624,
+      17.915230310487487
     ],
     "tolerance_mm3": 0.01
   },
@@ -737,14 +731,6 @@
   },
   "valid_single_solids": true,
   "rigid_backbone_clearance_mm": 5.0,
-  "spur_mesh": {
-    "ideal_transverse_contact_ratio": 1.4160471592315809,
-    "motor_teeth": 18,
-    "worm_teeth": 24,
-    "phase_samples": 97,
-    "checked_in_full_motion_pairs": true,
-    "flank_allowance_per_gear_mm": 0.06
-  },
   "motion_samples": 41,
   "motion_collisions": [],
   "explosion_collisions": [],
@@ -786,111 +772,10 @@
       4
     ]
   ],
-  "distinct_explosion_pair_poses": 651962,
-  "explosion_samples": 1858,
-  "maximum_explosion_point_increment_mm": 0.5,
+  "valid_spring_solids": true,
+  "distinct_explosion_pair_poses": 770918,
+  "explosion_samples": 1905,
+  "maximum_explosion_translation_increment_mm": 0.5,
   "nominal_mesh_separation_triangle_collisions": [],
-  "passed": true,
-  "reference_full_check_source_sha256": "a8f8fef595a01ae05b78fe575592e0a9b3ccda25f820a6b74746e1a4d6e54cce",
-  "clearance_certifier_sha256": "c82f6a945cae6122291dca5cd2d88708f2ca58c4396ef8fd3e40a3b936b508ee",
-  "chassis_clearance_update": {
-    "method": "Exact OCC material-removal certificate for all nine chassis states; source changes are restricted to larger voids. All other shapes and tracks are unchanged. Full motion/disassembly results are retained from the reference report, not rerun.",
-    "reference_report_sha256": "354219879ed4f7bd53ac4138c0abe7d937627dd2ed1ea73b853d0bb8aec6c85e",
-    "bearing_inner_race_relief_diameter_mm": 12,
-    "outer_race_shoulder_radial_overlap_mm": 2,
-    "short_preset_mount_clearances_applied": false,
-    "states": [
-      {
-        "spring_state": [
-          0,
-          0
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          1,
-          0
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          2,
-          0
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          3,
-          0
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          4,
-          0
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          4,
-          1
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          4,
-          2
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          4,
-          3
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      },
-      {
-        "spring_state": [
-          4,
-          4
-        ],
-        "added_material_mm3": 0.0,
-        "removed_material_mm3": 91.96793737679263,
-        "removed_outside_allowed_clearances_mm3": 0.0,
-        "valid_single_solid": true
-      }
-    ],
-    "maximum_added_material_mm3": 0.0
-  }
+  "passed": true
 }
