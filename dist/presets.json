@@ -18,7 +18,7 @@
       "partCount": 68,
       "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema17",
@@ -42,7 +42,7 @@
       "partCount": 68,
       "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema17",
@@ -61,7 +61,7 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema17",
@@ -85,7 +85,7 @@
       "partCount": 72,
       "insertCount": 26,
       "coverScrewCount": 4,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema17",
@@ -104,7 +104,7 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema17",
@@ -128,7 +128,7 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema14",
@@ -147,7 +147,7 @@
       "partCount": 68,
       "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema14",
@@ -171,7 +171,7 @@
       "partCount": 68,
       "insertCount": 24,
       "coverScrewCount": 4,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema14",
@@ -190,7 +190,7 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema14",
@@ -214,7 +214,7 @@
       "partCount": 72,
       "insertCount": 26,
       "coverScrewCount": 4,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema14",
@@ -233,7 +233,7 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     },
     {
       "motor": "nema14",
@@ -257,7 +257,7 @@
       "partCount": 76,
       "insertCount": 28,
       "coverScrewCount": 6,
-      "sourceSha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e"
+      "sourceSha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df"
     }
   ]
 }

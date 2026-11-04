@@ -1,8 +1,8 @@
 {
   "experiment": "worm-rack-nema17-40",
-  "geometry_cache_sha256": "9cc66e2689a63c315072ad1f25ae83b9eb1641dab73a7f0227fd25e0a9048d3b",
+  "geometry_cache_sha256": "5d803e8d5d6318cf2259d57ca0dbf5fd6e3432416939b389883201ff5c1c51b0",
   "source_sha256": "d681c01b0c04b9220684b9b8e28926d77aa52a18314aff1fe3a80e298cc50c8a",
-  "validation_source_sha256": "5d0b6530bea97fe9851775a880fc481f7110b9fe147f3094b1a345bdc165a11d",
+  "validation_source_sha256": "5dfe068508977c8a37d411a9d1781aff9f9c55ae782f17ee750e45e9eac4098e",
   "method": "All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA.",
   "motor": "NEMA17",
   "stroke_mm": 40,
@@ -126,6 +126,16 @@
   },
   "unchanged_lower_guide_difference_mm3": 0.0,
   "unchanged_output_mount_difference_mm3": 0.0,
+  "output_through_holes": {
+    "diameter_mm": 3.4,
+    "length_mm": 18,
+    "intersections_mm3": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
   "valid_single_solids": true,
   "rigid_backbone_clearance_mm": 5.0,
   "motion_samples": 41,

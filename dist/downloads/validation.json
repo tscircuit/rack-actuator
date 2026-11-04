@@ -39,7 +39,12 @@
       3,
       5.0
     ],
-    "maximum_screw_penetration_mm": 5.3,
+    "through_diameter_mm": 3.4,
+    "through_length_mm": 18.0,
+    "mounting_options": [
+      "M3 heat-set insert",
+      "M3 through-bolt with washers and nut"
+    ],
     "minimum_knurl_edge_wall_mm": 2.2,
     "minimum_retracted_enclosure_gap_mm": 1.5,
     "checks": [
@@ -56,7 +61,9 @@
         ],
         "interference_mm3": 13.823007675795118,
         "approach_intersection_mm3": 0,
-        "backing_mm": 12.299999999999999
+        "annular_backing_mm": 12.299999999999999,
+        "through_diameter_mm": 3.4,
+        "through_passage_intersection_mm3": 0
       },
       {
         "position_mm": [
@@ -71,7 +78,9 @@
         ],
         "interference_mm3": 13.82300767579509,
         "approach_intersection_mm3": 0,
-        "backing_mm": 12.299999999999999
+        "annular_backing_mm": 12.299999999999999,
+        "through_diameter_mm": 3.4,
+        "through_passage_intersection_mm3": 0
       },
       {
         "position_mm": [
@@ -86,7 +95,9 @@
         ],
         "interference_mm3": 13.823007675795104,
         "approach_intersection_mm3": 0,
-        "backing_mm": 12.299999999999999
+        "annular_backing_mm": 12.299999999999999,
+        "through_diameter_mm": 3.4,
+        "through_passage_intersection_mm3": 0
       },
       {
         "position_mm": [
@@ -101,7 +112,9 @@
         ],
         "interference_mm3": 13.82300767579509,
         "approach_intersection_mm3": 0,
-        "backing_mm": 12.299999999999999
+        "annular_backing_mm": 12.299999999999999,
+        "through_diameter_mm": 3.4,
+        "through_passage_intersection_mm3": 0
       }
     ]
   },
@@ -1079,7 +1092,7 @@
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.49999999999999406,
-  "source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
+  "source_sha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -6335,5 +6348,18 @@
     "checked_source_sha256": "656335e70af9c756393131a4890c871f97b7fe4eb6d2e5b0a64fefd6a422485d",
     "geometry_and_motion_code_unchanged": true,
     "change": "Rear containment assertion now applies only to enclosed variant. For this enclosed model, the identical assertion and all other checks still apply."
+  },
+  "output_through_hole_update": {
+    "method": "Rebuilt solid equals previously checked rack minus four output clearance cylinders; exact symmetric-difference check. Whole geometry-generator comparison confirms no other geometry or kinematics changed. Material removal cannot introduce part interference; prior motion, mesh, guide, enclosure and service checks are retained, not rerun.",
+    "previous_full_check_source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
+    "current_source_sha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df",
+    "through_diameter_mm": 3.4,
+    "through_length_mm": 18,
+    "hole_count": 4,
+    "symmetric_difference_mm3": 0.0,
+    "removed_volume_mm3": 446.69677622862577,
+    "expected_removed_volume_mm3": 446.69677622862537,
+    "valid_single_solid": true,
+    "source_geometry_change_is_limited_to_four_output_bores": true
   }
 }

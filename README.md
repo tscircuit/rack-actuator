@@ -111,9 +111,11 @@ M3 heat-set inserts default to **4.6 mm OD × 5 mm long**, with **4.2 mm printed
 | Top (+Z) | Housing length − 15 mm by housing width − 15 mm | Flush in full-height tray posts |
 | Moving output (+Z) | 9 × 9 mm in an 18 × 18 mm pad | 0.3 mm recessed |
 
-The output pad is centered on the rack backbone. Use application-length screws with **3–5 mm insert engagement**: 3.3–5.3 mm penetration from recessed faces, or 3–5 mm from the flush top face. Use the selected preset's STEP file and mounting metadata to lay out your fixture.
+The output pad is centered on the rack backbone. Its four insert pockets continue as **3.4 mm through-holes through the full 18 mm pad**. Either fit M3 inserts or skip them and use M3 through-bolts with washers and nuts. Choose bolt length for the pad, attachment, washers and nut engagement. Use application-length screws with **3–5 mm insert engagement**: 3.3–5.3 mm penetration from recessed faces, or 3–5 mm from the flush top face. Use the selected preset's STEP file and mounting metadata to lay out your fixture.
 
 [![Top view of the centered output pad and its four M3 heat-set inserts on a 9 by 9 mm pattern](docs/images/output-mount.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema17&stroke=40&enclosure=enclosed)
+
+[![Underside of the output mount showing four M3 clearance holes through the pad](docs/images/output-through-holes.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema17&stroke=40&enclosure=enclosed)
 
 The fixed front face has four inserts outside the rack opening. A front fixture must clear the moving guide and the entire output pad at full retraction. At module 2, the minimum rectangular fixture opening spans **Y=18.5…41 mm, Z=−10…22 mm**. Top fixtures load the full-height tray posts; remove them before opening the lid.
 
@@ -175,7 +177,7 @@ Parts are single-piece. Check your printer's build volume, especially the 271.5 
 A practical assembly outline:
 
 1. Print and clean the five parts. Clear tooth reliefs and bearing pockets; prepare the pinion's set-screw thread.
-2. Install the tray and output-pad heat-set inserts before closing access to their pockets.
+2. Install the tray heat-set inserts and, if using them, the output-pad inserts before closing access to their pockets.
 3. Fit the lower bearings with their axles backed out 10 mm and nuts held loose. Start the chassis 6 mm above and 10 mm behind its seated position, slide it forward, lower it, then advance the axles and tighten the nuts.
 4. Install the front and rear chassis screws. Fit the motor and motor screws before the upper rollers and axles.
 5. Fit the pinion and set screw. Insert the rack from the output side, square end first, with the motor free to turn; support the spring seats as needed.
@@ -272,6 +274,8 @@ python check_lid_screw_parking.py --all
 python package_designs.py
 ```
 
+The output through-hole update was checked as an exact material-removal change against the previously validated rack on all twelve presets. Each report records its prior full-check source hash and new hole/insert checks; unchanged motion and service-path results are retained. The worm experiment was also rechecked through motion and cartridge separation.
+
 Build caching is tied to source, motor, stroke and enclosure. Use a distinct output directory for custom models to keep the supplied presets intact.
 
 ## Validation and practical limits
@@ -280,7 +284,7 @@ The supplied presets have completed sampled travel, explosion and service checks
 
 | Report / check | What it covers |
 | --- | --- |
-| `validation.json` | Assembled part pairs; 41 travel positions; guide contacts; nominal tooth mesh; insert access and backing; flexure/hardware clearances; staged explosion |
+| `validation.json` | Assembled part pairs; 41 travel positions; guide contacts; nominal tooth mesh; insert access, annular backing and output through-holes; flexure/hardware clearances; staged explosion |
 | `flexure-service-validation.json` | Bearing and enclosure service paths from 38–100% explosion, with translation increments at most 0.5 mm |
 | `lid-screw-clearance.json` | Continuous swept envelopes for removing lid screws and separating them from subsequent assembly motion |
 | `check_guide_constraints.py` | Bearing guidance constraints |

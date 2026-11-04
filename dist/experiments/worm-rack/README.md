@@ -23,7 +23,7 @@ The prototype is an open bench fixture with a removable motor/shaft cartridge. I
 | Nominal net elastic engagement | 0.07 mm per flank, before printing tolerances |
 | Shaft / printed D bore | 5 / 5.30 mm |
 
-The original straight rack cannot simply be reused: its profile does not follow the worm through the tooth thickness. The experiment preserves the **module, 20° axial tooth profile and smooth compliant reliefs at the center plane**, then curves the tooth flanks to match the worm. It retains the lower six-bearing guide rail and original output mount, including its four M3 insert pockets.
+The original straight rack cannot simply be reused: its profile does not follow the worm through the tooth thickness. The experiment preserves the **module, 20° axial tooth profile and smooth compliant reliefs at the center plane**, then curves the tooth flanks to match the worm. It retains the lower six-bearing guide rail and original output mount, including its four M3 insert pockets with 3.4 mm clearance holes through the full 18 mm pad. The output inserts are optional: M3 through-bolts, washers and nuts can be used instead.
 
 For a point `(x, y)` in the original rack profile, and worm axis `(Y, Z) = (6, 17)` mm:
 
@@ -61,7 +61,7 @@ Retain the six 625ZZ guide bearings and their M5 axle hardware from the producti
 - One M3×8 flat-point worm set screw, two M3×3 coupling set screws and two M3×3 collar set screws. They bear on the D-shaft flat. Tap printed Ø2.5 mm radial pilots M3. The worm pilot opens through the thread crest; its set screw is recessed so a hex key can reach it without the screw projecting into the tooth contact.
 - Four M3×8 keeper screws; tap the carrier's Ø2.5 mm pilots M3.
 - Four M3×10 motor screws; confirm engagement against the chosen motor's datasheet.
-- Two M3×10 cartridge mounting screws and two M3 heat-set inserts, Ø4.6 × 5 mm, for the base. The rack uses its existing four M3 inserts of the same size.
+- Two M3×10 cartridge mounting screws and two M3 heat-set inserts, Ø4.6 × 5 mm, for the base. The rack can use four M3 inserts of the same size, or omit them and use M3 through-bolts with washers and nuts.
 
 The bundle includes separate printed STLs, an assembled STEP file, source, and the check report. The guide fixture STL contains the **unloaded flexure floors**; the assembly view contains their installed, deflected state. The rack STL is placed on its flat top face. Check all other orientations in your slicer; this experimental worm/support geometry is not claimed to print without supports.
 
