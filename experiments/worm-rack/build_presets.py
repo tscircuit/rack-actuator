@@ -59,6 +59,10 @@ for motor in ['nema17','nema14']:
   folder=ROOT/'dist/experiments/worm-rack'
   if (motor,stroke)!=('nema17',40):folder=folder/'variants'/motor/str(stroke)
   destination=ROOT/'downloads/worm'/motor/str(stroke);destination.mkdir(parents=True,exist_ok=True)
+  if (folder/'worm-rack.step.gz').exists():
+   for old in destination.glob('*.stl.gz'):old.unlink()
+  for name in ['validation-reference.json','validation-reference-model.py']:
+   (folder/name).unlink(missing_ok=True)
   step=folder/'worm-rack.step.gz'
   if step.exists():os.replace(step,destination/step.name)
   for stl in (folder/'stl').glob('*.stl.gz'):os.replace(stl,destination/stl.name)

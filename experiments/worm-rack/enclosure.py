@@ -7,34 +7,31 @@ tray=ns['tray'];cover=ns['cover']
 tray=tray.fuse(rect(-MOTOR_SIZE/2-1.1,MOTOR_SIZE/2+1.1,ns['MOTOR_Y']-MOTOR_SIZE/2-1.1,ns['MOTOR_Y']+MOTOR_SIZE/2+1.1,bottom,bottom+wall))
 opening=rect(old_left-1,old_left+wall+1,MOTOR_Y-MOTOR_SIZE/2-1,MOTOR_Y+MOTOR_SIZE/2+1,MOTOR_Z-MOTOR_SIZE/2-1,MOTOR_Z+MOTOR_SIZE/2+1)
 tray=tray.cut(opening);cover=cover.cut(opening)
-for x in [old_left-1,right-wall-1]:
- access=xcyl(8.8,wall+2,x)
- tray=tray.cut(access);cover=cover.cut(access)
-# Wider rack roof/underside teeth pass the front wall, above its mounting inserts.
-portal=rect(right-wall-1,right+1,Y-5,ns['BACK_Y']+1,6,22)
-tray=tray.cut(portal);cover=cover.cut(portal)
-# The old rear wall clears the bridge if it crosses it, without moving any face.
-tray=tray.cut(rect(old_left-1,old_left+wall+1,Y-12.5,Y+20.5,-30,-22))
-# Broad floor-supported seats carry the motor bracket and both end bearings.
+# The lowered rack and the M5 end-bolt service port share the front opening.
+portal=rect(right-wall-1,right+1,Y-4.8,ns['BACK_Y']+1,Z+7.2,22)
+tray=tray.cut(portal).cut(xcyl(6.2,wall+2,right-wall-1));cover=cover.cut(portal)
+# Broad floor-supported seats carry the motor bracket and the single end bearing.
 for x,y in REAR_SUPPORT_POINTS:
- tray=tray.fuse(cyl(5,-29-bottom,x,y,bottom)).fuse(rect(x-5,x+5,ymin,y+1,bottom,-29))
- tray=tray.cut(cyl(ns['INSERT_PILOT']/2,ns['INSERT_LENGTH']+.4,x,y,-29-ns['INSERT_LENGTH']-.4))
- ins=cyl(ns['INSERT_OD']/2,ns['INSERT_LENGTH'],x,y,-29-ns['INSERT_LENGTH']).cut(cyl(1.6,ns['INSERT_LENGTH'],x,y,-29-ns['INSERT_LENGTH']))
+ tray=tray.fuse(cyl(5,SUPPORT_PAD_BOTTOM-bottom,x,y,bottom)).fuse(rect(x-5,x+5,ymin,y+1,bottom,SUPPORT_PAD_BOTTOM))
+ tray=tray.cut(cyl(ns['INSERT_PILOT']/2,ns['INSERT_LENGTH']+.4,x,y,SUPPORT_PAD_BOTTOM-ns['INSERT_LENGTH']-.4))
+ ins=cyl(ns['INSERT_OD']/2,ns['INSERT_LENGTH'],x,y,SUPPORT_PAD_BOTTOM-ns['INSERT_LENGTH']).cut(cyl(1.6,ns['INSERT_LENGTH'],x,y,SUPPORT_PAD_BOTTOM-ns['INSERT_LENGTH']))
  parts.append(record(f'M3 rear motor support insert {x:g} {y:g}',ins,'#d4a54a','tray',embedded_host=TRAY_NAME))
- screw=cyl(1.45,10,x,y,-33).fuse(cyl(2.75,3,x,y,-23)).cut(cyl(1.25,2,x,y,-22))
- parts.append(record(f'M3x10 rear motor support screw {x:g} {y:g}',screw,'#a5b5c1','chassis_screws'))
+ screw=cyl(1.45,8,x,y,SUPPORT_PAD_TOP-8).fuse(cyl(2.75,3,x,y,SUPPORT_PAD_TOP)).cut(cyl(1.25,2,x,y,SUPPORT_PAD_TOP+1))
+ parts.append(record(f'M3x8 rear motor support screw {x:g} {y:g}',screw,'#a5b5c1','chassis_screws'))
 for p in ns['parts']:
  if p['group'] in ['cover_screws','chassis_screws'] or p.get('embedded_host')=='05 Mounting enclosure tray':
   parts.append(record(p['name'],p['shape'],p['color'],p['group'],**({'embedded_host':TRAY_NAME} if p.get('embedded_host') else {})))
-# Finish pilots after joining both support webs so neither web fills its neighbor's hole.
-for x,y in REAR_SUPPORT_POINTS:tray=tray.cut(cyl(ns['INSERT_PILOT']/2,ns['INSERT_LENGTH']+.4,x,y,-29-ns['INSERT_LENGTH']-.4)).cut(cyl(3.55,4,x,y,-23))
-# Clearance for the worm's initial downward disengagement, including the plain stem.
-for a,b,r in [(WORM_START-.3,WORM_END+.3,STEM_RADIUS+.8),(GEAR_X-.8,GEAR_X+GEAR_WIDTH+.8,13.8),(-12.3,12.3,RA+.8)]:
- swept=xcyl(r,b-a,a).fuse(xcyl(r,b-a,a,Y,Z-7),box(b-a,2*r,7,((a+b)/2,Y,Z-3.5)))
- tray=tray.cut(swept)
-# Axial service paths clear internal mounting webs as well as the end walls.
-tray=tray.cut(xcyl(8.8,right+1-17.8,17.8))
-tray=tray.cut(xcyl(MOTOR_TEETH/2+1.8,GEAR_X+GEAR_WIDTH-(old_left-1),old_left-1,MOTOR_Y,MOTOR_Z))
+# Finish pilots after joining both support webs.
+for x,y in REAR_SUPPORT_POINTS:tray=tray.cut(cyl(ns['INSERT_PILOT']/2,ns['INSERT_LENGTH']+.4,x,y,SUPPORT_PAD_BOTTOM-ns['INSERT_LENGTH']-.4)).cut(cyl(3.55,30,x,y,SUPPORT_PAD_TOP))
+# Clearance for rearward motor/worm withdrawal. The retained bearing stays put.
+tray=tray.cut(xcyl(RA+.8,WORM_END+.3-(old_left-1),old_left-1))
+tray=tray.cut(rack_channel(-WARP_END-STROKE/2-1,right+1))
+# Broad integral pedestal and front axial stop: no keeper or extra printed part.
+tray=tray.fuse(rect(14,26.15,Y-11.2,Y+11.2,bottom,Z-12))
+retainer=rect(23.15,26.15,Y-10,Y+10,bottom,Z+10).cut(xcyl(6,3.2,23.05))
+tray=tray.fuse(retainer).cut(rack_channel(14,right+1))
+# Open M5 access continues through any existing mounting webs to the front face.
+tray=tray.cut(xcyl(6.2,right+1-26.15,26.15))
 # Clear the motor body, including lower portions of the rear mounting posts.
 # The top inserts retain their original positions on the supported upper webs.
 tray=tray.cut(rect(MOTOR_REAR-1,MOTOR_FRONT+.8,MOTOR_Y-MOTOR_SIZE/2-.8,MOTOR_Y+MOTOR_SIZE/2+.8,MOTOR_Z-MOTOR_SIZE/2-.8,MOTOR_Z+MOTOR_SIZE/2+.8))
