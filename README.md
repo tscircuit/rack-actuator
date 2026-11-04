@@ -12,7 +12,7 @@ The viewer provides actuation, a staged exploded assembly, right-click part hidi
 
 ## Experimental worm drive
 
-A separate **NEMA17 / NEMA14 worm family** is available at **40, 100 and 150 mm stroke** in the [worm viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). A lower motor pinion drives the worm’s integral 24T spur gear. Both worm ends use an M5 insert and bolt through a chassis-supported 625ZZ bearing.
+A separate **NEMA17 / NEMA14 worm family** is available at **40, 100 and 150 mm stroke** in the [worm viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). The worm now fits directly on the unchanged motor shaft position. A lowered tooth strip on a ribbed rack spine eliminates both spur gears and one worm bearing. The remaining end support uses an M5 insert and bolt through a captured 625ZZ bearing.
 
 The **flat enclosure has the same dimensions, mounting-hole coordinates and mounting planes as the matching fully enclosed spur preset**. The worm contacts the underside of its matched compliant rack, retaining the guide profile and output mount. The motor body projects through the rear for back-face/controller access; its projection is listed separately in the viewer. These remain unprinted prototypes. See the [preset details, assembly sequence, source and checks](experiments/worm-rack/README.md). The twelve spur presets retain their geometry.
 
