@@ -114,7 +114,12 @@
       3,
       5.0
     ],
-    "maximum_screw_penetration_from_pad_face_mm": 5.3
+    "through_diameter_mm": 3.4,
+    "through_length_mm": 18.0,
+    "alternatives": [
+      "M3 heat-set inserts",
+      "M3 through-bolts with washers and nuts"
+    ]
   },
   "motor_screws": "4 x M3x12 countersunk",
   "pinion_set_screw": "M3x4 flat point",

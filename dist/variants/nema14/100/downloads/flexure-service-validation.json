@@ -2,7 +2,7 @@
   "revision": 24,
   "motor": "nema14",
   "stroke_mm": 100,
-  "source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
+  "source_sha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df",
   "checker_sha256": "a8a76d3695edda65d49728187e167673f8030e3ed40441ffdb087aab8c455f2e",
   "explosion_interval": [
     0.38,
@@ -43,5 +43,18 @@
     "all_motion_tracks_identical": true,
     "service_scan_algorithm_identical": true,
     "method": "Reuse the source-bound revision 23 enclosed service report. All exported assembled part meshes and all motion tracks compare exactly; the relaxed chassis STL compares byte-for-byte. The service checker algorithm is byte-identical. Revision 24 changes only optional pass-through geometry and parameter/report plumbing for these enclosed models."
+  },
+  "output_through_hole_update": {
+    "method": "Rebuilt solid equals previously checked rack minus four output clearance cylinders; exact symmetric-difference check. Whole geometry-generator comparison confirms no other geometry or kinematics changed. Material removal cannot introduce part interference; prior motion, mesh, guide, enclosure and service checks are retained, not rerun.",
+    "previous_full_check_source_sha256": "fb56d71c2410ec245f899f68f1d9fbcf2d2f186ac2c07b314999c89290772f8e",
+    "current_source_sha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df",
+    "through_diameter_mm": 3.4,
+    "through_length_mm": 18,
+    "hole_count": 4,
+    "symmetric_difference_mm3": 0.0,
+    "removed_volume_mm3": 446.69677622862366,
+    "expected_removed_volume_mm3": 446.69677622862537,
+    "valid_single_solid": true,
+    "source_geometry_change_is_limited_to_four_output_bores": true
   }
 }
