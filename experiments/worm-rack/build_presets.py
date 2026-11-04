@@ -52,6 +52,17 @@ for motor in ['nema17','nema14']:
   with zipfile.ZipFile(bundle) as src,zipfile.ZipFile(temp,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as dst:
    for info in src.infolist():dst.writestr(info,replacements.get(info.filename,src.read(info.filename)))
   os.replace(temp,bundle)
+# Keep duplicate standalone CAD files in the public repository; the site hosts
+# complete ZIP bundles and links directly to these repository downloads.
+for motor in ['nema17','nema14']:
+ for stroke in [40,100,150]:
+  folder=ROOT/'dist/experiments/worm-rack'
+  if (motor,stroke)!=('nema17',40):folder=folder/'variants'/motor/str(stroke)
+  destination=ROOT/'downloads/worm'/motor/str(stroke);destination.mkdir(parents=True,exist_ok=True)
+  step=folder/'worm-rack.step.gz'
+  if step.exists():os.replace(step,destination/step.name)
+  for stl in (folder/'stl').glob('*.stl.gz'):os.replace(stl,destination/stl.name)
+  if (folder/'stl').exists() and not any((folder/'stl').iterdir()):(folder/'stl').rmdir()
 files=[p for p in (ROOT/'dist').rglob('*') if p.is_file()]
 assert sum(p.stat().st_size for p in files)<250*1024**2,'Static site exceeds 250 MiB'
 assert max(p.stat().st_size for p in files)<25*1024**2,'One static file exceeds 25 MiB'
