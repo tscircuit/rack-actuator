@@ -20,6 +20,11 @@ sys.argv=saved_argv
 box=ns['box'];cyl=ns['cyl'];acyl=ns['acyl'];ring=ns['ring'];ycyl=ns['ycyl']
 PITCH=ns['TOOTH_PITCH'];LEAD=PITCH;K=LEAD/(2*math.pi);R=12.;Y=6.;Z=17.;RR=9.5;RA=14.;LENGTH=24.;PRELOAD=.1
 AXIS=(1,0,0);ORIGIN=(0,Y,Z);ANGLE=math.radians(20)
+WORM_START=-87.;WORM_END=16.;STEM_RADIUS=6.5
+END_INSERT_OD=7.;END_INSERT_LENGTH=8.;END_INSERT_PILOT=6.6;END_INSERT_RECESS=.3
+END_INSERT_FACE=WORM_END-END_INSERT_RECESS;END_PILOT_START=6.7
+BEARING_X=20.5;SET_X=-80.;SET_Y=0.
+WORM_NAME='One-piece direct-drive worm';CHASSIS_NAME='Integral worm chassis'
 def xcyl(r,length,x,y=Y,z=Z):return acyl(r,length,(x,y,z),AXIS)
 def dshaft(r,x,length,flat):return xcyl(r,length,x).intersect(box(length,2*r+2,2*r+2,(x+length/2,Y+flat+(2*r+2)/2,Z)))
 def record(name,shape,color='#9ca3af',group='fixed',printed=False,**extra):
@@ -35,8 +40,16 @@ def make_worm():
   return cq.Wire.makePolygon(pts+[pts[0]])
  turn=cq.Solid.makeLoft([wire(2*math.pi*j/64) for j in range(65)],ruled=False)
  worm=xcyl(RR,LENGTH,-LENGTH/2).fuse(*[turn.translate((j*PITCH,0,0)) for j in range(-3,3)])
- worm=worm.intersect(box(LENGTH,40,40,ORIGIN)).fuse(xcyl(3.65,28,-14))
- worm=worm.cut(dshaft(2.65,-15,30,-2.15)).cut(ycyl(1.25,14,0,-9,Z))
+ worm=worm.intersect(box(LENGTH,40,40,ORIGIN)).fuse(xcyl(STEM_RADIUS,75,WORM_START),xcyl(5.5,4,12))
+ # Rounded shoulders join the integral stem and insert boss to the active worm.
+ for x,r in [(-12,STEM_RADIUS),(12,5.5)]:
+  edges=[e for e in worm.Edges() if e.geomType()=='CIRCLE' and abs(e.Center().x-x)<1e-6 and abs(e.radius()-r)<1e-6]
+  assert len(edges)==1,(x,len(edges))
+  worm=cq.Workplane(obj=worm).newObject(edges).fillet(1.2).val()
+ # Blind D socket fits the actual motor shaft; the other end accepts an axial M5 insert.
+ worm=worm.cut(dshaft(2.65,WORM_START-.1,17.1,-2.15)).cut(ycyl(1.25,6,SET_X,-1,Z))
+ worm=worm.cut(xcyl(END_INSERT_PILOT/2,WORM_END-END_PILOT_START+.1,END_PILOT_START))
+ worm=worm.cut(xcyl(END_INSERT_OD/2+.15,END_INSERT_RECESS+.1,END_INSERT_FACE))
  return worm.clean()
 
 def loft(wires):
@@ -83,86 +96,74 @@ worm=cached('worm',make_worm)
 rack=cached('rack',lambda:matched_rack(PRELOAD))
 nominal=cached('nominal-rack',lambda:matched_rack(0))
 straight=cached('straight-rack',lambda:ns['make_rack'](0))
-parts=[record('Matched compliant rack',rack,'#5eead4','rack',True),record('Single-start worm',worm,'#fbbf24','drive',True,rotating=True)]
+parts=[record('Matched compliant rack',rack,'#5eead4','rack',True),record(WORM_NAME,worm,'#fbbf24','worm',True,rotating=True)]
 for p in ns['parts']:
  if p['group']=='rack' and p.get('embedded_host'):
   parts.append(record(p['name'],p['shape'],p['color'],'rack',embedded_host='Matched compliant rack'))
  elif p['name'].startswith(('625ZZ','M5 upper','M5x16 angled','M5 angled','M5 lower','M5x25 lower')):
   parts.append(record(p['name'],p['shape'],p['color'],'guide',**{k:p[k] for k in ['spinAxis','spinCenter','spinSign'] if k in p}))
-# Open fixture: the original guide is relieved for a side-removable drive cartridge.
+# One chassis includes the guide, motor bracket and single end-bearing block.
 bay=box(56,39,70,(0,-4.5,-2))
 plate=box(200,90,6,(-40,19,-38))
 supports=box(96.6,10,32,(5.3,55,-19))
 for x0,x1 in [(-43,-28),(28,53.6)]:
- bottom=-28.7 if x0<0 else -35.
- supports=supports.fuse(box(x1-x0,11,-3-bottom,((x0+x1)/2,-17.5,(-3+bottom)/2)))
-# Preserve wrench/bolt clearance through the new support web.
+ supports=supports.fuse(box(x1-x0,11,32,((x0+x1)/2,-17.5,-19)))
 for p in ns['UPPER']:
  if p['side']=='rear':supports=supports.cut(acyl(5.5,35,p['center'],p['axis'],-30))
 for p in ns['BOTTOM']:supports=supports.cut(ycyl(3.1,20,p['x'],46,-17))
-def fixture(chassis):
- s=chassis.cut(bay).fuse(plate,supports)
- for x in [-80,0]:
-  s=s.cut(cyl(2.1,5.7,x,-21,-40.4)).cut(cyl(2.4,.4,x,-21,-35.3))
- # Four through holes for fixing the test plate to a bench.
- for x in [-130,51]:
-  for y in [-18,56]:s=s.cut(cyl(2.25,7,x,y,-41.5))
- return s.clean()
-fixture_s=fixture(ns['base']);fixture_free=fixture(ns['base_print'])
-parts.append(record('Open guide fixture',fixture_s,'#475569',printed=True))
-# Carrier / motor bracket. Driver remains exposed behind the reference motor.
-carrier=box(168,38.5,6,(-56,-5.75,-32)).fuse(box(52,58.5,6,(-114,4.25,-32)))
-carrier=carrier.fuse(box(5,53,69,(-92.5,6.5,5.5)))
-carrier=carrier.cut(xcyl(11.2,7,-96))
 motor_holes=[(Y+dy,Z+dz) for dy in [-15.5,15.5] for dz in [-15.5,15.5]]
-for y,z in motor_holes:carrier=carrier.cut(xcyl(1.7,7,-96,y,z))
-for sign in [-1,1]:
- x=sign*18
- tower=box(6.5,19.5,60,(sign*17.25,3.75,1))
- # Outward-open bearing seat; inward lip contacts only the outer race.
- tower=tower.cut(xcyl(8.15,7,x-2.5 if sign>0 else x-4.5))
- tower=tower.cut(xcyl(4.25,10,x-5))
- for z in [5,29]:tower=tower.cut(xcyl(1.25,10,x-5,-1,z))
- carrier=carrier.fuse(tower)
- capx=sign*21.75
- cap=box(2.5,19.5,28,(capx,3.75,17)).cut(xcyl(6.5,4,capx-2))
- for z in [5,29]:cap=cap.cut(xcyl(1.7,4,capx-2,-1,z))
- parts.append(record(f'Bearing keeper {sign}',cap,'#64748b','drive',True))
- bearing=ring(8,2.5,5,(x,Y,Z),AXIS,-2.5)
- parts.append(record(f'625ZZ worm support {sign}',bearing,'#cbd5e1','drive'))
- spacer=ring(3.75,2.65,1.5,(sign*14,Y,Z),AXIS,0 if sign>0 else -1.5)
- parts.append(record(f'Inner-race spacer {sign}',spacer,'#94a3b8','drive'))
- washer=ring(3.75,2.65,.3,(sign*20.5,Y,Z),AXIS,0 if sign>0 else -.3)
- parts.append(record(f'Shaft washer {sign}',washer,'#94a3b8','drive'))
- collar=ring(5,2.65,5,(sign*20.9,Y,Z),AXIS,0 if sign>0 else -5).cut(ycyl(1.25,5,sign*23.4,1,Z))
- parts.append(record(f'5 mm shaft collar {sign}',collar,'#94a3b8','drive',rotating=True))
- sets=ycyl(1.2,3,sign*23.4,1,Z)
- parts.append(record(f'M3 collar set screw {sign}',sets,'#94a3b8','drive',rotating=True))
- for z in [5,29]:
-  # M3×8 keeper screw; pilot is tapped M3 in the printed carrier.
-  u=(sign,0,0);c=(sign*23,Y-7,z)
-  screw=acyl(1.2,8,c,u,-8).fuse(acyl(2.75,3,c,u)).cut(acyl(1.3,1.5,c,u,1.5))
-  parts.append(record(f'M3x8 keeper screw {sign} {z}',screw,'#94a3b8','drive'))
-for x in [-80,0]:carrier=carrier.cut(cyl(1.7,7,x,-21,-35.5))
-parts.append(record('Worm motor cartridge',carrier.clean(),'#64748b','drive',True))
+land=box(168,38.5,6,(-56,-5.75,-32)).fuse(box(52,58.5,6,(-114,4.25,-32)))
+bracket=box(5,53,69,(-92.5,6.5,5.5)).cut(xcyl(11.2,7,-96))
+for y,z in motor_holes:bracket=bracket.cut(xcyl(1.7,7,-96,y,z))
+# Top-loading saddle with integral shoulders on both axial faces. The bolt
+# passes through the cheeks; only its spacers touch the rotating inner race.
+end_block=box(11.5,19.5,60,(22.25,3.75,1)).cut(xcyl(8.15,5.3,17.85))
+end_block=end_block.cut(box(5.3,16.3,25,(20.5,Y,29.5)))
+end_block=end_block.cut(xcyl(4.25,2.1,16)).cut(xcyl(5.6,6,23))
+def fixture(chassis):
+ result=chassis.cut(bay).fuse(plate,supports,land,bracket,end_block)
+ for x,y in [(-130,44),(-130,56),(51,-18),(51,56)]:result=result.cut(cyl(2.25,83,x,y,-42))
+ return result.clean()
+fixture_s=fixture(ns['base']);fixture_free=fixture(ns['base_print'])
+parts.append(record(CHASSIS_NAME,fixture_s,'#475569',printed=True))
 motor=box(40,42,42,(-115,Y,Z)).fuse(xcyl(11,2,-95))
 for y,z in motor_holes:motor=motor.cut(xcyl(1.65,6,-100,y,z))
-parts.append(record('NEMA17 42 × 42 × 40 reference',motor,'#374151','drive'))
+parts.append(record('NEMA17 42 × 42 × 40 reference',motor,'#374151','motor'))
 for y,z in motor_holes:
  screw=xcyl(1.45,10,-100,y,z).fuse(xcyl(2.75,3,-90,y,z)).cut(xcyl(1.3,1.5,-88.5,y,z))
- parts.append(record(f'M3x10 motor screw {y} {z}',screw,'#94a3b8','drive'))
-parts.append(record('NEMA17 D shaft',dshaft(2.5,-93,22,-2),'#94a3b8','drive',rotating=True))
-parts.append(record('5 mm steel D drive shaft',dshaft(2.5,-70.5,96.5,-2),'#94a3b8','drive',rotating=True))
-coupler=xcyl(5,16,-78).cut(dshaft(2.65,-79,18,-2.15))
-for x in [-75,-65]:coupler=coupler.cut(ycyl(1.25,5,x,1,Z))
-parts.append(record('D-shaft coupler',coupler,'#fbbf24','drive',True,rotating=True))
-for x in [-75,-65]:parts.append(record(f'M3x3 coupler set screw {x}',ycyl(1.2,3,x,1,Z),'#94a3b8','drive',rotating=True))
-parts.append(record('M3x8 worm set screw',ycyl(1.2,8,0,-4,Z).cut(ycyl(.9,1.2,0,-4,Z)),'#94a3b8','drive',rotating=True))
-for x in [-80,0]:
- insert=cyl(2.3,5,x,-21,-40.3).cut(cyl(1.6,5,x,-21,-40.3))
- parts.append(record(f'M3 cartridge heat-set {x}',insert,'#d4a54a',embedded_host='Open guide fixture'))
- bolt=cyl(1.45,10,x,-21,-39).fuse(cyl(2.75,3,x,-21,-29)).cut(cyl(1.3,1.5,x,-21,-27.5))
- parts.append(record(f'M3x10 cartridge bolt {x}',bolt,'#94a3b8','mount_bolts'))
+ parts.append(record(f'M3x10 motor screw {y} {z}',screw,'#94a3b8','motor_screws'))
+parts.append(record('NEMA17 D shaft',dshaft(2.5,-93,22,-2),'#94a3b8','motor',rotating=True))
+parts.append(record('M3x4 direct-drive set screw',ycyl(1.2,4,SET_X,SET_Y,Z).cut(ycyl(.9,1.2,SET_X,SET_Y,Z)),'#94a3b8','set_screw',rotating=True))
+insert=ring(END_INSERT_OD/2,2.55,END_INSERT_LENGTH,(END_INSERT_FACE-END_INSERT_LENGTH,Y,Z),AXIS)
+parts.append(record('M5 axial heat-set insert',insert,'#d4a54a','worm_insert',rotating=True,embedded_host=WORM_NAME))
+parts.append(record('625ZZ end support',ring(8,2.5,5,(BEARING_X,Y,Z),AXIS,-2.5),'#cbd5e1','end_bearing'))
+parts.append(record('M5 inner-race spacer 2 mm',ring(3.75,2.65,2,(16,Y,Z),AXIS),'#94a3b8','inner_spacer',rotating=True))
+parts.append(record('M5 inner-race washer 0.3 mm',ring(3.75,2.65,.3,(23,Y,Z),AXIS),'#94a3b8','end_fastener',rotating=True))
+end_bolt=xcyl(2.45,16,7.3).fuse(xcyl(4.75,5,23.3)).cut(xcyl(2.5,2.5,25.8))
+parts.append(record('M5x16 end-bearing bolt',end_bolt,'#94a3b8','end_fastener',rotating=True))
+
+# Shared CAD/viewer tracks. Remove the end-bearing stack first so the
+# one-piece worm can leave radially after the motor shaft is withdrawn.
+def track(start,end,delta=(0,0,0),radians=0):return dict(start=start,end=end,delta=list(delta),radians=radians)
+worm_tracks=[track(.64,.84,(0,-65,0))]
+TRACKS={
+ 'fixed':[],'guide':[],'rack':[],
+ 'set_screw':[track(0,.08,(0,-10,0)),track(.08,.14,(0,0,35))],
+ 'end_fastener':[track(0,.12,(55,0,0))],
+ 'end_bearing':[track(.12,.28,(0,0,25))],
+ 'inner_spacer':[track(.28,.38,(18,0,0))],
+ 'motor_screws':[track(.38,.48,(18,0,0))],
+ 'motor':[track(.48,.64,(-30,0,0))],
+ 'worm':worm_tracks,
+ 'worm_insert':worm_tracks+[track(.84,1,(14,0,0))],
+}
+STAGES=[dict(start=0,end=.14,label='Release shaft set screw and M5 end bolt'),dict(start=.12,end=.28,label='Lift end bearing from chassis saddle'),dict(start=.28,end=.38,label='Remove inner-race spacer'),dict(start=.38,end=.48,label='Remove motor mounting screws'),dict(start=.48,end=.64,label='Withdraw motor and shaft'),dict(start=.64,end=.84,label='Move worm sideways out of mesh'),dict(start=.84,end=1,label='Axial M5 insert installation path')]
+def displacement(group,e):
+ delta=[0.,0.,0.];theta=0.
+ for t in TRACKS[group]:
+  f=max(0,min(1,(e-t['start'])/(t['end']-t['start'])))
+  delta=[delta[i]+f*t['delta'][i] for i in range(3)];theta+=f*t['radians']
+ return delta,theta
 
 # Geometry checks use B-reps, not the visualization triangles.
 def overlap(a,b):
@@ -176,8 +177,9 @@ def spin(s,dx):return s.rotate(ORIGIN,(1,Y,Z),-dx/K*180/math.pi)
 def posed(p,dx=0,e=0):
  s=p['shape']
  if e:
-  if p['group']=='drive':s=s.translate((0,-65*max(0,min(1,(e-.3)/.7)),0))
-  elif p['group']=='mount_bolts':s=s.translate((0,-40*max(0,min(1,(e-.15)/.15)),15*min(1,e/.15)))
+  delta,theta=displacement(p['group'],e)
+  if theta:s=s.rotate(ORIGIN,(1,Y,Z),math.degrees(theta))
+  s=s.translate(tuple(delta))
  elif p['group']=='rack':s=s.translate((dx,0,0))
  elif p.get('rotating'):s=spin(s,dx)
  elif 'spinAxis' in p:
@@ -193,17 +195,21 @@ if args.check:
 print('Exporting',len(parts),'parts',flush=True)
 scene=[];assembly=cq.Assembly(name='Worm rack experiment')
 mesh_dir=OUT/'stl';mesh_dir.mkdir(exist_ok=True)
+expected={p['name'].lower().replace(' ','_')+'.stl' for p in parts if p['printed']}|{'rack_mesh_coupon.stl'}
+for f in mesh_dir.glob('*.stl'):
+ if f.name not in expected:f.unlink()
 for i,p in enumerate(parts):
  s=p['shape'];BRepTools.Clean_s(s.wrapped);vs,ts=s.tessellate(.04,.12)
  scene.append({k:v for k,v in p.items() if k!='shape'}|{'vertices':[[round(v.x,5),round(v.y,5),round(v.z,5)] for v in vs],'triangles':ts})
  assembly.add(s,name=f'{i:02d} {p["name"]}',color=cq.Color(p['color']))
  if p['printed']:
-  shape=fixture_free if p['name']=='Open guide fixture' else s
+  shape=fixture_free if p['name']==CHASSIS_NAME else s
   # Rack prints on its planar Z=21 face; all other STLs retain assembly coordinates.
   if p['name']=='Matched compliant rack':shape=shape.rotate((0,0,0),(1,0,0),180)
+  if p['name']==WORM_NAME:shape=shape.rotate((0,0,0),(0,1,0),-90)
   bb=shape.BoundingBox();shape=shape.translate((-bb.xmin,-bb.ymin,-bb.zmin))
   cq.exporters.export(shape,str(mesh_dir/(p['name'].lower().replace(' ','_')+'.stl')),tolerance=.03,angularTolerance=.12)
-data={'type':'worm-experiment','motor':'NEMA17','stroke':40,'lead':LEAD,'pitchRadius':R,'axisOrigin':ORIGIN,'parts':scene}
+data={'type':'worm-experiment','motor':'NEMA17','stroke':40,'lead':LEAD,'pitchRadius':R,'axisOrigin':ORIGIN,'tracks':TRACKS,'stages':STAGES,'wormName':WORM_NAME,'chassisName':CHASSIS_NAME,'bearingCount':7,'wormLength':WORM_END-WORM_START,'endInsert':{'thread':'M5','od':END_INSERT_OD,'length':END_INSERT_LENGTH,'pilot':END_INSERT_PILOT},'parts':scene}
 with gzip.open(OUT/'assembly.json.gz','wt') as f:json.dump(data,f,separators=(',',':'))
 step=CACHE/'worm-rack.step';assembly.save(str(step))
 with gzip.open(OUT/'worm-rack.step.gz','wb') as f:f.write(step.read_bytes())

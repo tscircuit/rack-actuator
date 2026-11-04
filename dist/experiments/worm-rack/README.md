@@ -4,7 +4,9 @@
 
 An isolated **NEMA17 / 40 mm stroke** feasibility prototype. This is a direct worm engaging a compliant linear rack. It does not introduce a worm wheel or replace any of the twelve production spur presets. Select **Drive type → Worm rack · experimental** on the 40 mm NEMA17 page.
 
-The prototype is an open bench fixture with a removable motor/shaft cartridge. Its motor axis is parallel to rack travel; the 42 × 42 × 40 mm motor sits beyond the retracted rack. This costs space compared with the production enclosure. The rear-mounted controller remains outside the fixture and is not modeled.
+The prototype has three printed assembly parts: **chassis, rack and a 103 mm one-piece worm**. The worm's integral Ø13 mm stem plugs directly onto the NEMA17's D shaft. At the opposite end, an **axial M5 heat-set insert accepts an M5×16 bolt through a 625ZZ bearing**. The bearing sits in a top-loading saddle with axial shoulders built into the chassis. The motor bracket is also integral.
+
+There is no separate coupling, steel drive shaft, motor cartridge, bearing keeper, keeper screw or shaft collar. The 24 mm active helix stays near the rack; its smooth integral extension clears the rear guide bearings. The 42 × 42 × 40 mm reference motor sits beyond the retracted rack, with its rear controller exposed and unmodeled.
 
 [![Matched worm and compliant rack flanks](https://raw.githubusercontent.com/tscircuit/rack-actuator/main/docs/images/worm-contact.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
@@ -16,7 +18,11 @@ The prototype is an open bench fixture with a removable motor/shaft cartridge. I
 | Center-section pressure angle | 20° |
 | Worm starts / lead | 1 / 6.283185 mm per revolution |
 | Worm pitch / outside diameter | 24 / 28 mm |
-| Threaded length | 24 mm |
+| One-piece worm length / active helix | 103 / 24 mm |
+| Integral stem diameter / motor engagement | 13 / 16 mm |
+| Axial M5 insert / pilot | Ø7 × 8 mm / Ø6.6 mm |
+| Insert recess / bolt tip clearance | 0.3 / 0.6 mm |
+| End bearing seat | Ø16.3 × 5.3 mm, open at the top |
 | Rack tooth face | 8 mm |
 | Rack oversize | 0.10 mm per flank |
 | Worm flank allowance | 0.03 mm per flank |
@@ -52,26 +58,36 @@ These are **command increments**, 18× finer than the 18T spur version. They do 
 
 ## Hardware and assembly
 
-Retain the six 625ZZ guide bearings and their M5 axle hardware from the production 40 mm NEMA17 guide. Add:
+Retain the six 625ZZ rack guide bearings and their M5 axle hardware. The revised drive uses:
 
-- Two 625ZZ bearings (5 × 16 × 5 mm) supporting the worm shaft.
-- A 5 mm steel D shaft, nominally 96.5 mm long; confirm the motor's actual shaft length before cutting. The reference motor has a 24 mm projection from its mounting face.
-- Two 1.5 mm inner-race spacers, Ø7.5 mm outside / Ø5.3 mm inside, and two 0.3 mm washers of the same diameters.
-- Two adjustable 5 mm shaft collars. The reference collars are Ø10 × 5 mm with radial M3 screws. Position them to take up axial play without preloading the 625ZZ bearings excessively. Axial load capacity is not established.
-- One M3×8 flat-point worm set screw, two M3×3 coupling set screws and two M3×3 collar set screws. They bear on the D-shaft flat. Tap printed Ø2.5 mm radial pilots M3. The worm pilot opens through the thread crest; its set screw is recessed so a hex key can reach it without the screw projecting into the tooth contact.
-- Four M3×8 keeper screws; tap the carrier's Ø2.5 mm pilots M3.
-- Four M3×10 motor screws; confirm engagement against the chosen motor's datasheet.
-- Two M3×10 cartridge mounting screws and two M3 heat-set inserts, Ø4.6 × 5 mm, for the base. The rack can use four M3 inserts of the same size, or omit them and use M3 through-bolts with washers and nuts.
+- One 625ZZ end bearing, 5 × 16 × 5 mm: **seven bearings total**.
+- One M5 heat-set insert, **Ø7 mm outside × 8 mm long**, in the worm's axial Ø6.6 mm pilot. The mouth is recessed 0.3 mm. Match the source dimensions to the insert you buy.
+- One **M5×16 socket-head bolt**, passed through the end bearing into the insert. The reference model allows a Ø9.5 × 5 mm head envelope. The bolt has 8 mm insert engagement and 0.6 mm clearance to the pilot bottom.
+- One **2 mm metal inner-race spacer**, Ø7.5 mm outside / Ø5.3 mm inside, between the worm end and bearing; one **0.3 mm washer** of the same diameters under the bolt head. These contact the inner race and keep the worm and bolt head clear of the outer race and chassis.
+- One **M3×4 flat-point set screw** on the motor shaft flat. Tap the printed Ø2.5 mm radial pilot M3. Its socket remains accessible from the side.
+- Four **M3×10 motor screws**; verify engagement with the chosen motor. The reference motor shaft projects 24 mm from its mounting face, with a 0.5 mm-deep D flat.
+- Four optional M3 output inserts, Ø4.6 × 5 mm; alternatively use M3 through-bolts, washers and nuts in the output's Ø3.4 mm through-holes.
 
-The bundle includes separate printed STLs, an assembled STEP file, source, and the check report. The guide fixture STL contains the **unloaded flexure floors**; the assembly view contains their installed, deflected state. The rack STL is placed on its flat top face. Check all other orientations in your slicer; this experimental worm/support geometry is not claimed to print without supports.
+The printed worm directly engages 16 mm of the motor shaft, with a Ø5.30 mm D socket. Its active helix and rounded compliant rack reliefs retain the original experiment's profile and pitch. The printed stem's torsional stiffness, bolt fit in the bearing and axial play have not been measured.
 
-Start with the **worm and `rack_mesh_coupon.stl`** to check tooth fit by hand before printing the full fixture. The coupon uses the same generated tooth shape and is not an additional assembly component. Test with the motor disconnected first. Check sliding force across a full turn, tooth recovery and shaft end play before powered travel.
+The end bearing drops in from **+Z**. Its Ø16.3 mm seat and 5.3 mm-wide pocket provide print allowance; integral cheeks retain it axially. The M5 bolt clamps the inner race between the spacer and washer. Snug the bolt without forcing bearing preload, then tighten the motor-shaft set screw with the stack seated. Verify free rotation and axial play on the actual print.
 
-Insert the rack into the six-bearing guide while the drive cartridge is removed. Install the support bearings, spacers, worm, shaft, collars and bearing keepers on the cartridge; connect the motor using the D coupling. Set rack position to mid-stroke and phase the worm into the matching gaps. Slide the cartridge into place and fasten its two base screws. Set controller travel limits to the 40 mm stroke.
+[![Integral bearing saddle and axial M5 end bolt](https://raw.githubusercontent.com/tscircuit/rack-actuator/main/docs/images/worm-end-bearing.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
-The viewer's **Separate module** slider removes those two mounting screws and moves the complete drive cartridge sideways. It intentionally leaves the rack guide and cartridge's internal hardware assembled; it is not a full hardware teardown simulation.
+Assembly follows the exploded viewer in reverse:
 
-[![Drive cartridge separated from the rack guide fixture](https://raw.githubusercontent.com/tscircuit/rack-actuator/main/docs/images/worm-separated.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
+1. Heat-set the axial M5 insert into the worm before installing it in the chassis. Tap the radial M3 pilot.
+2. Assemble the six-bearing rack guide and insert the rack. Set it at mid-stroke.
+3. Bring the worm in from the side and phase its helix into the compliant rack. Fit the motor shaft into the D socket, then install the four motor screws.
+4. Slide the 2 mm spacer through the end block's outer access hole to the worm face. Drop the 625ZZ into the top of the saddle.
+5. Install the washer and M5×16 bolt through the bearing into the axial insert. Seat the stack and secure the M3 motor-shaft set screw.
+6. Check the complete 40 mm travel by hand before powering the motor; set controller travel limits.
+
+The **Explode drive** slider removes the set screw and end bolt, lifts out the end bearing, removes its spacer, withdraws the motor, and moves the worm sideways out of mesh. The last stage shows the heat-set insert's installation path; removing an installed insert requires heat. Rack guidance stays assembled throughout this sequence.
+
+[![One-piece worm, end bearing and axial M5 hardware separated from the integral chassis](https://raw.githubusercontent.com/tscircuit/rack-actuator/main/docs/images/worm-separated.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
+
+The bundle includes three assembly STLs plus `rack_mesh_coupon.stl`, an assembled STEP, source and the check report. The **chassis STL has unloaded flexure floors**; the viewer shows their installed deflection. The rack is oriented on its tooth face, and the one-piece worm is oriented vertically on its motor end. Use a brim and inspect support requirements in the slicer; the worm's thread flanks are not claimed to print without supports. Use the coupon for an initial tooth-fit check. No physical load, fatigue or wear testing has been performed.
 
 ## Reproduce the CAD and checks
 
@@ -85,6 +101,6 @@ python -m http.server 8000 --directory dist
 
 Open `http://localhost:8000/experiments/worm-rack/`. Geometry builds only into `dist/experiments/worm-rack/`; the production `model.py`, presets and downloads are not regenerated. Local B-rep caches live under ignored `work/worm-cache/` and are invalidated when the tooth geometry source changes.
 
-The [validation report](validation.json) records assembled solid intersections, full-stroke motion checks, relative tooth phases, and staged module separation. FCL uses fine CAD tessellation to find moving collision candidates; OCC measures their solid overlap. Selected mesh poses are also checked directly with OCC, including the incompatible straight rack for comparison. Mating insert/host interference and compliant tooth preload are recorded separately. These are sampled geometric checks, not continuous-motion proof, elastic simulation or physical testing.
+The [validation report](validation.json) records assembled solid intersections, full-stroke motion checks, relative tooth phases, and staged drive disassembly. FCL uses fine CAD tessellation to find moving collision candidates; OCC measures their solid overlap. Selected mesh poses are also checked directly with OCC, including the incompatible straight rack for comparison. Mating insert/host interference and compliant tooth preload are recorded separately. These are sampled geometric checks, not continuous-motion proof, elastic simulation or physical testing.
 
 Before integrating this drive into an enclosure, measure printed fit, available drive force, backlash under load reversals, spring fatigue, wear/temperature and shaft thrust restraint. No performance or self-locking claim is made for this prototype.

@@ -12,9 +12,9 @@ The viewer provides actuation, a staged exploded assembly, right-click part hidi
 
 ## Experimental worm drive
 
-A separate **NEMA17 / 40 mm** direct worm-to-compliant-rack prototype is available in the [experimental viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). It uses a matched helical tooth profile, an open test fixture and a removable drive cartridge. Its single-start lead is 6.283 mm/rev, giving 18× finer command increments than the 18T spur drive. It has not been physically tested. See the [experiment notes, CAD source and test procedure](experiments/worm-rack/README.md). The twelve spur presets below are unchanged.
+A separate **NEMA17 / 40 mm** direct worm-to-compliant-rack prototype is available in the [experimental viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). It uses a matched helical tooth profile, a one-piece worm that connects directly to the motor, an axial M5 insert/bolt and a chassis-integrated end bearing. Its single-start lead is 6.283 mm/rev, giving 18× finer command increments than the 18T spur drive. It has not been physically tested. See the [experiment notes, CAD source and test procedure](experiments/worm-rack/README.md). The twelve spur presets below are unchanged.
 
-[![Separate NEMA17 40 mm worm-drive prototype with an open fixture and removable motor cartridge](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
+[![Separate NEMA17 40 mm worm-drive prototype with a one-piece worm and integral end-bearing block](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
 ## Choose a model
 
@@ -274,7 +274,7 @@ python check_lid_screw_parking.py --all
 python package_designs.py
 ```
 
-The output through-hole update was checked as an exact material-removal change against the previously validated rack on all twelve presets. Each report records its prior full-check source hash and new hole/insert checks; unchanged motion and service-path results are retained. The worm experiment was also rechecked through motion and cartridge separation.
+The output through-hole update was checked as an exact material-removal change against the previously validated rack on all twelve presets. Each report records its prior full-check source hash and new hole/insert checks; unchanged motion and service-path results are retained. The worm experiment was also rechecked through motion and staged drive disassembly.
 
 Build caching is tied to source, motor, stroke and enclosure. Use a distinct output directory for custom models to keep the supplied presets intact.
 

@@ -8,7 +8,7 @@ from OCP.BRepMesh import BRepMesh_IncrementalMesh
 from OCP.BRepTools import BRepTools
 
 def validate():
- report={'experiment':'worm-rack-nema17-40','geometry_cache_sha256':source_hash,'source_sha256':hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),'validation_source_sha256':hashlib.sha256((ROOT/'experiments/worm-rack/validate.py').read_bytes()).hexdigest(),'method':'All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA.','motor':'NEMA17','stroke_mm':40,'module_mm':2,'axial_pressure_angle_deg':20,'starts':1,'lead_mm':LEAD,'worm_pitch_diameter_mm':24,'worm_outside_diameter_mm':28,'rack_preload_per_flank_mm':PRELOAD,'worm_flank_clearance_mm':.03,'parts':len(parts),'limits':['Unprinted experimental prototype','No load, wear, efficiency, thermal, self-locking, thrust-bearing life or motor-torque validation','Module separation only; guide hardware remains assembled','Nominal command increments are not measured accuracy']}
+ report={'experiment':'worm-rack-nema17-40','geometry_cache_sha256':source_hash,'source_sha256':hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest(),'validation_source_sha256':hashlib.sha256((ROOT/'experiments/worm-rack/validate.py').read_bytes()).hexdigest(),'method':'All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA.','motor':'NEMA17','stroke_mm':40,'module_mm':2,'axial_pressure_angle_deg':20,'starts':1,'lead_mm':LEAD,'worm_pitch_diameter_mm':24,'worm_outside_diameter_mm':28,'rack_preload_per_flank_mm':PRELOAD,'worm_flank_clearance_mm':.03,'parts':len(parts),'limits':['Unprinted experimental prototype','No load, wear, efficiency, thermal, self-locking, thrust-bearing life or motor-torque validation','Staged drive disassembly; guide hardware remains assembled','Nominal command increments are not measured accuracy']}
  def save(): (OUT/'validation.json').write_text(json.dumps(report,indent=2))
  def bvh(shape):
   BRepTools.Clean_s(shape.wrapped)
@@ -16,35 +16,41 @@ def validate():
   # Existing absolute triangulation satisfies the loose request; do not remesh relatively.
   vs,ts=shape.tessellate(1,.04);m=fcl.BVHModel();m.beginModel(len(vs),len(ts));m.addSubModel(np.array([v.toTuple() for v in vs]),np.array(ts));m.endModel();return m
  def transform(p,dx=0,e=0):
-  rotation=np.eye(3);translation=np.zeros(3)
-  if e:
-   if p['group']=='drive':translation[1]=-65*max(0,min(1,(e-.3)/.7))
-   elif p['group']=='mount_bolts':translation=[0,-40*max(0,min(1,(e-.15)/.15)),15*min(1,e/.15)]
+  theta=0.;translation=np.zeros(3)
+  if e:translation,theta=displacement(p['group'],e)
   elif p['group']=='rack':translation[0]=dx
-  elif p.get('rotating'):
-   theta=-dx/K;c=math.cos(theta);s=math.sin(theta);rotation=np.array([[1,0,0],[0,c,-s],[0,s,c]]);pivot=np.array(ORIGIN);translation=pivot-rotation@pivot
+  elif p.get('rotating'):theta=-dx/K
+  c=math.cos(theta);s=math.sin(theta);rotation=np.array([[1,0,0],[0,c,-s],[0,s,c]])
+  pivot=np.array(ORIGIN);translation=np.array(translation)+pivot-rotation@pivot
   # Guide rings are surfaces of revolution; their spin leaves occupied volume unchanged.
-  return fcl.Transform(rotation,np.array(translation))
+  return fcl.Transform(rotation,translation)
  def hit(a,b):return bool(fcl.collide(a,b,fcl.CollisionRequest(num_max_contacts=1),fcl.CollisionResult()))
  print('Checking assembled solids',flush=True)
  def allowed(a,b):
   if a.get('embedded_host')==b['name'] or b.get('embedded_host')==a['name']:return True
-  return {a['name'],b['name']}=={'Single-start worm','Matched compliant rack'}
+  return {a['name'],b['name']}=={WORM_NAME,'Matched compliant rack'}
  ignored=[];collisions=[]
  for pair_index,(a,b) in enumerate(itertools.combinations(parts,2)):
   if pair_index%100==0:print('Static pair',pair_index,flush=True)
-  if {a['name'],b['name']}=={'Single-start worm','Matched compliant rack'}:continue
+  if {a['name'],b['name']}=={WORM_NAME,'Matched compliant rack'}:continue
   v=overlap(a['shape'],b['shape'])
   if v>.01:(ignored if allowed(a,b) else collisions).append({'parts':[a['name'],b['name']],'overlap_mm3':v})
- tool=ycyl(.85,26,0,-30,Z)
+ tool=ycyl(.85,30,SET_X,-30,Z)
  report['worm_set_screw_tool_access_collisions']=[{'part':p['name'],'overlap_mm3':v} for p in parts if (v:=overlap(tool,p['shape']))>.01]
+ end_tool=xcyl(2.35,35,28.3)
+ report['end_bolt_tool_access_collisions']=[{'part':p['name'],'overlap_mm3':v} for p in parts if (v:=overlap(end_tool,p['shape']))>.01]
+ actual_insert_overlap=overlap(insert,worm)
+ expected_insert_overlap=math.pi*((END_INSERT_OD/2)**2-(END_INSERT_PILOT/2)**2)*END_INSERT_LENGTH
+ report['direct_drive']={'worm_length_mm':WORM_END-WORM_START,'printed_parts':sum(p['printed'] for p in parts),'bearing_count':sum(p['name'].startswith('625ZZ') for p in parts),'insert_thread':'M5','insert_od_mm':END_INSERT_OD,'insert_length_mm':END_INSERT_LENGTH,'insert_pilot_mm':END_INSERT_PILOT,'insert_interference_mm3':actual_insert_overlap,'expected_insert_interference_mm3':expected_insert_overlap,'bolt':'M5x16','bolt_to_pocket_bottom_clearance_mm':7.3-END_PILOT_START,'thread_engagement_mm':END_INSERT_LENGTH,'motor_socket_engagement_mm':16,'bearing_seat_diameter_mm':16.3,'bearing_pocket_width_mm':5.3,'bearing_installation_direction':'+Z','integral_axial_shoulders':True,'bearing_inner_race_spacer_od_mm':7.5,'spacer_length_mm':2,'outer_race_to_worm_axial_gap_mm':2,'keeper_screws':0,'separate_coupling':False,'motor_cartridge':False}
+ assert abs(actual_insert_overlap-expected_insert_overlap)<.01
+ assert fixture_free.isValid() and len(fixture_free.Solids())==1
  report['assembled_collisions']=collisions;report['intentional_insert_intersections']=ignored;save()
  print('Static collisions',collisions,flush=True)
  print('Tessellating collision models',flush=True)
  objects=[fcl.CollisionObject(bvh(p['shape'])) for p in parts]
- nominal_object=fcl.CollisionObject(bvh(nominal));worm_object=objects[next(i for i,p in enumerate(parts) if p['name']=='Single-start worm')]
+ nominal_object=fcl.CollisionObject(bvh(nominal));worm_object=objects[next(i for i,p in enumerate(parts) if p['name']==WORM_NAME)]
  rack_index=next(i for i,p in enumerate(parts) if p['name']=='Matched compliant rack')
- worm_index=next(i for i,p in enumerate(parts) if p['name']=='Single-start worm')
+ worm_index=next(i for i,p in enumerate(parts) if p['name']==WORM_NAME)
  # Dense relative phase coverage plus full travel endpoints and all millimetre positions.
  samples=sorted(set([LEAD*j/96 for j in range(97)]+list(range(-20,21))))
  nominal_mesh_hits=[];lost_engagement=[]
@@ -86,7 +92,12 @@ def validate():
   if dx%10==0:print('Motion',dx,'collisions',len(motion),flush=True)
  report['motion_samples']=41;report['motion_collisions']=motion;save()
  explosion=[];nominal_explosion=[]
- times=[.15*j/30 for j in range(31)]+[.15+.15*j/80 for j in range(1,81)]+[.3+.7*j/130 for j in range(1,131)]
+ boundaries=sorted({0.,1.}|{t[key] for seq in TRACKS.values() for t in seq for key in ['start','end']})
+ times={0.}
+ for lo,hi in zip(boundaries,boundaries[1:]):
+  distance=max(math.dist(displacement(g,lo)[0],displacement(g,hi)[0])+RA*abs(displacement(g,hi)[1]-displacement(g,lo)[1]) for g in TRACKS)
+  n=max(1,math.ceil(distance/.5));times.update(lo+(hi-lo)*j/n for j in range(1,n+1))
+ times=sorted(times)
  for n,e in enumerate(times):
   for o,p in zip(objects,parts):o.setTransform(transform(p,e=e))
   nominal_object.setTransform(transform(parts[rack_index]))
@@ -94,12 +105,12 @@ def validate():
   for i,a in enumerate(parts):
    for j in range(i+1,len(parts)):
     b=parts[j]
-    if a['group']==b['group'] or (a['group'] not in ['drive','mount_bolts'] and b['group'] not in ['drive','mount_bolts']) or allowed(a,b):continue
+    if a['group']==b['group'] or (not TRACKS[a['group']] and not TRACKS[b['group']]) or allowed(a,b):continue
     if not hit(objects[i],objects[j]):continue
     v=overlap(posed(a,e=e),posed(b,e=e))
     if v>.01:explosion.append({'separation':e,'parts':[a['name'],b['name']],'overlap_mm3':v})
   if n%40==0:print('Separation',n,'collisions',len(explosion),flush=True)
- report['module_separation_samples']=len(times);report['module_separation_collisions']=explosion;report['nominal_mesh_separation_triangle_collisions']=nominal_explosion
- report['passed']=max(nominal_values)<.01 and min(preloaded_values)>0 and not(nominal_mesh_hits or lost_engagement or collisions or motion or explosion or nominal_explosion or report['worm_set_screw_tool_access_collisions']) and report['valid_single_solids'] and report['unchanged_lower_guide_difference_mm3']<.01 and report['unchanged_output_mount_difference_mm3']<.01 and max(report['output_through_holes']['intersections_mm3'])<.01
+ report['explosion_samples']=len(times);report['explosion_collisions']=explosion;report['maximum_explosion_point_increment_mm']=.5;report['nominal_mesh_separation_triangle_collisions']=nominal_explosion
+ report['passed']=max(nominal_values)<.01 and min(preloaded_values)>0 and not(nominal_mesh_hits or lost_engagement or collisions or motion or explosion or nominal_explosion or report['worm_set_screw_tool_access_collisions'] or report['end_bolt_tool_access_collisions']) and report['valid_single_solids'] and report['unchanged_lower_guide_difference_mm3']<.01 and report['unchanged_output_mount_difference_mm3']<.01 and max(report['output_through_holes']['intersections_mm3'])<.01
  save();print('Validation',report['passed'],flush=True)
  return report
