@@ -1,0 +1,114 @@
+{
+  "reference": {
+    "drive": "spur",
+    "enclosure": "enclosed",
+    "motor": "nema17",
+    "stroke": 100
+  },
+  "top": {
+    "xy": [
+      [
+        -141.5,
+        -19.4
+      ],
+      [
+        -141.5,
+        56.4
+      ],
+      [
+        99.5,
+        -19.4
+      ],
+      [
+        99.5,
+        56.4
+      ]
+    ],
+    "planeZ": 24.9,
+    "thread": "M3"
+  },
+  "side": {
+    "xz": [
+      [
+        -141.5,
+        -34.0
+      ],
+      [
+        -141.5,
+        -4.0
+      ],
+      [
+        99.5,
+        -34.0
+      ],
+      [
+        99.5,
+        -4.0
+      ]
+    ],
+    "planeY": 63.9,
+    "thread": "M3"
+  },
+  "front": {
+    "yz": [
+      [
+        -17.9,
+        -34.0
+      ],
+      [
+        -17.9,
+        -4.0
+      ],
+      [
+        54.9,
+        -34.0
+      ],
+      [
+        54.9,
+        -4.0
+      ]
+    ],
+    "planeX": 107,
+    "thread": "M3"
+  },
+  "output": {
+    "xy": [
+      [
+        163.0,
+        24.0
+      ],
+      [
+        163.0,
+        33.0
+      ],
+      [
+        172.0,
+        24.0
+      ],
+      [
+        172.0,
+        33.0
+      ]
+    ],
+    "planeZ": 21.0,
+    "thread": "M3",
+    "throughDiameter": 3.4
+  },
+  "originalCaseBounds": [
+    -149.0,
+    107,
+    -26.9,
+    63.9,
+    -44.0,
+    24.9
+  ],
+  "raisedCoverClearance": {
+    "xmin": -191.0,
+    "xmax": 32.0,
+    "ymin": -26.9,
+    "ymax": 31.8,
+    "zmax": 43.6
+  },
+  "rearExtension": 42.0,
+  "note": "Same hole centers and face planes as the matching enclosed spur actuator. Top mounting hardware must clear the raised hood; a solid flat plate requires a cutout. Motor rear face projects 4 mm outside the rear aperture."
+}
