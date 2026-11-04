@@ -77,7 +77,10 @@ reinforcement is inside the tray; blind pockets have 2 mm backing.
 Top (+Z): four flush M3 inserts at Z=24.9, in full-height tray posts that
 bypass the removable lid. X/Y spacing = housing length/width minus 15 mm.
 Output (+Z): four M3 inserts on a 9 x 9 mm pattern, recessed 0.3 mm into
-an 18 x 18 mm face at Z=21. Default blind-pocket backing is 12.3 mm.
+an 18 x 18 mm face at Z=21. Each pocket continues as a 3.4 mm clearance
+hole through the full 18 mm pad. Inserts are optional: use an M3 bolt,
+washers and nut instead. Size bolt length for the pad, attachment,
+washers and full nut engagement. Annular backing remains below the insert.
 Use application-length M3 screws with 3..5 mm thread engagement. For
 recessed front/side/output inserts, this means 3.3..5.3 mm penetration
 from the mounting face. For flush top inserts it means 3..5 mm. Do not
@@ -117,7 +120,7 @@ lies within the layers. Use local supports where required at passages;
 remove them without damaging the supported floor blends.
 Chassis STL is RELAXED. STEP and viewer show installed spring deflection.
 Install front and side inserts from outside, 0.3 mm recessed. Install the
-four output inserts from Z=21 before inserting the rack. Install vertical
+four optional output inserts from Z=21 before inserting the rack. Install vertical
 tray inserts before chassis/lid. Use heat, not cold interference forcing.
 Fit lower bearings with axles backed out 10 mm and hold the nuts loose.
 Position the chassis 6 mm above and 10 mm behind its seated location;
