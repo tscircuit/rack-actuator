@@ -67,6 +67,7 @@ def validate():
  pad_box=box(40,80,50,(ns['right']+20,30,0))
  old_pad=ns['rack'].intersect(pad_box);new_pad=rack.intersect(pad_box)
  report['unchanged_output_mount_difference_mm3']=old_pad.cut(new_pad).Volume()+new_pad.cut(old_pad).Volume()
+ report['output_through_holes']={'diameter_mm':ns['OUTPUT_THROUGH_DIAMETER'],'length_mm':18,'intersections_mm3':[overlap(ns['cyl'](ns['OUTPUT_THROUGH_DIAMETER']/2,18.2,x,y,2.9),rack) for x,y in ns['OUTPUT_MOUNTS']]}
  report['valid_single_solids']=all(p['shape'].isValid() and len(p['shape'].Solids())==1 for p in parts)
  # Backing spine starts at y=25; maximum worm radius reaches y=20.
  report['rigid_backbone_clearance_mm']=ns['RELIEF_Y']-(Y+RA)
@@ -99,6 +100,6 @@ def validate():
     if v>.01:explosion.append({'separation':e,'parts':[a['name'],b['name']],'overlap_mm3':v})
   if n%40==0:print('Separation',n,'collisions',len(explosion),flush=True)
  report['module_separation_samples']=len(times);report['module_separation_collisions']=explosion;report['nominal_mesh_separation_triangle_collisions']=nominal_explosion
- report['passed']=max(nominal_values)<.01 and min(preloaded_values)>0 and not(nominal_mesh_hits or lost_engagement or collisions or motion or explosion or nominal_explosion or report['worm_set_screw_tool_access_collisions']) and report['valid_single_solids'] and report['unchanged_lower_guide_difference_mm3']<.01 and report['unchanged_output_mount_difference_mm3']<.01
+ report['passed']=max(nominal_values)<.01 and min(preloaded_values)>0 and not(nominal_mesh_hits or lost_engagement or collisions or motion or explosion or nominal_explosion or report['worm_set_screw_tool_access_collisions']) and report['valid_single_solids'] and report['unchanged_lower_guide_difference_mm3']<.01 and report['unchanged_output_mount_difference_mm3']<.01 and max(report['output_through_holes']['intersections_mm3'])<.01
  save();print('Validation',report['passed'],flush=True)
  return report
