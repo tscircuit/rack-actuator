@@ -4,17 +4,22 @@
   "stroke": 40,
   "motor_depth": 40.0,
   "tooth_module": 2.0,
-  "worm_pitch_radius": 12.0,
-  "stem_diameter": 13.0,
-  "worm_length": 103.0,
+  "worm_pitch_radius": 11.0,
+  "stem_diameter": 15.0,
+  "motor_spur_teeth": 18,
+  "worm_spur_teeth": 24,
+  "spur_module": 1.0,
+  "spur_pressure_angle": 25,
+  "travel_per_motor_revolution": 4.71238898038469,
+  "worm_length": 76.0,
   "case_bounds": [
-    -131.0,
+    -89.0,
     57.0,
     -26.9,
     63.9,
     -44.0,
-    43.6
+    24.9
   ],
-  "motor_rear_face_x": -135.0,
-  "motor_rear_exposure": 4
+  "motor_rear_face_x": -113.0,
+  "motor_rear_exposure": 24.0
 }

@@ -1,10 +1,10 @@
 {
   "experiment": "worm-rack-nema14-150",
-  "geometry_cache_sha256": "d84c951a2ce61eaa66aa49c69e4e81290d0ff8c68a1a46576ea6fb1c8ee0586f",
-  "source_sha256": "3a1520138e91128e83a105c9c7b095577404b8bbba8e994cea5bcc372f2e1ec1",
-  "enclosure_source_sha256": "392634831cf750ff100cdea4414e5ae93d7f1f9f731bf1e978d4fb40db086b24",
-  "validation_source_sha256": "96bb3ef56710a85e870121ccf3c041e4e5ad11bc9d290f6c5aa0477b1090c0e7",
-  "method": "All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA.",
+  "geometry_cache_sha256": "8ed6979c6624533b23f6494af21fe61694493fb0bddea57396edf74133f7001b",
+  "source_sha256": "0a58271a4ffd4d7bbd73ed1f360493f105fe743e8049daeebd24a65e6750b95b",
+  "enclosure_source_sha256": "2961548b5ee1fb933fddc423e911c05f3168a37c844a4aff907a864a329da562",
+  "validation_source_sha256": "14af2850dd7ea07431be0b53659fdf3788850202d161c6d3f65ae2f2fc70cb60",
+  "method": "All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA. Final chassis clearance update certified by exact material removal; see chassis_clearance_update and the included reference report.",
   "motor": "NEMA14",
   "stroke_mm": 150,
   "module_mm": 2,
@@ -15,39 +15,56 @@
   "worm_outside_diameter_mm": 26.0,
   "rack_preload_per_flank_mm": 0.1,
   "worm_flank_clearance_mm": 0.03,
-  "parts": 87,
+  "parts": 91,
   "limits": [
     "Unprinted experimental prototype",
     "No load, wear, efficiency, thermal, self-locking, thrust-bearing life or motor-torque validation",
-    "Staged drive disassembly; guide hardware remains assembled",
+    "Staged drive disassembly; motor and pinion form a removable subassembly",
     "Nominal command increments are not measured accuracy"
   ],
   "worm_set_screw_tool_access_collisions": [],
   "end_bolt_tool_access_collisions": [],
-  "direct_drive": {
-    "worm_length_mm": 213.0,
-    "printed_parts": 5,
-    "bearing_count": 7,
+  "geared_drive": {
+    "worm_length_mm": 182.0,
+    "printed_parts": 6,
+    "bearing_count": 8,
+    "worm_teeth": 24,
+    "motor_teeth": 14,
+    "spur_module_mm": 1.0,
+    "spur_pressure_angle_deg": 25,
+    "spur_center_distance_mm": 19.0,
+    "worm_revolutions_per_motor_revolution": 0.5833333333333334,
+    "travel_per_motor_revolution_mm": 3.6651914291880923,
     "insert_thread": "M5",
+    "insert_count": 2,
     "insert_od_mm": 7.0,
     "insert_length_mm": 8.0,
     "insert_pilot_mm": 6.6,
-    "insert_interference_mm3": 34.1805280710569,
-    "expected_insert_interference_mm3": 34.180528071056976,
-    "bolt": "M5x16",
-    "bolt_to_pocket_bottom_clearance_mm": 0.5999999999999996,
-    "thread_engagement_mm": 8.0,
-    "motor_socket_engagement_mm": 16,
+    "insert_checks": [
+      {
+        "end": "front",
+        "actual_interference_mm3": 34.18052807105704,
+        "expected_interference_mm3": 34.180528071056976
+      },
+      {
+        "end": "rear",
+        "actual_interference_mm3": 34.18052807105704,
+        "expected_interference_mm3": 34.180528071056976
+      }
+    ],
+    "bolts": "2 \u00d7 M5x16",
+    "bolt_to_pocket_bottom_clearance_mm": 0.6,
+    "thread_engagement_mm": 8,
+    "motor_socket_engagement_mm": 12,
     "bearing_seat_diameter_mm": 16.3,
-    "bearing_pocket_width_mm": 5.3,
-    "bearing_installation_direction": "+Z",
-    "integral_axial_shoulders": true,
+    "bearing_installation_direction": "outward along X",
+    "opposed_inner_axial_shoulders": true,
     "bearing_inner_race_spacer_od_mm": 7.5,
     "spacer_length_mm": 2,
-    "outer_race_to_worm_axial_gap_mm": 2,
     "keeper_screws": 0,
     "separate_coupling": false,
-    "motor_cartridge": false
+    "motor_cartridge": false,
+    "bearing_inner_race_relief_diameter_mm": 12
   },
   "assembled_collisions": [],
   "enclosure": {
@@ -155,25 +172,30 @@
         -38.0,
         24.9
       ],
-      "raisedCoverClearance": {
-        "xmin": -235.0,
-        "xmax": 32.0,
-        "ymin": -20.9,
-        "ymax": 29.400000000000002,
-        "zmax": 40.2
-      },
-      "rearExtension": 36.0,
-      "note": "Same hole centers and face planes as the matching enclosed spur actuator. Top mounting hardware must clear the raised hood; a solid flat plate requires a cutout. Motor rear face projects 4 mm outside the rear aperture."
+      "rearExtension": 0,
+      "note": "Enclosure bounds, mounting-hole centers and face planes match the enclosed spur actuator. Flat cover. Motor body projects through the rear aperture; allow room for its exposed back and controller."
     },
     "case_bounds_mm": [
-      -235.0,
+      -199.0,
       157,
       -20.9,
       63.9,
       -38.0,
-      40.2
+      24.9
+    ],
+    "actual_case_bounds_mm": [
+      -199.0,
+      157.0000001,
+      -20.9,
+      63.9,
+      -38.0000001,
+      24.9000001
     ],
     "interface_comparisons": [
+      {
+        "interface": "enclosure.bounds",
+        "max_difference_mm": 0.0
+      },
       {
         "interface": "top.xy",
         "max_difference_mm": 0.0
@@ -317,13 +339,86 @@
         "obstruction_mm3": 0.0
       }
     ],
-    "motor_back_face_x_mm": -239.0,
-    "motor_bracket_to_hood_side_gap_mm": 0.9000000000000021,
-    "motor_bracket_to_hood_roof_gap_mm": 1.2000000000000028,
-    "motor_rear_exposure_mm": 4.0,
+    "motor_back_face_x_mm": -213.0,
+    "motor_center_z_mm": -18.0,
+    "motor_rear_exposure_mm": 14.0,
     "rear_mount_access_obstruction_mm3": 0.0,
-    "tool_access_configuration": "cover removed",
-    "printed_parts": 5
+    "tool_access_configuration": "M3 set screw on motor/pinion subassembly outside housing; M5 end bolts after motor withdrawal",
+    "printed_parts": 6,
+    "external_insert_retention": [
+      {
+        "part": "M3 heat-set insert top mount -191.5 -13.4",
+        "reference_interference_mm3": 13.823007675795147,
+        "actual_interference_mm3": 13.823007675795147,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert top mount -191.5 56.4",
+        "reference_interference_mm3": 13.823007675795147,
+        "actual_interference_mm3": 13.823007675795147,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert top mount 149.5 -13.4",
+        "reference_interference_mm3": 13.823007675795147,
+        "actual_interference_mm3": 13.823007675795147,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert top mount 149.5 56.4",
+        "reference_interference_mm3": 13.823007675795154,
+        "actual_interference_mm3": 13.823007675795154,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert side mount -191.5 -28",
+        "reference_interference_mm3": 13.82300767579504,
+        "actual_interference_mm3": 13.82300767579504,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert side mount -191.5 -4",
+        "reference_interference_mm3": 13.823007675795061,
+        "actual_interference_mm3": 13.823007675795061,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert side mount 149.5 -28",
+        "reference_interference_mm3": 13.82300767579504,
+        "actual_interference_mm3": 13.82300767579504,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert side mount 149.5 -4",
+        "reference_interference_mm3": 13.823007675795061,
+        "actual_interference_mm3": 13.823007675795061,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert front mount -11.9 -28",
+        "reference_interference_mm3": 13.823007675795033,
+        "actual_interference_mm3": 13.823007675795033,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert front mount -11.9 -4",
+        "reference_interference_mm3": 13.823007675795068,
+        "actual_interference_mm3": 13.823007675795068,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert front mount 54.9 -28",
+        "reference_interference_mm3": 13.823007675795012,
+        "actual_interference_mm3": 13.823007675795012,
+        "lost_engagement_mm3": 0
+      },
+      {
+        "part": "M3 heat-set insert front mount 54.9 -4",
+        "reference_interference_mm3": 13.823007675795047,
+        "actual_interference_mm3": 13.823007675795047,
+        "lost_engagement_mm3": 0
+      }
+    ]
   },
   "intentional_insert_intersections": [
     {
@@ -331,222 +426,222 @@
         "Matched compliant rack",
         "M3 heat-set insert output 238 24"
       ],
-      "overlap_mm3": 13.823007675795218
+      "overlap_mm3": 13.823007675795246
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 238 33"
       ],
-      "overlap_mm3": 13.823007675795203
+      "overlap_mm3": 13.823007675795232
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 247 24"
       ],
-      "overlap_mm3": 13.823007675795218
+      "overlap_mm3": 13.823007675795246
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 247 33"
       ],
-      "overlap_mm3": 13.823007675795218
+      "overlap_mm3": 13.823007675795246
     },
     {
       "parts": [
-        "One-piece direct-drive worm",
-        "M5 axial heat-set insert"
+        "Worm with integral 24T spur gear",
+        "M5 front axial heat-set insert"
       ],
-      "overlap_mm3": 34.180528071056905
+      "overlap_mm3": 34.18052807105699
     },
     {
       "parts": [
-        "M3 rear extension lid insert",
-        "Mount-compatible enclosure tray"
+        "Worm with integral 24T spur gear",
+        "M5 rear axial heat-set insert"
       ],
-      "overlap_mm3": 13.823007675795147
+      "overlap_mm3": 34.180528071057026
     },
     {
       "parts": [
-        "M3 rear motor support insert -193 1",
-        "Mount-compatible enclosure tray"
+        "M3 rear motor support insert -158 -13",
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.82300767579514
     },
     {
       "parts": [
-        "M3 rear motor support insert -193 10",
-        "Mount-compatible enclosure tray"
+        "M3 rear motor support insert -158 13",
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.82300767579514
     },
     {
       "parts": [
         "M3 heat-set insert chassis -39 -13",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.82300767579764
     },
     {
       "parts": [
         "M3 heat-set insert chassis 30 -13",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795978
     },
     {
       "parts": [
         "M3 heat-set insert chassis 137 -13",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675798287
     },
     {
       "parts": [
         "M3 heat-set insert rear chassis -39 54",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795047
     },
     {
       "parts": [
         "M3 heat-set insert rear chassis 30 54",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795026
     },
     {
       "parts": [
         "M3 heat-set insert rear chassis 127 54",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795132
     },
     {
       "parts": [
         "M3 heat-set insert top mount -191.5 -13.4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795147
     },
     {
       "parts": [
         "M3 heat-set insert top mount -191.5 56.4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795147
     },
     {
       "parts": [
         "M3 heat-set insert top mount 149.5 -13.4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795147
     },
     {
       "parts": [
         "M3 heat-set insert top mount 149.5 56.4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795154
     },
     {
       "parts": [
-        "M3 heat-set insert lid -175 -14.9",
-        "Mount-compatible enclosure tray"
+        "M3 heat-set insert lid -173 -15.9",
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795154
     },
     {
       "parts": [
         "M3 heat-set insert lid -191.5 46.4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795466
     },
     {
       "parts": [
-        "M3 heat-set insert lid 149.5 -3.4",
-        "Mount-compatible enclosure tray"
+        "M3 heat-set insert lid 124 -14.9",
+        "Standard-size enclosure tray"
       ],
-      "overlap_mm3": 13.823007675795473
+      "overlap_mm3": 13.823007675795104
     },
     {
       "parts": [
         "M3 heat-set insert lid 102 46.4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795075
     },
     {
       "parts": [
-        "M3 heat-set insert lid -80.3333 -13.4",
-        "Mount-compatible enclosure tray"
+        "M3 heat-set insert lid -80.3333 -14.9",
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795083
     },
     {
       "parts": [
         "M3 heat-set insert lid -80.3333 56.4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795075
     },
     {
       "parts": [
         "M3 heat-set insert side mount -191.5 -28",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.82300767579504
     },
     {
       "parts": [
         "M3 heat-set insert side mount -191.5 -4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795061
     },
     {
       "parts": [
         "M3 heat-set insert side mount 149.5 -28",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.82300767579504
     },
     {
       "parts": [
         "M3 heat-set insert side mount 149.5 -4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795061
     },
     {
       "parts": [
         "M3 heat-set insert front mount -11.9 -28",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795033
     },
     {
       "parts": [
         "M3 heat-set insert front mount -11.9 -4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795068
     },
     {
       "parts": [
         "M3 heat-set insert front mount 54.9 -28",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795012
     },
     {
       "parts": [
         "M3 heat-set insert front mount 54.9 -4",
-        "Mount-compatible enclosure tray"
+        "Standard-size enclosure tray"
       ],
       "overlap_mm3": 13.823007675795047
     }
@@ -563,10 +658,10 @@
     "collisions": []
   },
   "guided_chassis_installation": {
-    "samples": 212,
+    "samples": 197,
     "lower_axle_retraction_mm": 8,
     "initial_lift_mm": 6,
-    "rearward_slide_mm": 10,
+    "rearward_slide_mm": 2.5,
     "configuration": "unloaded chassis with six bearings and axle hardware; motor, worm, rack and cover absent",
     "collisions": []
   },
@@ -575,6 +670,7 @@
     "full_stroke_samples": 41,
     "distinct_samples": 137,
     "nominal_triangle_intersections_at_mm": [],
+    "spur_triangle_intersections_at_mm": [],
     "preloaded_loss_of_engagement_at_mm": [],
     "tessellation_linear_tolerance_mm": 0.002,
     "tessellation_angular_tolerance_rad": 0.04,
@@ -583,33 +679,33 @@
   "mesh_pose_checks": [
     {
       "travel_from_center_mm": -75.0,
-      "unchanged_straight_nominal_overlap_mm3": 3.023101251221264,
+      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 11.473837268460871
+      "matched_preloaded_overlap_mm3": 12.325498311540212
     },
     {
       "travel_from_center_mm": 0,
-      "unchanged_straight_nominal_overlap_mm3": 4.836602588635383,
+      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 18.22736185172099
+      "matched_preloaded_overlap_mm3": 16.973751254132026
     },
     {
       "travel_from_center_mm": 1.0869910581420683,
-      "unchanged_straight_nominal_overlap_mm3": 4.4420501276050555,
+      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 17.24384260038681
+      "matched_preloaded_overlap_mm3": 17.765895119608444
     },
     {
       "travel_from_center_mm": 3.248406803811846,
-      "unchanged_straight_nominal_overlap_mm3": 4.836665431561808,
+      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 18.144919831991544
+      "matched_preloaded_overlap_mm3": 17.00513031247779
     },
     {
       "travel_from_center_mm": 75.0,
-      "unchanged_straight_nominal_overlap_mm3": 3.0231018658862716,
+      "unchanged_straight_nominal_overlap_mm3": 0.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 11.473837079410512
+      "matched_preloaded_overlap_mm3": 10.205695615435559
     }
   ],
   "mesh": {
@@ -617,13 +713,13 @@
     "phase_samples": 97,
     "full_stroke_samples": 41,
     "unchanged_straight_rack_nominal_overlap_mm3": [
-      3.023101251221264,
-      4.836665431561808
+      0.0,
+      0.0
     ],
     "matched_nominal_max_overlap_mm3": 0.0,
     "matched_preloaded_overlap_mm3": [
-      11.473837079410512,
-      18.22736185172099
+      10.205695615435559,
+      17.765895119608444
     ],
     "tolerance_mm3": 0.01
   },
@@ -641,12 +737,160 @@
   },
   "valid_single_solids": true,
   "rigid_backbone_clearance_mm": 5.0,
+  "spur_mesh": {
+    "ideal_transverse_contact_ratio": 1.3927730138524574,
+    "motor_teeth": 14,
+    "worm_teeth": 24,
+    "phase_samples": 97,
+    "checked_in_full_motion_pairs": true,
+    "flank_allowance_per_gear_mm": 0.06
+  },
   "motion_samples": 41,
   "motion_collisions": [],
-  "distinct_explosion_pair_poses": 465741,
-  "explosion_samples": 1576,
   "explosion_collisions": [],
+  "spring_states_checked": [
+    [
+      0,
+      0
+    ],
+    [
+      1,
+      0
+    ],
+    [
+      2,
+      0
+    ],
+    [
+      3,
+      0
+    ],
+    [
+      4,
+      0
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      4,
+      2
+    ],
+    [
+      4,
+      3
+    ],
+    [
+      4,
+      4
+    ]
+  ],
+  "distinct_explosion_pair_poses": 651962,
+  "explosion_samples": 1858,
   "maximum_explosion_point_increment_mm": 0.5,
   "nominal_mesh_separation_triangle_collisions": [],
-  "passed": true
+  "passed": true,
+  "reference_full_check_source_sha256": "a8f8fef595a01ae05b78fe575592e0a9b3ccda25f820a6b74746e1a4d6e54cce",
+  "clearance_certifier_sha256": "c82f6a945cae6122291dca5cd2d88708f2ca58c4396ef8fd3e40a3b936b508ee",
+  "chassis_clearance_update": {
+    "method": "Exact OCC material-removal certificate for all nine chassis states; source changes are restricted to larger voids. All other shapes and tracks are unchanged. Full motion/disassembly results are retained from the reference report, not rerun.",
+    "reference_report_sha256": "0d778d74938544fdc69ab88ad707ae7b82590eed10b65030aca45b62164c877a",
+    "bearing_inner_race_relief_diameter_mm": 12,
+    "outer_race_shoulder_radial_overlap_mm": 2,
+    "short_preset_mount_clearances_applied": false,
+    "states": [
+      {
+        "spring_state": [
+          0,
+          0
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          1,
+          0
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          2,
+          0
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          3,
+          0
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          4,
+          0
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          4,
+          1
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          4,
+          2
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          4,
+          3
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      },
+      {
+        "spring_state": [
+          4,
+          4
+        ],
+        "added_material_mm3": 0.0,
+        "removed_material_mm3": 91.9679373767924,
+        "removed_outside_allowed_clearances_mm3": 0.0,
+        "valid_single_solid": true
+      }
+    ],
+    "maximum_added_material_mm3": 0.0
+  }
 }

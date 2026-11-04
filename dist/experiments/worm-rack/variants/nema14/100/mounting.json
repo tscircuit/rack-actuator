@@ -102,13 +102,6 @@
     -38.0,
     24.9
   ],
-  "raisedCoverClearance": {
-    "xmin": -185.0,
-    "xmax": 32.0,
-    "ymin": -20.9,
-    "ymax": 29.400000000000002,
-    "zmax": 40.2
-  },
-  "rearExtension": 36.0,
-  "note": "Same hole centers and face planes as the matching enclosed spur actuator. Top mounting hardware must clear the raised hood; a solid flat plate requires a cutout. Motor rear face projects 4 mm outside the rear aperture."
+  "rearExtension": 0,
+  "note": "Enclosure bounds, mounting-hole centers and face planes match the enclosed spur actuator. Flat cover. Motor body projects through the rear aperture; allow room for its exposed back and controller."
 }

@@ -12,9 +12,9 @@ The viewer provides actuation, a staged exploded assembly, right-click part hidi
 
 ## Experimental worm drive
 
-An enclosed **NEMA17 / NEMA14 worm family** is available at **40, 100 and 150 mm stroke** in the [worm viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). Its one-piece worm connects directly to the motor; an axial M5 insert/bolt runs through a chassis-integrated end bearing. The motor back face stays 4 mm outside the enclosure for mounting.
+A separate **NEMA17 / NEMA14 worm family** is available at **40, 100 and 150 mm stroke** in the [worm viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). A lower motor pinion drives the worm’s integral 24T spur gear. Both worm ends use an M5 insert and bolt through a chassis-supported 625ZZ bearing.
 
-Top, side, front-face and output mounting coordinates match the corresponding fully enclosed spur preset. The worm enclosure extends rearward and has a raised cover; a flat top mounting plate needs a clearance cutout. The single-start lead is 6.283 mm/rev. These remain unprinted prototypes. See the [six presets, mounting notes, CAD source and test procedure](experiments/worm-rack/README.md). The twelve spur presets below retain their geometry.
+The **flat enclosure has the same dimensions, mounting-hole coordinates and mounting planes as the matching fully enclosed spur preset**. The worm contacts the underside of its matched compliant rack, retaining the guide profile and output mount. The motor body projects through the rear for back-face/controller access; its projection is listed separately in the viewer. These remain unprinted prototypes. See the [preset details, assembly sequence, source and checks](experiments/worm-rack/README.md). The twelve spur presets retain their geometry.
 
 [![Enclosed NEMA17 40 mm worm-drive prototype with compatible mounting interfaces](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
