@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import {OrbitControls} from './assets/OrbitControls.js';
+import {downloadPart} from './part-download.js?v=34';
 const params=new URLSearchParams(location.search),variant=params.get('motor')==='nema14'?'nema14':'nema17',presetStrokes=[40,100,150],presetStroke=presetStrokes.includes(+params.get('stroke'))?+params.get('stroke'):40,enclosureVariant=params.get('enclosure')==='pass-through'?'pass-through':'enclosed',basePath=enclosureVariant==='pass-through'?'./variants/'+variant+'/pass-through/'+presetStroke+'/':presetStroke===40?(variant==='nema14'?'./variants/nema14/':'./'):'./variants/'+variant+'/'+presetStroke+'/',springPath=basePath+'assets/spring-states.json.gz';
 if(params.has('layout')){params.delete('layout');history.replaceState(null,'',location.pathname+(params.size?'?'+params:'')+location.hash)}
 let presetInfo;
@@ -91,11 +92,12 @@ function hidePart(part){if(!part)return;hiddenParts.add(part.userData.name);clos
 function showAllParts(){hiddenParts.clear();$('shell').checked=true;$('enclosure').checked=true;closePartMenu();update()}
 function openPartMenu(part,x,y){
  closePartMenu();menuTarget=part;selectPart(part);const menu=$('partMenu');
- $('menuPartName').textContent=part?part.userData.name:'Parts';$('menuHide').hidden=!part;
+ $('menuPartName').textContent=part?part.userData.name:'Parts';$('menuHide').hidden=!part;$('menuDownload').hidden=!part;$('menuDownload').textContent=part?.userData.printed?'Download STL':'Download reference STL';
  $('menuShowAll').disabled=hiddenParts.size===0&&$('shell').checked&&$('enclosure').checked;
  menu.hidden=false;const rect=menu.getBoundingClientRect();menu.style.left=Math.max(8,Math.min(x,innerWidth-rect.width-8))+'px';menu.style.top=Math.max(8,Math.min(y,innerHeight-rect.height-8))+'px';
  (part?$('menuHide'):$('menuShowAll')).focus({preventScroll:true});
 }
+$('menuDownload').onclick=()=>{const part=menuTarget?.userData;if(!part)return;closePartMenu();const name=part.name.replaceAll(' ','_');downloadPart(part,{url:basePath+'downloads/'+encodeURIComponent(name)+'.stl',filename:`${variant}-${enclosureVariant}-${presetStroke}mm-${part.printed?'':'reference-'}${name}.stl`})};
 $('menuHide').onclick=()=>hidePart(menuTarget);$('menuShowAll').onclick=showAllParts;
 $('hideSelected').onclick=()=>hidePart(selected);$('showAll').onclick=showAllParts;
 let start;
@@ -110,7 +112,7 @@ document.addEventListener('keydown',e=>{
  if(['ArrowDown','ArrowUp','Home','End'].includes(e.key)){e.preventDefault();const buttons=[...$('partMenu').querySelectorAll('button')].filter(b=>!b.hidden&&!b.disabled);if(!buttons.length)return;let i=buttons.indexOf(document.activeElement);i=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowUp'?-1:1)+buttons.length)%buttons.length;buttons[i].focus()}
 });
 window.addEventListener('resize',closePartMenu);window.addEventListener('scroll',closePartMenu,true);
-renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label','3D assembly. Select a part or right-click to hide it.');
+renderer.domElement.tabIndex=0;renderer.domElement.setAttribute('aria-label','3D assembly. Select a part or right-click to hide or download it.');
 renderer.domElement.addEventListener('keydown',e=>{if(e.key==='ContextMenu'||(e.shiftKey&&e.key==='F10')){e.preventDefault();const r=renderer.domElement.getBoundingClientRect();openPartMenu(selected,r.left+r.width/2,r.top+r.height/2)}});
 
 function applyVariant(){

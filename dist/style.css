@@ -5,3 +5,5 @@
 @media(max-width:760px){header{padding:0 16px;gap:16px;height:auto;min-height:60px;flex-wrap:wrap}.brand{font-size:16px}nav{gap:12px;font-size:12px}.repo-link{display:none}main{padding:16px}.workspace{display:block}.viewer{height:440px}aside{height:auto;border-left:0;border-top:1px solid var(--line)}.metrics{grid-template-columns:1fr 1fr;gap:16px}.config-grid{grid-template-columns:1fr 1fr}.details dl{grid-template-columns:1fr}.files{display:block}.downloads{margin-top:16px;gap:16px;flex-wrap:wrap}.section{padding:24px 0}footer{padding:16px;gap:16px;font-size:11px}.view-top,.view-bottom{left:12px;right:12px}}
 
 #presetNote{margin:8px 0 18px;font-size:11px}#insertSpec{margin-bottom:16px}#sizeNote:empty{display:none}
+
+.part-download-status{position:fixed;bottom:16px;left:16px;z-index:30;max-width:calc(100vw - 32px);padding:10px 14px;border:1px solid #d1d5db;border-radius:8px;background:white;color:#374151;box-shadow:0 4px 6px #0000001a;font-size:13px}

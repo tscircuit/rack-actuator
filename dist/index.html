@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#ffffff">
 <title>Rack actuator</title><meta name="description" content="NEMA17 and NEMA14 rack actuator CAD viewer and configuration.">
-<link rel="stylesheet" href="style.css?v=27"><script type="importmap">{"imports":{"three":"./assets/three.module.js"}}</script>
+<link rel="stylesheet" href="style.css?v=34"><script type="importmap">{"imports":{"three":"./assets/three.module.js"}}</script>
 </head>
 <body>
 <header><a class="brand" href="#">Rack actuator</a><nav><a href="#configure">Configure</a><a href="#resolution">Resolution</a><a href="#files">Downloads</a></nav><a class="repo-link" href="https://github.com/tscircuit/rack-actuator">GitHub ↗</a></header>
@@ -12,7 +12,7 @@
 <div class="viewer" id="viewport">
  <div class="view-top"><span class="view-title">NEMA17</span><span id="modeBadge">ASSEMBLED</span></div>
  <div id="loading">Loading model…</div>
- <div class="view-bottom"><span>Drag to orbit · Scroll to zoom · Right-click to hide</span><div><button id="iso">Isometric</button><button id="top">Top</button><button id="teeth">Teeth</button><button id="rollers">Bearings</button><button id="frontMounts">Front mounts</button><button id="mounts">Side mounts</button><button id="topMounts">Top mounts</button><button id="driver">Motor rear</button><button id="fit">Fit</button></div></div>
+ <div class="view-bottom"><span>Drag to orbit · Scroll to zoom · Right-click for part actions</span><div><button id="iso">Isometric</button><button id="top">Top</button><button id="teeth">Teeth</button><button id="rollers">Bearings</button><button id="frontMounts">Front mounts</button><button id="mounts">Side mounts</button><button id="topMounts">Top mounts</button><button id="driver">Motor rear</button><button id="fit">Fit</button></div></div>
 </div>
 <aside>
  <div class="panel-head"><h1>Rack actuator</h1><button id="reset" title="Reset view and controls">Reset</button></div>
@@ -43,6 +43,6 @@
 <section id="files" class="section files"><h2>Downloads</h2><div class="downloads"><a id="bundleDownload" class="primary" href="downloads/FLEX17_40mm_bundle.zip?v=32" download>CAD bundle</a><a id="stepDownload" href="downloads/FLEX17.step.gz?v=32" download>STEP (.gz)</a><a href="downloads/model.py?v=32" download>CadQuery source</a></div></section>
 </main>
 <footer><span>Rack actuator</span><span>CAD revision 24 · mm</span></footer>
-<div id="partMenu" role="menu" aria-label="Part actions" hidden><div id="menuPartName"></div><button id="menuHide" role="menuitem">Hide part</button><button id="menuShowAll" role="menuitem">Show all parts</button></div>
-<script type="module" src="app.js?v=32"></script>
+<div id="partMenu" role="menu" aria-label="Part actions" hidden><div id="menuPartName"></div><button id="menuHide" role="menuitem">Hide part</button><button id="menuDownload" role="menuitem">Download STL</button><button id="menuShowAll" role="menuitem">Show all parts</button></div>
+<script type="module" src="app.js?v=34"></script>
 </body></html>
