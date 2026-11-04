@@ -12,9 +12,11 @@ The viewer provides actuation, a staged exploded assembly, right-click part hidi
 
 ## Experimental worm drive
 
-A separate **NEMA17 / 40 mm** direct worm-to-compliant-rack prototype is available in the [experimental viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). It uses a matched helical tooth profile, a one-piece worm that connects directly to the motor, an axial M5 insert/bolt and a chassis-integrated end bearing. Its single-start lead is 6.283 mm/rev, giving 18× finer command increments than the 18T spur drive. It has not been physically tested. See the [experiment notes, CAD source and test procedure](experiments/worm-rack/README.md). The twelve spur presets below are unchanged.
+An enclosed **NEMA17 / NEMA14 worm family** is available at **40, 100 and 150 mm stroke** in the [worm viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). Its one-piece worm connects directly to the motor; an axial M5 insert/bolt runs through a chassis-integrated end bearing. The motor back face stays 4 mm outside the enclosure for mounting.
 
-[![Separate NEMA17 40 mm worm-drive prototype with a one-piece worm and integral end-bearing block](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
+Top, side, front-face and output mounting coordinates match the corresponding fully enclosed spur preset. The worm enclosure extends rearward and has a raised cover; a flat top mounting plate needs a clearance cutout. The single-start lead is 6.283 mm/rev. These remain unprinted prototypes. See the [six presets, mounting notes, CAD source and test procedure](experiments/worm-rack/README.md). The twelve spur presets below retain their geometry.
+
+[![Enclosed NEMA17 40 mm worm-drive prototype with compatible mounting interfaces](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
 ## Choose a model
 

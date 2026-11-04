@@ -1,0 +1,20 @@
+{
+  "drive": "worm",
+  "motor": "nema14",
+  "stroke": 150,
+  "motor_depth": 34.0,
+  "tooth_module": 2.0,
+  "worm_pitch_radius": 11.0,
+  "stem_diameter": 13.0,
+  "worm_length": 213.0,
+  "case_bounds": [
+    -235.0,
+    157,
+    -20.9,
+    63.9,
+    -38.0,
+    40.2
+  ],
+  "motor_rear_face_x": -239.0,
+  "motor_rear_exposure": 4
+}
