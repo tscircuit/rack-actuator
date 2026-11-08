@@ -1,6 +1,6 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 19,
+  "revision": 21,
   "guideBearingCount": 8,
   "lowerBearingCount": 4,
   "lowerBearingY": [
@@ -54,10 +54,10 @@
       "cutout_count": 8
     },
     "base": {
-      "before_mm3": 245780.287892112,
-      "after_mm3": 219819.31464878004,
-      "removed_mm3": 25960.973243331973,
-      "reduction_percent": 10.562675089195043,
+      "before_mm3": 246558.96306286246,
+      "after_mm3": 220597.98981831234,
+      "removed_mm3": 25960.973244550114,
+      "reduction_percent": 10.529316363944607,
       "cutout_count": 8
     }
   },
@@ -83,7 +83,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "f233c87a3bfff66baf50aec9f6a87e98bff4f2cd1edadc94b315cecb385bf8f5",
+  "modelSourceSha256": "08e5fb86fea815e17701d33ca7db8e8333a0fb9da74aa4c97547220c37bba4f2",
   "stations": [
     63.0,
     137.0
@@ -431,18 +431,31 @@
     "shaft_radius": 2.4,
     "head_radius": 3.2,
     "tip_radius": 2.3,
-    "slot_width": 1.2,
+    "slot_width": 0,
     "root_t": 9.6,
     "head_back_t": -2.75,
     "tip_t": -8.1,
-    "compression": 0.85,
+    "compression": 0,
     "shaft_bias_slope": 0,
     "bend_start_t": -3.75,
     "tip_bend_degrees": 30,
     "extension_mm": 3,
     "bearing_release_mm": 12,
-    "head_slot_width": 2.0,
-    "tip_slot_width": 2.2
+    "head_slot_width": 0,
+    "tip_slot_width": 0
+  },
+  "solidAxle": {
+    "type": "solid retained-head axle",
+    "material": "PETG",
+    "printed_diameter_mm": 4.8,
+    "assembled_diameter_mm": 4.8,
+    "bearing_bore_mm": 5,
+    "head_width_mm": 6.4,
+    "tip_bend_degrees": 30,
+    "relief_slot": false,
+    "bent_tip": true,
+    "retaining_head": true,
+    "installation": "Force the bearing past the retained head while supporting the inner race. Head passage requires PETG deformation; insertion force and strain are not validated. The viewer retains the actual solid geometry without simulated bending."
   },
   "retainingTracks": [
     {
