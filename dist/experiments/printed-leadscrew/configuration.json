@@ -1,6 +1,6 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 16,
+  "revision": 19,
   "guideBearingCount": 6,
   "lowerBearingCount": 2,
   "lowerBearingY": [
@@ -20,6 +20,28 @@
     "pilot_depth_mm": 10.5,
     "entry_diameter_mm": 7.2,
     "minimum_wall_mm": 2.6
+  },
+  "shaftClamp": {
+    "shaft_diameter_mm": 5,
+    "shaft_across_flat_mm": 4.5,
+    "bore_diameter_mm": 5.3,
+    "bore_across_flat_mm": 4.8,
+    "radial_clearance_mm": 0.15,
+    "flat_clearance_mm": 0.15,
+    "hub_diameter_mm": 22,
+    "shaft_engagement_mm": 15,
+    "split_gap_mm": 1,
+    "bolt": "M3x12 socket-head",
+    "nut": "M3 hex nut",
+    "nut_across_flats_mm": 5.5,
+    "nut_thickness_mm": 2.4,
+    "nut_pocket_across_flats_mm": 5.9,
+    "nut_pocket_top_z_mm": 36.9,
+    "bolt_center_xy_mm": [
+      17,
+      5
+    ],
+    "nut_installation": "Insert from underneath into the hex pocket before fitting the screw to the motor; start the bolt, align the D flat, then tighten through the lid access hole with the carriage extended."
   },
   "lightening": {
     "carriage": {
@@ -47,15 +69,19 @@
   "outputPlateWidth": 42,
   "upperBearingSpan": 41.569219381653056,
   "baseWidth": 80.0,
-  "stroke": 40,
-  "lead": 8,
+  "stroke": 40.0,
+  "lead": 8.0,
+  "sizingBasis": "travel",
+  "screwLength": null,
+  "screwStartX": 9,
+  "nutAxialBounds": null,
   "motor": "NEMA17",
   "axisOrigin": [
     0,
     0,
     42.0
   ],
-  "modelSourceSha256": "e82f03d03ea5887895fc692d80632adf3bdf191af4da034dd5174618f01f3e61",
+  "modelSourceSha256": "f233c87a3bfff66baf50aec9f6a87e98bff4f2cd1edadc94b315cecb385bf8f5",
   "stations": [
     63.0,
     137.0
@@ -480,6 +506,7 @@
     4
   ],
   "explosionPrelude": 0.2,
+  "carriageWithdrawal": 200.0,
   "adjustmentBoltCenters": [
     [
       51.0,
@@ -580,21 +607,70 @@
     "hole_centers_xy_mm": [
       [
         -3,
-        -34.0
+        -34
       ],
       [
         -3,
-        34.0
+        34
       ],
       [
         149.0,
-        -34.0
+        -34
       ],
       [
         149.0,
-        34.0
+        34
       ]
     ],
+    "patterns": [
+      {
+        "width_multiple": 1,
+        "hole_centers_xy_mm": [
+          [
+            -3,
+            -34
+          ],
+          [
+            -3,
+            34
+          ],
+          [
+            149.0,
+            -34
+          ],
+          [
+            149.0,
+            34
+          ]
+        ]
+      }
+    ],
+    "outer_holes_xy_mm": [
+      [
+        -3,
+        -34
+      ],
+      [
+        -3,
+        34
+      ],
+      [
+        149.0,
+        -34
+      ],
+      [
+        149.0,
+        34
+      ]
+    ],
+    "inherited_holes_xy_mm": [],
+    "inherited_countersink": {
+      "diameter_mm": 10.5,
+      "angle_degrees": 90,
+      "depth_mm": 2.5,
+      "screw": "M5 countersunk, head diameter at most 10 mm; seat flush"
+    },
+    "inherited_installation": "Fasten from above before installing the bearing carrier and carriage. The original outer holes remain accessible while assembled.",
     "thread": null,
     "hole_type": "plain through-hole",
     "clearance_diameter_mm": 5.5,

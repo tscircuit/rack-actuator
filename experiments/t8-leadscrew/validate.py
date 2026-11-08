@@ -30,7 +30,7 @@ def validate():
   output_seats.append(q)
  report['output_mount']={'pattern':'Central NEMA17 mounting pitch with extra outer holes on wider plates','pitch_mm':[31,31],'outer_pitch_mm':[31+2*WIDEN,31] if WIDTH>1 else None,'thread':'M3 three-ridge plastic forming pilot','pilot_depth_mm':8,'full_depth_thread_length_mm':7.4,'maximum_screw_entry_mm':8,'face_size_mm':[42*WIDTH,42],'face_home_x_mm':EXIT_X,'holes':output_seats,'passed':len(output_seats)==(8 if WIDTH>1 else 4) and all(q['passed'] for q in output_seats)}
  report['plastic_thread_seats']={'method':'Three axial rounded ribs at 120 degrees, with tapered entry. Unformed rib/shaft overlap is intentional and bounded to each verified rib solid. Thread forming and stripping torque are not simulated.',
-  'profiles':THREAD_PROFILES,'fastener_nuts':0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(7 if PRINTED else 10)}
+  'profiles':THREAD_PROFILES,'fastener_nuts':1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 10)}
  save();print('Three-ridge seats',report['plastic_thread_seats']['passed'],flush=True)
  if not report['plastic_thread_seats']['passed'] or not report['output_mount']['passed']:return report
  insert_checks=[];printed_carrier=by_name[CARRIER_NAME]['freeShape'];installed_carrier=by_name[CARRIER_NAME]['shape']
@@ -51,6 +51,22 @@ def validate():
   if v>.01:collisions.append({'parts':[a['name'],b['name']],'overlap_mm3':v})
  report['assembled_collisions']=collisions;save();print('Static collisions',collisions,flush=True)
  if collisions:return report
+ if PRINTED:
+  host=by_name['Printed 20 mm lead screw with integral shaft clamp']['shape'];nut=by_name['M3 shaft clamp hex nut']['shape'];clamp_bolt=by_name['M3x12 shaft clamp bolt']['shape']
+  shaft_fit=shaft.intersect(rect(9,24,-4,4,38,46))
+  wrong_flat=shaft_fit.rotate((0,0,SCREW_Z),(1,0,SCREW_Z),180)
+  seat=hex_prism(5.5,1,(17,5,36.9)).cut(cyl(1.7,1,(17,5,36.9)))
+  nut_access=[]
+  for dz in [0,-.5,-1,-2,-3,-5,-8,-12,-20]:
+   nut_access.append({'offset_z_mm':dz,'hub_collision_mm3':overlap(host,nut.translate((0,0,dz)))})
+  bolt_access=[]
+  for dz in [0,.5,1,2,3,5,8,12,20,30]:
+   bolt_access.append({'offset_z_mm':dz,'hub_collision_mm3':overlap(host,clamp_bolt.translate((0,0,dz)))})
+  turned_nut=nut.rotate((17,5,0),(17,5,1),30)
+  report['shaft_clamp']={'specification':CLAMP,'shaft_interference_mm3':overlap(host,shaft_fit),'incorrect_flat_orientation_interference_mm3':overlap(host,wrong_flat),'missing_nut_seat_mm3':seat.cut(host).Volume(),'nut_anti_rotation_interference_mm3':overlap(host,turned_nut),'nut_insertion':nut_access,'bolt_insertion':bolt_access,'nut_thread_engagement_mm':2.4,'bolt_projection_past_nut_mm':1.5,'clamp_threads_in_plastic':False}
+  q=report['shaft_clamp'];q['passed']=q['shaft_interference_mm3']<.01 and q['incorrect_flat_orientation_interference_mm3']>.1 and q['missing_nut_seat_mm3']<.01 and q['nut_anti_rotation_interference_mm3']>.1 and all(row['hub_collision_mm3']<.01 for row in nut_access+bolt_access)
+  print('D shaft / bolt-and-nut clamp',q['passed'],flush=True)
+  if not q['passed']:save();return report
  # The printed support contacts only a small annular inner-race land.
  # Check the full land volume and both bearing-face clearance regions against
  # every printed part, not just a nominal support diameter in metadata.
@@ -206,7 +222,7 @@ def validate():
   for y,z in nut_holes:probes.append(('flange',xcyl(1.5,100,NUT_HOME+6.6+travel,y,z),travel))
   for x,y in LID_FIXINGS:probes.append(('lid screw',cyl(1.2,55,(x,y,67.95)),travel))
  for x,y in ADJUST_CENTERS:probes.append(('carrier adjustment',cyl(2.35,75,(x,y,38.1)),0))
- if PRINTED:probes.append(('shaft clamp at full extension',cyl(1.5,65,(17,5,49.1)),STROKE))
+ if PRINTED:probes.append(('shaft clamp at full extension',cyl(1.5,65,(17,5,48.1)),STROKE))
  access=[]
  for name,tool,travel in probes:
   for p in parts:
@@ -327,5 +343,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(PRINTED or report['t8_screw_length']['passed']) and report['track_retention']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['snap_axles']['passed'] and report['lid_and_attachment']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['track_retention']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['snap_axles']['passed'] and report['lid_and_attachment']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report
