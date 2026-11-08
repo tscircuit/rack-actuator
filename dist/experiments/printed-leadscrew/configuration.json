@@ -1,6 +1,6 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 21,
+  "revision": 22,
   "guideBearingCount": 6,
   "lowerBearingCount": 2,
   "lowerBearingY": [
@@ -81,7 +81,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "08e5fb86fea815e17701d33ca7db8e8333a0fb9da74aa4c97547220c37bba4f2",
+  "modelSourceSha256": "70800aa8be9fe825c0b8da896f03a9df660244e25974bed708b25108d126f4fd",
   "stations": [
     63.0,
     137.0
@@ -455,7 +455,12 @@
     "retaining_head": true,
     "installation": "Force the bearing past the retained head while supporting the inner race. Head passage requires PETG deformation; insertion force and strain are not validated. The viewer retains the actual solid geometry without simulated bending."
   },
-  "retainingTracks": [
+  "retainingTracks": [],
+  "retainingRailSize": [
+    0,
+    0
+  ],
+  "bearingRunningFaces": [
     {
       "kind": "upper",
       "contact": [
@@ -513,10 +518,6 @@
       ],
       "inner": 4.0
     }
-  ],
-  "retainingRailSize": [
-    4,
-    4
   ],
   "explosionPrelude": 0.2,
   "carriageWithdrawal": 200.0,

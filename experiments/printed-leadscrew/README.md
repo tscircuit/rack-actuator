@@ -20,7 +20,7 @@ The land diameter is a prototype choice within the 7.4–8.3 mm shaft-abutment r
 
 The relief slots are filled while retaining the existing Ø4.8 mm coaxial journal, 6.4 mm-wide retaining shoulder and extended 30° bent tip. The widest shoulder remains nearest the bearing face. The deep clearance around the axle root is also filled, joining it directly to the Ø7.4 mm inner-race land. The surrounding Ø17 mm face relief remains to keep the bearing outer ring and shields clear.
 
-The bearing must be forced over the solid retaining head. Support the inner race and the axle root during installation. The CAD report records head/bore interference separately from unexpected assembly collisions; it does not establish that PETG can deform enough without damage. No prong bending is animated. The STL and viewer have identical axle geometry. The carriage's 4 × 4 mm retaining rails remain.
+The bearing must be forced over the solid retaining head. Support the inner race and the axle root during installation. The CAD report records head/bore interference separately from unexpected assembly collisions; it does not establish that PETG can deform enough without damage. No prong bending is animated. The STL and viewer have identical axle geometry. The carriage has smooth bearing faces without raised side rails; axial bearing retention comes from the solid axle heads.
 
 ## Structural lid
 
@@ -64,11 +64,11 @@ Two gussets extend from X=−36 to +6 mm beside the motor. Each is 12 mm wide, w
 
 Rounded base-floor openings preserve perimeter rails, a central spine and cross ribs. The carriage has top access windows between its threaded bands; wider variants also have pockets on either side of the screw, with 4 mm floors and transverse ribs. All bearing contact strips remain continuous. The threaded bands and output mounting holes remain intact. The validation report records removed CAD volume relative to the same revised geometry before cutouts; this is not a strength or printed-material mass claim.
 
-## Track retention revision
+## Smooth bearing running faces
 
-Two 4 × 4 mm longitudinal rails flank each bearing track, with 4 mm entrance ramps. The 1× lower lane accommodates the staggered bearing centers. Matching clearance channels in the supports preserve the 40 mm travel. Withdraw the carriage before releasing the bearings.
+The raised 4 × 4 mm side rails are removed from every carriage width. Bearings run on the original flat faces, with no rails to catch small axial misalignment. The solid axle heads remain the axial bearing retainers. Existing support clearance channels are preserved so only the carriage needs reprinting; the base and shared bearing carrier geometry is unchanged.
 
-The bearing journals are solid and coaxial; the retained extended tips bend 30°. The slots are filled. Test forced head passage on the actual PETG print before assembling the actuator.
+Validation checks that the former rail regions are empty, the running skins remain continuous, and the bearing envelopes clear the carriage at nominal alignment and ±1 mm axial displacement. Tilt, preload force and print-surface friction still require physical testing. Travel, screw engagement, mounting patterns and threaded sections are unchanged.
 
 ## Cumulative base-floor mounting patterns
 

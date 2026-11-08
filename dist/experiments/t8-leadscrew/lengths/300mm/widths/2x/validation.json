@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "08e5fb86fea815e17701d33ca7db8e8333a0fb9da74aa4c97547220c37bba4f2",
-  "validation_source_sha256": "c20302de62d29e188647e40bae1a483b333971a17c92333d01a3f816370eb1fd",
+  "source_sha256": "70800aa8be9fe825c0b8da896f03a9df660244e25974bed708b25108d126f4fd",
+  "validation_source_sha256": "97dc3778d5f4f993e889cd4ace353f073d46489ad7fc3f25342e2735f6e0d1c0",
   "output_mount": {
     "pattern": "Central NEMA17 mounting pitch with extra outer holes on wider plates",
     "pitch_mm": [
@@ -704,126 +704,298 @@
     "physical_installability_verified": false,
     "note": "Solid \u00d84.8 mm journals retain the existing 6.4 mm head and 30-degree bent tip. Relief slots and the deep root clearance are filled. Passing the 5 mm bearing bore over the head requires material deformation; force, strain and retention are not simulated."
   },
-  "track_retention": {
-    "rail_width_mm": 4,
-    "rail_height_above_track_mm": 4,
-    "embedded_depth_mm": 0.6,
-    "entrance_ramp_length_mm": 4,
-    "support_normal_gap_mm": 0.2,
-    "bearing_side_gap_mm": 0.5,
-    "one_x_lower_lane_side_gap_mm": [
-      0.5,
-      2.5
+  "smooth_running_faces": {
+    "raised_retaining_rails": false,
+    "axial_displacement_checked_mm": [
+      -1,
+      1
     ],
-    "checks": [
+    "former_rail_regions": [
       {
-        "station_x_mm": 293.0,
         "kind": "upper",
+        "contact_mm": [
+          0,
+          -34.856406460551014,
+          50
+        ],
         "side": -1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979682,
+        "raised_material_mm3": 0.0,
         "passed": true
       },
       {
-        "station_x_mm": 293.0,
         "kind": "upper",
+        "contact_mm": [
+          0,
+          -34.856406460551014,
+          50
+        ],
         "side": 1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979674,
+        "raised_material_mm3": 0.0,
         "passed": true
       },
       {
-        "station_x_mm": 293.0,
-        "kind": "lower",
-        "side": -1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979671,
-        "passed": true
-      },
-      {
-        "station_x_mm": 293.0,
-        "kind": "lower",
-        "side": 1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979676,
-        "passed": true
-      },
-      {
-        "station_x_mm": 333.0,
         "kind": "upper",
+        "contact_mm": [
+          0,
+          34.856406460551014,
+          50
+        ],
         "side": -1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979682,
+        "raised_material_mm3": 0.0,
         "passed": true
       },
       {
-        "station_x_mm": 333.0,
         "kind": "upper",
+        "contact_mm": [
+          0,
+          34.856406460551014,
+          50
+        ],
         "side": 1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979674,
+        "raised_material_mm3": 0.0,
         "passed": true
       },
       {
-        "station_x_mm": 333.0,
         "kind": "lower",
+        "contact_mm": [
+          0,
+          -21.0,
+          26
+        ],
         "side": -1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979671,
+        "raised_material_mm3": 0.0,
         "passed": true
       },
       {
-        "station_x_mm": 333.0,
         "kind": "lower",
+        "contact_mm": [
+          0,
+          -21.0,
+          26
+        ],
         "side": 1,
-        "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979678,
+        "raised_material_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "lower",
+        "contact_mm": [
+          0,
+          21.0,
+          26
+        ],
+        "side": -1,
+        "raised_material_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "lower",
+        "contact_mm": [
+          0,
+          21.0,
+          26
+        ],
+        "side": 1,
+        "raised_material_mm3": 0.0,
         "passed": true
       }
     ],
-    "rail_sections": [
+    "bearing_clearance": [
       {
-        "section_area_mm2": 18.400000000000055,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "upper",
+        "side": -1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000052,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "upper",
+        "side": -1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.40000000000004,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "upper",
+        "side": -1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.40000000000005,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "upper",
+        "side": 1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000052,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "upper",
+        "side": 1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000052,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "upper",
+        "side": 1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000052,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "lower",
+        "side": -1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000052,
-        "missing_mm3": 0.0,
+        "station_x_mm": 293.0,
+        "kind": "lower",
+        "side": -1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 293.0,
+        "kind": "lower",
+        "side": -1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 293.0,
+        "kind": "lower",
+        "side": 1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 293.0,
+        "kind": "lower",
+        "side": 1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 293.0,
+        "kind": "lower",
+        "side": 1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "upper",
+        "side": -1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "upper",
+        "side": -1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "upper",
+        "side": -1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "upper",
+        "side": 1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "upper",
+        "side": 1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "upper",
+        "side": 1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "lower",
+        "side": -1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "lower",
+        "side": -1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "lower",
+        "side": -1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "lower",
+        "side": 1,
+        "axial_shift_mm": -1,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "lower",
+        "side": 1,
+        "axial_shift_mm": 0,
+        "carriage_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 333.0,
+        "kind": "lower",
+        "side": 1,
+        "axial_shift_mm": 1,
+        "carriage_overlap_mm3": 0.0,
         "passed": true
       }
     ],
-    "passed": true
+    "passed": true,
+    "note": "Raised side rails are removed. Checks cover nominal bearing geometry and +/-1 mm axial displacement relative to the carriage, not bearing tilt, preload or printed surface friction. Existing support clearance channels are retained."
   },
   "lid_and_attachment": {
     "lid_fixings": 6,
@@ -2056,10 +2228,10 @@
     "checks": [
       {
         "file": "hollow_triangular_carriage.stl",
-        "triangles": 15538,
+        "triangles": 15388,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 775874.7084095242
+        "volume_mm3": 734011.2010885667
       },
       {
         "file": "adjustable_six-bearing_base.stl",
