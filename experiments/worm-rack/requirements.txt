@@ -1,2 +1,3 @@
 -r ../../requirements.txt
 python-fcl==0.7.0.11
+zopfli==0.4.3

@@ -1,5 +1,9 @@
 {
   "drive": "worm",
+  "step_exported": false,
+  "spring_leaf_length_mm": 18.0,
+  "spring_blend_radius_mm": 5.0,
+  "spring_front_blend_radius_mm": 2.0,
   "motor": "nema17",
   "stroke": 100,
   "motor_depth": 40.0,
@@ -20,5 +24,52 @@
     24.9
   ],
   "motor_rear_face_x": -168.0,
-  "motor_rear_exposure": 19.0
+  "motor_rear_exposure": 19.0,
+  "output_mount": {
+    "standard": "NEMA17 hole pattern",
+    "hole_axis": [
+      1,
+      0,
+      0
+    ],
+    "thread": "M3",
+    "count": 4,
+    "pattern_yz_mm": [
+      [
+        13.0,
+        -9.5
+      ],
+      [
+        13.0,
+        21.5
+      ],
+      [
+        44.0,
+        -9.5
+      ],
+      [
+        44.0,
+        21.5
+      ]
+    ],
+    "pitch_yz_mm": [
+      31,
+      31
+    ],
+    "face_size_mm": [
+      42,
+      42
+    ],
+    "plate_depth_mm": 8,
+    "face_x_mm": 166.5,
+    "center_y_mm": 28.5,
+    "center_z_mm": 6,
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "through_diameter_mm": 3.4,
+    "through_length_mm": 8
+  }
 }

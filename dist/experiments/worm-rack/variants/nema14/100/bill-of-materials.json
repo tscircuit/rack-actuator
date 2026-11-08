@@ -9,10 +9,10 @@
     "Standard flat enclosure cover"
   ],
   "hardware": [
-    "M3 heat-set insert output 163 24",
-    "M3 heat-set insert output 163 33",
-    "M3 heat-set insert output 172 24",
-    "M3 heat-set insert output 172 33",
+    "M3 heat-set insert output 13 -9.5",
+    "M3 heat-set insert output 13 21.5",
+    "M3 heat-set insert output 44 -9.5",
+    "M3 heat-set insert output 44 21.5",
     "625ZZ angled front -32.0",
     "M5 upper washer front -32.0",
     "M5x16 angled axle front -32.0",
@@ -94,5 +94,52 @@
   "M3_inserts": "4.6 mm OD \u00d7 5 mm length; 4.2 mm pilot",
   "M5_worm_inserts": "1 \u00d7 7 mm OD \u00d7 8 mm length; 6.6 mm pilot",
   "rear_motor_face_exposed_mm": 14.0,
-  "flat_standard_cover": true
+  "flat_standard_cover": true,
+  "output_mounting": {
+    "standard": "NEMA17 hole pattern",
+    "hole_axis": [
+      1,
+      0,
+      0
+    ],
+    "thread": "M3",
+    "count": 4,
+    "pattern_yz_mm": [
+      [
+        13.0,
+        -9.5
+      ],
+      [
+        13.0,
+        21.5
+      ],
+      [
+        44.0,
+        -9.5
+      ],
+      [
+        44.0,
+        21.5
+      ]
+    ],
+    "pitch_yz_mm": [
+      31,
+      31
+    ],
+    "face_size_mm": [
+      42,
+      42
+    ],
+    "plate_depth_mm": 8,
+    "face_x_mm": 166.5,
+    "center_y_mm": 28.5,
+    "center_z_mm": 6,
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "through_diameter_mm": 3.4,
+    "through_length_mm": 8
+  }
 }

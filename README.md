@@ -14,7 +14,7 @@ The viewer provides actuation, a staged exploded assembly, right-click part hidi
 
 A separate **NEMA17 / NEMA14 worm family** is available at **40, 100 and 150 mm stroke** in the [worm viewer](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/). The worm now fits directly on the unchanged motor shaft position. A lowered tooth strip on a ribbed rack spine eliminates both spur gears and one worm bearing. The remaining end support uses an M5 insert and bolt through a captured 625ZZ bearing.
 
-The **flat enclosure has the same dimensions, mounting-hole coordinates and mounting planes as the matching fully enclosed spur preset**. The worm contacts the underside of its matched compliant rack, retaining the guide profile and output mount. The motor body projects through the rear for back-face/controller access; its projection is listed separately in the viewer. These remain unprinted prototypes. See the [preset details, assembly sequence, source and checks](experiments/worm-rack/README.md). The twelve spur presets retain their geometry.
+The **flat enclosure has the same dimensions, mounting-hole coordinates and mounting planes as the matching fully enclosed spur preset**. The worm contacts the underside of its matched compliant rack, retaining the guide profile and output mount. The motor body projects through the rear for back-face/controller access; its projection is listed separately in the viewer. These remain unprinted prototypes. See the [preset details, assembly sequence, source and checks](experiments/worm-rack/README.md). All twelve spur presets and both worm tooth styles use the axial NEMA17 output plate.
 
 [![Enclosed NEMA17 40 mm worm-drive prototype with compatible mounting interfaces](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
@@ -111,15 +111,11 @@ M3 heat-set inserts default to **4.6 mm OD × 5 mm long**, with **4.2 mm printed
 | Front / rack exit (+X) | Housing width − 18 mm by motor depth − 10 mm | 0.3 mm recessed |
 | Side (+Y) | Housing length − 15 mm by motor depth − 10 mm | 0.3 mm recessed |
 | Top (+Z) | Housing length − 15 mm by housing width − 15 mm | Flush in full-height tray posts |
-| Moving output (+Z) | 9 × 9 mm in an 18 × 18 mm pad | 0.3 mm recessed |
+| Moving output (+X, along travel) | NEMA17: 31 × 31 mm on a 42 × 42 × 8 mm end plate | 0.3 mm recessed |
 
-The output pad is centered on the rack backbone. Its four insert pockets continue as **3.4 mm through-holes through the full 18 mm pad**. Either fit M3 inserts or skip them and use M3 through-bolts with washers and nuts. Choose bolt length for the pad, attachment, washers and nut engagement. Use application-length screws with **3–5 mm insert engagement**: 3.3–5.3 mm penetration from recessed faces, or 3–5 mm from the flush top face. Use the selected preset's STEP file and mounting metadata to lay out your fixture.
+The output pad is centered on the rack backbone. Its four insert pockets continue as **3.4 mm through-holes through the full 8 mm plate**. Either fit M3 inserts or skip them and use M3 through-bolts with washers and nuts. Choose bolt length for the pad, attachment, washers and nut engagement. Use application-length screws with **3–5 mm insert engagement**: 3.3–5.3 mm penetration from recessed faces, or 3–5 mm from the flush top face. Use the selected preset's mounting metadata to lay out your fixture.
 
-[![Top view of the centered output pad and its four M3 heat-set inserts on a 9 by 9 mm pattern](docs/images/output-mount.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema17&stroke=40&enclosure=enclosed)
-
-[![Underside of the output mount showing four M3 clearance holes through the pad](docs/images/output-through-holes.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema17&stroke=40&enclosure=enclosed)
-
-The fixed front face has four inserts outside the rack opening. A front fixture must clear the moving guide and the entire output pad at full retraction. At module 2, the minimum rectangular fixture opening spans **Y=18.5…41 mm, Z=−10…22 mm**. Top fixtures load the full-height tray posts; remove them before opening the lid.
+The fixed front face has four inserts outside the rack opening. A front fixture must clear the moving guide and the entire output pad at full retraction. At module 2, the minimum rectangular fixture opening spans the preset’s `frontFixtureOpeningYZ` metadata, including the end plate. Top fixtures load the full-height tray posts; remove them before opening the lid.
 
 [![Front view of the enclosure mounting inserts and the moving rack output](docs/images/front-mounts.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/?motor=nema17&stroke=40&enclosure=enclosed)
 
@@ -163,7 +159,7 @@ Rear chassis inserts sit **6 mm below the standoff tops**, clearing the neighbor
 | Printed part | Orientation / important detail |
 | --- | --- |
 | Chassis | Y normal to the bed, keeping the XZ flexure bending plane within the layers; use local supports at passages where needed |
-| Rack | Tooth face down; output pad rests on the same plane; keep relief slots clear |
+| Rack | End plate projects past both long faces; use supports beneath the rack, or print on the plate if build height and layer strength permit. Keep tooth reliefs clear. |
 | Pinion | Gear face down; finish the set-screw pilot with an M3 tap |
 | Tray | Outer floor down |
 | Lid | Roof down |
@@ -213,7 +209,7 @@ These are nominal command increments, not measured positioning accuracy. Stroke 
 
 The easiest route is to [open the site](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/), choose **Motor**, **Variant** and **Stroke preset**, then use **Downloads → CAD bundle**. Each bundle includes:
 
-- Five printable STL parts and a STEP assembly.
+- Five printable STL parts. STEP export is currently omitted from the hosted bundles.
 - Parametric CadQuery source and the selected configuration.
 - Hardware quantities, printing/assembly instructions and licenses.
 - Collision, guide and service-clearance reports.
@@ -276,7 +272,7 @@ python check_lid_screw_parking.py --all
 python package_designs.py
 ```
 
-The output through-hole update was checked as an exact material-removal change against the previously validated rack on all twelve presets. Each report records its prior full-check source hash and new hole/insert checks; unchanged motion and service-path results are retained. The worm experiment was also rechecked through motion and staged drive disassembly.
+The axial NEMA17 output update replaces only the former mounting pad. Exact solid differences confirm unchanged guide and tooth geometry. Continuous conservative swept bounds check the larger plate through full travel and every assembly translation stage; previous mechanism checks are retained with their original report hashes. New output-hole and insertion-access probes and watertight STL checks accompany each preset. The interface is the four-hole NEMA17 pattern; no motor pilot or shaft bore is added.
 
 Build caching is tied to source, motor, stroke and enclosure. Use a distinct output directory for custom models to keep the supplied presets intact.
 

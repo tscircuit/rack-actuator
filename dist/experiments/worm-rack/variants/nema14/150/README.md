@@ -6,7 +6,7 @@ NEMA17 and NEMA14 presets at **40, 100 and 150 mm stroke** retain the enclosure 
 
 [![Direct-shaft worm actuator](https://raw.githubusercontent.com/tscircuit/rack-actuator/main/docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
-The one-piece worm fits directly onto the motor D shaft. Both spur gears and the rear worm bearing are removed. The matched compliant tooth strip moves down **21 mm for NEMA17 / 19 mm for NEMA14**, joined to the original guide backbone by a deep web and triangular rib. The six guide bearings and four-hole output mount retain their positions. Smooth tooth reliefs and 0.10 mm oversize per flank remain.
+The one-piece worm fits directly onto the motor D shaft. Both spur gears and the rear worm bearing are removed. The matched compliant tooth strip moves down **21 mm for NEMA17 / 19 mm for NEMA14**, joined to the original guide backbone by a deep web and triangular rib. The six guide bearings retain their positions. The output is now a 42 × 42 × 8 mm end plate with the NEMA17 31 × 31 mm four-hole M3 pattern. Hole axes are parallel to travel (+X); insert seats are 0.3 mm recessed with 3.4 mm through-holes. No motor pilot or shaft bore is added. Smooth tooth reliefs and 0.10 mm oversize per flank remain.
 
 [![Integral D-shaft socket](https://raw.githubusercontent.com/tscircuit/rack-actuator/main/docs/images/worm-direct-socket.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
@@ -79,9 +79,21 @@ The **Explode drive** slider reverses this sequence: remove the lid, turn the wo
 
 ## Printing and validation
 
-Chassis STL flexures are unloaded. The rack and cover are oriented top-face down; the rack rib tapers inward in that orientation. The worm prints vertically. Inspect helical flanks, motor aperture and rear opening in your slicer for support requirements. Print the tooth coupon first. Longer worms need care with straightness and torsional stiffness.
+Chassis STL flexures are unloaded. The nominal leaf span is now **18 mm**, increased from 14 mm. The fixed-root and inner axle-carrier transitions have **5 mm unloaded radii**, increased from 2 mm, while retaining the broad **1.8 mm leaf thickness**. The bearing-facing transition remains **2 mm** to preserve roller clearance. The rounded profiles are part of the unloaded spring geometry and deform with its prescribed bend; they are not regenerated as constant-radius fillets on every loaded pose. The spring bays extend 4 mm toward their roots, retaining the bearing positions.
 
-Each ZIP includes ordinary STEP/STLs, CadQuery source, configuration, mounting coordinates, BOM and a fresh validation report. Standalone compressed CAD files live in [`downloads/worm`](https://github.com/tscircuit/rack-actuator/tree/main/downloads/worm). Production spur geometry is unchanged.
+These changes need print testing for spring force, elastic recovery and fatigue. The viewer uses prescribed displacement, not an elastic simulation.
+
+Both spring bays reserve **0.8 mm clearance from the added worm supports** throughout **0–2.6 mm prescribed deflection**, including the bearing bridge and the material beneath it. Independent checks include the rounded spring transitions and detect interference inside the integral chassis, which ordinary separate-part collision checks cannot detect.
+
+The motor mount now has **two 5 mm side webs**, joining the faceplate to the rear bridge and forming a deep U-section with the existing support floor. Their **2 mm tangent floor roots** and 3 mm rounded upper corners avoid abrupt projecting transitions. This adds a second load path around the thin upright while retaining the shaft-withdrawal bore, motor screw pockets, guide hardware access and spring envelopes. Validation records the added material and before/after section areas; these geometric comparisons are not stiffness or load ratings.
+
+For the **NEMA17 / 40 mm worm preset**, the two indicated regions are joined by one **face-aligned U-shaped upper flange**. Its full-width motor-plate cap and both side shoulders share the chassis platform's **Z = 4 mm** top plane. The nominal section is **8 mm deep**, with **5.7 mm nominal neck widths**, **4 mm inside corner radii**, **1 mm edge rounds**, and smoothly flared joins into the fixed chassis. The marked points identify connection regions; they do not define individual beam axes or heights. Fastener and motion envelopes trim the final shape. A tapered 5 mm wide outer brace continues to reinforce the upright at **(−43, −19.818, −4.103) mm**, with a checked solid ligament extending 7 mm behind that face. Other motor/stroke presets retain their existing motor supports.
+
+Motor-bolt service openings provide access to the upper bolts from above and the lower bolts through underside ports, with Ø8 mm head pockets. This preserves the deep side webs. With the lid and rack removed and space underneath the tray, the geometric access check uses a **compact 2.5 mm hex key with an 8 mm short-leg reach and a 40 mm long leg**, sweeping outward through 60° and following the first 5.5 mm of screw release (until the motor threads are disengaged); then withdraw the loose bolts by hand to 11 mm. Check your actual tool against these dimensions. The two internal tray support screws move 27 mm forward, into the fixed chassis region, to keep their inserts clear of the service openings and their access holes clear of the upper bridges. **Use the updated chassis and matching enclosure tray together**; their external enclosure bounds and mounting datums are preserved. Print/load testing is still required to establish stiffness or strength.
+
+The rack and cover are oriented top-face down; the rack rib tapers inward in that orientation. The worm prints vertically. Inspect helical flanks, motor aperture and rear opening in your slicer for support requirements. Print the tooth coupon first. Longer worms need care with straightness and torsional stiffness.
+
+Each ZIP includes ready-to-print STLs, CadQuery source, configuration, mounting coordinates, BOM and a fresh validation report. The viewer serves the revised chassis and matching tray STLs directly from the current Site version. STEP export is optional with `--step`; these published bundles prioritize STL downloads and do not include STEP files. Other standalone compressed CAD files live in [`downloads/worm`](https://github.com/tscircuit/rack-actuator/tree/main/downloads/worm). Production spur geometry is unchanged.
 
 Checks cover valid single solids, assembled solid pairs, insert fit, bearing capture, worm/rack engagement, full-stroke motion, enclosure and mounting equality, tool access, guide installation and staged drive separation. FCL screens fine CAD tessellations; OCC confirms candidate interference volumes. Insert interference and compliant tooth preload are intentional. Explosion translations are sampled at no more than 0.5 mm increments, with separate dense worm phase checks. These are sampled geometric checks, not continuous-motion proof, elastic simulation or physical testing.
 
@@ -90,8 +102,29 @@ Run these commands from a full repository checkout; validation compares against 
 ```sh
 pip install -r experiments/worm-rack/requirements.txt
 python experiments/worm-rack/model.py --motor nema17 --stroke 40 --check
-python experiments/worm-rack/build_presets.py --jobs 2 --skip-valid
+python experiments/worm-rack/build_presets.py --motor nema17 --stroke 40 --skip-valid
+# Omit --motor and --stroke to rebuild the entire worm family.
+# Optional full STEP export: add --step to either build command.
 python -m http.server 8000 --directory dist
 ```
 
 Open `http://localhost:8000/experiments/worm-rack/`. This experiment remains separate from the standard spur models.
+
+The upper flange rails move toward the motor centerline, leaving 5 mm from each upper bolt axis to the nominal outer neck edge. Rack clearance trims the inner edge. All four M3×10 bolts now withdraw 11 mm to clear the faceplate completely, then the upper pair lifts 60 mm and the lower pair drops 50 mm through the tray ports. The viewer can replay either removal or insertion; insertion reverses the same path. Validation checks continuous swept shaft/head solids against the staged assembly, plus the full sampled explosion sequence. These revised underside ports require the matching updated tray.
+
+## Reinforced compliant and solid rack options
+
+The Rack teeth selector offers two replacement racks for every NEMA17 / NEMA14 and 40 / 100 / 150 mm preset. Both retain the original bearing guide and actuator mounting interface. The selected rack STL and coupon are served directly by the site; the full bundle contains both rack STLs and both check reports.
+
+- Reinforced compliant: nominal axial wall thickness increases from 0.6 to 0.9 mm. A rounded closed tip joins the two walls. The outside mating profile and 0.1 mm geometric preload per flank are retained. The thicker walls and closed tip are intended to improve strength; stiffness, fit and durability still need physical testing.
+- Solid: removes the internal tooth slots and between-tooth root reliefs. The tooth root is continuous. The mating flanks are relieved by 0.1 mm relative to the nominal profile instead of applying interference preload; backlash can result.
+
+Print the matching tooth-fit coupon first to check engagement with the existing worm. There is no load, fatigue or wear rating for either new tooth design.
+
+Rebuild the baseline chassis with the existing model/build-presets command, then run `python experiments/worm-rack/teeth_variants.py --motor nema17 --stroke 40`, substituting the selected motor and stroke. The generator verifies matching baseline provenance, reuses unchanged assembly checks, and checks the entire changed tooth band against other parts through motion and disassembly. A solid difference check verifies that the rest of the rack matches the baseline. It separately checks the nominal compliant or actual solid teeth against the worm, with additional full-rack solid checks.
+
+For a complete hosted-site rebuild, first run `python deduplicate_downloads.py` to share the unchanged spur STEP files already contained in their ZIP bundles. After generating all six worm presets, run `python experiments/worm-rack/package_teeth.py` to update the build notes and deduplicate hosted downloads. The site extracts the selected rack or coupon from the matching ZIP and checks its CRC32; the download is an ordinary STL.
+
+## Axial output plate
+
+Both reinforced and solid racks have the same NEMA17 end interface. The plate stays 1.5 mm outside the enclosure at full retraction. Exact solid differences preserve the tooth and guide geometry; continuous conservative swept-bound checks cover the new plate through travel and staged assembly. Use supports under the rack if printing on its long face, since the plate extends past both long faces. STEP files are omitted; STL downloads and the CAD source are updated.

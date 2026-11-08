@@ -36,6 +36,7 @@ tray=tray.cut(xcyl(6.2,right+1-26.15,26.15))
 # The top inserts retain their original positions on the supported upper webs.
 tray=tray.cut(rect(MOTOR_REAR-1,MOTOR_FRONT+.8,MOTOR_Y-MOTOR_SIZE/2-.8,MOTOR_Y+MOTOR_SIZE/2+.8,MOTOR_Z-MOTOR_SIZE/2-.8,MOTOR_Z+MOTOR_SIZE/2+.8))
 for y,z in motor_holes:tray=tray.cut(xcyl(3.55,22,MOTOR_FRONT-6,y,z))
+tray=clear_motor_service(tray)
 tray=tray.clean();cover=cover.clean()
 parts.extend([record(TRAY_NAME,tray,'#314959','tray',True),record(COVER_NAME,cover,'#d4dee5','cover',True)])
 CASE_BOUNDS=[old_left,right,ymin,ymax,bottom,top]
@@ -44,6 +45,6 @@ MOUNTING={
  'top':{'xy':ns['CASE_CORNERS'],'planeZ':top,'thread':'M3'},
  'side':{'xz':ns['CASE_MOUNTS'],'planeY':ymax,'thread':'M3'},
  'front':{'yz':ns['FRONT_MOUNTS'],'planeX':right,'thread':'M3'},
- 'output':{'xy':ns['OUTPUT_MOUNTS'],'planeZ':ns['OUTPUT_PAD_TOP'],'thread':'M3','throughDiameter':ns['OUTPUT_THROUGH_DIAMETER']},
+ 'output':{'yz':ns['OUTPUT_MOUNTS'],'planeX':ns['OUTPUT_FACE_X'],'axis':[1,0,0],'pitch':[31,31],'faceSize':[42,42],'depth':ns['OUTPUT_PAD_DEPTH'],'thread':'M3','throughDiameter':ns['OUTPUT_THROUGH_DIAMETER']},
  'originalCaseBounds':CASE_BOUNDS,'rearExtension':0,
  'note':'Enclosure bounds, mounting-hole centers and face planes match the enclosed spur actuator. Flat cover. Motor body projects through the rear aperture; allow room for its exposed back and controller.'}

@@ -7,5 +7,53 @@
   "motor_depth": 40.0,
   "insert_od": 4.6,
   "insert_length": 5.0,
-  "insert_pilot": 4.2
+  "insert_pilot": 4.2,
+  "step_exported": false,
+  "output_mount": {
+    "standard": "NEMA17 hole pattern",
+    "hole_axis": [
+      1,
+      0,
+      0
+    ],
+    "thread": "M3",
+    "count": 4,
+    "pattern_yz_mm": [
+      [
+        13.0,
+        -9.5
+      ],
+      [
+        13.0,
+        21.5
+      ],
+      [
+        44.0,
+        -9.5
+      ],
+      [
+        44.0,
+        21.5
+      ]
+    ],
+    "pitch_yz_mm": [
+      31,
+      31
+    ],
+    "face_size_mm": [
+      42,
+      42
+    ],
+    "plate_depth_mm": 8,
+    "face_x_mm": 86.5,
+    "center_y_mm": 28.5,
+    "center_z_mm": 6,
+    "insert_recess_mm": 0.3,
+    "thread_engagement_mm": [
+      3,
+      5.0
+    ],
+    "through_diameter_mm": 3.4,
+    "through_length_mm": 8
+  }
 }

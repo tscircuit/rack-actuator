@@ -303,11 +303,24 @@ set_screw=set_screw.translate((0,MOTOR_Y,0))
 add('M3x4 flat-point pinion set screw',set_screw,'#9da9b3','set_screw')
 # Uncapped, oversize tooth walls with central AND between-tooth root reliefs.
 L=a.stroke+RACK_EXTRA;left=-L/2;right=L/2+OUTPUT_EXTENSION;pitch=math.pi*m;alpha=math.tan(math.radians(PRESSURE_ANGLE));wall=.6
-OUTPUT_PAD_SIZE=18.;OUTPUT_PAD_Y=(ROOT_Y+BACK_Y)/2;OUTPUT_PAD_BOTTOM=3.;OUTPUT_PAD_TOP=21.
-OUTPUT_MOUNT_PITCH=9.;OUTPUT_INSERT_RECESS=.3
+OUTPUT_PAD_SIZE=42.;OUTPUT_PAD_DEPTH=8.;OUTPUT_PAD_Y=(ROOT_Y+BACK_Y)/2;OUTPUT_PAD_Z=6.
+OUTPUT_PAD_BOTTOM=OUTPUT_PAD_Z-OUTPUT_PAD_SIZE/2;OUTPUT_PAD_TOP=OUTPUT_PAD_Z+OUTPUT_PAD_SIZE/2
+OUTPUT_FACE_X=right+OUTPUT_PAD_DEPTH;OUTPUT_MOUNT_PITCH=31.;OUTPUT_INSERT_RECESS=.3
 OUTPUT_THROUGH_DIAMETER=3.4
-OUTPUT_MOUNTS=[(right+OUTPUT_PAD_SIZE/2+dx,OUTPUT_PAD_Y+dy) for dx in [-OUTPUT_MOUNT_PITCH/2,OUTPUT_MOUNT_PITCH/2] for dy in [-OUTPUT_MOUNT_PITCH/2,OUTPUT_MOUNT_PITCH/2]]
+OUTPUT_MOUNTS=[(OUTPUT_PAD_Y+dy,OUTPUT_PAD_Z+dz) for dy in [-15.5,15.5] for dz in [-15.5,15.5]]
 OUTPUT_INSERTS=[]
+def output_cylinder(radius,length,x,y,z):return acyl(radius,length,(x,y,z),(1,0,0))
+def make_output_plate():
+ # End-face NEMA17 interface; the entire plate remains outside the exit at home.
+ pad=box(OUTPUT_PAD_DEPTH,OUTPUT_PAD_SIZE,OUTPUT_PAD_SIZE,(right+OUTPUT_PAD_DEPTH/2,OUTPUT_PAD_Y,OUTPUT_PAD_Z))
+ pad=cq.Workplane(obj=pad).edges('|X').fillet(2).val()
+ for y,z in OUTPUT_MOUNTS:
+  face=OUTPUT_FACE_X-OUTPUT_INSERT_RECESS
+  pad=pad.cut(output_cylinder(OUTPUT_THROUGH_DIAMETER/2,OUTPUT_PAD_DEPTH+.2,right-.1,y,z))
+  pad=pad.cut(output_cylinder(INSERT_PILOT/2,INSERT_LENGTH+.4+OUTPUT_INSERT_RECESS+.1,face-INSERT_LENGTH-.4,y,z))
+  pad=pad.cut(output_cylinder(INSERT_OD/2+.1,OUTPUT_INSERT_RECESS+.1,face,y,z))
+ return pad.clean()
+
 centers=[i*pitch for i in range(-TOOTH_HALF_COUNT,TOOTH_HALF_COUNT+1)]
 def make_rack(preload):
  half=lambda y:pitch/4+(y-PITCH_Y)*alpha+preload
@@ -334,15 +347,8 @@ def make_rack(preload):
  # Beveled faces carry downward/inward reactions; the bottom is a flat raceway.
  rack=rack.fuse(rail_shape(right-left).translate(((left+right)/2,0,0)))
  # Square insertion end: no ramp/chamfer cut. The roller rim cams the spring down.
- # The pad shares the Z=21 tooth face, so it starts on the print bed.
- pad=box(OUTPUT_PAD_SIZE,OUTPUT_PAD_SIZE,OUTPUT_PAD_TOP-OUTPUT_PAD_BOTTOM,(right+OUTPUT_PAD_SIZE/2,OUTPUT_PAD_Y,(OUTPUT_PAD_TOP+OUTPUT_PAD_BOTTOM)/2))
- for x,y in OUTPUT_MOUNTS:
-  face=OUTPUT_PAD_TOP-OUTPUT_INSERT_RECESS
-  # Retain the insert seat; open an M3 clearance passage through the entire pad.
-  pad=pad.cut(cyl(OUTPUT_THROUGH_DIAMETER/2,OUTPUT_PAD_TOP-OUTPUT_PAD_BOTTOM+.2,x,y,OUTPUT_PAD_BOTTOM-.1))
-  pad=pad.cut(cyl(INSERT_PILOT/2,INSERT_LENGTH+.4+OUTPUT_INSERT_RECESS+.1,x,y,face-INSERT_LENGTH-.4))
-  pad=pad.cut(cyl(INSERT_OD/2+.1,OUTPUT_INSERT_RECESS+.1,x,y,face))
- rack=rack.fuse(pad)
+ # NEMA17 end plate: mounting axes are parallel to rack travel (+X).
+ rack=rack.fuse(make_output_plate())
  # Head relief is open at the insertion end and stops at the required travel envelope.
  # The output end and mounting pad remain solid; leave only the requested head margin.
  slot_end=max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP
@@ -356,12 +362,12 @@ def make_rack(preload):
 central_relief_radius=pitch/4+1.25*m*alpha+a.preload-wall
 intertooth_relief_radius=(pitch-2*(central_relief_radius+wall))/2
 rack=make_rack(a.preload);add('04 Beveled compliant rack',rack,'#42d6ba','rack',True)
-for x,y in OUTPUT_MOUNTS:
- face=OUTPUT_PAD_TOP-OUTPUT_INSERT_RECESS
- insert=cyl(INSERT_OD/2,INSERT_LENGTH,x,y,face-INSERT_LENGTH).cut(cyl(1.6,INSERT_LENGTH,x,y,face-INSERT_LENGTH))
- name=f'M3 heat-set insert output {x:g} {y:g}'
+for y,z in OUTPUT_MOUNTS:
+ face=OUTPUT_FACE_X-OUTPUT_INSERT_RECESS
+ insert=output_cylinder(INSERT_OD/2,INSERT_LENGTH,face-INSERT_LENGTH,y,z).cut(output_cylinder(1.6,INSERT_LENGTH,face-INSERT_LENGTH,y,z))
+ name=f'M3 heat-set insert output {y:g} {z:g}'
  add(name,insert,'#d4a54a','rack');parts[-1]['embedded_host']='04 Beveled compliant rack'
- OUTPUT_INSERTS.append(dict(name=name,position=[x,y,face],axis=[0,0,1],purpose='output mount'))
+ OUTPUT_INSERTS.append(dict(name=name,position=[face,y,z],axis=[1,0,0],purpose='NEMA17 output mount'))
 
 for p in UPPER:
  c,u,side=p['center'],p['axis'],p['side'];tag=f'{side} {p["x"]}'
@@ -538,7 +544,7 @@ for x in REAR_MOUNT_XS:
 tray_boxes += [bounds_box(x-5,x+5,CASE_YMAX-SIDE_BOSS_DEPTH,CASE_YMAX,CASE_BOTTOM,1.) for x in [CASE_LEFT+7.5,CASE_RIGHT-7.5]]+tray_webs
 
 
-FRONT_FIXTURE_OPENING=[min(ROOT_Y,24,OUTPUT_PAD_Y-OUTPUT_PAD_SIZE/2)-1,max(BACK_Y,40,OUTPUT_PAD_Y+OUTPUT_PAD_SIZE/2)+1,-10,22]
+FRONT_FIXTURE_OPENING=[min(ROOT_Y,24,OUTPUT_PAD_Y-OUTPUT_PAD_SIZE/2)-1,max(BACK_Y,40,OUTPUT_PAD_Y+OUTPUT_PAD_SIZE/2)+1,min(-10,OUTPUT_PAD_BOTTOM)-1,max(22,OUTPUT_PAD_TOP)+1]
 
 # Clear obsolete generated meshes rather than leave old-bearing parts in the bundle.
 if not a.skip_export:
@@ -554,7 +560,7 @@ if not a.skip_export:
  assembly.save(str(out/'downloads'/(LABEL+'.step')))
  bounds=[p['shape'].BoundingBox() for p in parts]
  envelope=[max(getattr(b,k+'max') for b in bounds)-min(getattr(b,k+'min') for b in bounds) for k in ['x','y','z']]
- data={'geometrySourceSha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_text().split('\n# Clear obsolete generated meshes')[0].encode()).hexdigest(),'revision':24,'enclosureVariant':a.enclosure,'enclosedHousingLength':ENCLOSED_MIN_CASE_LENGTH,'rearOpeningYZ':REAR_OPENING_YZ if PASS_THROUGH else None,'maximumRearProjection':max(0,CASE_LEFT-(left-a.stroke/2)),'envelope':envelope,'motor':MOTOR_NAME,'motorSize':MOTOR_SIZE,'motorPitch':MOTOR_PITCH,'motorDepth':MOTOR_DEPTH,'rotationPivot':list(PIVOT),'pinionTeeth':N,'pressureAngle':PRESSURE_ANGLE,'withdrawal':WITHDRAW,'bearingClearance':BEARING_GAP,'hardwareClearance':HARDWARE_GAP,'chassisFootprint':[CHASSIS_WIDTH,CHASSIS_REAR-CHASSIS_FRONT],'stroke':a.stroke,'rackLength':right-left,'rackLeft':left,'rackRight':right,'rackWithdrawalStart':.10,'rackWithdrawalEnd':.28,'toothModule':MODULE,'toothPitch':pitch,'actuatorLength':CASE_LENGTH,'minimumActuatorLength':MIN_CASE_LENGTH,'caseBounds':[CASE_LEFT,CASE_RIGHT,CASE_YMIN,CASE_YMAX,CASE_BOTTOM,CASE_TOP],'caseMounts':CASE_MOUNTS,'frontMounts':FRONT_MOUNTS,'frontMountX':CASE_RIGHT,'frontMountInsertRecess':FRONT_INSERT_RECESS,'frontFixtureOpeningYZ':FRONT_FIXTURE_OPENING,'sideMountThread':'M3','sideMountY':CASE_YMAX,'sideMountInsertRecess':SIDE_INSERT_RECESS,'topMounts':CASE_CORNERS,'topMountZ':CASE_TOP,'coverScrewCount':len(COVER_SEATS),'insertCount':len(INSERTS)+len(OUTPUT_INSERTS),'enclosureInsertCount':len(INSERTS),'outputInsertCount':len(OUTPUT_INSERTS),'outputMounts':OUTPUT_MOUNTS,'outputMountPitch':OUTPUT_MOUNT_PITCH,'outputMountZ':OUTPUT_PAD_TOP,'outputPadCenterY':OUTPUT_PAD_Y,'rackBackboneCenterY':(ROOT_Y+BACK_Y)/2,'outputPadSize':[OUTPUT_PAD_SIZE,OUTPUT_PAD_SIZE,OUTPUT_PAD_TOP-OUTPUT_PAD_BOTTOM],'outputInsertRecess':OUTPUT_INSERT_RECESS,'outputThroughDiameter':OUTPUT_THROUGH_DIAMETER,'insertOD':INSERT_OD,'insertLength':INSERT_LENGTH,'insertPilot':INSERT_PILOT,'motorRearZ':-8-MOTOR_DEPTH,'driverOpening':[MOTOR_SIZE+2,MOTOR_SIZE+2],'toothTravelRight':TOOTH_XMAX+a.stroke/2,'rackBackboneWidth':a.rack_backbone_width,'headReliefEndX':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solidRackEndLength':right-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'squareInsertionEnd':True,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'chassisReleaseShift':10.,'chassisReleaseLift':6.,'lowerAxleServiceRetraction':10.,'bearingStationRule':'fixed rear station; front station follows exit','exitBearingRimOffset':EXIT_BEARING_OFFSET-8,'stationSpacing':FRONT_STATION-REAR_STATION,'stationXs':STATIONS,'exitBearingOffset':EXIT_BEARING_OFFSET,'chassisScrewCount':len(CHASSIS_MOUNTS),'rearChassisScrewCount':len(REAR_MOUNT_XS),'rearChassisScrewLength':16,'rearChassisInsertRecess':6,'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springLeafLength':LEAF_LENGTH,'springLeafWidth':FLOOR_WIDTH,'springLeafSlopeDeg':math.degrees(math.atan(1.5*SPRING_PRELOAD/LEAF_LENGTH)),'springTravelCheck':SPRING_CHECK_TRAVEL,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
+ data={'geometrySourceSha256':__import__('hashlib').sha256(pathlib.Path(__file__).read_text().split('\n# Clear obsolete generated meshes')[0].encode()).hexdigest(),'revision':24,'enclosureVariant':a.enclosure,'enclosedHousingLength':ENCLOSED_MIN_CASE_LENGTH,'rearOpeningYZ':REAR_OPENING_YZ if PASS_THROUGH else None,'maximumRearProjection':max(0,CASE_LEFT-(left-a.stroke/2)),'envelope':envelope,'motor':MOTOR_NAME,'motorSize':MOTOR_SIZE,'motorPitch':MOTOR_PITCH,'motorDepth':MOTOR_DEPTH,'rotationPivot':list(PIVOT),'pinionTeeth':N,'pressureAngle':PRESSURE_ANGLE,'withdrawal':WITHDRAW,'bearingClearance':BEARING_GAP,'hardwareClearance':HARDWARE_GAP,'chassisFootprint':[CHASSIS_WIDTH,CHASSIS_REAR-CHASSIS_FRONT],'stroke':a.stroke,'rackLength':right-left,'rackLeft':left,'rackRight':right,'rackWithdrawalStart':.10,'rackWithdrawalEnd':.28,'toothModule':MODULE,'toothPitch':pitch,'actuatorLength':CASE_LENGTH,'minimumActuatorLength':MIN_CASE_LENGTH,'caseBounds':[CASE_LEFT,CASE_RIGHT,CASE_YMIN,CASE_YMAX,CASE_BOTTOM,CASE_TOP],'caseMounts':CASE_MOUNTS,'frontMounts':FRONT_MOUNTS,'frontMountX':CASE_RIGHT,'frontMountInsertRecess':FRONT_INSERT_RECESS,'frontFixtureOpeningYZ':FRONT_FIXTURE_OPENING,'sideMountThread':'M3','sideMountY':CASE_YMAX,'sideMountInsertRecess':SIDE_INSERT_RECESS,'topMounts':CASE_CORNERS,'topMountZ':CASE_TOP,'coverScrewCount':len(COVER_SEATS),'insertCount':len(INSERTS)+len(OUTPUT_INSERTS),'enclosureInsertCount':len(INSERTS),'outputInsertCount':len(OUTPUT_INSERTS),'outputMounts':OUTPUT_MOUNTS,'outputMountPitch':OUTPUT_MOUNT_PITCH,'outputMountX':OUTPUT_FACE_X,'outputMountAxis':[1,0,0],'outputMountPlane':'YZ','outputPadDepth':OUTPUT_PAD_DEPTH,'outputPadCenterZ':OUTPUT_PAD_Z,'outputPadCenterY':OUTPUT_PAD_Y,'rackBackboneCenterY':(ROOT_Y+BACK_Y)/2,'outputPadSize':[OUTPUT_PAD_SIZE,OUTPUT_PAD_SIZE,OUTPUT_PAD_DEPTH],'outputInsertRecess':OUTPUT_INSERT_RECESS,'outputThroughDiameter':OUTPUT_THROUGH_DIAMETER,'insertOD':INSERT_OD,'insertLength':INSERT_LENGTH,'insertPilot':INSERT_PILOT,'motorRearZ':-8-MOTOR_DEPTH,'driverOpening':[MOTOR_SIZE+2,MOTOR_SIZE+2],'toothTravelRight':TOOTH_XMAX+a.stroke/2,'rackBackboneWidth':a.rack_backbone_width,'headReliefEndX':max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP,'solidRackEndLength':right-(max(STATIONS)+a.stroke/2+4.75+HARDWARE_GAP),'squareInsertionEnd':True,'pitchRadius':rp,'shaftDiameter':a.shaft_diameter,'shaftFlatDepth':a.shaft_flat_depth,'shaftClearance':a.shaft_clearance,'boreDiameter':2*BORE_R,'boreFlatY':BORE_FLAT_Y,'setScrewZ':SET_Z,'chassisReleaseShift':10.,'chassisReleaseLift':6.,'lowerAxleServiceRetraction':10.,'bearingStationRule':'fixed rear station; front station follows exit','exitBearingRimOffset':EXIT_BEARING_OFFSET-8,'stationSpacing':FRONT_STATION-REAR_STATION,'stationXs':STATIONS,'exitBearingOffset':EXIT_BEARING_OFFSET,'chassisScrewCount':len(CHASSIS_MOUNTS),'rearChassisScrewCount':len(REAR_MOUNT_XS),'rearChassisScrewLength':16,'rearChassisInsertRecess':6,'upperBearingAngle':45,'springPreload':SPRING_PRELOAD,'springThickness':SPRING_THICKNESS,'springLeafLength':LEAF_LENGTH,'springLeafWidth':FLOOR_WIDTH,'springLeafSlopeDeg':math.degrees(math.atan(1.5*SPRING_PRELOAD/LEAF_LENGTH)),'springTravelCheck':SPRING_CHECK_TRAVEL,'rampLength':RAMP_LENGTH,'rampRise':RAMP_RISE,'lowerContactY':[31,33],'chassisMounts':CHASSIS_MOUNTS,'bearingType':'625ZZ','bearingCount':6,'preloadPerFlank':a.preload,'wallThickness':wall,'rootRelief':'tangent semicircular end caps','centralReliefRadius':central_relief_radius,'intertoothReliefRadius':intertooth_relief_radius,'tracks':tracks,'stages':stages,'parts':scene}
  # Exact sampled CAD states preserve wall fillets while the floors relax.
  states=[]
  for l,r in [(SPRING_PRELOAD*k/12,0) for k in range(1,13)]+[(SPRING_PRELOAD,SPRING_PRELOAD*k/12) for k in range(1,13)]:
@@ -583,7 +589,7 @@ if a.check:
   cover_boxes=[q for b in cover_boxes for q in subtract_box(b,rear_portal_box)]
  # The rack's teeth sit above the tray opening, while its lower guide runs
  # through it. Separate boxes avoid treating that empty corner as material.
- rack_boxes=[(left,right,TIP_Y-.001,BACK_Y,13,21),(left,right,24,40,-9,14),(right,right+OUTPUT_PAD_SIZE,OUTPUT_PAD_Y-OUTPUT_PAD_SIZE/2,OUTPUT_PAD_Y+OUTPUT_PAD_SIZE/2,OUTPUT_PAD_BOTTOM,OUTPUT_PAD_TOP)]
+ rack_boxes=[(left,right,TIP_Y-.001,BACK_Y,13,21),(left,right,24,40,-9,14),(right,right+OUTPUT_PAD_DEPTH,OUTPUT_PAD_Y-OUTPUT_PAD_SIZE/2,OUTPUT_PAD_Y+OUTPUT_PAD_SIZE/2,OUTPUT_PAD_BOTTOM,OUTPUT_PAD_TOP)]
  shape_boxes={id(cover):cover_boxes,id(tray):tray_boxes,id(rack):rack_boxes}
  def boxes_disjoint(b,c):return b[1]<=c[0]+1e-7 or c[1]<=b[0]+1e-7 or b[3]<=c[2]+1e-7 or c[3]<=b[2]+1e-7 or b[5]<=c[4]+1e-7 or c[5]<=b[4]+1e-7
  # Placed solids are immutable. Retain the shape with its cached bounds so
@@ -610,27 +616,27 @@ if a.check:
    if all(boxes_disjoint(b,c) for b in sb for c in tb):return 0.
   if boxes_disjoint(solid_box(s),solid_box(t)):return 0.
   return max(0,s.intersect(t).Volume())
- # Check the output pockets before the longer motion/explosion scan.
+ # Check the end-facing insert pockets and screw access from the output side.
  output_insert_checks=[]
  for spec in OUTPUT_INSERTS:
-  p=next(p for p in parts if p['name']==spec['name']);x,y,face=spec['position']
+  p=next(p for p in parts if p['name']==spec['name']);face,y,z=spec['position']
   embedded=overlap(p['shape'],rack)
   nominal=math.pi*((INSERT_OD/2)**2-(INSERT_PILOT/2)**2)*INSERT_LENGTH
   assert abs(embedded-nominal)<.02,('Output insert interference',spec,embedded,nominal)
-  approach=overlap(cyl(INSERT_OD/2,30,x,y,face),rack)
+  approach=overlap(output_cylinder(INSERT_OD/2,30,face,y,z),rack)
   assert approach<.01,('Output insert installation blocked',spec)
-  screw=cyl(1.5,INSERT_LENGTH+OUTPUT_INSERT_RECESS,x,y,face-INSERT_LENGTH)
-  assert overlap(screw,rack)<.01,('Output screw bottoms in pad',spec)
-  backing=face-INSERT_LENGTH-.4-OUTPUT_PAD_BOTTOM
-  backing_probe=cyl(INSERT_PILOT/2,backing,x,y,OUTPUT_PAD_BOTTOM).cut(cyl(OUTPUT_THROUGH_DIAMETER/2,backing,x,y,OUTPUT_PAD_BOTTOM))
+  screw=output_cylinder(1.5,INSERT_LENGTH+OUTPUT_INSERT_RECESS,face-INSERT_LENGTH,y,z)
+  assert overlap(screw,rack)<.01,('Output screw bottoms in plate',spec)
+  backing=face-INSERT_LENGTH-.4-right
+  backing_probe=output_cylinder(INSERT_PILOT/2,backing,right,y,z).cut(output_cylinder(OUTPUT_THROUGH_DIAMETER/2,backing,right,y,z))
   assert abs(overlap(backing_probe,rack)-backing_probe.Volume())<.01,('Output pocket lacks annular backing',spec)
-  passage=cyl(OUTPUT_THROUGH_DIAMETER/2,OUTPUT_PAD_TOP-OUTPUT_PAD_BOTTOM+.2,x,y,OUTPUT_PAD_BOTTOM-.1)
+  passage=output_cylinder(OUTPUT_THROUGH_DIAMETER/2,OUTPUT_PAD_DEPTH+.2,right-.1,y,z)
   passage_overlap=overlap(passage,rack)
   assert passage_overlap<.01,('Output through-hole blocked',spec)
   output_insert_checks.append(dict(position_mm=spec['position'],installation_axis=spec['axis'],interference_mm3=embedded,approach_intersection_mm3=approach,annular_backing_mm=backing,through_diameter_mm=OUTPUT_THROUGH_DIAMETER,through_passage_intersection_mm3=passage_overlap))
  assert (OUTPUT_PAD_SIZE-OUTPUT_MOUNT_PITCH-INSERT_OD)/2>=2-1e-8
- assert right-a.stroke/2-CASE_RIGHT>=1.5-1e-8,'Output pad enters the enclosure'
- output_mount_check=dict(center_y_mm=OUTPUT_PAD_Y,rack_backbone_center_y_mm=(ROOT_Y+BACK_Y)/2,thread='M3',count=4,pattern_xy_mm=OUTPUT_MOUNTS,pitch_xy_mm=[OUTPUT_MOUNT_PITCH,OUTPUT_MOUNT_PITCH],pad_size_mm=[OUTPUT_PAD_SIZE,OUTPUT_PAD_SIZE,OUTPUT_PAD_TOP-OUTPUT_PAD_BOTTOM],face_z_mm=OUTPUT_PAD_TOP,insert_recess_mm=OUTPUT_INSERT_RECESS,thread_engagement_mm=[3,INSERT_LENGTH],through_diameter_mm=OUTPUT_THROUGH_DIAMETER,through_length_mm=OUTPUT_PAD_TOP-OUTPUT_PAD_BOTTOM,mounting_options=['M3 heat-set insert','M3 through-bolt with washers and nut'],minimum_knurl_edge_wall_mm=(OUTPUT_PAD_SIZE-OUTPUT_MOUNT_PITCH-INSERT_OD)/2,minimum_retracted_enclosure_gap_mm=right-a.stroke/2-CASE_RIGHT,checks=output_insert_checks)
+ assert right-a.stroke/2-CASE_RIGHT>=1.5-1e-8,'Output plate enters the enclosure'
+ output_mount_check=dict(center_y_mm=OUTPUT_PAD_Y,center_z_mm=OUTPUT_PAD_Z,rack_backbone_center_y_mm=(ROOT_Y+BACK_Y)/2,standard='NEMA17 hole pattern',hole_axis=[1,0,0],thread='M3',count=4,pattern_yz_mm=OUTPUT_MOUNTS,pitch_yz_mm=[31,31],pad_size_mm=[42,42,OUTPUT_PAD_DEPTH],face_x_mm=OUTPUT_FACE_X,insert_recess_mm=OUTPUT_INSERT_RECESS,thread_engagement_mm=[3,INSERT_LENGTH],through_diameter_mm=OUTPUT_THROUGH_DIAMETER,through_length_mm=OUTPUT_PAD_DEPTH,mounting_options=['M3 heat-set insert','M3 through-bolt with washers and nut'],minimum_knurl_edge_wall_mm=(OUTPUT_PAD_SIZE-OUTPUT_MOUNT_PITCH-INSERT_OD)/2,minimum_retracted_enclosure_gap_mm=right-a.stroke/2-CASE_RIGHT,checks=output_insert_checks)
  # Confirm the manufactured rack includes circular root arcs on both face edges.
  for wanted in [central_relief_radius,intertooth_relief_radius]:
   arcs=[e for e in rack.Edges() if e.geomType()=='CIRCLE' and abs(e.radius()-wanted)<1e-6]

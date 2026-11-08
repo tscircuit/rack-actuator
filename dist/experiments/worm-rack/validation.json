@@ -1,9 +1,10 @@
 {
   "experiment": "worm-rack-nema17-40",
   "geometry_cache_sha256": "bde4ebfb3cd7e715b903e0c22465e26ee0d73b16186d7c786a2a8f8635599fef",
-  "source_sha256": "e2fafe9525ff95d671ef9f8512d440a14472e5c70fbfefab9c8d6309c052ac14",
-  "enclosure_source_sha256": "a6f1a1b3fcc581ed3aa8c0a95c44048e7f067469438261679754c019b3ce5962",
-  "validation_source_sha256": "ffc7b38a4f06038c7979e029f51784d4aba4386e6a08fbde050acea4e66d99e0",
+  "source_sha256": "b7ba72481c2ed377227112eda4845e4d28b6d55ce5483f5938d2856b0fd3e25e",
+  "enclosure_source_sha256": "ae21ba67c8c37e903318f450caef6570f0e5a21c7e5be1b252e496b28a7b022d",
+  "flexure_source_sha256": "e422e0b1820b157249d99af4e431894dc57f5922cee8f74cf93fe1a110f04c64",
+  "validation_source_sha256": "b287da1351b51e49ad5fc273bb7e2fdef8fba65fe224ff18f89345270daf1a82",
   "method": "All assembled pairs checked as OCC solids. Dense motion/separation: 0.002 mm absolute / 0.04 rad CAD tessellation, FCL triangle candidates confirmed by OCC intersections. Five mesh poses use full OCC intersections. Sampled checks, not continuous collision proof or FEA.",
   "motor": "NEMA17",
   "stroke_mm": 40,
@@ -23,6 +24,1155 @@
     "Staged drive disassembly; motor and worm form a removable subassembly",
     "Nominal command increments are not measured accuracy"
   ],
+  "flexure_clearance": {
+    "reserved_support_gap_mm": 0.8,
+    "checked_deflection_mm": [
+      0,
+      2.6
+    ],
+    "samples_per_flexure": 27,
+    "checks": [
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.0,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.0,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.1,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.1,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.2,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.2,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.30000000000000004,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.30000000000000004,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.4,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.4,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.5,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.5,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.6000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.6000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.7000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.7000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.8,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.8,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0.9,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0.9,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.0,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.0,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.1,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.1,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.2000000000000002,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.2000000000000002,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.3,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.3,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.4000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.4000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.5,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.5,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.6,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.6,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.7000000000000002,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.7000000000000002,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.8,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.8,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 1.9000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 1.9000000000000001,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.0,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.0,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.1,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.1,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.2,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.2,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.3000000000000003,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.3000000000000003,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.4000000000000004,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.4000000000000004,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.5,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.5,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.6,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.6,
+        "worm_support_gap_mm": 0.8000000000000007,
+        "fixed_chassis_overlap_mm3": 0.0,
+        "tray_overlap_mm3": 0.0,
+        "cover_overlap_mm3": 0.0,
+        "outside_reserved_envelope_mm3": 0.0
+      }
+    ],
+    "retained_springs": [
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0,
+        "removed_spring_mm3": 2.7284841053187847e-12
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0,
+        "removed_spring_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.3,
+        "removed_spring_mm3": 0.0
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.3,
+        "removed_spring_mm3": 0.0
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.6,
+        "removed_spring_mm3": 9.094947017729282e-13
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.6,
+        "removed_spring_mm3": 0.0
+      }
+    ],
+    "leaf_sections": [
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 0,
+        "midspan_thickness_mm": 1.800000000000026
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 0,
+        "midspan_thickness_mm": 1.8000000000000262
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.3,
+        "midspan_thickness_mm": 1.8000000000000371
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.3,
+        "midspan_thickness_mm": 1.800000000000035
+      },
+      {
+        "station_x_mm": -32.0,
+        "deflection_mm": 2.6,
+        "midspan_thickness_mm": 1.8000000000000362
+      },
+      {
+        "station_x_mm": 44.0,
+        "deflection_mm": 2.6,
+        "midspan_thickness_mm": 1.8000000000000342
+      }
+    ],
+    "root_and_carrier_blend_radius_mm": 5.0,
+    "blend_radius_reference": "Unloaded print geometry; the rounded profiles deform with the prescribed leaf displacement.",
+    "previous_blend_radius_mm": 2.0,
+    "bearing_facing_blend_radius_mm": 2.0,
+    "previous_leaf_span_mm": 14.0,
+    "leaf_thickness_mm": 1.8,
+    "nominal_leaf_span_mm": 18.0,
+    "method": "Independent spring solids including actual rounded transitions versus added worm supports, fixed chassis outside the intentional root, tray and cover. Conservative bounding envelopes clear the prescribed spring travel; OCC checks sample at 0.1 mm. Minimum leaf thickness is retained. Prescribed shapes are not an elastic simulation.",
+    "passed": true
+  },
+  "motor_mount_reinforcement": {
+    "web_count": 2,
+    "web_thickness_mm": 5.0,
+    "web_root_radius_mm": 2.0,
+    "web_upper_corner_radius_mm": 3.0,
+    "added_material_mm3": 8262.5157059456,
+    "sections": [
+      {
+        "x_mm": -65,
+        "previous_area_mm2": 68.64650999681024,
+        "reinforced_area_mm2": 237.84394094750914
+      },
+      {
+        "x_mm": -58.0,
+        "previous_area_mm2": 68.64650999681494,
+        "reinforced_area_mm2": 234.5650830815113
+      },
+      {
+        "x_mm": -42,
+        "previous_area_mm2": 362.48659236090276,
+        "reinforced_area_mm2": 467.32130808383164
+      },
+      {
+        "x_mm": -38,
+        "previous_area_mm2": 249.2542114202933,
+        "reinforced_area_mm2": 337.1388461609116
+      },
+      {
+        "x_mm": -24,
+        "previous_area_mm2": 335.7825196034658,
+        "reinforced_area_mm2": 389.57528620866003
+      }
+    ],
+    "design": "Two deep longitudinal webs join the motor faceplate to the rear bridge and existing support floor, with tangent roots. Existing motor, guide, flexure and fastener clearances are retained.",
+    "mechanical_validation": "Geometry only; no stiffness, stress or fatigue rating. Physical print/load testing required."
+  },
+  "marked_motor_bridges": {
+    "pairs": [
+      [
+        [
+          -71.026,
+          9.902,
+          -0.5
+        ],
+        [
+          -43,
+          10.88,
+          1.829
+        ]
+      ],
+      [
+        [
+          -69.509,
+          -12.636,
+          -0.5
+        ],
+        [
+          -43,
+          -14.006,
+          -1.058
+        ]
+      ]
+    ],
+    "source_model_revision": "a6cdc21f13d68ddda01110f8b5bfd3255b0895ae22764a50c92fa1613db7a5ad",
+    "design": "One face-aligned U flange with a shared top plane, motor-plate cap, inward-set rails, rounded opening and smoothly flared shoulders. Marked coordinates identify regions only.",
+    "top_plane_z_mm": 4.0,
+    "motor_face_x_mm": -73,
+    "chassis_face_x_mm": -43.0,
+    "inside_corner_radius_mm": 4.0,
+    "nominal_width_mm": 5.7,
+    "nominal_height_mm": 8.0,
+    "edge_radius_mm": 1.0,
+    "sections": [
+      {
+        "bridge": 1,
+        "x_mm": -72.5,
+        "area_mm2": 110.95734698366765,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -71.51666666666667,
+        "area_mm2": 114.30635684423902,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -70.53333333333333,
+        "area_mm2": 114.306356844239,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -69.55,
+        "area_mm2": 114.30635684423902,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -68.56666666666666,
+        "area_mm2": 113.73330133895817,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -67.58333333333333,
+        "area_mm2": 90.19536654653687,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -66.6,
+        "area_mm2": 57.18543471307994,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -65.61666666666667,
+        "area_mm2": 54.931558919662535,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -64.63333333333334,
+        "area_mm2": 44.81656613969571,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -63.65,
+        "area_mm2": 44.741592653587254,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -62.66666666666667,
+        "area_mm2": 44.741592653587254,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -61.68333333333334,
+        "area_mm2": 44.741592653587254,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -60.7,
+        "area_mm2": 44.741592653587254,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -59.71666666666667,
+        "area_mm2": 44.741592653587254,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -58.733333333333334,
+        "area_mm2": 44.741592653587254,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -57.75,
+        "area_mm2": 44.741592653587254,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -56.766666666666666,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -55.78333333333333,
+        "area_mm2": 37.68040501650599,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -54.8,
+        "area_mm2": 37.68040501650599,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -53.81666666666666,
+        "area_mm2": 37.68040501650599,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -52.833333333333336,
+        "area_mm2": 37.68040501650599,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -51.85,
+        "area_mm2": 37.70419355583989,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -50.86666666666667,
+        "area_mm2": 39.15807999119253,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -49.88333333333333,
+        "area_mm2": 43.5986943168194,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -48.900000000000006,
+        "area_mm2": 52.49215655227406,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -47.91666666666667,
+        "area_mm2": 67.30465111011529,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -46.93333333333334,
+        "area_mm2": 85.50349340411533,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -45.95,
+        "area_mm2": 99.95335535764761,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -44.96666666666667,
+        "area_mm2": 108.46534215649423,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -43.983333333333334,
+        "area_mm2": 112.55029267053325,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 1,
+        "x_mm": -43.0,
+        "area_mm2": 113.67997576121577,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -72.5,
+        "area_mm2": 110.95734533099616,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -71.51666666666667,
+        "area_mm2": 114.30635684423902,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -70.53333333333333,
+        "area_mm2": 114.30635684423902,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -69.55,
+        "area_mm2": 114.30635684423902,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -68.56666666666666,
+        "area_mm2": 113.73330053834924,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -67.58333333333333,
+        "area_mm2": 88.08770782913983,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -66.6,
+        "area_mm2": 57.185546148201425,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -65.61666666666667,
+        "area_mm2": 54.93152833682019,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -64.63333333333334,
+        "area_mm2": 44.816566812263865,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -63.65,
+        "area_mm2": 44.74159265358723,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -62.66666666666667,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -61.68333333333334,
+        "area_mm2": 44.74159265358723,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -60.7,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -59.71666666666667,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -58.733333333333334,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -57.75,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -56.766666666666666,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -55.78333333333333,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -54.8,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -53.81666666666666,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -52.833333333333336,
+        "area_mm2": 44.74159265358724,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -51.85,
+        "area_mm2": 44.77032367618038,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -50.86666666666667,
+        "area_mm2": 46.52565586978748,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -49.88333333333333,
+        "area_mm2": 51.887689962460804,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -48.900000000000006,
+        "area_mm2": 62.634669816700715,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -47.91666666666667,
+        "area_mm2": 80.54992348100537,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -46.93333333333334,
+        "area_mm2": 102.57530578291103,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -45.95,
+        "area_mm2": 120.07668995986158,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -44.96666666666667,
+        "area_mm2": 123.87894094015206,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -43.983333333333334,
+        "area_mm2": 126.11392978162932,
+        "connected_sections": 1
+      },
+      {
+        "bridge": 2,
+        "x_mm": -43.0,
+        "area_mm2": 125.74311947912543,
+        "connected_sections": 1
+      }
+    ],
+    "minimum_section_mm2": 37.68040501650599,
+    "thin_upright_point_mm": [
+      -43,
+      -19.818,
+      -4.103
+    ],
+    "new_ligament_mm": [
+      7,
+      1.5,
+      1.5
+    ],
+    "previous_ligament_volume_mm3": 0.0,
+    "reinforced_ligament_volume_mm3": 15.750000000000002,
+    "passed": true
+  },
+  "motor_bolt_insertion": {
+    "method": "Exact continuous swept shaft and head solids for each axis-aligned segment, against the assembly at that stage. Insertion reverses the same collision-checked path. Socket recesses conservatively treated as solid.",
+    "axial_release_mm": 11.0,
+    "upper_vertical_mm": 60,
+    "lower_vertical_mm": -50,
+    "paths": [
+      {
+        "bolt": 1,
+        "center_yz_mm": [
+          -16.5,
+          -35.5
+        ],
+        "phase": "axial release / insertion",
+        "collisions": []
+      },
+      {
+        "bolt": 1,
+        "center_yz_mm": [
+          -16.5,
+          -35.5
+        ],
+        "phase": "vertical removal / approach",
+        "collisions": []
+      },
+      {
+        "bolt": 2,
+        "center_yz_mm": [
+          -16.5,
+          -4.5
+        ],
+        "phase": "axial release / insertion",
+        "collisions": []
+      },
+      {
+        "bolt": 2,
+        "center_yz_mm": [
+          -16.5,
+          -4.5
+        ],
+        "phase": "vertical removal / approach",
+        "collisions": []
+      },
+      {
+        "bolt": 3,
+        "center_yz_mm": [
+          14.5,
+          -35.5
+        ],
+        "phase": "axial release / insertion",
+        "collisions": []
+      },
+      {
+        "bolt": 3,
+        "center_yz_mm": [
+          14.5,
+          -35.5
+        ],
+        "phase": "vertical removal / approach",
+        "collisions": []
+      },
+      {
+        "bolt": 4,
+        "center_yz_mm": [
+          14.5,
+          -4.5
+        ],
+        "phase": "axial release / insertion",
+        "collisions": []
+      },
+      {
+        "bolt": 4,
+        "center_yz_mm": [
+          14.5,
+          -4.5
+        ],
+        "phase": "vertical removal / approach",
+        "collisions": []
+      }
+    ],
+    "passed": true
+  },
+  "motor_bolt_tool_access": {
+    "configuration": "Upper bolts from above with cover and rack removed; lower bolts from underneath. Motor/chassis remain installed. Compact 2.5 mm hex key, 8 mm short-leg reach and 40 mm long leg.",
+    "probe_radius_mm": 1.5,
+    "clearance_radius_mm": 2.1,
+    "screw_head_pocket_diameter_mm": 8.0,
+    "outward_swing_deg": [
+      0,
+      60
+    ],
+    "screw_release_mm": 11.0,
+    "key_release_mm": 5.5,
+    "samples": 156,
+    "rear_support_shift_mm": {
+      "forward": 27,
+      "outward": 0
+    },
+    "support_tool_collisions": [],
+    "insert_walls": [
+      {
+        "center_mm": [
+          -25,
+          -15.0
+        ],
+        "radial_wall_mm": 2,
+        "missing_wall_mm3": 0.0
+      },
+      {
+        "center_mm": [
+          -25,
+          13.0
+        ],
+        "radial_wall_mm": 2,
+        "missing_wall_mm3": 0.0
+      }
+    ],
+    "collisions": [],
+    "passed": true
+  },
   "guide_contact_acceleration": "Exact rack clipping to Y=13..213, Z=-187..13; every guide bearing bounding box, including spring lift, is asserted inside it. This preserves solid intersection volumes.",
   "worm_set_screw_tool_access_collisions": [],
   "end_bolt_tool_access_collisions": [],
@@ -40,7 +1190,7 @@
     "insert_checks": [
       {
         "end": "front",
-        "actual_interference_mm3": 34.18052807105698,
+        "actual_interference_mm3": 34.18052807105687,
         "expected_interference_mm3": 34.180528071056976
       }
     ],
@@ -432,49 +1582,49 @@
         "Matched compliant rack",
         "M3 heat-set insert output 83 24"
       ],
-      "overlap_mm3": 13.823007675795036
+      "overlap_mm3": 13.823007675795008
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 83 33"
       ],
-      "overlap_mm3": 13.823007675795015
+      "overlap_mm3": 13.823007675794987
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 92 24"
       ],
-      "overlap_mm3": 13.823007675795036
+      "overlap_mm3": 13.823007675795008
     },
     {
       "parts": [
         "Matched compliant rack",
         "M3 heat-set insert output 92 33"
       ],
-      "overlap_mm3": 13.823007675795015
+      "overlap_mm3": 13.823007675794987
     },
     {
       "parts": [
         "Direct-shaft worm",
         "M5 front axial heat-set insert"
       ],
-      "overlap_mm3": 34.18052807105698
+      "overlap_mm3": 34.18052807105687
     },
     {
       "parts": [
-        "M3 rear motor support insert -52 -15",
+        "M3 rear motor support insert -25 -15",
         "Standard-size enclosure tray"
       ],
-      "overlap_mm3": 13.823007675795054
+      "overlap_mm3": 13.823007675795026
     },
     {
       "parts": [
-        "M3 rear motor support insert -52 13",
+        "M3 rear motor support insert -25 13",
         "Standard-size enclosure tray"
       ],
-      "overlap_mm3": 13.823007675795047
+      "overlap_mm3": 13.823007675795026
     },
     {
       "parts": [
@@ -537,7 +1687,7 @@
         "M3 heat-set insert lid -63 -21.9",
         "Standard-size enclosure tray"
       ],
-      "overlap_mm3": 13.823007675795132
+      "overlap_mm3": 11.506056493910435
     },
     {
       "parts": [
@@ -655,27 +1805,27 @@
     {
       "travel_from_center_mm": -20.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 16.063221790564334
+      "matched_preloaded_overlap_mm3": 16.063221790564292
     },
     {
       "travel_from_center_mm": 0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 16.689192891448776
+      "matched_preloaded_overlap_mm3": 16.689192891448844
     },
     {
       "travel_from_center_mm": 1.0869910581420683,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 17.915232403042197
+      "matched_preloaded_overlap_mm3": 17.91523240304231
     },
     {
       "travel_from_center_mm": 3.248406803811846,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 16.760583121576207
+      "matched_preloaded_overlap_mm3": 16.760583121576435
     },
     {
       "travel_from_center_mm": 20.0,
       "matched_nominal_overlap_mm3": 0.0,
-      "matched_preloaded_overlap_mm3": 13.76848017012125
+      "matched_preloaded_overlap_mm3": 13.768480170121236
     }
   ],
   "mesh": {
@@ -684,8 +1834,8 @@
     "full_stroke_samples": 41,
     "matched_nominal_max_overlap_mm3": 0.0,
     "matched_preloaded_overlap_mm3": [
-      13.76848017012125,
-      17.915232403042197
+      13.768480170121236,
+      17.91523240304231
     ],
     "tolerance_mm3": 0.01
   },
@@ -693,12 +1843,17 @@
   "unchanged_output_mount_difference_mm3": 0.0,
   "output_through_holes": {
     "diameter_mm": 3.4,
-    "length_mm": 18,
+    "length_mm": 8,
+    "axis": [
+      1,
+      0,
+      0
+    ],
     "intersections_mm3": [
-      0.0,
-      0.0,
-      0.0,
-      0.0
+      0,
+      0,
+      0,
+      0
     ]
   },
   "valid_single_solids": true,
@@ -745,9 +1900,122 @@
     ]
   ],
   "valid_spring_solids": true,
-  "distinct_explosion_pair_poses": 372406,
-  "explosion_samples": 1375,
+  "distinct_explosion_pair_poses": 411050,
+  "explosion_samples": 1506,
   "maximum_explosion_translation_increment_mm": 0.5,
   "nominal_mesh_separation_triangle_collisions": [],
-  "passed": true
+  "passed": true,
+  "output_mount_revision": {
+    "passed": true,
+    "output_mount": {
+      "standard": "NEMA17 hole pattern",
+      "hole_axis": [
+        1,
+        0,
+        0
+      ],
+      "thread": "M3",
+      "count": 4,
+      "pattern_yz_mm": [
+        [
+          13.0,
+          -9.5
+        ],
+        [
+          13.0,
+          21.5
+        ],
+        [
+          44.0,
+          -9.5
+        ],
+        [
+          44.0,
+          21.5
+        ]
+      ],
+      "pitch_yz_mm": [
+        31,
+        31
+      ],
+      "face_size_mm": [
+        42,
+        42
+      ],
+      "plate_depth_mm": 8,
+      "face_x_mm": 86.5,
+      "center_y_mm": 28.5,
+      "center_z_mm": 6,
+      "insert_recess_mm": 0.3,
+      "thread_engagement_mm": [
+        3,
+        5.0
+      ],
+      "through_diameter_mm": 3.4,
+      "through_length_mm": 8
+    },
+    "unchanged_backbone_and_teeth_difference_mm3": 0.0,
+    "hole_checks": [
+      {
+        "yz_mm": [
+          13.0,
+          -9.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          13.0,
+          21.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          44.0,
+          -9.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          44.0,
+          21.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      }
+    ],
+    "source_sha256": "c916dde3051cc71405144a472c17372e43916f58c8285b25792c4142a6fc4589",
+    "updater_sha256": "36f2127abd31bfcd628c73540b93bd90491a267801a9a6e616b87e0eb34e0e60",
+    "limits": [
+      "Geometric fit and clearance checks only; no load rating or printed strength test.",
+      "NEMA17 four-hole interface; no motor pilot or shaft bore is added.",
+      "End plate protrudes beyond both rack printing faces; support is needed if printing on a long face."
+    ],
+    "sweep": {
+      "method": "Continuous conservative AABB separation for full stroke and each piecewise-linear assembly interval; rotation envelopes and all available chassis spring meshes included.",
+      "mesh_bounds_padding_mm": 0.2,
+      "stage_intervals": 11,
+      "part_interval_checks": 864,
+      "minimum_separation_mm": 1.2999999999999972,
+      "collisions": []
+    },
+    "baseline_validation_sha256": "2579970bd0c0a8b9005c2b523cf8844bbf34dfd492b8c0f1e7a967b0913a1655"
+  }
 }

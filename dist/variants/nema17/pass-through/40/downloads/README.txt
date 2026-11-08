@@ -70,17 +70,18 @@ Any attached front fixture must clear the entire moving output pad and
 guide, including when fully retracted. Use frontFixtureOpeningYZ in the
 assembly metadata or front_fixture_opening_yz_mm in validation.json for
 the minimum rectangular opening with 1 mm margin. At module 2 it spans
-Y=18.5..41 and Z=-10..22 (22.5 x 32 mm), referenced to the CAD coordinates.
+the selected preset bounds in assembly metadata, including the new end plate.
 Side (+Y): four M3 inserts, recessed 0.3 mm into a flat wall. X spacing =
 housing length minus 15 mm; Z spacing = motor depth minus 10 mm. All
 reinforcement is inside the tray; blind pockets have 2 mm backing.
 Top (+Z): four flush M3 inserts at Z=24.9, in full-height tray posts that
 bypass the removable lid. X/Y spacing = housing length/width minus 15 mm.
-Output (+Z): four M3 inserts on a 9 x 9 mm pattern, recessed 0.3 mm into
-an 18 x 18 mm face at Z=21. Each pocket continues as a 3.4 mm clearance
-hole through the full 18 mm pad. Inserts are optional: use an M3 bolt,
-washers and nut instead. Size bolt length for the pad, attachment,
-washers and full nut engagement. Annular backing remains below the insert.
+Output (+X, parallel to travel): NEMA17 31 x 31 mm four-hole pattern
+in a 42 x 42 x 8 mm end plate, with 2 mm rounded outer corners. Four M3
+heat-set seats are recessed 0.3 mm. Each continues as a 3.4 mm through-hole.
+Use M3 inserts or M3 through-bolts, washers and nuts. This is the four-hole
+mounting interface; there is no motor pilot or shaft bore. The plate stays
+at least 1.5 mm outside the enclosure at full retraction.
 Use application-length M3 screws with 3..5 mm thread engagement. For
 recessed front/side/output inserts, this means 3.3..5.3 mm penetration
 from the mounting face. For flush top inserts it means 3..5 mm. Do not
@@ -113,8 +114,9 @@ Rack/chassis nominal gap 1 mm; axle-head gap 0.5 mm around the conservative
 There is no axial hard stop or downward flexure stop; use controller limits.
 
 PRINT / ASSEMBLE
-Tray: outer floor down. Lid: roof down. Rack: tooth face down, output pad
-on the same plane. Pinion: gear face down. Keep tooth relief cuts clear.
+Tray: outer floor down. Lid: roof down. Rack: the axial plate extends past both long faces. Use supports beneath
+the rack when printing on a long face, keeping supports out of tooth reliefs.
+Alternatively print on the end plate if your build height and layer strength permit. Pinion: gear face down. Keep tooth relief cuts clear.
 Chassis: orient Y normal to the bed so the XZ leaf length/bending plane
 lies within the layers. Use local supports where required at passages;
 remove them without damaging the supported floor blends.

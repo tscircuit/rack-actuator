@@ -3,7 +3,7 @@
   "enclosure_variant": "pass-through",
   "motor": "nema14",
   "stroke_mm": 100,
-  "source_sha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df",
+  "source_sha256": "c916dde3051cc71405144a472c17372e43916f58c8285b25792c4142a6fc4589",
   "checker_sha256": "a8a76d3695edda65d49728187e167673f8030e3ed40441ffdb087aab8c455f2e",
   "explosion_interval": [
     0.38,
@@ -27,5 +27,7 @@
     "expected_removed_volume_mm3": 446.69677622862537,
     "valid_single_solid": true,
     "source_geometry_change_is_limited_to_four_output_bores": true
-  }
+  },
+  "retained_validation_sha256": "1220d2d7a4feb84d7bffbc00b2a5d08342fc0866d6244ec693e69a288ed147f9",
+  "output_mount_clearance_report": "output-mount-validation.json"
 }

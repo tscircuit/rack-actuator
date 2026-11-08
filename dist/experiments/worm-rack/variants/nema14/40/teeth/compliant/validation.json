@@ -1,0 +1,183 @@
+{
+  "passed": true,
+  "style": "compliant",
+  "variant_source_sha256": "26ece4e29869274807774690e90a8b2cb18ac7369a7750e23cbda12b4844a7fc",
+  "base_validation_sha256": "6c4ff114ca653eff77ca2bc9da9f69467647c63d44d5ebb2d8b969c98dbe7d37",
+  "tooth_band_y_mm": [
+    -4.1,
+    4.1
+  ],
+  "tooth_band_top_z_mm": 0.01,
+  "base_checks_reused": "Unchanged chassis, bearings, motor, enclosure, mounting interfaces and their internal installation paths use the existing matching-source validation. The complete changed tooth band is checked through all poses below; a solid difference check confirms all geometry outside that band matches the baseline. Nominal/solid worm engagement uses the complete tooth band and five additional full-rack solid checks. Axial output plate verified separately by continuous conservative swept-bound separation; the former pad is removed, and a solid difference confirms unchanged teeth/backbone.",
+  "outside_tooth_band_difference_mm3": 0.0,
+  "wall_mm": 0.9,
+  "previous_wall_mm": 0.6,
+  "closed_tip": true,
+  "flank_preload_mm": 0.1,
+  "solid_flank_relief_mm": 0,
+  "method": "OCC static intersections; 0.002 mm / 0.04 rad FCL candidates confirmed as OCC volumes. Reinforced nominal teeth or actual solid teeth must clear the worm. No strength, fatigue, wear or elastic preload simulation.",
+  "static_collisions": [],
+  "motion_samples": 137,
+  "motion_collisions": [],
+  "mesh_collisions": [],
+  "loss_of_potential_engagement": [],
+  "explosion_samples": 1375,
+  "explosion_collisions": [],
+  "mesh_pose_checks": [
+    {
+      "travel_from_center_mm": -20.0,
+      "clearance_model_overlap_mm3": 0.0,
+      "actual_rack_overlap_mm3": 16.06338982186551
+    },
+    {
+      "travel_from_center_mm": 0,
+      "clearance_model_overlap_mm3": 0.0,
+      "actual_rack_overlap_mm3": 16.97376293736222
+    },
+    {
+      "travel_from_center_mm": 1.0869910581420683,
+      "clearance_model_overlap_mm3": 0.0,
+      "actual_rack_overlap_mm3": 17.765907945358222
+    },
+    {
+      "travel_from_center_mm": 3.248406803811846,
+      "clearance_model_overlap_mm3": 0.0,
+      "actual_rack_overlap_mm3": 17.00513954814879
+    },
+    {
+      "travel_from_center_mm": 20.0,
+      "clearance_model_overlap_mm3": 0.0,
+      "actual_rack_overlap_mm3": 13.768619338795787
+    }
+  ],
+  "unchanged_interfaces": [
+    {
+      "region": "guide",
+      "difference_mm3": 0.0
+    },
+    {
+      "region": "mount",
+      "difference_mm3": 0.0
+    }
+  ],
+  "print_mesh": {
+    "file": "compliant.stl",
+    "triangles": 217642,
+    "watertight": true,
+    "consistently_oriented": true,
+    "volume_mm3": 70770.05633988771
+  },
+  "output_mount_revision": {
+    "passed": true,
+    "output_mount": {
+      "standard": "NEMA17 hole pattern",
+      "hole_axis": [
+        1,
+        0,
+        0
+      ],
+      "thread": "M3",
+      "count": 4,
+      "pattern_yz_mm": [
+        [
+          13.0,
+          -9.5
+        ],
+        [
+          13.0,
+          21.5
+        ],
+        [
+          44.0,
+          -9.5
+        ],
+        [
+          44.0,
+          21.5
+        ]
+      ],
+      "pitch_yz_mm": [
+        31,
+        31
+      ],
+      "face_size_mm": [
+        42,
+        42
+      ],
+      "plate_depth_mm": 8,
+      "face_x_mm": 86.5,
+      "center_y_mm": 28.5,
+      "center_z_mm": 6,
+      "insert_recess_mm": 0.3,
+      "thread_engagement_mm": [
+        3,
+        5.0
+      ],
+      "through_diameter_mm": 3.4,
+      "through_length_mm": 8
+    },
+    "unchanged_backbone_and_teeth_difference_mm3": 0.0,
+    "hole_checks": [
+      {
+        "yz_mm": [
+          13.0,
+          -9.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          13.0,
+          21.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          44.0,
+          -9.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          44.0,
+          21.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      }
+    ],
+    "source_sha256": "c916dde3051cc71405144a472c17372e43916f58c8285b25792c4142a6fc4589",
+    "updater_sha256": "36f2127abd31bfcd628c73540b93bd90491a267801a9a6e616b87e0eb34e0e60",
+    "limits": [
+      "Geometric fit and clearance checks only; no load rating or printed strength test.",
+      "NEMA17 four-hole interface; no motor pilot or shaft bore is added.",
+      "End plate protrudes beyond both rack printing faces; support is needed if printing on a long face."
+    ],
+    "sweep": {
+      "method": "Continuous conservative AABB separation for full stroke and each piecewise-linear assembly interval; rotation envelopes and all available chassis spring meshes included.",
+      "mesh_bounds_padding_mm": 0.2,
+      "stage_intervals": 10,
+      "part_interval_checks": 792,
+      "minimum_separation_mm": 1.2999999999999972,
+      "collisions": []
+    },
+    "baseline_validation_sha256": "4e20877bdf939219fb41fb08812fca0ba5cd428b44168bf5b527d3433338f0e7"
+  }
+}

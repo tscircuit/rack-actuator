@@ -1,3 +1,4 @@
+import {readZipEntry} from './zip-download.js';
 // Printed parts use the CadQuery exports. Hardware uses its original reference
 // mesh, independent of the viewer's actuation or exploded position.
 export function referenceSTL(part) {
@@ -23,17 +24,19 @@ function status(message){
   if(!notification){notification=document.createElement('div');notification.setAttribute('role','status');notification.className='part-download-status';document.body.appendChild(notification);}
   clearTimeout(timer);notification.textContent=message;notification.hidden=!message;
 }
-export async function downloadPart(part,{url,filename}) {
+export async function downloadPart(part,{url,filename,zipEntry,mimeType='model/stl'}) {
   status('Downloading '+part.name+'…');
   try {
     let blob;
-    if(part.printed){
+    if(part.printed&&zipEntry){
+      blob=new Blob([await readZipEntry(url,zipEntry)],{type:mimeType});
+    }else if(part.printed){
       const response=await fetch(url);
       if(!response.ok)throw new Error('Part download returned '+response.status);
       blob=new Blob([await (new URL(url,location.href).pathname.endsWith('.gz')
         ?new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).arrayBuffer()
-        :response.arrayBuffer())],{type:'model/stl'});
-    }else blob=new Blob([referenceSTL(part)],{type:'model/stl'});
+        :response.arrayBuffer())],{type:mimeType});
+    }else blob=new Blob([referenceSTL(part)],{type:mimeType});
     const objectURL=URL.createObjectURL(blob),link=document.createElement('a');
     link.href=objectURL;link.download=filename;link.hidden=true;document.body.appendChild(link);link.click();link.remove();
     setTimeout(()=>URL.revokeObjectURL(objectURL),60000);status('');

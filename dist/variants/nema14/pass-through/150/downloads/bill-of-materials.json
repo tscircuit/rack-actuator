@@ -97,29 +97,51 @@
     "6 x inner-race washers (0.3 mm / 7.5 mm OD)"
   ],
   "output_mounting": {
-    "center_y_mm": 28.5,
+    "standard": "NEMA17 hole pattern",
+    "hole_axis": [
+      1,
+      0,
+      0
+    ],
     "thread": "M3",
-    "quantity": 4,
-    "pitch_xy_mm": [
-      9.0,
-      9.0
+    "count": 4,
+    "pattern_yz_mm": [
+      [
+        13.0,
+        -9.5
+      ],
+      [
+        13.0,
+        21.5
+      ],
+      [
+        44.0,
+        -9.5
+      ],
+      [
+        44.0,
+        21.5
+      ]
     ],
-    "pad_size_mm": [
-      18.0,
-      18.0,
-      18.0
+    "pitch_yz_mm": [
+      31,
+      31
     ],
+    "face_size_mm": [
+      42,
+      42
+    ],
+    "plate_depth_mm": 8,
+    "face_x_mm": 241.5,
+    "center_y_mm": 28.5,
+    "center_z_mm": 6,
     "insert_recess_mm": 0.3,
     "thread_engagement_mm": [
       3,
       5.0
     ],
     "through_diameter_mm": 3.4,
-    "through_length_mm": 18.0,
-    "alternatives": [
-      "M3 heat-set inserts",
-      "M3 through-bolts with washers and nuts"
-    ]
+    "through_length_mm": 8
   },
   "motor_screws": "4 x M3x12 countersunk",
   "pinion_set_screw": "M3x4 flat point",

@@ -1,0 +1,127 @@
+{
+  "passed": true,
+  "drive": "spur",
+  "stroke_mm": 40,
+  "source_sha256": "7809e798b78eba6c6e46145325ca8b8d92d05a5bfe7e89e1917300101938070d",
+  "adjustment_screws": 4,
+  "guide_bearings": 6,
+  "printed_snap_axles": 6,
+  "bearing_axle_bolts": 0,
+  "flexures": 0,
+  "static_collisions": [],
+  "final_relief_mm": 0.1,
+  "final_relief_removed_mm3": 12.21448096356471,
+  "guide_stop_overlap_mm": 0.35,
+  "motion_inheritance": "For chassis and tray, motion checks use exact added-material differences against the pinned baseline. Removing material cannot introduce a collision. All new carrier, screws, inserts and snap pins are checked; full solids are used for assembly.",
+  "method": "Exact OCC solid checks for changed assembled pairs, bearing seats, continuous axial snap-in corridors and screw tool corridors. Full 40 mm travel sampled at 1 mm and carrier adjustment at 0.1 mm. Assembly paths sampled at <=1 mm translation, FCL mesh candidates confirmed with OCC solids; same tracks drive the viewer. Not FEA or a load rating.",
+  "guide_contact_inheritance": "625ZZ rings and their nominal centers are unchanged from the baseline. Existing nominal running contact is retained; released lower-bearing poses and every changed snap-axle/support solid are checked.",
+  "limits": [
+    "PETG pin strain, creep, wear and stiffness require physical tests.",
+    "Rigid guide preload is set by hand, not by a validated torque specification. Tighten evenly only until play is removed.",
+    "The tooth profiles and their original compliant/solid engagement are retained; no new tooth-load rating.",
+    "Assembly collision checking is sampled, not a continuous-motion proof."
+  ],
+  "snap_axles": [
+    {
+      "bearing": 1,
+      "seat_missing_mm3": 0.0,
+      "outer_race_recess_overlap_mm3": 0,
+      "snap_corridor_overlap_mm3": 0,
+      "retaining_head_interference_mm3": 0.7625278052418796
+    },
+    {
+      "bearing": 2,
+      "seat_missing_mm3": 0.0,
+      "outer_race_recess_overlap_mm3": 0,
+      "snap_corridor_overlap_mm3": 0,
+      "retaining_head_interference_mm3": 0.7625278052419139
+    },
+    {
+      "bearing": 3,
+      "seat_missing_mm3": 0.0,
+      "outer_race_recess_overlap_mm3": 0,
+      "snap_corridor_overlap_mm3": 0,
+      "retaining_head_interference_mm3": 0.7625278052419042
+    },
+    {
+      "bearing": 4,
+      "seat_missing_mm3": 0.0,
+      "outer_race_recess_overlap_mm3": 0,
+      "snap_corridor_overlap_mm3": 0,
+      "retaining_head_interference_mm3": 0.7625278052418929
+    },
+    {
+      "bearing": 5,
+      "seat_missing_mm3": 0.0,
+      "outer_race_recess_overlap_mm3": 0,
+      "snap_corridor_overlap_mm3": 0,
+      "retaining_head_interference_mm3": 0.7625278052419034
+    },
+    {
+      "bearing": 6,
+      "seat_missing_mm3": 0.0,
+      "outer_race_recess_overlap_mm3": 0,
+      "snap_corridor_overlap_mm3": 0,
+      "retaining_head_interference_mm3": 0.7625278052419037
+    }
+  ],
+  "adjustment_tool_collisions": [],
+  "enclosure_static_collisions": [],
+  "motion_collisions": [],
+  "motion_samples": 93,
+  "assembly_collisions": [],
+  "assembly_samples": 1912,
+  "assembly_samples_planned": 1912,
+  "stl_checks": [
+    {
+      "file": "03_involute_pinion_18t.stl",
+      "triangles": 4134,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 8915.332719713526
+    },
+    {
+      "file": "04_beveled_compliant_rack.stl",
+      "triangles": 11970,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 57117.991392483505
+    },
+    {
+      "file": "05_mounting_enclosure_tray.stl",
+      "triangles": 27938,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 136619.8748488361
+    },
+    {
+      "file": "06_removable_enclosure_cover.stl",
+      "triangles": 6772,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 50308.96840810939
+    },
+    {
+      "file": "rigid_snap-axle_chassis.stl",
+      "triangles": 31848,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 65768.60829731722
+    },
+    {
+      "file": "rigid_adjustable_two-bearing_carrier.stl",
+      "triangles": 11432,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 22021.411982386908
+    },
+    {
+      "file": "compliant_rack.stl",
+      "triangles": 11970,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 57117.994456371205
+    }
+  ],
+  "validator_sha256": "901cd86c96ade911513dd9062cc8b672614289e3547eafeefc629fbd4800eff9"
+}

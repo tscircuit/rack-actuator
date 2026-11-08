@@ -2,121 +2,51 @@
   "revision": 24,
   "enclosure_variant": "pass-through",
   "output_mount": {
-    "center_y_mm": 28.5,
-    "rack_backbone_center_y_mm": 28.5,
+    "standard": "NEMA17 hole pattern",
+    "hole_axis": [
+      1,
+      0,
+      0
+    ],
     "thread": "M3",
     "count": 4,
-    "pattern_xy_mm": [
+    "pattern_yz_mm": [
       [
-        83.0,
-        24.0
+        13.0,
+        -9.5
       ],
       [
-        83.0,
-        33.0
+        13.0,
+        21.5
       ],
       [
-        92.0,
-        24.0
+        44.0,
+        -9.5
       ],
       [
-        92.0,
-        33.0
+        44.0,
+        21.5
       ]
     ],
-    "pitch_xy_mm": [
-      9.0,
-      9.0
+    "pitch_yz_mm": [
+      31,
+      31
     ],
-    "pad_size_mm": [
-      18.0,
-      18.0,
-      18.0
+    "face_size_mm": [
+      42,
+      42
     ],
-    "face_z_mm": 21.0,
+    "plate_depth_mm": 8,
+    "face_x_mm": 86.5,
+    "center_y_mm": 28.5,
+    "center_z_mm": 6,
     "insert_recess_mm": 0.3,
     "thread_engagement_mm": [
       3,
       5.0
     ],
     "through_diameter_mm": 3.4,
-    "through_length_mm": 18.0,
-    "mounting_options": [
-      "M3 heat-set insert",
-      "M3 through-bolt with washers and nut"
-    ],
-    "minimum_knurl_edge_wall_mm": 2.2,
-    "minimum_retracted_enclosure_gap_mm": 1.5,
-    "checks": [
-      {
-        "position_mm": [
-          83.0,
-          24.0,
-          20.7
-        ],
-        "installation_axis": [
-          0,
-          0,
-          1
-        ],
-        "interference_mm3": 13.823007675795118,
-        "approach_intersection_mm3": 0,
-        "annular_backing_mm": 12.299999999999999,
-        "through_diameter_mm": 3.4,
-        "through_passage_intersection_mm3": 0
-      },
-      {
-        "position_mm": [
-          83.0,
-          33.0,
-          20.7
-        ],
-        "installation_axis": [
-          0,
-          0,
-          1
-        ],
-        "interference_mm3": 13.82300767579509,
-        "approach_intersection_mm3": 0,
-        "annular_backing_mm": 12.299999999999999,
-        "through_diameter_mm": 3.4,
-        "through_passage_intersection_mm3": 0
-      },
-      {
-        "position_mm": [
-          92.0,
-          24.0,
-          20.7
-        ],
-        "installation_axis": [
-          0,
-          0,
-          1
-        ],
-        "interference_mm3": 13.823007675795104,
-        "approach_intersection_mm3": 0,
-        "annular_backing_mm": 12.299999999999999,
-        "through_diameter_mm": 3.4,
-        "through_passage_intersection_mm3": 0
-      },
-      {
-        "position_mm": [
-          92.0,
-          33.0,
-          20.7
-        ],
-        "installation_axis": [
-          0,
-          0,
-          1
-        ],
-        "interference_mm3": 13.82300767579509,
-        "approach_intersection_mm3": 0,
-        "annular_backing_mm": 12.299999999999999,
-        "through_diameter_mm": 3.4,
-        "through_passage_intersection_mm3": 0
-      }
-    ]
+    "through_length_mm": 8
   },
   "tooth_module_mm": 2.0,
   "tooth_pitch_mm": 6.283185307179586,
@@ -1097,7 +1027,7 @@
     }
   ],
   "minimum_rack_hardware_gap_mm": 0.49999999999999406,
-  "source_sha256": "209a960b989e2c34b5ffab8d52cf0bb47928151ce55e2bfa288ccb1b829f75df",
+  "source_sha256": "c916dde3051cc71405144a472c17372e43916f58c8285b25792c4142a6fc4589",
   "mesh_periodicity": {
     "enabled": true,
     "rack_difference_mm3": 0,
@@ -6374,5 +6304,119 @@
     "expected_removed_volume_mm3": 446.69677622862537,
     "valid_single_solid": true,
     "source_geometry_change_is_limited_to_four_output_bores": true
-  }
+  },
+  "output_mount_revision": {
+    "passed": true,
+    "output_mount": {
+      "standard": "NEMA17 hole pattern",
+      "hole_axis": [
+        1,
+        0,
+        0
+      ],
+      "thread": "M3",
+      "count": 4,
+      "pattern_yz_mm": [
+        [
+          13.0,
+          -9.5
+        ],
+        [
+          13.0,
+          21.5
+        ],
+        [
+          44.0,
+          -9.5
+        ],
+        [
+          44.0,
+          21.5
+        ]
+      ],
+      "pitch_yz_mm": [
+        31,
+        31
+      ],
+      "face_size_mm": [
+        42,
+        42
+      ],
+      "plate_depth_mm": 8,
+      "face_x_mm": 86.5,
+      "center_y_mm": 28.5,
+      "center_z_mm": 6,
+      "insert_recess_mm": 0.3,
+      "thread_engagement_mm": [
+        3,
+        5.0
+      ],
+      "through_diameter_mm": 3.4,
+      "through_length_mm": 8
+    },
+    "unchanged_backbone_and_teeth_difference_mm3": 0.0,
+    "hole_checks": [
+      {
+        "yz_mm": [
+          13.0,
+          -9.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          13.0,
+          21.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          44.0,
+          -9.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      },
+      {
+        "yz_mm": [
+          44.0,
+          21.5
+        ],
+        "overlap_mm3": {
+          "through": 0,
+          "driver": 0,
+          "insert_approach": 0
+        }
+      }
+    ],
+    "source_sha256": "c916dde3051cc71405144a472c17372e43916f58c8285b25792c4142a6fc4589",
+    "updater_sha256": "36f2127abd31bfcd628c73540b93bd90491a267801a9a6e616b87e0eb34e0e60",
+    "limits": [
+      "Geometric fit and clearance checks only; no load rating or printed strength test.",
+      "NEMA17 four-hole interface; no motor pilot or shaft bore is added.",
+      "End plate protrudes beyond both rack printing faces; support is needed if printing on a long face."
+    ],
+    "sweep": {
+      "method": "Continuous conservative AABB separation for full stroke and each piecewise-linear assembly interval; rotation envelopes and all available chassis spring meshes included.",
+      "mesh_bounds_padding_mm": 0.2,
+      "stage_intervals": 28,
+      "part_interval_checks": 1827,
+      "minimum_separation_mm": 1.2999999999999972,
+      "collisions": []
+    },
+    "baseline_validation_sha256": "7ec36466cffd9ccd871ea45ea2344f31040542184eae642be88f67313caafe73"
+  },
+  "retained_validation_sha256": "7ec36466cffd9ccd871ea45ea2344f31040542184eae642be88f67313caafe73"
 }

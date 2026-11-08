@@ -1,0 +1,805 @@
+{
+  "experiment": "printed-leadscrew",
+  "revision": 17,
+  "guideBearingCount": 8,
+  "lowerBearingCount": 4,
+  "lowerBearingY": [
+    [
+      -42.0,
+      42.0
+    ],
+    [
+      -42.0,
+      42.0
+    ]
+  ],
+  "carrierInserts": {
+    "type": "ruthex RX-M5x9.5",
+    "thread": "M5",
+    "od_mm": 7.1,
+    "length_mm": 9.5,
+    "pilot_diameter_mm": 6.4,
+    "pilot_depth_mm": 10.5,
+    "entry_diameter_mm": 7.2,
+    "minimum_wall_mm": 2.6
+  },
+  "lightening": {
+    "carriage": {
+      "before_mm3": 769923.4162357155,
+      "after_mm3": 556023.4358064077,
+      "removed_mm3": 213899.9804293078,
+      "reduction_percent": 27.781981417723415,
+      "cutout_count": 14
+    },
+    "base": {
+      "before_mm3": 339701.00627110945,
+      "after_mm3": 288334.54638388637,
+      "removed_mm3": 51366.459887223085,
+      "reduction_percent": 15.121079696251593,
+      "cutout_count": 12
+    }
+  },
+  "motorBraces": {
+    "rear_x_mm": -36,
+    "length_mm": 42,
+    "width_mm": 12,
+    "motor_side_gap_mm": 1.5
+  },
+  "widthMultiple": 4,
+  "outputPlateWidth": 168,
+  "upperBearingSpan": 167.56921938165306,
+  "baseWidth": 206.0,
+  "stroke": 40,
+  "lead": 8,
+  "motor": "NEMA17",
+  "axisOrigin": [
+    0,
+    0,
+    42.0
+  ],
+  "modelSourceSha256": "4540259ca0ac46534c637f3750089236bbd8809712ce5afeb5f63c81451f05a9",
+  "stations": [
+    63.0,
+    137.0
+  ],
+  "adjustmentRange": [
+    0,
+    1
+  ],
+  "adjustmentHome": [
+    1
+  ],
+  "carrierName": "Shared lower bearing carrier",
+  "lidName": "Structural mounting lid",
+  "lidFixings": [
+    [
+      12,
+      -87.0
+    ],
+    [
+      12,
+      87.0
+    ],
+    [
+      65.0,
+      -98.0
+    ],
+    [
+      65.0,
+      98.0
+    ],
+    [
+      139.0,
+      -98.0
+    ],
+    [
+      139.0,
+      98.0
+    ]
+  ],
+  "lidMounts": [
+    [
+      36,
+      -90.0
+    ],
+    [
+      36,
+      90.0
+    ],
+    [
+      96.0,
+      -90.0
+    ],
+    [
+      96.0,
+      90.0
+    ]
+  ],
+  "sideMounts": [
+    [
+      22,
+      12
+    ],
+    [
+      36,
+      12
+    ],
+    [
+      58.0,
+      44
+    ],
+    [
+      58.0,
+      56
+    ],
+    [
+      132.0,
+      44
+    ],
+    [
+      132.0,
+      56
+    ]
+  ],
+  "attachmentPilots": [
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        22,
+        -103.0,
+        12
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        22,
+        103.0,
+        12
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        36,
+        -103.0,
+        12
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        36,
+        103.0,
+        12
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        58.0,
+        -103.0,
+        44
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        58.0,
+        103.0,
+        44
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        58.0,
+        -103.0,
+        56
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        58.0,
+        103.0,
+        56
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        132.0,
+        -103.0,
+        44
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        132.0,
+        103.0,
+        44
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        132.0,
+        -103.0,
+        56
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "kind": "side",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        132.0,
+        103.0,
+        56
+      ],
+      "axis": [
+        0,
+        -1,
+        0
+      ]
+    },
+    {
+      "host": "Structural mounting lid",
+      "kind": "lid",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        36,
+        -90.0,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "host": "Structural mounting lid",
+      "kind": "lid",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        36,
+        90.0,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "host": "Structural mounting lid",
+      "kind": "lid",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        96.0,
+        -90.0,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ]
+    },
+    {
+      "host": "Structural mounting lid",
+      "kind": "lid",
+      "diameter": 5,
+      "length": 9,
+      "center": [
+        96.0,
+        90.0,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ]
+    }
+  ],
+  "envelopeHeight": 68,
+  "lidTopZ": 68,
+  "snapAxle": {
+    "shaft_radius": 2.4,
+    "head_radius": 3.2,
+    "tip_radius": 2.3,
+    "slot_width": 1.2,
+    "root_t": 9.6,
+    "head_back_t": -2.75,
+    "tip_t": -8.1,
+    "compression": 0.85,
+    "shaft_bias_slope": 0,
+    "bend_start_t": -3.75,
+    "tip_bend_degrees": 30,
+    "extension_mm": 3,
+    "bearing_release_mm": 12,
+    "head_slot_width": 2.0,
+    "tip_slot_width": 2.2
+  },
+  "retainingTracks": [
+    {
+      "kind": "upper",
+      "contact": [
+        0,
+        -76.85640646055101,
+        50
+      ],
+      "axis": [
+        0,
+        -0.5,
+        -0.8660254037844386
+      ],
+      "normal": [
+        0,
+        -0.8660254037844386,
+        0.5
+      ],
+      "inner": 3.0
+    },
+    {
+      "kind": "upper",
+      "contact": [
+        0,
+        76.85640646055101,
+        50
+      ],
+      "axis": [
+        0,
+        0.5,
+        -0.8660254037844386
+      ],
+      "normal": [
+        0,
+        0.8660254037844386,
+        0.5
+      ],
+      "inner": 3.0
+    },
+    {
+      "kind": "lower",
+      "contact": [
+        0,
+        -42.0,
+        26
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "inner": 3.0
+    },
+    {
+      "kind": "lower",
+      "contact": [
+        0,
+        42.0,
+        26
+      ],
+      "axis": [
+        0,
+        1,
+        0
+      ],
+      "normal": [
+        0,
+        0,
+        -1
+      ],
+      "inner": 3.0
+    }
+  ],
+  "retainingRailSize": [
+    4,
+    4
+  ],
+  "explosionPrelude": 0.2,
+  "adjustmentBoltCenters": [
+    [
+      51.0,
+      -89.0
+    ],
+    [
+      51.0,
+      89.0
+    ],
+    [
+      125.0,
+      -89.0
+    ],
+    [
+      125.0,
+      89.0
+    ]
+  ],
+  "bearingSeat": {
+    "land_diameter_mm": 7.4,
+    "relief_diameter_mm": 17,
+    "relief_depth_mm": 2
+  },
+  "baseName": "Adjustable six-bearing base",
+  "printedDrive": true,
+  "threadBands": [
+    [
+      36.0,
+      48.0
+    ],
+    [
+      96.0,
+      108.0
+    ]
+  ],
+  "screwEndX": 152.0,
+  "printedScrewDiameter": 20,
+  "exitPlaneX": 155.0,
+  "tailHomeX": 10.0,
+  "guideEndX": 147.0,
+  "nutHomeX": 48.0,
+  "homeTravel": 0,
+  "baseBounds": [
+    -36,
+    155.0,
+    -103.0,
+    103.0,
+    0,
+    5
+  ],
+  "outputMount": {
+    "pitch_mm": [
+      31,
+      31
+    ],
+    "outer_pitch_mm": [
+      157.0,
+      31
+    ],
+    "face_size_mm": [
+      168,
+      42
+    ],
+    "hole_centers_yz_mm": [
+      [
+        -15.5,
+        26.5
+      ],
+      [
+        -15.5,
+        57.5
+      ],
+      [
+        15.5,
+        26.5
+      ],
+      [
+        15.5,
+        57.5
+      ],
+      [
+        -78.5,
+        26.5
+      ],
+      [
+        -78.5,
+        57.5
+      ],
+      [
+        78.5,
+        26.5
+      ],
+      [
+        78.5,
+        57.5
+      ]
+    ],
+    "thread": "M3 three-ridge forming pilot",
+    "thread_depth_mm": 8
+  },
+  "threadProfiles": {
+    "3": {
+      "relief_radius": 1.65,
+      "tip_radius": 1.3,
+      "rib_radius": 0.65,
+      "lead_in": 0.6
+    },
+    "5": {
+      "relief_radius": 2.65,
+      "tip_radius": 2.2,
+      "rib_radius": 0.9,
+      "lead_in": 0.6
+    }
+  },
+  "cornerChamferRadialDepth": 12,
+  "baseMount": {
+    "hole_centers_xy_mm": [
+      [
+        -3,
+        -34
+      ],
+      [
+        -3,
+        34
+      ],
+      [
+        149.0,
+        -34
+      ],
+      [
+        149.0,
+        34
+      ],
+      [
+        -3,
+        -55
+      ],
+      [
+        -3,
+        55
+      ],
+      [
+        149.0,
+        -55
+      ],
+      [
+        149.0,
+        55
+      ],
+      [
+        -3,
+        -97
+      ],
+      [
+        -3,
+        97
+      ],
+      [
+        149.0,
+        -97
+      ],
+      [
+        149.0,
+        97
+      ]
+    ],
+    "patterns": [
+      {
+        "width_multiple": 1,
+        "hole_centers_xy_mm": [
+          [
+            -3,
+            -34
+          ],
+          [
+            -3,
+            34
+          ],
+          [
+            149.0,
+            -34
+          ],
+          [
+            149.0,
+            34
+          ]
+        ]
+      },
+      {
+        "width_multiple": 2,
+        "hole_centers_xy_mm": [
+          [
+            -3,
+            -55
+          ],
+          [
+            -3,
+            55
+          ],
+          [
+            149.0,
+            -55
+          ],
+          [
+            149.0,
+            55
+          ]
+        ]
+      },
+      {
+        "width_multiple": 4,
+        "hole_centers_xy_mm": [
+          [
+            -3,
+            -97
+          ],
+          [
+            -3,
+            97
+          ],
+          [
+            149.0,
+            -97
+          ],
+          [
+            149.0,
+            97
+          ]
+        ]
+      }
+    ],
+    "outer_holes_xy_mm": [
+      [
+        -3,
+        -97
+      ],
+      [
+        -3,
+        97
+      ],
+      [
+        149.0,
+        -97
+      ],
+      [
+        149.0,
+        97
+      ]
+    ],
+    "inherited_holes_xy_mm": [
+      [
+        -3,
+        -34
+      ],
+      [
+        -3,
+        34
+      ],
+      [
+        149.0,
+        -34
+      ],
+      [
+        149.0,
+        34
+      ],
+      [
+        -3,
+        -55
+      ],
+      [
+        -3,
+        55
+      ],
+      [
+        149.0,
+        -55
+      ],
+      [
+        149.0,
+        55
+      ]
+    ],
+    "inherited_countersink": {
+      "diameter_mm": 10.5,
+      "angle_degrees": 90,
+      "depth_mm": 2.5,
+      "screw": "M5 countersunk, head diameter at most 10 mm; seat flush"
+    },
+    "inherited_installation": "Fasten from above before installing the bearing carrier and carriage. The original outer holes remain accessible while assembled.",
+    "thread": null,
+    "hole_type": "plain through-hole",
+    "clearance_diameter_mm": 5.5,
+    "through_depth_mm": 10,
+    "mount_landing_z_mm": 10,
+    "vertical_access_diameter_mm": 12,
+    "base_thickness_mm": 5,
+    "maximum_washer_diameter_mm": 10,
+    "checked_driver_diameter_mm": 11
+  },
+  "explosion": "Staged disassembly: carriage withdrawal, motor bolts, drive, axles, bearing packs, flange bolts and nut"
+}
