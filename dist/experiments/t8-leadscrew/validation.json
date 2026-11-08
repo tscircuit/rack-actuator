@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "e82f03d03ea5887895fc692d80632adf3bdf191af4da034dd5174618f01f3e61",
-  "validation_source_sha256": "cabb8e82ebbcebafa2a44897358a16f2a45bf09eca7f482f5b046a6e461f2c03",
+  "source_sha256": "df4e4a0d2141b4e08aafaf98888ac95a05f4546ef77648cea65a177ac59fc2c1",
+  "validation_source_sha256": "ecf25907d00559e25d1796f200058f3fe24b3d3b8a58fc817f58e07d94f28c5f",
   "output_mount": {
     "pattern": "Central NEMA17 mounting pitch with extra outer holes on wider plates",
     "pitch_mm": [
@@ -19,11 +19,11 @@
       42,
       42
     ],
-    "face_home_x_mm": 121.0,
+    "face_home_x_mm": 151.0,
     "holes": [
       {
         "center_mm": [
-          121.0,
+          151.0,
           -15.5,
           26.5
         ],
@@ -35,7 +35,7 @@
       },
       {
         "center_mm": [
-          121.0,
+          151.0,
           -15.5,
           57.5
         ],
@@ -47,7 +47,7 @@
       },
       {
         "center_mm": [
-          121.0,
+          151.0,
           15.5,
           26.5
         ],
@@ -59,7 +59,7 @@
       },
       {
         "center_mm": [
-          121.0,
+          151.0,
           15.5,
           57.5
         ],
@@ -150,7 +150,7 @@
         "diameter": 3,
         "length": 12,
         "center": [
-          65.0,
+          95.0,
           -35.0,
           64.0
         ],
@@ -164,9 +164,9 @@
         "missing_ridge_mm3": 0.0,
         "unexpected_overlap_mm3": 0.0,
         "ridge_contact_volumes_mm3": [
-          0.6712469475812771,
-          0.6712469282769211,
-          0.6712469396486932
+          0.6712469475936914,
+          0.6712469282769434,
+          0.6712469396491593
         ],
         "full_depth_engagement_mm": 9.199999999999998,
         "passed": true
@@ -177,61 +177,7 @@
         "diameter": 3,
         "length": 12,
         "center": [
-          65.0,
-          35.0,
-          64.0
-        ],
-        "axis": [
-          0,
-          0,
-          -1
-        ],
-        "start": 0,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "unexpected_overlap_mm3": 0.0,
-        "ridge_contact_volumes_mm3": [
-          0.6712469475813355,
-          0.6712469282768986,
-          0.6712469396486932
-        ],
-        "full_depth_engagement_mm": 9.199999999999998,
-        "passed": true
-      },
-      {
-        "host": "Adjustable six-bearing base",
-        "bolt": "M3x12 button-head lid bolt 5",
-        "diameter": 3,
-        "length": 12,
-        "center": [
-          105.0,
-          -35.0,
-          64.0
-        ],
-        "axis": [
-          0,
-          0,
-          -1
-        ],
-        "start": 0,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "unexpected_overlap_mm3": 0.0,
-        "ridge_contact_volumes_mm3": [
-          0.6712469475937018,
-          0.671246928276922,
-          0.6712469396491594
-        ],
-        "full_depth_engagement_mm": 9.199999999999998,
-        "passed": true
-      },
-      {
-        "host": "Adjustable six-bearing base",
-        "bolt": "M3x12 button-head lid bolt 6",
-        "diameter": 3,
-        "length": 12,
-        "center": [
-          105.0,
+          95.0,
           35.0,
           64.0
         ],
@@ -246,8 +192,62 @@
         "unexpected_overlap_mm3": 0.0,
         "ridge_contact_volumes_mm3": [
           0.6712469475813269,
-          0.6712469282857787,
-          0.6712469396491593
+          0.6712469282857982,
+          0.6712469396491592
+        ],
+        "full_depth_engagement_mm": 9.199999999999998,
+        "passed": true
+      },
+      {
+        "host": "Adjustable six-bearing base",
+        "bolt": "M3x12 button-head lid bolt 5",
+        "diameter": 3,
+        "length": 12,
+        "center": [
+          135.0,
+          -35.0,
+          64.0
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "start": 0,
+        "ridge_count": 3,
+        "missing_ridge_mm3": 0.0,
+        "unexpected_overlap_mm3": 0.0,
+        "ridge_contact_volumes_mm3": [
+          0.6712469475936095,
+          0.6712469282857112,
+          0.6712469396492401
+        ],
+        "full_depth_engagement_mm": 9.199999999999998,
+        "passed": true
+      },
+      {
+        "host": "Adjustable six-bearing base",
+        "bolt": "M3x12 button-head lid bolt 6",
+        "diameter": 3,
+        "length": 12,
+        "center": [
+          135.0,
+          35.0,
+          64.0
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "start": 0,
+        "ridge_count": 3,
+        "missing_ridge_mm3": 0.0,
+        "unexpected_overlap_mm3": 0.0,
+        "ridge_contact_volumes_mm3": [
+          0.6712469475936106,
+          0.6712469282857418,
+          0.6712469396492398
         ],
         "full_depth_engagement_mm": 9.199999999999998,
         "passed": true
@@ -378,7 +378,7 @@
     "checks": [
       {
         "center_mm": [
-          51.0,
+          81.0,
           -26.0,
           20
         ],
@@ -392,7 +392,7 @@
       },
       {
         "center_mm": [
-          51.0,
+          81.0,
           26.0,
           20
         ],
@@ -406,7 +406,7 @@
       },
       {
         "center_mm": [
-          91.0,
+          121.0,
           -26.0,
           20
         ],
@@ -420,7 +420,7 @@
       },
       {
         "center_mm": [
-          91.0,
+          121.0,
           26.0,
           20
         ],
@@ -445,7 +445,7 @@
     "loose_support_spacers": 0,
     "seats": [
       {
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "kind": "upper",
         "side": -1,
         "land_diameter_mm": 7.4,
@@ -455,7 +455,7 @@
         "passed": true
       },
       {
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "kind": "upper",
         "side": 1,
         "land_diameter_mm": 7.4,
@@ -465,7 +465,7 @@
         "passed": true
       },
       {
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "kind": "lower",
         "side": 1,
         "land_diameter_mm": 7.4,
@@ -475,7 +475,7 @@
         "passed": true
       },
       {
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "kind": "upper",
         "side": -1,
         "land_diameter_mm": 7.4,
@@ -485,7 +485,7 @@
         "passed": true
       },
       {
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "kind": "upper",
         "side": 1,
         "land_diameter_mm": 7.4,
@@ -495,7 +495,7 @@
         "passed": true
       },
       {
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "kind": "lower",
         "side": 1,
         "land_diameter_mm": 7.4,
@@ -529,58 +529,22 @@
     "checks": [
       {
         "shoulder_width_mm": 6.400000000000006,
-        "tip_width_mm": 4.622500200000005,
-        "maximum_width_mm": 6.400000000000006,
-        "straight_journal_error_mm3": 0.0,
-        "station_x_mm": 63.0,
-        "kind": "upper",
-        "side": -1,
-        "retaining_interference_mm3": 1.3880806625418034,
-        "max_compressed_path_overlap_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "shoulder_width_mm": 6.400000000000006,
-        "tip_width_mm": 4.6225001999999975,
-        "maximum_width_mm": 6.400000000000006,
-        "straight_journal_error_mm3": 0.0,
-        "station_x_mm": 63.0,
-        "kind": "upper",
-        "side": 1,
-        "retaining_interference_mm3": 1.3880806625418045,
-        "max_compressed_path_overlap_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "shoulder_width_mm": 6.400000000000006,
-        "tip_width_mm": 4.622500199999969,
-        "maximum_width_mm": 6.400000000000006,
-        "straight_journal_error_mm3": 0.0,
-        "station_x_mm": 63.0,
-        "kind": "lower",
-        "side": 1,
-        "retaining_interference_mm3": 1.3880806625417783,
-        "max_compressed_path_overlap_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "shoulder_width_mm": 6.400000000000006,
-        "tip_width_mm": 4.62250019999999,
-        "maximum_width_mm": 6.400000000000006,
-        "straight_journal_error_mm3": 0.0,
-        "station_x_mm": 103.0,
-        "kind": "upper",
-        "side": -1,
-        "retaining_interference_mm3": 1.388080662541702,
-        "max_compressed_path_overlap_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "shoulder_width_mm": 6.400000000000006,
         "tip_width_mm": 4.622500199999976,
         "maximum_width_mm": 6.400000000000006,
         "straight_journal_error_mm3": 0.0,
-        "station_x_mm": 103.0,
+        "station_x_mm": 93.0,
+        "kind": "upper",
+        "side": -1,
+        "retaining_interference_mm3": 1.3880806625417017,
+        "max_compressed_path_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "shoulder_width_mm": 6.400000000000006,
+        "tip_width_mm": 4.622500199999962,
+        "maximum_width_mm": 6.400000000000006,
+        "straight_journal_error_mm3": 0.0,
+        "station_x_mm": 93.0,
         "kind": "upper",
         "side": 1,
         "retaining_interference_mm3": 1.3880806625421136,
@@ -592,10 +556,46 @@
         "tip_width_mm": 4.622500199999962,
         "maximum_width_mm": 6.400000000000006,
         "straight_journal_error_mm3": 0.0,
-        "station_x_mm": 103.0,
+        "station_x_mm": 93.0,
         "kind": "lower",
         "side": 1,
-        "retaining_interference_mm3": 1.3880806625416735,
+        "retaining_interference_mm3": 1.3880806625416726,
+        "max_compressed_path_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "shoulder_width_mm": 6.399999999999977,
+        "tip_width_mm": 4.622500199999962,
+        "maximum_width_mm": 6.399999999999977,
+        "straight_journal_error_mm3": 0.0,
+        "station_x_mm": 133.0,
+        "kind": "upper",
+        "side": -1,
+        "retaining_interference_mm3": 1.388080662541916,
+        "max_compressed_path_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "shoulder_width_mm": 6.399999999999977,
+        "tip_width_mm": 4.62250019999999,
+        "maximum_width_mm": 6.399999999999977,
+        "straight_journal_error_mm3": 0.0,
+        "station_x_mm": 133.0,
+        "kind": "upper",
+        "side": 1,
+        "retaining_interference_mm3": 1.388080662541912,
+        "max_compressed_path_overlap_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "shoulder_width_mm": 6.399999999999977,
+        "tip_width_mm": 4.622500199999962,
+        "maximum_width_mm": 6.399999999999977,
+        "straight_journal_error_mm3": 0.0,
+        "station_x_mm": 133.0,
+        "kind": "lower",
+        "side": 1,
+        "retaining_interference_mm3": 1.3880806625418896,
         "max_compressed_path_overlap_mm3": 0.0,
         "passed": true
       }
@@ -616,82 +616,82 @@
     ],
     "checks": [
       {
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "kind": "upper",
         "side": -1,
         "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979664,
+        "escape_stop_overlap_mm3": 106.13114195979666,
         "passed": true
       },
       {
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "kind": "upper",
         "side": 1,
         "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979664,
+        "escape_stop_overlap_mm3": 106.13114195979666,
         "passed": true
       },
       {
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "kind": "lower",
         "side": 1,
         "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979662,
+        "escape_stop_overlap_mm3": 106.13114195979668,
         "passed": true
       },
       {
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "kind": "upper",
         "side": -1,
         "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979665,
+        "escape_stop_overlap_mm3": 106.13114195979658,
         "passed": true
       },
       {
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "kind": "upper",
         "side": 1,
         "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 106.13114195979662,
+        "escape_stop_overlap_mm3": 106.13114195979654,
         "passed": true
       },
       {
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "kind": "lower",
         "side": 1,
         "nominal_overlap_mm3": 0.0,
-        "escape_stop_overlap_mm3": 27.51548124883617,
+        "escape_stop_overlap_mm3": 27.515481248836153,
         "passed": true
       }
     ],
     "rail_sections": [
       {
-        "section_area_mm2": 18.40000000000005,
+        "section_area_mm2": 18.39999999999994,
         "missing_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.40000000000005,
+        "section_area_mm2": 18.39999999999994,
         "missing_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.40000000000007,
+        "section_area_mm2": 18.399999999999963,
         "missing_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000077,
+        "section_area_mm2": 18.39999999999997,
         "missing_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000063,
+        "section_area_mm2": 18.39999999999989,
         "missing_mm3": 0.0,
         "passed": true
       },
       {
-        "section_area_mm2": 18.400000000000063,
+        "section_area_mm2": 18.39999999999989,
         "missing_mm3": 0.0,
         "passed": true
       }
@@ -801,7 +801,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          58.0,
+          88.0,
           -40.0,
           44
         ],
@@ -822,7 +822,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          58.0,
+          88.0,
           40.0,
           44
         ],
@@ -843,7 +843,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          58.0,
+          88.0,
           -40.0,
           56
         ],
@@ -864,7 +864,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          58.0,
+          88.0,
           40.0,
           56
         ],
@@ -885,7 +885,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          98.0,
+          128.0,
           -40.0,
           44
         ],
@@ -906,7 +906,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          98.0,
+          128.0,
           40.0,
           44
         ],
@@ -927,7 +927,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          98.0,
+          128.0,
           -40.0,
           56
         ],
@@ -948,7 +948,7 @@
         "kind": "side",
         "host": "Adjustable six-bearing base",
         "center_mm": [
-          98.0,
+          128.0,
           40.0,
           56
         ],
@@ -1011,7 +1011,7 @@
         "kind": "lid",
         "host": "Structural mounting lid",
         "center_mm": [
-          79.0,
+          109.0,
           -27.0,
           68
         ],
@@ -1032,7 +1032,7 @@
         "kind": "lid",
         "host": "Structural mounting lid",
         "center_mm": [
-          79.0,
+          109.0,
           27.0,
           68
         ],
@@ -1109,11 +1109,11 @@
     "passed": true
   },
   "motion": {
-    "samples": 81,
+    "samples": 141,
     "increment_mm": 0.5,
     "travel_mm": [
       0,
-      40
+      70.0
     ],
     "collisions": [],
     "passed": true
@@ -1123,7 +1123,7 @@
       {
         "kind": "upper",
         "contact_mm": [
-          63.0,
+          93.0,
           -13.85640646055102,
           50.0
         ],
@@ -1133,7 +1133,7 @@
       {
         "kind": "upper",
         "contact_mm": [
-          63.0,
+          93.0,
           13.85640646055102,
           50.0
         ],
@@ -1143,7 +1143,7 @@
       {
         "kind": "lower",
         "contact_mm": [
-          63.0,
+          93.0,
           -1.0,
           26.0
         ],
@@ -1153,7 +1153,7 @@
       {
         "kind": "upper",
         "contact_mm": [
-          103.0,
+          133.0,
           -13.85640646055102,
           50.0
         ],
@@ -1163,7 +1163,7 @@
       {
         "kind": "upper",
         "contact_mm": [
-          103.0,
+          133.0,
           13.85640646055102,
           50.0
         ],
@@ -1173,7 +1173,7 @@
       {
         "kind": "lower",
         "contact_mm": [
-          103.0,
+          133.0,
           1.0,
           26.0
         ],
@@ -1217,14 +1217,14 @@
     "contacts": [
       {
         "kind": "upper",
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "normal": [
           0,
           -0.8660254037844386,
           0.5
         ],
         "contact_mm": [
-          63.0,
+          93.0,
           -13.85640646055102,
           50.0
         ],
@@ -1235,14 +1235,14 @@
       },
       {
         "kind": "upper",
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "normal": [
           0,
           0.8660254037844386,
           0.5
         ],
         "contact_mm": [
-          63.0,
+          93.0,
           13.85640646055102,
           50.0
         ],
@@ -1253,14 +1253,14 @@
       },
       {
         "kind": "lower",
-        "station_x_mm": 63.0,
+        "station_x_mm": 93.0,
         "normal": [
           0,
           0,
           -1
         ],
         "contact_mm": [
-          63.0,
+          93.0,
           -1.0,
           26.0
         ],
@@ -1271,14 +1271,14 @@
       },
       {
         "kind": "upper",
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "normal": [
           0,
           -0.8660254037844386,
           0.5
         ],
         "contact_mm": [
-          103.0,
+          133.0,
           -13.85640646055102,
           50.0
         ],
@@ -1289,14 +1289,14 @@
       },
       {
         "kind": "upper",
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "normal": [
           0,
           0.8660254037844386,
           0.5
         ],
         "contact_mm": [
-          103.0,
+          133.0,
           13.85640646055102,
           50.0
         ],
@@ -1307,14 +1307,14 @@
       },
       {
         "kind": "lower",
-        "station_x_mm": 103.0,
+        "station_x_mm": 133.0,
         "normal": [
           0,
           0,
           -1
         ],
         "contact_mm": [
-          103.0,
+          133.0,
           1.0,
           26.0
         ],
@@ -1329,52 +1329,72 @@
   "base_mount_access": {
     "insertion_direction": "vertical from above (-Z)",
     "thread": null,
-    "hole_type": "plain through-hole",
+    "hole_type": "plain \u00d85.5 mm through bores; inherited positions have \u00d810.5 mm 90-degree countersinks",
     "clearance_diameter_mm": 5.5,
     "through_depth_mm": 10,
-    "washer_diameter_mm": 10,
-    "socket_head_diameter_mm": 8.5,
+    "outer_washer_diameter_mm": 10,
+    "outer_socket_head_diameter_mm": 8.5,
+    "inherited_head_max_diameter_mm": 10,
+    "inherited_head_top_z_mm": 9.75,
     "driver_diameter_mm": 11,
     "access_well_diameter_mm": 12,
-    "travel_samples": 81,
+    "travel_samples": 141,
+    "assembly_samples": 106,
+    "preserved_width_patterns": [
+      1
+    ],
+    "pattern_nesting_passed": true,
+    "installed_fastener_collisions": [],
     "holes": [
       {
         "center_xy_mm": [
           -3,
-          -34.0
+          -34
         ],
-        "missing_washer_landing_mm3": 0.0,
+        "inherited": false,
+        "installation_state": "assembled at any travel",
+        "missing_landing_mm3": 0.0,
         "blocked_through_bore_mm3": 0.0,
+        "blocked_countersink_mm3": 0,
         "collisions": [],
         "passed": true
       },
       {
         "center_xy_mm": [
           -3,
-          34.0
+          34
         ],
-        "missing_washer_landing_mm3": 0.0,
+        "inherited": false,
+        "installation_state": "assembled at any travel",
+        "missing_landing_mm3": 0.0,
         "blocked_through_bore_mm3": 0.0,
+        "blocked_countersink_mm3": 0,
         "collisions": [],
         "passed": true
       },
       {
         "center_xy_mm": [
-          115.0,
-          -34.0
+          145.0,
+          -34
         ],
-        "missing_washer_landing_mm3": 0.0,
+        "inherited": false,
+        "installation_state": "assembled at any travel",
+        "missing_landing_mm3": 0.0,
         "blocked_through_bore_mm3": 0.0,
+        "blocked_countersink_mm3": 0,
         "collisions": [],
         "passed": true
       },
       {
         "center_xy_mm": [
-          115.0,
-          34.0
+          145.0,
+          34
         ],
-        "missing_washer_landing_mm3": 0.0,
+        "inherited": false,
+        "installation_state": "assembled at any travel",
+        "missing_landing_mm3": 0.0,
         "blocked_through_bore_mm3": 0.0,
+        "blocked_countersink_mm3": 0,
         "collisions": [],
         "passed": true
       }
@@ -1394,31 +1414,31 @@
   },
   "valid_single_solids": true,
   "compact_layout": {
-    "base_length_mm": 129.0,
+    "base_length_mm": 159.0,
     "base_width_mm": 80.0,
     "width_multiple": 1,
     "output_plate_width_mm": 42,
     "upper_bearing_span_mm": 41.569219381653056,
-    "retracted_overall_length_mm": 161.0,
-    "extended_overall_length_mm": 201.0,
+    "retracted_overall_length_mm": 191.0,
+    "extended_overall_length_mm": 261.0,
     "motor_front_x_mm": 0,
     "bearing_station_x_mm": [
-      63.0,
-      103.0
+      93.0,
+      133.0
     ],
-    "exit_plane_x_mm": 121.0,
-    "screw_end_x_mm": 96.0,
+    "exit_plane_x_mm": 151.0,
+    "screw_end_x_mm": 126.0,
     "tip_recess_at_home_mm": 25.0,
     "output_positions": [
       {
         "travel_mm": 0,
-        "output_face_x_mm": 121.0000001,
+        "output_face_x_mm": 151.0000001,
         "extension_beyond_base_mm": 9.999999406318238e-08
       },
       {
-        "travel_mm": 40,
-        "output_face_x_mm": 161.0000001,
-        "extension_beyond_base_mm": 40.000000099999994
+        "travel_mm": 70.0,
+        "output_face_x_mm": 221.0000001,
+        "extension_beyond_base_mm": 70.0000001
       }
     ],
     "passed": true
@@ -1430,36 +1450,36 @@
     "upper_bearing_center_span_mm": 41.569219381653056,
     "upper_bearing_centers_mm": [
       [
-        62.99999999999999,
+        93.0,
         -20.784609690826528,
         54.00000000000001
       ],
       [
-        63.00000000000001,
-        20.784609690826528,
-        54.0
-      ],
-      [
-        102.99999999999999,
-        -20.784609690826528,
-        54.00000000000001
-      ],
-      [
-        103.0,
+        93.0,
         20.78460969082653,
         54.0
+      ],
+      [
+        133.0,
+        -20.784609690826525,
+        54.00000000000001
+      ],
+      [
+        132.99999999999997,
+        20.78460969082653,
+        53.99999999999999
       ]
     ],
     "lower_bearing_centers_mm": [
       [
-        62.99999999999999,
+        93.0,
         -1.0,
         17.999999999999993
       ],
       [
-        103.0,
-        1.0,
-        17.999999999999993
+        133.0,
+        1.0000000000000002,
+        18.0
       ]
     ],
     "outward_shift_per_side_mm": 0.0,
@@ -1471,10 +1491,51 @@
     "lead_mm_per_rev": 8,
     "pitch_mm": 2,
     "starts": 4,
-    "revolutions_over_stroke": 5,
+    "revolutions_over_stroke": 8.75,
     "full_step_mm": 0.04,
     "sixteenth_microstep_mm": 0.0025,
     "microsteps_are_command_resolution_not_accuracy": true
+  },
+  "t8_screw_length": {
+    "nominal_length_mm": 100.0,
+    "measured_length_mm": 100.0,
+    "rod_bounds_x_mm": [
+      26.0,
+      126.0
+    ],
+    "coupling_engagement_mm": 8.0,
+    "nut_length_mm": 15.0,
+    "usable_stroke_mm": 70.0,
+    "checks": [
+      {
+        "travel_mm": 0,
+        "nut_bounds_x_mm": [
+          36.5,
+          51.5
+        ],
+        "engaged_length_mm": 15.0,
+        "tip_margin_mm": 74.5
+      },
+      {
+        "travel_mm": 35.0,
+        "nut_bounds_x_mm": [
+          71.5,
+          86.5
+        ],
+        "engaged_length_mm": 15.0,
+        "tip_margin_mm": 39.5
+      },
+      {
+        "travel_mm": 70.0,
+        "nut_bounds_x_mm": [
+          106.5,
+          121.5
+        ],
+        "engaged_length_mm": 15.0,
+        "tip_margin_mm": 4.5
+      }
+    ],
+    "passed": true
   },
   "limits": [
     "Geometry prototype; no stress, stiffness, fatigue or physical fit validation.",
@@ -1490,28 +1551,28 @@
         "triangles": 10580,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 85111.15783267628
+        "volume_mm3": 106395.68008215322
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 34384,
+        "triangles": 34368,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 147323.22405034758
+        "volume_mm3": 174143.05629312765
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
         "triangles": 8592,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 29423.33675225278
+        "volume_mm3": 29423.33646773215
       },
       {
         "file": "structural_mounting_lid.stl",
         "triangles": 12964,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 33864.10906848645
+        "volume_mm3": 43464.10911834443
       }
     ],
     "passed": true

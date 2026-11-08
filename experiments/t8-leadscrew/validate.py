@@ -115,7 +115,7 @@ def validate():
   row['passed']=row['ridge_count']==3 and max(row[k] for k in ['missing_ridge_mm3','blocked_pilot_mm3','missing_wall_mm3'])<.01;mounts.append(row)
   # Enter from outside, leaving 0.6 mm to the blind bottom. Tool/head above face.
   probe=cyl(2.45,length-.6,c,u).fuse(cyl(5.2,65,c,tuple(-q for q in u),.01))
-  for travel in [0,20,40]:
+  for travel in [0,STROKE/2,STROKE]:
    for p in parts:
     body=pose(p,travel)
     if overlap(probe,body)<.01:continue
@@ -139,7 +139,7 @@ def validate():
   for i,a in enumerate(parts):
    for b in parts[i+1:]:
     if 'adjustIndex' not in a and 'adjustIndex' not in b:continue
-    for travel in [0,40]:
+    for travel in [0,STROKE]:
      aa=pose(a,travel,values);bb=pose(b,travel,values)
      if overlap(aa,bb)<.01:continue
      hit=aa.intersect(bb)
@@ -165,7 +165,7 @@ def validate():
  models=[fcl.CollisionObject(bvh(p['shape'])) for p in parts]
  moving=[i for i,p in enumerate(parts) if p['group']=='carriage'];fixed=[i for i,p in enumerate(parts) if p['group']!='carriage']
  motion=[]
- for travel in np.linspace(0,40,81):
+ for travel in np.linspace(0,STROKE,int(STROKE*2)+1):
   for i,p in enumerate(parts):
    if p['group']=='carriage':models[i].setTransform(fcl.Transform(np.array([travel,0.,0.])))
    elif p['group']=='rotor':
@@ -176,7 +176,7 @@ def validate():
     v=overlap(pose(parts[i],float(travel)),pose(parts[j],float(travel)))
     if v>.01:motion.append({'travel_mm':float(travel),'parts':[parts[i]['name'],parts[j]['name']],'overlap_mm3':v})
   if travel%10==0:print('Travel',travel,'collisions',len(motion),flush=True)
- report['motion']={'samples':81,'increment_mm':.5,'travel_mm':[0,40],'collisions':motion,'passed':not motion}
+ report['motion']={'samples':int(STROKE*2)+1,'increment_mm':.5,'travel_mm':[0,STROKE],'collisions':motion,'passed':not motion}
  contacts=[]
  for b in bearings:
   n=(0,b['sign']*math.sqrt(3)/2,.5) if b['kind']=='upper' else (0,0,-1)
@@ -200,13 +200,13 @@ def validate():
  probes=[]
  # Extend the carriage to expose the two lower motor bolts. Their heads
  # still clear the retracted carriage by 1 mm in the assembled fit check.
- for y,z in motor_holes:probes.append(('motor at full extension',xcyl(1.5,20,9.1,y,z),40))
- for y,z in motor_holes:probes.append(('motor key long leg at full extension',cyl(1.5,45,(29,y,z),(0,1 if y>0 else -1,0)),40))
- for travel in [0,40]:
+ for y,z in motor_holes:probes.append(('motor at full extension',xcyl(1.5,20,9.1,y,z),STROKE))
+ for y,z in motor_holes:probes.append(('motor key long leg at full extension',cyl(1.5,45,(29,y,z),(0,1 if y>0 else -1,0)),STROKE))
+ for travel in [0,STROKE]:
   for y,z in nut_holes:probes.append(('flange',xcyl(1.5,100,NUT_HOME+6.6+travel,y,z),travel))
   for x,y in LID_FIXINGS:probes.append(('lid screw',cyl(1.2,55,(x,y,67.95)),travel))
  for x,y in ADJUST_CENTERS:probes.append(('carrier adjustment',cyl(2.35,75,(x,y,38.1)),0))
- if PRINTED:probes.append(('shaft clamp at full extension',cyl(1.5,65,(17,5,49.1)),40))
+ if PRINTED:probes.append(('shaft clamp at full extension',cyl(1.5,65,(17,5,49.1)),STROKE))
  access=[]
  for name,tool,travel in probes:
   for p in parts:
@@ -229,7 +229,7 @@ def validate():
     v=overlap(swept,exploded_pose(p,1))
     if v>.01:row['collisions'].append({'part':p['name'],'assembly_fraction':1,'overlap_mm3':v})
    else:
-    for travel in (np.linspace(0,40,81) if p['group']=='carriage' else [0]):
+    for travel in (np.linspace(0,STROKE,int(STROKE*2)+1) if p['group']=='carriage' else [0]):
      v=overlap(swept,pose(p,float(travel)))
      if v>.01:row['collisions'].append({'part':p['name'],'travel_mm':float(travel),'overlap_mm3':v})
   row['passed']=not row['collisions'] and max(row[k] for k in ['missing_landing_mm3','blocked_through_bore_mm3','blocked_countersink_mm3'])<.01;mounting.append(row)
@@ -239,7 +239,7 @@ def validate():
  floor_samples=sorted(set([round(float(t),6) for t in np.linspace(0,1,101)]+EXPLODE_KEYS))
  for x,y,head in floor_heads:
   for p in parts:
-   poses=[('travel',float(t),pose(p,float(t))) for t in (np.linspace(0,40,81) if p['group']=='carriage' else [0])]
+   poses=[('travel',float(t),pose(p,float(t))) for t in (np.linspace(0,STROKE,int(STROKE*2)+1) if p['group']=='carriage' else [0])]
    # The pin-only deformation is far above these floor heads, but use full
    # exploded solids for any bounding-box candidate before recording a hit.
    seen={(0.,0.,0.)}
@@ -254,7 +254,7 @@ def validate():
      if v>.01:floor_collisions.append({'center_xy_mm':[x,y],'part':p['name'],'mode':mode,'position':t,'overlap_mm3':v})
  expected=[(x,sign*(34+21*(w-1))) for w in [1,2,4] if w<=WIDTH for x in [-3,EXIT_X-6] for sign in [-1,1]]
  patterns_ok=set(BASE_MOUNT_HOLES)==set(expected) and len(BASE_MOUNT_HOLES)==len(expected)
- report['base_mount_access']={'insertion_direction':'vertical from above (-Z)','thread':None,'hole_type':'plain Ø5.5 mm through bores; inherited positions have Ø10.5 mm 90-degree countersinks','clearance_diameter_mm':5.5,'through_depth_mm':10,'outer_washer_diameter_mm':10,'outer_socket_head_diameter_mm':8.5,'inherited_head_max_diameter_mm':10,'inherited_head_top_z_mm':9.75,'driver_diameter_mm':11,'access_well_diameter_mm':12,'travel_samples':81,'assembly_samples':len(floor_samples),'preserved_width_patterns':BASE_MOUNT_WIDTHS,'pattern_nesting_passed':patterns_ok,'installed_fastener_collisions':floor_collisions,'holes':mounting,'passed':patterns_ok and not floor_collisions and all(q['passed'] for q in mounting)}
+ report['base_mount_access']={'insertion_direction':'vertical from above (-Z)','thread':None,'hole_type':'plain Ø5.5 mm through bores; inherited positions have Ø10.5 mm 90-degree countersinks','clearance_diameter_mm':5.5,'through_depth_mm':10,'outer_washer_diameter_mm':10,'outer_socket_head_diameter_mm':8.5,'inherited_head_max_diameter_mm':10,'inherited_head_top_z_mm':9.75,'driver_diameter_mm':11,'access_well_diameter_mm':12,'travel_samples':int(STROKE*2)+1,'assembly_samples':len(floor_samples),'preserved_width_patterns':BASE_MOUNT_WIDTHS,'pattern_nesting_passed':patterns_ok,'installed_fastener_collisions':floor_collisions,'holes':mounting,'passed':patterns_ok and not floor_collisions and all(q['passed'] for q in mounting)}
  print('Base mounting access',report['base_mount_access']['passed'],flush=True)
  report['tool_access']={'probe_count':len(probes),'collisions':access,'passed':not access}
  exploded=[]
@@ -262,7 +262,7 @@ def validate():
  explosion_samples=sorted(set([round(float(t),6) for t in np.linspace(0,1,101)]+EXPLODE_KEYS))
  for t in explosion_samples:
   offsets=[explosion_offset(p,float(t)) for p in parts]
-  local=max(0,min(1,(float(t)-.2)/.8));distance=200*max(0,min(1,local/.2))
+  local=max(0,min(1,(float(t)-.2)/.8));distance=CARRIAGE_WITHDRAWAL*max(0,min(1,local/.2))
   for i,m in enumerate(models):
    if parts[i].get('snapBearings'):
     compression=round(snap_compression(t),6);key=(i,compression)
@@ -287,10 +287,10 @@ def validate():
  print('Explosion collisions',exploded[:15],flush=True)
  report['valid_single_solids']=all(p['shape'].isValid() and len(p['shape'].Solids())==1 for p in parts)
  output_positions=[]
- for travel in [0,40]:
+ for travel in [0,STROKE]:
   face=pose(by_name['Hollow triangular carriage'],travel).BoundingBox().xmax
   output_positions.append({'travel_mm':travel,'output_face_x_mm':face,'extension_beyond_base_mm':face-EXIT_X})
- report['compact_layout']={'base_length_mm':EXIT_X-(-36 if PRINTED else BASE_REAR),'base_width_mm':2*HALF_WIDTH,'width_multiple':WIDTH,'output_plate_width_mm':42*WIDTH,'upper_bearing_span_mm':24*math.sqrt(3)+2*WIDEN,'retracted_overall_length_mm':EXIT_X+40,'extended_overall_length_mm':EXIT_X+80,'motor_front_x_mm':0,'bearing_station_x_mm':STATIONS,'exit_plane_x_mm':EXIT_X,'screw_end_x_mm':ROD_END,'tip_recess_at_home_mm':EXIT_X-ROD_END,'output_positions':output_positions,'passed':all(abs(q['extension_beyond_base_mm']-q['travel_mm'])<1e-5 for q in output_positions) and abs(chassis_shape.BoundingBox().xmax-EXIT_X)<1e-5}
+ report['compact_layout']={'base_length_mm':EXIT_X-(-36 if PRINTED else BASE_REAR),'base_width_mm':2*HALF_WIDTH,'width_multiple':WIDTH,'output_plate_width_mm':42*WIDTH,'upper_bearing_span_mm':24*math.sqrt(3)+2*WIDEN,'retracted_overall_length_mm':EXIT_X+40,'extended_overall_length_mm':EXIT_X+40+STROKE,'motor_front_x_mm':0,'bearing_station_x_mm':STATIONS,'exit_plane_x_mm':EXIT_X,'screw_end_x_mm':ROD_END,'tip_recess_at_home_mm':EXIT_X-ROD_END,'output_positions':output_positions,'passed':all(abs(q['extension_beyond_base_mm']-q['travel_mm'])<1e-5 for q in output_positions) and abs(chassis_shape.BoundingBox().xmax-EXIT_X)<1e-5}
  upper_centers=[p['shape'].Center().toTuple() for p in parts if p.get('bearing') and p['name'].startswith('625ZZ upper')]
  lower_centers=[p['shape'].Center().toTuple() for p in parts if p.get('bearing') and p['name'].startswith('625ZZ lower')]
  measured_span=max(c[1] for c in upper_centers)-min(c[1] for c in upper_centers)
@@ -306,7 +306,7 @@ def validate():
   brace_intrusion=sum(overlap(brace,motor_keepout) for brace in MOTOR_BRACES)
   report['lightening']={'checks':light_checks,'carriage_pocket_floor_mm':4,'passed':all(q['passed'] for q in light_checks) and report['running_faces']['passed']}
   report['motor_bracing']={'length_mm':42,'width_mm':12,'motor_side_margin_mm':1.5,'rear_x_mm':-36,'motor_keepout_intersection_mm3':brace_intrusion,'passed':len(MOTOR_BRACES)==2 and brace_intrusion<.01}
- report['kinematics']={'lead_mm_per_rev':8,'pitch_mm':8 if PRINTED else 2,'starts':1 if PRINTED else 4,'revolutions_over_stroke':5,'full_step_mm':.04,'sixteenth_microstep_mm':.0025,'microsteps_are_command_resolution_not_accuracy':True}
+ report['kinematics']={'lead_mm_per_rev':8,'pitch_mm':8 if PRINTED else 2,'starts':1 if PRINTED else 4,'revolutions_over_stroke':STROKE/LEAD,'full_step_mm':.04,'sixteenth_microstep_mm':.0025,'microsteps_are_command_resolution_not_accuracy':True}
  if PRINTED:
   thread_checks=[]
   screw=by_name['Printed 20 mm lead screw with integral shaft clamp']
@@ -315,6 +315,17 @@ def validate():
   bands=[{'home_x_mm':[lo,hi],'full_extension_x_mm':[lo+40,hi+40],'fully_engaged':lo>=30 and hi+40<=ROD_END} for lo,hi in THREAD_BANDS]
   report['printed_thread']={'major_diameter_mm':20,'root_diameter_mm':16,'lead_mm':8,'starts':1,'radial_relief_mm':.35,'axial_relief_per_flank_mm':.25,'smooth_bore_diameter_mm':21.2,'threaded_bands':bands,'checks':thread_checks,'tip_recess_mm':EXIT_X-ROD_END,'passed':all(q['overlap_mm3']<.01 for q in thread_checks) and len(bands)==2 and all(q['fully_engaged'] for q in bands) and EXIT_X-ROD_END>=3}
   print('Printed thread',report['printed_thread']['passed'],flush=True)
+ if not PRINTED:
+  # Measure exact CAD bounds, excluding the collision mesh's tessellation padding.
+  BRepTools.Clean_s(by_name[f'T8x8 threaded rod {T8_LENGTH:g} mm']['shape'].wrapped)
+  BRepTools.Clean_s(by_name['T8x8 brass flange nut']['shape'].wrapped)
+  rod=by_name[f'T8x8 threaded rod {T8_LENGTH:g} mm']['shape'].BoundingBox()
+  nut=by_name['T8x8 brass flange nut']['shape'].BoundingBox()
+  engagement=[]
+  for travel in [0,STROKE/2,STROKE]:
+   lo,hi=nut.xmin+travel,nut.xmax+travel
+   engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
+  report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=report['track_retention']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['snap_axles']['passed'] and report['lid_and_attachment']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(PRINTED or report['t8_screw_length']['passed']) and report['track_retention']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['snap_axles']['passed'] and report['lid_and_attachment']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report

@@ -1,6 +1,6 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 16,
+  "revision": 18,
   "guideBearingCount": 6,
   "lowerBearingCount": 2,
   "lowerBearingY": [
@@ -27,18 +27,25 @@
   "outputPlateWidth": 42,
   "upperBearingSpan": 41.569219381653056,
   "baseWidth": 80.0,
-  "stroke": 40,
-  "lead": 8,
+  "stroke": 70.0,
+  "lead": 8.0,
+  "sizingBasis": "screw_length",
+  "screwLength": 100.0,
+  "screwStartX": 26.0,
+  "nutAxialBounds": [
+    36.5,
+    51.5
+  ],
   "motor": "NEMA17",
   "axisOrigin": [
     0,
     0,
     42.0
   ],
-  "modelSourceSha256": "e82f03d03ea5887895fc692d80632adf3bdf191af4da034dd5174618f01f3e61",
+  "modelSourceSha256": "df4e4a0d2141b4e08aafaf98888ac95a05f4546ef77648cea65a177ac59fc2c1",
   "stations": [
-    63.0,
-    103.0
+    93.0,
+    133.0
   ],
   "adjustmentRange": [
     0,
@@ -59,19 +66,19 @@
       24.0
     ],
     [
-      65.0,
+      95.0,
       -35.0
     ],
     [
-      65.0,
+      95.0,
       35.0
     ],
     [
-      105.0,
+      135.0,
       -35.0
     ],
     [
-      105.0,
+      135.0,
       35.0
     ]
   ],
@@ -85,11 +92,11 @@
       27.0
     ],
     [
-      79.0,
+      109.0,
       -27.0
     ],
     [
-      79.0,
+      109.0,
       27.0
     ]
   ],
@@ -103,19 +110,19 @@
       12
     ],
     [
-      58.0,
+      88.0,
       44
     ],
     [
-      58.0,
+      88.0,
       56
     ],
     [
-      98.0,
+      128.0,
       44
     ],
     [
-      98.0,
+      128.0,
       56
     ]
   ],
@@ -190,7 +197,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        58.0,
+        88.0,
         -40.0,
         44
       ],
@@ -206,7 +213,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        58.0,
+        88.0,
         40.0,
         44
       ],
@@ -222,7 +229,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        58.0,
+        88.0,
         -40.0,
         56
       ],
@@ -238,7 +245,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        58.0,
+        88.0,
         40.0,
         56
       ],
@@ -254,7 +261,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        98.0,
+        128.0,
         -40.0,
         44
       ],
@@ -270,7 +277,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        98.0,
+        128.0,
         40.0,
         44
       ],
@@ -286,7 +293,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        98.0,
+        128.0,
         -40.0,
         56
       ],
@@ -302,7 +309,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        98.0,
+        128.0,
         40.0,
         56
       ],
@@ -350,7 +357,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        79.0,
+        109.0,
         -27.0,
         68
       ],
@@ -366,7 +373,7 @@
       "diameter": 5,
       "length": 9,
       "center": [
-        79.0,
+        109.0,
         27.0,
         68
       ],
@@ -460,21 +467,22 @@
     4
   ],
   "explosionPrelude": 0.2,
+  "carriageWithdrawal": 260.0,
   "adjustmentBoltCenters": [
     [
-      51.0,
+      81.0,
       -26.0
     ],
     [
-      51.0,
+      81.0,
       26.0
     ],
     [
-      91.0,
+      121.0,
       -26.0
     ],
     [
-      91.0,
+      121.0,
       26.0
     ]
   ],
@@ -486,16 +494,16 @@
   "baseName": "Adjustable six-bearing base",
   "printedDrive": false,
   "threadBands": [],
-  "screwEndX": 96.0,
+  "screwEndX": 126.0,
   "printedScrewDiameter": null,
-  "exitPlaneX": 121.0,
+  "exitPlaneX": 151.0,
   "tailHomeX": 10.0,
-  "guideEndX": 113.0,
+  "guideEndX": 143.0,
   "nutHomeX": 48.0,
   "homeTravel": 0,
   "baseBounds": [
     -8.0,
-    121.0,
+    151.0,
     -40.0,
     40.0,
     0,
@@ -551,21 +559,70 @@
     "hole_centers_xy_mm": [
       [
         -3,
-        -34.0
+        -34
       ],
       [
         -3,
-        34.0
+        34
       ],
       [
-        115.0,
-        -34.0
+        145.0,
+        -34
       ],
       [
-        115.0,
-        34.0
+        145.0,
+        34
       ]
     ],
+    "patterns": [
+      {
+        "width_multiple": 1,
+        "hole_centers_xy_mm": [
+          [
+            -3,
+            -34
+          ],
+          [
+            -3,
+            34
+          ],
+          [
+            145.0,
+            -34
+          ],
+          [
+            145.0,
+            34
+          ]
+        ]
+      }
+    ],
+    "outer_holes_xy_mm": [
+      [
+        -3,
+        -34
+      ],
+      [
+        -3,
+        34
+      ],
+      [
+        145.0,
+        -34
+      ],
+      [
+        145.0,
+        34
+      ]
+    ],
+    "inherited_holes_xy_mm": [],
+    "inherited_countersink": {
+      "diameter_mm": 10.5,
+      "angle_degrees": 90,
+      "depth_mm": 2.5,
+      "screw": "M5 countersunk, head diameter at most 10 mm; seat flush"
+    },
+    "inherited_installation": "Fasten from above before installing the bearing carrier and carriage. The original outer holes remain accessible while assembled.",
     "thread": null,
     "hole_type": "plain through-hole",
     "clearance_diameter_mm": 5.5,
