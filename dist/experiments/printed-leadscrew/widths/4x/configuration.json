@@ -1,6 +1,37 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 27,
+  "revision": 28,
+  "printability": {
+    "orientation": "base floor on bed, Z up",
+    "side_window_roof_degrees": 45,
+    "support_access_xy_mm": [
+      [
+        46.0,
+        69.0,
+        -95.0,
+        -84.0
+      ],
+      [
+        46.0,
+        69.0,
+        84.0,
+        95.0
+      ],
+      [
+        120.0,
+        143.0,
+        -95.0,
+        -84.0
+      ],
+      [
+        120.0,
+        143.0,
+        84.0,
+        95.0
+      ]
+    ],
+    "motor_foot_filled": true
+  },
   "cutoutPlanning": {
     "stage": "final post-processing after all features",
     "minimum_web_mm": 6.0,
@@ -91,6 +122,30 @@
             98.0,
             83.0,
             95.0
+          ],
+          [
+            46.0,
+            69.0,
+            -95.0,
+            -84.0
+          ],
+          [
+            46.0,
+            69.0,
+            84.0,
+            95.0
+          ],
+          [
+            120.0,
+            143.0,
+            -95.0,
+            -84.0
+          ],
+          [
+            120.0,
+            143.0,
+            84.0,
+            95.0
           ]
         ],
         "minimum_web_mm": 6.0
@@ -118,12 +173,18 @@
         "rectangles_mm": [
           [
             73.0,
-            90.0,
+            81.66666666666667,
             36,
             43
           ],
           [
-            98.0,
+            89.66666666666666,
+            98.33333333333333,
+            36,
+            43
+          ],
+          [
+            106.33333333333333,
             115.0,
             36,
             43
@@ -154,12 +215,18 @@
         "rectangles_mm": [
           [
             73.0,
-            90.0,
+            81.66666666666667,
             36,
             43
           ],
           [
-            98.0,
+            89.66666666666666,
+            98.33333333333333,
+            36,
+            43
+          ],
+          [
+            106.33333333333333,
             115.0,
             36,
             43
@@ -353,25 +420,25 @@
   },
   "lightening": {
     "base_floor": {
-      "before_mm3": 346597.2325121666,
-      "after_mm3": 323578.0292844739,
-      "removed_mm3": 23019.20322769269,
-      "reduction_percent": 6.6414850057652,
-      "cutout_count": 14
+      "before_mm3": 349237.23251529114,
+      "after_mm3": 321226.7019079237,
+      "removed_mm3": 28010.53060736746,
+      "reduction_percent": 8.020488080732065,
+      "cutout_count": 18
     },
     "base_sides": {
-      "before_mm3": 323578.0292844739,
-      "after_mm3": 315385.79579306964,
-      "removed_mm3": 8192.233491404273,
-      "reduction_percent": 2.5317644431915567,
-      "cutout_count": 8
+      "before_mm3": 321226.7019079237,
+      "after_mm3": 316184.4019071469,
+      "removed_mm3": 5042.30000077677,
+      "reduction_percent": 1.5697013887164626,
+      "cutout_count": 10
     },
     "base": {
-      "before_mm3": 346597.2325121666,
-      "after_mm3": 310843.73190076626,
-      "removed_mm3": 35753.50061140035,
-      "reduction_percent": 10.315575907013422,
-      "cutout_count": 24
+      "before_mm3": 349237.23251529114,
+      "after_mm3": 311642.33801420266,
+      "removed_mm3": 37594.89450108848,
+      "reduction_percent": 10.764858669369511,
+      "cutout_count": 30
     },
     "carriage": {
       "before_mm3": 769606.5256865431,
@@ -410,7 +477,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "d9043dffd9c94bcdb34b17a0285197a90f8e15efde633100fe7b520dcd9c4173",
+  "modelSourceSha256": "f65433439526be80c406a34ba0c8915367e32df020718d60e8a700751ae87c5e",
   "stations": [
     63.0,
     137.0

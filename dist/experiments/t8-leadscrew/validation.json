@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "d9043dffd9c94bcdb34b17a0285197a90f8e15efde633100fe7b520dcd9c4173",
-  "validation_source_sha256": "e59ffabed8bcac88c65d01ca1c6634807d031ef803a3ad38a455f096bb35acd7",
+  "source_sha256": "f65433439526be80c406a34ba0c8915367e32df020718d60e8a700751ae87c5e",
+  "validation_source_sha256": "d2f1551fdcf1d3398f875371bd8de442c0e0e60006df7b612f133fc482281078",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -2255,15 +2255,15 @@
     "checks": [
       {
         "name": "base_floor",
-        "count": 6,
-        "minimum_gap_mm": 11.0,
+        "count": 10,
+        "minimum_gap_mm": 9.0,
         "minimum_opening_mm": 11.0,
         "passed": true
       },
       {
         "name": "base_side_-1_12",
-        "count": 2,
-        "minimum_gap_mm": 35.0,
+        "count": 1,
+        "minimum_gap_mm": null,
         "minimum_opening_mm": 8.0,
         "passed": true
       },
@@ -2276,8 +2276,8 @@
       },
       {
         "name": "base_side_1_12",
-        "count": 2,
-        "minimum_gap_mm": 35.0,
+        "count": 1,
+        "minimum_gap_mm": null,
         "minimum_opening_mm": 8.0,
         "passed": true
       },
@@ -2299,27 +2299,74 @@
     "passed": true,
     "note": "Window bounds are non-overlapping and separated by at least 6 mm. Complete insert/support bands and rounded windows replace overlapping or clipped legacy patterns. This checks planned webs, not a universal minimum-wall or structural-strength certification."
   },
+  "printability": {
+    "support_access": [
+      {
+        "bounds_xy_mm": [
+          76.0,
+          99.0,
+          -32.0,
+          -21.0
+        ],
+        "blocked_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "bounds_xy_mm": [
+          76.0,
+          99.0,
+          21.0,
+          32.0
+        ],
+        "blocked_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "bounds_xy_mm": [
+          116.0,
+          139.0,
+          -32.0,
+          -21.0
+        ],
+        "blocked_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "bounds_xy_mm": [
+          116.0,
+          139.0,
+          21.0,
+          32.0
+        ],
+        "blocked_mm3": 0.0,
+        "passed": true
+      }
+    ],
+    "motor_foot_missing_mm3": 0.0,
+    "side_roof_degrees": 45,
+    "passed": true
+  },
   "base_lightening": {
     "floor": {
-      "before_mm3": 173549.31038183114,
-      "after_mm3": 165801.08045929176,
-      "removed_mm3": 7748.22992253938,
-      "reduction_percent": 4.464569698083077,
-      "cutout_count": 6
+      "before_mm3": 176189.31037923077,
+      "after_mm3": 163449.7531008837,
+      "removed_mm3": 12739.557278347056,
+      "reduction_percent": 7.230607379600028,
+      "cutout_count": 10
     },
     "sides": {
-      "before_mm3": 165801.08045929176,
-      "after_mm3": 161174.27173005402,
-      "removed_mm3": 4626.808729237731,
-      "reduction_percent": 2.790578153303245,
-      "cutout_count": 6
+      "before_mm3": 163449.7531008837,
+      "after_mm3": 161860.95310682047,
+      "removed_mm3": 1588.7999940632435,
+      "reduction_percent": 0.9720418440048738,
+      "cutout_count": 4
     },
     "total": {
-      "before_mm3": 173549.31038183114,
-      "after_mm3": 161174.27173005402,
-      "removed_mm3": 12375.038651777111,
-      "reduction_percent": 7.130560544752618,
-      "cutout_count": 12
+      "before_mm3": 176189.31037923077,
+      "after_mm3": 161860.95310682047,
+      "removed_mm3": 14328.3572724103,
+      "reduction_percent": 8.132364694299484,
+      "cutout_count": 14
     },
     "protected_supports": [
       {
@@ -3346,10 +3393,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 32272,
+        "triangles": 31452,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 161983.0959976719
+        "volume_mm3": 162669.29084333326
       },
       {
         "file": "shared_lower_bearing_carrier.stl",

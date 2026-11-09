@@ -325,3 +325,5 @@ For Site packaging after regenerating spur presets, run `python scripts/prune-bu
 All six supported lead-screw configurations are rebuilt and checked with the bundled generator and validator. Reports retain their exact SHA-256 hashes. Checks cover the full bearing sweep, motion and assembly clearance, insert access, mounting grids, preserved base supports and connected printable solids.
 
 Lead-screw bearing axles use tapered, rounded-root relief slots and clearance behind the inner-race seats. The retained 6.4 mm heads and extended 30° tips are unchanged. Assembly checks distinguish undeformed head contact from unexpected collisions; physical snap force and fatigue remain unmeasured.
+
+The lead-screw bases use filled motor feet, 45-degree side-window roofs and bottom access below the adjustment shelves. Inspect the actual 40 mm, 1x printed-screw base slice at [the support preview](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/printed-leadscrew/slice/). Reproduction profiles and G-code extraction are in `experiments/printed-leadscrew/slicing/`.

@@ -149,7 +149,7 @@ def validate():
  for name in [BASE_NAME,LID_NAME]:
   host=by_name[name];extra=host['freeShape'].cut(host['shape'])
   for j in MOUNT_SEATS:
-   if j['host']==name:extra=extra.cut(cyl(2.32,4,j['center'],j['axis']))
+   if j['host']==name and extra.Volume()>1e-8:extra=extra.cut(cyl(2.32,4,j['center'],j['axis']))
   displaced.append(dict(host=name,unexpected_displacement_mm3=extra.Volume(),passed=extra.Volume()<.01))
  expected={(10.5+31*i,31*(j-({1:2,2:4,4:6}[WIDTH]-1)/2)) for i in range(math.floor((EXIT_X-14.5)/31)+1) for j in range({1:2,2:4,4:6}[WIDTH])}
  layout_checks=[]
@@ -189,6 +189,16 @@ def validate():
  report['cutout_planning']={'stage':'final post-processing after all features','minimum_web_mm':6,'checks':window_checks,'passed':all(q['passed'] for q in window_checks),'note':'Window bounds are non-overlapping and separated by at least 6 mm. Complete insert/support bands and rounded windows replace overlapping or clipped legacy patterns. This checks planned webs, not a universal minimum-wall or structural-strength certification.'}
  print('Final cutout layout / minimum webs',report['cutout_planning']['passed'],flush=True)
  if not report['cutout_planning']['passed']:save();return report
+ # Probe the support-removal openings independently of their rounded corners.
+ access_checks=[]
+ for a,b,c,d in SUPPORT_ACCESS:
+  probe=rect(a+2.1,b-2.1,c+2.1,d-2.1,-.1,27.4)
+  missing=overlap(probe,chassis_shape)
+  access_checks.append(dict(bounds_xy_mm=[a,b,c,d],blocked_mm3=missing,passed=missing<.01))
+ motor_fill=rect(.1,5.9,-19.9,19.9,5.1,15.9).cut(chassis_shape).Volume()
+ report['printability']={'support_access':access_checks,'motor_foot_missing_mm3':motor_fill,'side_roof_degrees':45,'passed':motor_fill<.01 and all(q['passed'] for q in access_checks)}
+ print('Support access / filled motor foot',report['printability']['passed'],flush=True)
+ if not report['printability']['passed']:save();return report
  guard_checks=[dict(index=i,missing_mm3=base_before_lightening.intersect(g).cut(base_after_lightening).Volume()) for i,g in enumerate(BASE_CUT_GUARDS)]
  base_empty=sum(overlap(c,chassis_print_without_pins) for c in CUTOUTS['base'])
  report['base_lightening']={'floor':LIGHTENING['base_floor'],'sides':LIGHTENING['base_sides'],'total':LIGHTENING['base'],'protected_supports':guard_checks,'blocked_cutouts_mm3':base_empty,'passed':all(q['missing_mm3']<.01 for q in guard_checks) and base_empty<.01 and all(LIGHTENING[k]['removed_mm3']>0 for k in ['base_floor','base_sides']) and chassis_print_without_pins.isValid() and len(chassis_print_without_pins.Solids())==1}
@@ -378,5 +388,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report
