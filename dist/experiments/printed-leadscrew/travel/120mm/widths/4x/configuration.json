@@ -1,6 +1,6 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 23,
+  "revision": 24,
   "guideBearingCount": 8,
   "lowerBearingCount": 4,
   "lowerBearingY": [
@@ -47,24 +47,24 @@
   },
   "lightening": {
     "carriage": {
-      "before_mm3": 1191028.2697675566,
-      "after_mm3": 781867.2947656706,
-      "removed_mm3": 409160.975001886,
-      "reduction_percent": 34.35359053918499,
+      "before_mm3": 1190711.3805764667,
+      "after_mm3": 781550.4074519988,
+      "removed_mm3": 409160.9731244679,
+      "reduction_percent": 34.362733051764245,
       "cutout_count": 24
     },
     "lid": {
-      "before_mm3": 179385.58757349936,
-      "after_mm3": 101138.0834944464,
-      "removed_mm3": 78247.50407905296,
-      "reduction_percent": 43.61972727992584,
+      "before_mm3": 178463.91968715913,
+      "after_mm3": 121600.41560810704,
+      "removed_mm3": 56863.50407905209,
+      "reduction_percent": 31.862745242137336,
       "cutout_count": 36
     },
     "base": {
-      "before_mm3": 465674.7936823369,
-      "after_mm3": 415049.0304447198,
-      "removed_mm3": 50625.763237617095,
-      "reduction_percent": 10.871484547680238,
+      "before_mm3": 465494.9312101878,
+      "after_mm3": 422378.471338274,
+      "removed_mm3": 43116.45987191377,
+      "reduction_percent": 9.26249825316468,
       "cutout_count": 12
     }
   },
@@ -75,7 +75,7 @@
     "motor_side_gap_mm": 1.5
   },
   "widthMultiple": 4,
-  "outputPlateWidth": 168,
+  "outputPlateWidth": 168.0,
   "upperBearingSpan": 167.56921938165306,
   "baseWidth": 206.0,
   "stroke": 120.0,
@@ -90,7 +90,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "9ade11ab1c131bfa717fbccc969224b9dd6bf5fe3bdb45744ffe1647cad5659b",
+  "modelSourceSha256": "70958b0b72be303873883660df142b95444a922cb4ac076908d743ed4af76e91",
   "stations": [
     143.0,
     217.0
@@ -107,11 +107,11 @@
   "lidFixings": [
     [
       12,
-      -87.0
+      -98.0
     ],
     [
       12,
-      87.0
+      98.0
     ],
     [
       145.0,
@@ -133,6 +133,14 @@
   "lidMounts": [
     [
       10.5,
+      -77.5
+    ],
+    [
+      10.5,
+      -46.5
+    ],
+    [
+      10.5,
       -15.5
     ],
     [
@@ -140,6 +148,22 @@
       15.5
     ],
     [
+      10.5,
+      46.5
+    ],
+    [
+      10.5,
+      77.5
+    ],
+    [
+      41.5,
+      -77.5
+    ],
+    [
+      41.5,
+      -46.5
+    ],
+    [
       41.5,
       -15.5
     ],
@@ -148,36 +172,84 @@
       15.5
     ],
     [
-      10.5,
-      -36.5
-    ],
-    [
-      10.5,
-      36.5
+      41.5,
+      46.5
     ],
     [
       41.5,
-      -36.5
+      77.5
     ],
     [
-      41.5,
-      36.5
+      72.5,
+      -77.5
     ],
     [
-      10.5,
-      -78.5
+      72.5,
+      -46.5
     ],
     [
-      10.5,
-      78.5
+      72.5,
+      -15.5
     ],
     [
-      41.5,
-      -78.5
+      72.5,
+      15.5
     ],
     [
-      41.5,
-      78.5
+      72.5,
+      46.5
+    ],
+    [
+      72.5,
+      77.5
+    ],
+    [
+      103.5,
+      -77.5
+    ],
+    [
+      103.5,
+      -46.5
+    ],
+    [
+      103.5,
+      -15.5
+    ],
+    [
+      103.5,
+      15.5
+    ],
+    [
+      103.5,
+      46.5
+    ],
+    [
+      103.5,
+      77.5
+    ],
+    [
+      134.5,
+      -77.5
+    ],
+    [
+      134.5,
+      -46.5
+    ],
+    [
+      134.5,
+      -15.5
+    ],
+    [
+      134.5,
+      15.5
+    ],
+    [
+      134.5,
+      46.5
+    ],
+    [
+      134.5,
+      77.5
     ]
   ],
   "sideMounts": [],
@@ -317,6 +389,7 @@
       89.0
     ]
   ],
+  "adjustmentRearOffsetMm": 0.0,
   "bearingSeat": {
     "land_diameter_mm": 7.4,
     "relief_diameter_mm": 17,
@@ -355,15 +428,31 @@
       31
     ],
     "outer_pitch_mm": [
-      157.0,
+      155.0,
       31
     ],
     "face_size_mm": [
-      168,
+      168.0,
       42
     ],
     "hole_centers_yz_mm": [
       [
+        -77.5,
+        26.5
+      ],
+      [
+        -77.5,
+        57.5
+      ],
+      [
+        -46.5,
+        26.5
+      ],
+      [
+        -46.5,
+        57.5
+      ],
+      [
         -15.5,
         26.5
       ],
@@ -380,19 +469,19 @@
         57.5
       ],
       [
-        -78.5,
+        46.5,
         26.5
       ],
       [
-        -78.5,
+        46.5,
         57.5
       ],
       [
-        78.5,
+        77.5,
         26.5
       ],
       [
-        78.5,
+        77.5,
         57.5
       ]
     ],
@@ -418,6 +507,14 @@
     "hole_centers_xy_mm": [
       [
         10.5,
+        -77.5
+      ],
+      [
+        10.5,
+        -46.5
+      ],
+      [
+        10.5,
         -15.5
       ],
       [
@@ -425,6 +522,22 @@
         15.5
       ],
       [
+        10.5,
+        46.5
+      ],
+      [
+        10.5,
+        77.5
+      ],
+      [
+        41.5,
+        -77.5
+      ],
+      [
+        41.5,
+        -46.5
+      ],
+      [
         41.5,
         -15.5
       ],
@@ -433,36 +546,84 @@
         15.5
       ],
       [
-        10.5,
-        -36.5
-      ],
-      [
-        10.5,
-        36.5
+        41.5,
+        46.5
       ],
       [
         41.5,
-        -36.5
+        77.5
       ],
       [
-        41.5,
-        36.5
+        72.5,
+        -77.5
       ],
       [
-        10.5,
-        -78.5
+        72.5,
+        -46.5
       ],
       [
-        10.5,
-        78.5
+        72.5,
+        -15.5
       ],
       [
-        41.5,
-        -78.5
+        72.5,
+        15.5
       ],
       [
-        41.5,
-        78.5
+        72.5,
+        46.5
+      ],
+      [
+        72.5,
+        77.5
+      ],
+      [
+        103.5,
+        -77.5
+      ],
+      [
+        103.5,
+        -46.5
+      ],
+      [
+        103.5,
+        -15.5
+      ],
+      [
+        103.5,
+        15.5
+      ],
+      [
+        103.5,
+        46.5
+      ],
+      [
+        103.5,
+        77.5
+      ],
+      [
+        134.5,
+        -77.5
+      ],
+      [
+        134.5,
+        -46.5
+      ],
+      [
+        134.5,
+        -15.5
+      ],
+      [
+        134.5,
+        15.5
+      ],
+      [
+        134.5,
+        46.5
+      ],
+      [
+        134.5,
+        77.5
       ]
     ],
     "patterns": [
@@ -472,10 +633,6 @@
           31,
           31
         ],
-        "center_xy_mm": [
-          26,
-          0
-        ],
         "hole_centers_xy_mm": [
           [
             10.5,
@@ -491,6 +648,30 @@
           ],
           [
             41.5,
+            15.5
+          ],
+          [
+            72.5,
+            -15.5
+          ],
+          [
+            72.5,
+            15.5
+          ],
+          [
+            103.5,
+            -15.5
+          ],
+          [
+            103.5,
+            15.5
+          ],
+          [
+            134.5,
+            -15.5
+          ],
+          [
+            134.5,
             15.5
           ]
         ]
@@ -499,28 +680,88 @@
         "width_multiple": 2,
         "pitch_xy_mm": [
           31,
-          73
-        ],
-        "center_xy_mm": [
-          26,
-          0
+          31
         ],
         "hole_centers_xy_mm": [
           [
             10.5,
-            -36.5
+            -46.5
           ],
           [
             10.5,
-            36.5
+            -15.5
+          ],
+          [
+            10.5,
+            15.5
+          ],
+          [
+            10.5,
+            46.5
           ],
           [
             41.5,
-            -36.5
+            -46.5
           ],
           [
             41.5,
-            36.5
+            -15.5
+          ],
+          [
+            41.5,
+            15.5
+          ],
+          [
+            41.5,
+            46.5
+          ],
+          [
+            72.5,
+            -46.5
+          ],
+          [
+            72.5,
+            -15.5
+          ],
+          [
+            72.5,
+            15.5
+          ],
+          [
+            72.5,
+            46.5
+          ],
+          [
+            103.5,
+            -46.5
+          ],
+          [
+            103.5,
+            -15.5
+          ],
+          [
+            103.5,
+            15.5
+          ],
+          [
+            103.5,
+            46.5
+          ],
+          [
+            134.5,
+            -46.5
+          ],
+          [
+            134.5,
+            -15.5
+          ],
+          [
+            134.5,
+            15.5
+          ],
+          [
+            134.5,
+            46.5
           ]
         ]
       },
@@ -528,28 +769,128 @@
         "width_multiple": 4,
         "pitch_xy_mm": [
           31,
-          157
-        ],
-        "center_xy_mm": [
-          26,
-          0
+          31
         ],
         "hole_centers_xy_mm": [
           [
             10.5,
-            -78.5
+            -77.5
           ],
           [
             10.5,
-            78.5
+            -46.5
+          ],
+          [
+            10.5,
+            -15.5
+          ],
+          [
+            10.5,
+            15.5
+          ],
+          [
+            10.5,
+            46.5
+          ],
+          [
+            10.5,
+            77.5
           ],
           [
             41.5,
-            -78.5
+            -77.5
           ],
           [
             41.5,
-            78.5
+            -46.5
+          ],
+          [
+            41.5,
+            -15.5
+          ],
+          [
+            41.5,
+            15.5
+          ],
+          [
+            41.5,
+            46.5
+          ],
+          [
+            41.5,
+            77.5
+          ],
+          [
+            72.5,
+            -77.5
+          ],
+          [
+            72.5,
+            -46.5
+          ],
+          [
+            72.5,
+            -15.5
+          ],
+          [
+            72.5,
+            15.5
+          ],
+          [
+            72.5,
+            46.5
+          ],
+          [
+            72.5,
+            77.5
+          ],
+          [
+            103.5,
+            -77.5
+          ],
+          [
+            103.5,
+            -46.5
+          ],
+          [
+            103.5,
+            -15.5
+          ],
+          [
+            103.5,
+            15.5
+          ],
+          [
+            103.5,
+            46.5
+          ],
+          [
+            103.5,
+            77.5
+          ],
+          [
+            134.5,
+            -77.5
+          ],
+          [
+            134.5,
+            -46.5
+          ],
+          [
+            134.5,
+            -15.5
+          ],
+          [
+            134.5,
+            15.5
+          ],
+          [
+            134.5,
+            46.5
+          ],
+          [
+            134.5,
+            77.5
           ]
         ]
       }
@@ -559,12 +900,270 @@
       0
     ],
     "thread": "M3 heat-set insert",
-    "hole_type": "open-bottom insert pilot",
+    "hole_type": "insert pilot; backing retained beneath structural feet",
     "pilot_diameter_mm": 4,
     "through_depth_mm": 5,
     "entry_face": "underside",
     "maximum_screw_entry_mm": 5
   },
+  "mountingGrid": {
+    "pitch_mm": 31,
+    "x_mm": [
+      10.5,
+      41.5,
+      72.5,
+      103.5,
+      134.5
+    ],
+    "y_mm": [
+      -77.5,
+      -46.5,
+      -15.5,
+      15.5,
+      46.5,
+      77.5
+    ]
+  },
+  "mountingLayouts": [
+    {
+      "width_multiple": 1,
+      "center_xy_mm": [
+        26.0,
+        0
+      ],
+      "plate_width_axis": "X",
+      "hole_centers_xy_mm": [
+        [
+          10.5,
+          -15.5
+        ],
+        [
+          10.5,
+          15.5
+        ],
+        [
+          41.5,
+          -15.5
+        ],
+        [
+          41.5,
+          15.5
+        ]
+      ],
+      "unsupported_holes_xy_mm": [],
+      "fastener_count": 4
+    },
+    {
+      "width_multiple": 2,
+      "center_xy_mm": [
+        57.0,
+        0
+      ],
+      "plate_width_axis": "X",
+      "hole_centers_xy_mm": [
+        [
+          10.5,
+          -15.5
+        ],
+        [
+          10.5,
+          15.5
+        ],
+        [
+          41.5,
+          -15.5
+        ],
+        [
+          41.5,
+          15.5
+        ],
+        [
+          72.5,
+          -15.5
+        ],
+        [
+          72.5,
+          15.5
+        ],
+        [
+          103.5,
+          -15.5
+        ],
+        [
+          103.5,
+          15.5
+        ]
+      ],
+      "unsupported_holes_xy_mm": [],
+      "fastener_count": 8
+    },
+    {
+      "width_multiple": 2,
+      "center_xy_mm": [
+        88.0,
+        0
+      ],
+      "plate_width_axis": "X",
+      "hole_centers_xy_mm": [
+        [
+          41.5,
+          -15.5
+        ],
+        [
+          41.5,
+          15.5
+        ],
+        [
+          72.5,
+          -15.5
+        ],
+        [
+          72.5,
+          15.5
+        ],
+        [
+          103.5,
+          -15.5
+        ],
+        [
+          103.5,
+          15.5
+        ],
+        [
+          134.5,
+          -15.5
+        ],
+        [
+          134.5,
+          15.5
+        ]
+      ],
+      "unsupported_holes_xy_mm": [],
+      "fastener_count": 8
+    },
+    {
+      "width_multiple": 4,
+      "center_xy_mm": [
+        57.0,
+        0
+      ],
+      "plate_width_axis": "X",
+      "hole_centers_xy_mm": [
+        [
+          10.5,
+          -15.5
+        ],
+        [
+          10.5,
+          15.5
+        ],
+        [
+          41.5,
+          -15.5
+        ],
+        [
+          41.5,
+          15.5
+        ],
+        [
+          72.5,
+          -15.5
+        ],
+        [
+          72.5,
+          15.5
+        ],
+        [
+          103.5,
+          -15.5
+        ],
+        [
+          103.5,
+          15.5
+        ],
+        [
+          134.5,
+          -15.5
+        ],
+        [
+          134.5,
+          15.5
+        ]
+      ],
+      "unsupported_holes_xy_mm": [
+        [
+          -20.5,
+          -15.5
+        ],
+        [
+          -20.5,
+          15.5
+        ]
+      ],
+      "fastener_count": 10
+    },
+    {
+      "width_multiple": 4,
+      "center_xy_mm": [
+        88.0,
+        0
+      ],
+      "plate_width_axis": "X",
+      "hole_centers_xy_mm": [
+        [
+          10.5,
+          -15.5
+        ],
+        [
+          10.5,
+          15.5
+        ],
+        [
+          41.5,
+          -15.5
+        ],
+        [
+          41.5,
+          15.5
+        ],
+        [
+          72.5,
+          -15.5
+        ],
+        [
+          72.5,
+          15.5
+        ],
+        [
+          103.5,
+          -15.5
+        ],
+        [
+          103.5,
+          15.5
+        ],
+        [
+          134.5,
+          -15.5
+        ],
+        [
+          134.5,
+          15.5
+        ]
+      ],
+      "unsupported_holes_xy_mm": [
+        [
+          165.5,
+          -15.5
+        ],
+        [
+          165.5,
+          15.5
+        ]
+      ],
+      "fastener_count": 10
+    }
+  ],
   "externalMountInserts": {
     "type": "ruthex RX-M3Sx4.0",
     "thread": "M3",
@@ -573,7 +1172,8 @@
     "pilot_diameter_mm": 4,
     "entry_diameter_mm": 4.8,
     "minimum_wall_mm": 1.65,
-    "open_bottom": true,
+    "lid_open_bottom": true,
+    "base_backing": "Retained below structural feet; otherwise open",
     "lid_max_screw_entry_mm": 4,
     "base_max_screw_entry_mm": 5
   },
@@ -582,7 +1182,7 @@
       "host": "Structural mounting lid",
       "center": [
         10.5,
-        -15.5,
+        -77.5,
         68
       ],
       "axis": [
@@ -592,13 +1192,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 1"
     },
     {
       "host": "Structural mounting lid",
       "center": [
         10.5,
-        15.5,
+        -46.5,
         68
       ],
       "axis": [
@@ -608,12 +1209,13 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 2"
     },
     {
       "host": "Structural mounting lid",
       "center": [
-        41.5,
+        10.5,
         -15.5,
         68
       ],
@@ -624,12 +1226,13 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 3"
     },
     {
       "host": "Structural mounting lid",
       "center": [
-        41.5,
+        10.5,
         15.5,
         68
       ],
@@ -640,13 +1243,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 4"
     },
     {
       "host": "Structural mounting lid",
       "center": [
         10.5,
-        -36.5,
+        46.5,
         68
       ],
       "axis": [
@@ -656,13 +1260,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 5"
     },
     {
       "host": "Structural mounting lid",
       "center": [
         10.5,
-        36.5,
+        77.5,
         68
       ],
       "axis": [
@@ -672,13 +1277,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 6"
     },
     {
       "host": "Structural mounting lid",
       "center": [
         41.5,
-        -36.5,
+        -77.5,
         68
       ],
       "axis": [
@@ -688,13 +1294,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 7"
     },
     {
       "host": "Structural mounting lid",
       "center": [
         41.5,
-        36.5,
+        -46.5,
         68
       ],
       "axis": [
@@ -704,13 +1311,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 8"
     },
     {
       "host": "Structural mounting lid",
       "center": [
-        10.5,
-        -78.5,
+        41.5,
+        -15.5,
         68
       ],
       "axis": [
@@ -720,13 +1328,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 9"
     },
     {
       "host": "Structural mounting lid",
       "center": [
-        10.5,
-        78.5,
+        41.5,
+        15.5,
         68
       ],
       "axis": [
@@ -736,13 +1345,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 10"
     },
     {
       "host": "Structural mounting lid",
       "center": [
         41.5,
-        -78.5,
+        46.5,
         68
       ],
       "axis": [
@@ -752,13 +1362,14 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 11"
     },
     {
       "host": "Structural mounting lid",
       "center": [
         41.5,
-        78.5,
+        77.5,
         68
       ],
       "axis": [
@@ -768,9 +1379,350 @@
       ],
       "depth": 4,
       "kind": "lid",
+      "open_bottom": true,
       "insert_name": "M3 lid mounting insert 12"
     },
     {
+      "host": "Structural mounting lid",
+      "center": [
+        72.5,
+        -77.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 13"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        72.5,
+        -46.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 14"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        72.5,
+        -15.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 15"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        72.5,
+        15.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 16"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        72.5,
+        46.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 17"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        72.5,
+        77.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 18"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        103.5,
+        -77.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 19"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        103.5,
+        -46.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 20"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        103.5,
+        -15.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 21"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        103.5,
+        15.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 22"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        103.5,
+        46.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 23"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        103.5,
+        77.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 24"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        134.5,
+        -77.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 25"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        134.5,
+        -46.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 26"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        134.5,
+        -15.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 27"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        134.5,
+        15.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 28"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        134.5,
+        46.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 29"
+    },
+    {
+      "host": "Structural mounting lid",
+      "center": [
+        134.5,
+        77.5,
+        68
+      ],
+      "axis": [
+        0,
+        0,
+        -1
+      ],
+      "depth": 4,
+      "kind": "lid",
+      "open_bottom": true,
+      "insert_name": "M3 lid mounting insert 30"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        10.5,
+        -77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 31"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        10.5,
+        -46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 32"
+    },
+    {
       "host": "Adjustable six-bearing base",
       "center": [
         10.5,
@@ -784,7 +1736,8 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 13"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 33"
     },
     {
       "host": "Adjustable six-bearing base",
@@ -800,7 +1753,76 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 14"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 34"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        10.5,
+        46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 35"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        10.5,
+        77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 36"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        41.5,
+        -77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 37"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        41.5,
+        -46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 38"
     },
     {
       "host": "Adjustable six-bearing base",
@@ -816,7 +1838,8 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 15"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 39"
     },
     {
       "host": "Adjustable six-bearing base",
@@ -832,45 +1855,14 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 16"
-    },
-    {
-      "host": "Adjustable six-bearing base",
-      "center": [
-        10.5,
-        -36.5,
-        0
-      ],
-      "axis": [
-        0,
-        0,
-        1
-      ],
-      "depth": 5,
-      "kind": "base",
-      "insert_name": "M3 base mounting insert 17"
-    },
-    {
-      "host": "Adjustable six-bearing base",
-      "center": [
-        10.5,
-        36.5,
-        0
-      ],
-      "axis": [
-        0,
-        0,
-        1
-      ],
-      "depth": 5,
-      "kind": "base",
-      "insert_name": "M3 base mounting insert 18"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 40"
     },
     {
       "host": "Adjustable six-bearing base",
       "center": [
         41.5,
-        -36.5,
+        46.5,
         0
       ],
       "axis": [
@@ -880,13 +1872,14 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 19"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 41"
     },
     {
       "host": "Adjustable six-bearing base",
       "center": [
         41.5,
-        36.5,
+        77.5,
         0
       ],
       "axis": [
@@ -896,13 +1889,14 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 20"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 42"
     },
     {
       "host": "Adjustable six-bearing base",
       "center": [
-        10.5,
-        -78.5,
+        72.5,
+        -77.5,
         0
       ],
       "axis": [
@@ -912,13 +1906,14 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 21"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 43"
     },
     {
       "host": "Adjustable six-bearing base",
       "center": [
-        10.5,
-        78.5,
+        72.5,
+        -46.5,
         0
       ],
       "axis": [
@@ -928,13 +1923,14 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 22"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 44"
     },
     {
       "host": "Adjustable six-bearing base",
       "center": [
-        41.5,
-        -78.5,
+        72.5,
+        -15.5,
         0
       ],
       "axis": [
@@ -944,13 +1940,14 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 23"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 45"
     },
     {
       "host": "Adjustable six-bearing base",
       "center": [
-        41.5,
-        78.5,
+        72.5,
+        15.5,
         0
       ],
       "axis": [
@@ -960,7 +1957,246 @@
       ],
       "depth": 5,
       "kind": "base",
-      "insert_name": "M3 base mounting insert 24"
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 46"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        72.5,
+        46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 47"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        72.5,
+        77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 48"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        103.5,
+        -77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 49"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        103.5,
+        -46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 50"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        103.5,
+        -15.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 51"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        103.5,
+        15.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 52"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        103.5,
+        46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 53"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        103.5,
+        77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 54"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        134.5,
+        -77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 55"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        134.5,
+        -46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 56"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        134.5,
+        -15.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 57"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        134.5,
+        15.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 58"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        134.5,
+        46.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 59"
+    },
+    {
+      "host": "Adjustable six-bearing base",
+      "center": [
+        134.5,
+        77.5,
+        0
+      ],
+      "axis": [
+        0,
+        0,
+        1
+      ],
+      "depth": 5,
+      "kind": "base",
+      "open_bottom": true,
+      "insert_name": "M3 base mounting insert 60"
     }
   ],
   "explosion": "Staged disassembly: carriage withdrawal, motor bolts, drive, axles, bearing packs, flange bolts and nut"

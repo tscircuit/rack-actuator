@@ -25,7 +25,7 @@ Both lead-screw families use a hollow carriage, two bearing stations and one fou
 - [Printed Ø20 mm screw](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/printed-leadscrew/?travel=120): select **40 or 120 mm travel**. Two threaded carriage bands stay engaged throughout travel, with the screw contained inside the retracted carriage. [Build details](experiments/printed-leadscrew/README.md).
 - [T8×8 screw](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/t8-leadscrew/): select **100 or 300 mm purchased screw length**, providing 70 or 270 mm travel. [Build details](experiments/t8-leadscrew/README.md).
 
-Both have windowed lids and matching nested NEMA17-width mounting patterns in the lid and base, just ahead of the motor. These external mounts use **short Ø4.6 × 4 mm M3 heat-set inserts**, with open-bottom Ø4 mm printed pilots. Install lid inserts from above and base inserts from below. External side mounting bosses and holes have been removed. The shared lower carrier still uses four M5 inserts. Print fit and structural performance require physical testing.
+Both have windowed lids and a uniform 31 mm mounting grid on the output plate, lid and base. Output widths are 42/104/168 mm; the 2× plate is wider to retain a centered NEMA17 square. The matching five-row lid/base grids provide 10/20/30 insert seats per face. Wider plates can mount along the host length: all eight 2× holes, or ten of twelve 4× holes in either of two offset positions, with the unused pair overhanging the grid. These external mounts use **short Ø4.6 × 4 mm M3 heat-set inserts**, with Ø4 mm printed pilots. Lid seats pass through; base seats below structural feet retain backing. Install lid inserts from above and base inserts from below. External side mounting bosses and holes have been removed. The shared lower carrier still uses four M5 inserts. Print fit and structural performance require physical testing.
 
 ## Choose a model
 
@@ -321,3 +321,5 @@ These checks do not replace a physical tolerance, side-load or fatigue test. The
 MIT; see [LICENSE](LICENSE). The compliant tooth principle is inspired by [seveibar/compliant-spur-gear](https://github.com/seveibar/compliant-spur-gear). Its license is included in the CAD bundles.
 
 For Site packaging after regenerating spur presets, run `python scripts/prune-bundled-stls.py`. It verifies loose STL files against the existing ZIP bundles before removing duplicate payloads; individual viewer downloads extract the same STL bytes from those bundles.
+
+Lead-screw validation reports retain the SHA-256 of the validator actually run. Where `validation_source_file` is present, the bundle includes that exact snapshot alongside the current validator. The preserved full-span skin check is stricter than the current swept-bearing-envelope check; previously passing geometry and results remain unchanged.

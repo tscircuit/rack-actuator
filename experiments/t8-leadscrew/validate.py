@@ -28,7 +28,7 @@ def validate():
   q=dict(center_mm=j['center'],ridge_count=len(ribs.Solids()),missing_ridge_mm3=ribs.cut(beam).Volume(),blocked_pilot_mm3=overlap(beam,hole),missing_wall_mm3=wall.cut(beam).Volume())
   q['passed']=q['ridge_count']==3 and max(q[k] for k in ['missing_ridge_mm3','blocked_pilot_mm3','missing_wall_mm3'])<.01
   output_seats.append(q)
- report['output_mount']={'pattern':'Central NEMA17 mounting pitch with extra outer holes on wider plates','pitch_mm':[31,31],'outer_pitch_mm':[31+2*WIDEN,31] if WIDTH>1 else None,'thread':'M3 three-ridge plastic forming pilot','pilot_depth_mm':8,'full_depth_thread_length_mm':7.4,'maximum_screw_entry_mm':8,'face_size_mm':[42*WIDTH,42],'face_home_x_mm':EXIT_X,'holes':output_seats,'passed':len(output_seats)==(8 if WIDTH>1 else 4) and all(q['passed'] for q in output_seats)}
+ report['output_mount']={'pattern':'Uniform 31 mm grid of overlapping NEMA17 patterns','pitch_mm':[31,31],'outer_pitch_mm':[max(GRID_Y)-min(GRID_Y),31] if WIDTH>1 else None,'thread':'M3 three-ridge plastic forming pilot','pilot_depth_mm':8,'full_depth_thread_length_mm':7.4,'maximum_screw_entry_mm':8,'face_size_mm':[OUTPUT_WIDTH,42],'face_home_x_mm':EXIT_X,'holes':output_seats,'passed':len(output_seats)=={1:4,2:8,4:12}[WIDTH] and set(output_holes)=={(y,SCREW_Z+z) for y in [-15.5,15.5] for z in [-15.5,15.5]}|{(31*(j-({1:2,2:4,4:6}[WIDTH]-1)/2),SCREW_Z+z) for j in range({1:2,2:4,4:6}[WIDTH]) for z in [-15.5,15.5]} and all(q['passed'] for q in output_seats)}
  report['plastic_thread_seats']={'method':'Three axial rounded ribs at 120 degrees, with tapered entry. Unformed rib/shaft overlap is intentional and bounded to each verified rib solid. Thread forming and stripping torque are not simulated.',
   'profiles':THREAD_PROFILES,'fastener_nuts':1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 10)}
  save();print('Three-ridge seats',report['plastic_thread_seats']['passed'],flush=True)
@@ -133,8 +133,8 @@ def validate():
   c,u=j['center'],j['axis'];host=by_name[j['host']];length=j['depth']
   printed=host['freeShape'];installed=host['shape'];insert=by_name[j['insert_name']]['shape']
   hole=mount_pilot(c,u,length);wall=ring(4,2.41,4,c,u)
-  row=dict(kind=j['kind'],host=j['host'],center_mm=list(c),axis=list(u),pilot_diameter_mm=4,depth_mm=length,blocked_printed_pilot_mm3=overlap(hole,printed),missing_wall_mm3=wall.cut(printed).Volume(),insert_collision_mm3=overlap(insert,installed),blocked_open_bottom_mm3=overlap(cyl(1.45,length+.2,c,u,-.1),printed))
-  row['passed']=max(row[k] for k in ['blocked_printed_pilot_mm3','missing_wall_mm3','insert_collision_mm3','blocked_open_bottom_mm3'])<.01;mounts.append(row)
+  row=dict(kind=j['kind'],host=j['host'],center_mm=list(c),axis=list(u),pilot_diameter_mm=4,depth_mm=length,blocked_printed_pilot_mm3=overlap(hole,printed),missing_wall_mm3=wall.cut(printed).Volume(),insert_collision_mm3=overlap(insert,installed),open_bottom=j['open_bottom'],backing_beyond_pilot_mm3=overlap(cyl(1.45,.1,c,u,length),printed),insert_tip_clearance_mm=length-MOUNT_INSERT['length_mm'])
+  row['passed']=max(row[k] for k in ['blocked_printed_pilot_mm3','missing_wall_mm3','insert_collision_mm3'])<.01 and (row['backing_beyond_pilot_mm3']<.01 if j['kind']=='lid' else row['insert_tip_clearance_mm']>=1);mounts.append(row)
   probe=cyl(1.45,length,c,u).fuse(cyl(3,40,c,tuple(-q for q in u),.01))
   for travel in [0,STROKE/2,STROKE]:
    for p in parts:
@@ -147,8 +147,17 @@ def validate():
   for j in MOUNT_SEATS:
    if j['host']==name:extra=extra.cut(cyl(2.32,4,j['center'],j['axis']))
   displaced.append(dict(host=name,unexpected_displacement_mm3=extra.Volume(),passed=extra.Volume()<.01))
- expected=[(x,sign*(15.5+21*(w-1))) for w in [1,2,4] if w<=WIDTH for x in [10.5,41.5] for sign in [-1,1]]
- pattern_ok=set(BASE_MOUNT_HOLES)==set(expected)==set(LID_MOUNTS) and len(BASE_MOUNT_HOLES)==4*len(BASE_MOUNT_WIDTHS)
+ expected={(10.5+31*i,31*(j-({1:2,2:4,4:6}[WIDTH]-1)/2)) for i in range(5) for j in range({1:2,2:4,4:6}[WIDTH])}
+ layout_checks=[]
+ for layout in MOUNT_LAYOUTS:
+  w=layout['width_multiple'];cx=layout['center_xy_mm'][0];n={1:2,2:4,4:6}[w]
+  full={(cx+31*(j-(n-1)/2),y) for j in range(n) for y in [-15.5,15.5]}
+  supported=full & expected
+  central={(cx+dx,y) for dx in [-15.5,15.5] for y in [-15.5,15.5]}
+  ok=set(map(tuple,layout['hole_centers_xy_mm']))==supported and central<=supported and len(supported)=={1:4,2:8,4:10}[w]
+  layout_checks.append(dict(**layout,passed=ok))
+ pattern_ok=set(BASE_MOUNT_HOLES)==expected==set(LID_MOUNTS) and len(BASE_MOUNT_HOLES)=={1:10,2:20,4:30}[WIDTH] and all(q['passed'] for q in layout_checks)
+
  height=max(p['shape'].BoundingBox().zmax for p in parts)
  closed_walls=[]
  for x in STATIONS:
@@ -158,8 +167,8 @@ def validate():
   for sign in [-1,1]:
    missing=cyl(.8,5.8,(x,wide(sign*34)+sign*.1,z),(0,sign,0)).cut(chassis_shape).Volume()
    side_holes.append(dict(center_xz_mm=[x,z],side=sign,missing_wall_mm3=missing,passed=missing<.01))
- report['external_mount_inserts']={'specification':MOUNT_INSERT,'patterns':BASE_MOUNT_PATTERNS,'base_count':len(BASE_MOUNT_HOLES),'lid_count':len(LID_MOUNTS),'pattern_center_xy_mm':[26,0],'checks':mounts,'plastic_displacement':displaced,'access_collisions':attachment_access,'pattern_matches':pattern_ok,'passed':pattern_ok and not attachment_access and all(q['passed'] for q in mounts+displaced)}
- report['lid_and_attachment']={'lid_fixings':len(LID_FIXINGS),'lid_fixing_thread':'M3 three-ridge, 12 mm pilot depth','lid_thickness_mm':4,'lid_bottom_z_mm':64,'lid_top_z_mm':68,'assembly_height_mm':height,'original_height_limit_mm':68,'external_mount_thread':'M3 short heat-set insert','open_bottom':True,'top_mount_count':len(LID_MOUNTS),'side_mount_count':0,'floor_mount_count':len(BASE_MOUNT_HOLES),'floor_mount_type':'M3 insert seats entered from underside','checks':mounts,'insertion_collisions':attachment_access,'closed_lower_access_missing_mm3':closed_walls,'removed_side_hole_checks':side_holes,'passed':report['external_mount_inserts']['passed'] and height<=68.00001 and max(closed_walls)<.01 and not SIDE_MOUNTS and all(q['passed'] for q in side_holes)}
+ report['external_mount_inserts']={'specification':MOUNT_INSERT,'patterns':BASE_MOUNT_PATTERNS,'mounting_layouts':layout_checks,'grid_pitch_mm':31,'base_count':len(BASE_MOUNT_HOLES),'lid_count':len(LID_MOUNTS),'pattern_center_xy_mm':[26,0],'checks':mounts,'plastic_displacement':displaced,'access_collisions':attachment_access,'pattern_matches':pattern_ok,'passed':pattern_ok and not attachment_access and all(q['passed'] for q in mounts+displaced)}
+ report['lid_and_attachment']={'lid_fixings':len(LID_FIXINGS),'lid_fixing_thread':'M3 three-ridge, 12 mm pilot depth','lid_thickness_mm':4,'lid_bottom_z_mm':64,'lid_top_z_mm':68,'assembly_height_mm':height,'original_height_limit_mm':68,'external_mount_thread':'M3 short heat-set insert','lid_open_bottom':True,'base_backing':'Retained below structural feet; otherwise open','top_mount_count':len(LID_MOUNTS),'side_mount_count':0,'floor_mount_count':len(BASE_MOUNT_HOLES),'floor_mount_type':'M3 insert seats entered from underside','checks':mounts,'insertion_collisions':attachment_access,'closed_lower_access_missing_mm3':closed_walls,'removed_side_hole_checks':side_holes,'passed':report['external_mount_inserts']['passed'] and height<=68.00001 and max(closed_walls)<.01 and not SIDE_MOUNTS and all(q['passed'] for q in side_holes)}
  print('Low lid / M3 insert patterns / closed sides',report['lid_and_attachment']['passed'],flush=True)
  if not report['lid_and_attachment']['passed']:save();return report
  lid_removed=LIGHTENING['lid']['removed_mm3'];lid_blocked=sum(overlap(cut,lid) for cut in CUTOUTS['lid'])
@@ -218,10 +227,13 @@ def validate():
   contacts.append({'kind':b['kind'],'station_x_mm':b['station'],'normal':list(n),'contact_mm':list(contact),'plane_error_mm':float(abs(expected)),'rear_end_margin_at_full_extension_mm':b['station']-8-(TAIL_HOME+STROKE),'rear_running_face_margin_mm':b['station']-8-(TAIL_HOME+STROKE+4),'front_end_margin_at_retraction_mm':GUIDE_END-(b['station']+8)})
  running_faces=[]
  for q in contacts:
-  c=q['contact_mm'];n=q['normal'];plane=cq.Plane(origin=(TAIL_HOME+4,c[1],c[2]),xDir=(1,0,0),normal=tuple(n))
-  strip=cq.Workplane(plane).center((GUIDE_END-TAIL_HOME-4)/2,0).rect(GUIDE_END-TAIL_HOME-4,7).extrude(-2).val()
-  missing=strip.cut(beam).Volume();running_faces.append(dict(kind=q['kind'],contact_mm=c,missing_track_mm3=missing,passed=missing<.01))
- report['running_faces']={'checks':running_faces,'skin_thickness_mm':2,'track_width_mm':7,'passed':all(q['passed'] for q in running_faces)}
+  # Include the full bearing radius at both travel limits. Output-flange
+  # screw reliefs beyond this swept envelope are not rolling surfaces.
+  lo=q['station_x_mm']-STROKE-8;hi=q['station_x_mm']+8
+  c=q['contact_mm'];n=q['normal'];plane=cq.Plane(origin=(lo,c[1],c[2]),xDir=(1,0,0),normal=tuple(n))
+  strip=cq.Workplane(plane).center((hi-lo)/2,0).rect(hi-lo,7).extrude(-2).val()
+  missing=strip.cut(beam).Volume();running_faces.append(dict(kind=q['kind'],contact_mm=c,swept_x_mm=[lo,hi],missing_track_mm3=missing,passed=missing<.01 and lo>=TAIL_HOME+4 and hi<=GUIDE_END))
+ report['running_faces']={'checks':running_faces,'skin_thickness_mm':2,'track_width_mm':7,'coverage':'Full travel plus the entire 8 mm bearing radius at both limits','passed':all(q['passed'] for q in running_faces)}
  rows=[]
  for q in contacts:
   n=np.array(q['normal']);r=np.array(q['contact_mm']);r[2]-=SCREW_Z
@@ -245,7 +257,7 @@ def validate():
   for p in parts:
    v=overlap(tool,pose(p,travel))
    if v>.01:access.append({'tool':name,'extension_mm':travel,'part':p['name'],'overlap_mm3':v})
- report['base_mount_access']={'insertion_direction':'from underside (+Z)','thread':'M3 heat-set insert','hole_type':'open-bottom Ø4 mm printed pilot','maximum_screw_entry_mm':5,'pattern_center_xy_mm':[26,0],'patterns':BASE_MOUNT_PATTERNS,'holes':[q for q in mounts if q['kind']=='base'],'passed':report['external_mount_inserts']['passed']}
+ report['base_mount_access']={'insertion_direction':'from underside (+Z)','thread':'M3 heat-set insert','hole_type':'Ø4 mm printed pilot; backing retained beneath structural feet','maximum_screw_entry_mm':5,'pattern_center_xy_mm':[26,0],'patterns':BASE_MOUNT_PATTERNS,'holes':[q for q in mounts if q['kind']=='base'],'passed':report['external_mount_inserts']['passed']}
  print('Base insert mounting access',report['base_mount_access']['passed'],flush=True)
  report['tool_access']={'probe_count':len(probes),'collisions':access,'passed':not access}
  exploded=[];press_on=[]
@@ -293,14 +305,14 @@ def validate():
  for travel in [0,STROKE]:
   face=pose(by_name['Hollow triangular carriage'],travel).BoundingBox().xmax
   output_positions.append({'travel_mm':travel,'output_face_x_mm':face,'extension_beyond_base_mm':face-EXIT_X})
- report['compact_layout']={'base_length_mm':EXIT_X-(-36 if PRINTED else BASE_REAR),'base_width_mm':2*HALF_WIDTH,'width_multiple':WIDTH,'output_plate_width_mm':42*WIDTH,'upper_bearing_span_mm':24*math.sqrt(3)+2*WIDEN,'retracted_overall_length_mm':EXIT_X+40,'extended_overall_length_mm':EXIT_X+40+STROKE,'motor_front_x_mm':0,'bearing_station_x_mm':STATIONS,'exit_plane_x_mm':EXIT_X,'screw_end_x_mm':ROD_END,'tip_recess_at_home_mm':EXIT_X-ROD_END,'output_positions':output_positions,'passed':all(abs(q['extension_beyond_base_mm']-q['travel_mm'])<1e-5 for q in output_positions) and abs(chassis_shape.BoundingBox().xmax-EXIT_X)<1e-5}
+ report['compact_layout']={'base_length_mm':EXIT_X-(-36 if PRINTED else BASE_REAR),'base_width_mm':2*HALF_WIDTH,'width_multiple':WIDTH,'output_plate_width_mm':OUTPUT_WIDTH,'upper_bearing_span_mm':24*math.sqrt(3)+2*WIDEN,'retracted_overall_length_mm':EXIT_X+40,'extended_overall_length_mm':EXIT_X+40+STROKE,'motor_front_x_mm':0,'bearing_station_x_mm':STATIONS,'exit_plane_x_mm':EXIT_X,'screw_end_x_mm':ROD_END,'tip_recess_at_home_mm':EXIT_X-ROD_END,'output_positions':output_positions,'passed':all(abs(q['extension_beyond_base_mm']-q['travel_mm'])<1e-5 for q in output_positions) and abs(chassis_shape.BoundingBox().xmax-EXIT_X)<1e-5}
  upper_centers=[p['shape'].Center().toTuple() for p in parts if p.get('bearing') and p['name'].startswith('625ZZ upper')]
  lower_centers=[p['shape'].Center().toTuple() for p in parts if p.get('bearing') and p['name'].startswith('625ZZ lower')]
  measured_span=max(c[1] for c in upper_centers)-min(c[1] for c in upper_centers)
  # Clear the collision-screening triangulation before exact CAD bounds.
  BRepTools.Clean_s(beam.wrapped);BRepTools.Clean_s(chassis_shape.wrapped)
  measured_width=beam.BoundingBox().ylen
- report['width_variant']={'multiple':WIDTH,'output_plate_width_mm':measured_width,'base_width_mm':chassis_shape.BoundingBox().ylen,'upper_bearing_center_span_mm':measured_span,'upper_bearing_centers_mm':upper_centers,'lower_bearing_centers_mm':lower_centers,'outward_shift_per_side_mm':WIDEN,'motor_and_screw_center_y_mm':0,'height_mm':height,'passed':abs(measured_width-42*WIDTH)<1e-5 and abs(chassis_shape.BoundingBox().ylen-2*HALF_WIDTH)<1e-5 and abs(measured_span-(24*math.sqrt(3)+2*WIDEN))<1e-5 and len(upper_centers)==4 and len(lower_centers)==LOWER_COUNT and all(min(abs(c[1]-y) for y in lower_positions(STATIONS[0] if abs(c[0]-STATIONS[0])<.01 else STATIONS[1]))<1e-5 and abs(c[2]-18)<1e-5 for c in lower_centers) and height<=68.00001}
+ report['width_variant']={'multiple':WIDTH,'output_plate_width_mm':measured_width,'base_width_mm':chassis_shape.BoundingBox().ylen,'upper_bearing_center_span_mm':measured_span,'upper_bearing_centers_mm':upper_centers,'lower_bearing_centers_mm':lower_centers,'outward_shift_per_side_mm':WIDEN,'motor_and_screw_center_y_mm':0,'height_mm':height,'passed':abs(measured_width-OUTPUT_WIDTH)<1e-5 and abs(chassis_shape.BoundingBox().ylen-2*HALF_WIDTH)<1e-5 and abs(measured_span-(24*math.sqrt(3)+2*WIDEN))<1e-5 and len(upper_centers)==4 and len(lower_centers)==LOWER_COUNT and all(min(abs(c[1]-y) for y in lower_positions(STATIONS[0] if abs(c[0]-STATIONS[0])<.01 else STATIONS[1]))<1e-5 and abs(c[2]-18)<1e-5 for c in lower_centers) and height<=68.00001}
  if PRINTED:
   light_checks=[]
   for name,shape in [('base',chassis_shape),('carriage',beam)]:
