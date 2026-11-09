@@ -221,6 +221,24 @@ def validate():
  report['cutout_planning']={'stage':'final post-processing after all features','minimum_web_mm':6,'checks':window_checks,'passed':all(q['passed'] for q in window_checks),'note':'Window bounds are non-overlapping and separated by at least 6 mm. Complete insert/support bands and rounded windows replace overlapping or clipped legacy patterns. This checks planned webs, not a universal minimum-wall or structural-strength certification.'}
  print('Final cutout layout / minimum webs',report['cutout_planning']['passed'],flush=True)
  if not report['cutout_planning']['passed']:save();return report
+ # The complete gusset and its wall root must survive final cutouts.
+ lid_braces=[]
+ for q in MOTOR_LID_GUSSETS:
+  gusset=q['shape'];c=q['center'];sign=q['sign']
+  drilled=gusset.cut(ridge_hole(3,12,c,(0,0,-1)))
+  expected=relieve_tracks(drilled) # Retain the existing, explicitly modeled carriage channels.
+  missing=expected.cut(chassis_shape).Volume()
+  ya,yb=sorted([sign*wide(21),sign*q['motor_half']])
+  root=rect(4.1,5.9,ya+.1,yb-.1,q['root_z']+2.1,59.9)
+  root_missing=root.cut(chassis_shape).Volume()
+  angles=[]
+  for face in gusset.Faces():
+   n=face.normalAt()
+   if n.z<-.01:angles.append(math.degrees(math.atan2(math.hypot(n.x,n.y),abs(n.z))))
+  lid_braces.append(dict(center_mm=list(c),missing_gusset_mm3=missing,retained_channel_relief_mm3=drilled.Volume()-expected.Volume(),missing_wall_root_mm3=root_missing,root_volume_mm3=root.Volume(),underside_angles_degrees=angles,passed=missing<.01 and root_missing<.01 and bool(angles) and min(angles)>=45-1e-6))
+ report['motor_lid_braces']={'count':len(lid_braces),'checks':lid_braces,'passed':len(lid_braces)==2 and all(q['passed'] for q in lid_braces),'note':'Gusset retained after its exact thread pilot and existing carriage-clearance channels; full motor-wall root retained after cutouts; underside planes are at least 45 degrees above horizontal. Slicer evidence is supplied separately for the 40 mm 1x base.'}
+ print('Motor-wall lid gussets',report['motor_lid_braces']['passed'],flush=True)
+ if not report['motor_lid_braces']['passed']:save();return report
  # Probe the support-removal openings independently of their rounded corners.
  access_checks=[]
  for a,b,c,d in SUPPORT_ACCESS:
@@ -420,5 +438,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['output_bolt_access']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['motor_lid_braces']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['output_bolt_access']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report

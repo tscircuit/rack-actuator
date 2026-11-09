@@ -1,6 +1,27 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 30,
+  "revision": 31,
+  "motorLidBraces": {
+    "count": 2,
+    "minimum_underside_angle_degrees": 45,
+    "root_overlap_mm": 2,
+    "x_span_mm": [
+      4,
+      17
+    ],
+    "mount_centers_mm": [
+      [
+        12,
+        -56.0,
+        64.0
+      ],
+      [
+        12,
+        56.0,
+        64.0
+      ]
+    ]
+  },
   "outputBoltAccess": {
     "pocket_width_mm": 7,
     "pocket_length_mm": 16,
@@ -359,24 +380,24 @@
   },
   "lightening": {
     "base_floor": {
-      "before_mm3": 252287.93373451201,
-      "after_mm3": 236128.37640529222,
-      "removed_mm3": 16159.557329219795,
-      "reduction_percent": 6.405204200619774,
+      "before_mm3": 262286.37586004334,
+      "after_mm3": 246126.81819791414,
+      "removed_mm3": 16159.557662129198,
+      "reduction_percent": 6.161035855995806,
       "cutout_count": 10
     },
     "base_sides": {
-      "before_mm3": 236128.37640529222,
-      "after_mm3": 231086.37641862876,
-      "removed_mm3": 5041.999986663461,
-      "reduction_percent": 2.1352791491732193,
+      "before_mm3": 246126.81819791414,
+      "after_mm3": 241084.81820202063,
+      "removed_mm3": 5041.999995893508,
+      "reduction_percent": 2.0485374299354744,
       "cutout_count": 12
     },
     "base": {
-      "before_mm3": 252287.93373451201,
-      "after_mm3": 226544.31252789302,
-      "removed_mm3": 25743.62120661899,
-      "reduction_percent": 10.204063597313993,
+      "before_mm3": 262286.37586004334,
+      "after_mm3": 236542.75429704555,
+      "removed_mm3": 25743.62156299778,
+      "reduction_percent": 9.815081503407804,
       "cutout_count": 24
     },
     "carriage": {
@@ -416,7 +437,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "d02762e59c8a62c3afc35e4e51e6f152136ea1d0441ee46b7045e8dcf1706fdd",
+  "modelSourceSha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
   "stations": [
     63.0,
     123.0

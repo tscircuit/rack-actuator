@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "d02762e59c8a62c3afc35e4e51e6f152136ea1d0441ee46b7045e8dcf1706fdd",
-  "validation_source_sha256": "f0f335cd0ae363769665d54e2c48663b0acb6c5a34c2f020888de4446a6c643f",
+  "source_sha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
+  "validation_source_sha256": "9c45c962e210b2f61cac8b3321fc2c0fa3bacb264f10e3554405cbec2b0095db",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -3150,7 +3150,7 @@
     "lid_thickness_mm": 4,
     "lid_bottom_z_mm": 64,
     "lid_top_z_mm": 68,
-    "assembly_height_mm": 68.0,
+    "assembly_height_mm": 68.0000001000002,
     "original_height_limit_mm": 68,
     "external_mount_thread": "M3 short heat-set insert",
     "lid_open_bottom": true,
@@ -4710,6 +4710,45 @@
     "passed": true,
     "note": "Window bounds are non-overlapping and separated by at least 6 mm. Complete insert/support bands and rounded windows replace overlapping or clipped legacy patterns. This checks planned webs, not a universal minimum-wall or structural-strength certification."
   },
+  "motor_lid_braces": {
+    "count": 2,
+    "checks": [
+      {
+        "center_mm": [
+          12,
+          -98.0,
+          64.0
+        ],
+        "missing_gusset_mm3": 0.0,
+        "retained_channel_relief_mm3": 0.26292953603115166,
+        "missing_wall_root_mm3": 0.0,
+        "root_volume_mm3": 300.6720000000008,
+        "underside_angles_degrees": [
+          45.0,
+          54.735610317245346
+        ],
+        "passed": true
+      },
+      {
+        "center_mm": [
+          12,
+          98.0,
+          64.0
+        ],
+        "missing_gusset_mm3": 0.0,
+        "retained_channel_relief_mm3": 0.2629397938180773,
+        "missing_wall_root_mm3": 0.0,
+        "root_volume_mm3": 300.6720000000008,
+        "underside_angles_degrees": [
+          45.0,
+          54.735610317245346
+        ],
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "note": "Gusset retained after its exact thread pilot and existing carriage-clearance channels; full motor-wall root retained after cutouts; underside planes are at least 45 degrees above horizontal. Slicer evidence is supplied separately for the 40 mm 1x base."
+  },
   "printability": {
     "support_access": [
       {
@@ -4759,24 +4798,24 @@
   },
   "base_lightening": {
     "floor": {
-      "before_mm3": 346318.23244599864,
-      "after_mm3": 318307.7018266576,
-      "removed_mm3": 28010.530619341065,
-      "reduction_percent": 8.088090084517495,
+      "before_mm3": 356316.6429360767,
+      "after_mm3": 328306.11184640107,
+      "removed_mm3": 28010.531089675613,
+      "reduction_percent": 7.861134652276322,
       "cutout_count": 18
     },
     "sides": {
-      "before_mm3": 318307.7018266576,
-      "after_mm3": 313265.70183245797,
-      "removed_mm3": 5041.999994199607,
-      "reduction_percent": 1.5840018841094061,
+      "before_mm3": 328306.11184640107,
+      "after_mm3": 323264.11186942173,
+      "removed_mm3": 5041.999976979336,
+      "reduction_percent": 1.5357618378235522,
       "cutout_count": 12
     },
     "total": {
-      "before_mm3": 346318.23244599864,
-      "after_mm3": 308723.637939898,
-      "removed_mm3": 37594.594506100635,
-      "reduction_percent": 10.855505423602771,
+      "before_mm3": 356316.6429360767,
+      "after_mm3": 318722.0479690493,
+      "removed_mm3": 37594.59496702737,
+      "reduction_percent": 10.550895028995841,
       "cutout_count": 32
     },
     "protected_supports": [
@@ -6503,7 +6542,7 @@
   "width_variant": {
     "multiple": 4,
     "output_plate_width_mm": 168.0,
-    "base_width_mm": 206.0,
+    "base_width_mm": 206.0000002,
     "upper_bearing_center_span_mm": 167.56921938165306,
     "upper_bearing_centers_mm": [
       [
@@ -6551,17 +6590,17 @@
     ],
     "outward_shift_per_side_mm": 63.0,
     "motor_and_screw_center_y_mm": 0,
-    "height_mm": 68.0,
+    "height_mm": 68.0000001000002,
     "passed": true
   },
   "lightening": {
     "checks": [
       {
         "part": "base",
-        "before_mm3": 346318.23244599864,
-        "after_mm3": 308723.637939898,
-        "removed_mm3": 37594.594506100635,
-        "reduction_percent": 10.855505423602771,
+        "before_mm3": 356316.6429360767,
+        "after_mm3": 318722.0479690493,
+        "removed_mm3": 37594.59496702737,
+        "reduction_percent": 10.550895028995841,
         "cutout_count": 32,
         "blocked_cutouts_mm3": 0.0,
         "passed": true
@@ -6681,11 +6720,6 @@
     "Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.",
     "Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread."
   ],
-  "revalidation": {
-    "method": "Only explosion_offset changed; AST comparison verifies all other model code identical. Re-ran the original full staged-assembly collision check and mesh export; retained passing checks of unchanged geometry.",
-    "previous_model_source_sha256": "959f24f9b5a7e236c2889e4615ec8a4fdca23a81c31d2d12957cddf4b067bc41",
-    "changed_function": "explosion_offset"
-  },
   "print_meshes": {
     "checks": [
       {
@@ -6704,10 +6738,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 51036,
+        "triangles": 51052,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 309533.60548073903
+        "volume_mm3": 319532.0795908834
       },
       {
         "file": "shared_lower_bearing_carrier.stl",

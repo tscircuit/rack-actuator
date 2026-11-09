@@ -1,6 +1,27 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 29,
+  "revision": 31,
+  "motorLidBraces": {
+    "count": 2,
+    "minimum_underside_angle_degrees": 45,
+    "root_overlap_mm": 2,
+    "x_span_mm": [
+      4,
+      17
+    ],
+    "mount_centers_mm": [
+      [
+        12,
+        -35.0,
+        64.0
+      ],
+      [
+        12,
+        35.0,
+        64.0
+      ]
+    ]
+  },
   "outputBoltAccess": {
     "pocket_width_mm": 7,
     "pocket_length_mm": 20,
@@ -10,6 +31,7 @@
     "head_diameter_mm": 5.5,
     "head_height_mm": 3,
     "driver_diameter_mm": 3,
+    "driver_reach_mm": 18,
     "lower_centers_yz_mm": [
       [
         -15.5,
@@ -20,6 +42,17 @@
         26.5
       ]
     ],
+    "access_centers_yz_mm": [
+      [
+        -15.5,
+        26.5
+      ],
+      [
+        15.5,
+        26.5
+      ]
+    ],
+    "front_bearing_shift_mm": 0,
     "flange_thickness_mm": 8
   },
   "printability": {
@@ -244,24 +277,24 @@
   "shaftClamp": null,
   "lightening": {
     "base_floor": {
-      "before_mm3": 176189.31037923077,
-      "after_mm3": 163449.7531008837,
-      "removed_mm3": 12739.557278347056,
-      "reduction_percent": 7.230607379600028,
+      "before_mm3": 186187.76850214155,
+      "after_mm3": 173448.2108010856,
+      "removed_mm3": 12739.55770105595,
+      "reduction_percent": 6.842317195992076,
       "cutout_count": 10
     },
     "base_sides": {
-      "before_mm3": 163449.7531008837,
-      "after_mm3": 161860.95310682047,
-      "removed_mm3": 1588.7999940632435,
-      "reduction_percent": 0.9720418440048738,
+      "before_mm3": 173448.2108010856,
+      "after_mm3": 171859.41079672353,
+      "removed_mm3": 1588.8000043620705,
+      "reduction_percent": 0.9160082983987323,
       "cutout_count": 4
     },
     "base": {
-      "before_mm3": 176189.31037923077,
-      "after_mm3": 161860.95310682047,
-      "removed_mm3": 14328.3572724103,
-      "reduction_percent": 8.132364694299484,
+      "before_mm3": 186187.76850214155,
+      "after_mm3": 171859.41079672353,
+      "removed_mm3": 14328.35770541802,
+      "reduction_percent": 7.695649301072757,
       "cutout_count": 14
     },
     "carriage": {
@@ -299,7 +332,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "1bf198f42f194d050f38c332dfdac735f30337fd851eb3cc49949906ac71b4d9",
+  "modelSourceSha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
   "stations": [
     93.0,
     133.0

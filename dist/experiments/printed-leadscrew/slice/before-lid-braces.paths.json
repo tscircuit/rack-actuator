@@ -1,0 +1,59 @@
+{
+  "slicer": "Bambu Studio 2.9.1.70",
+  "gcode_sha256": "ab4c788c84f85731c544ca5170b57fb7fb1c6581b77253202ed71300340ea3a3",
+  "stl_sha256": "b3c3fe5033decddea47b4ce3087cdc498a1d58ba60f14afb8d0124dbc35d632e",
+  "layer_count": 340,
+  "layer_height_mm": 0.2,
+  "estimated_seconds": 22968.380859375,
+  "estimated_grams": 159.5245361328125,
+  "support_grams": 7.015070195845861,
+  "support_regions_grams": {
+    "other bearing / lid features": 2.562338541372965,
+    "motor underside": 0.10816922574152973,
+    "adjustment shelves": 3.599623531351093,
+    "side windows": 0.7449388973804862
+  },
+  "extrusion_segments": 1008748,
+  "role_segments": {
+    "Support": 175847,
+    "Inner wall": 175514,
+    "Outer wall": 92674,
+    "Gap infill": 20739,
+    "Bottom surface": 2574,
+    "Internal solid infill": 32902,
+    "Sparse infill": 479613,
+    "Floating vertical shell": 13337,
+    "Bridge": 7545,
+    "Top surface": 4488,
+    "Support interface": 2594,
+    "Overhang wall": 921
+  },
+  "role_filament_mm": {
+    "Support": 2164.4108900000624,
+    "Inner wall": 23488.392440000993,
+    "Outer wall": 7705.970500002088,
+    "Gap infill": 213.89554999999586,
+    "Bottom surface": 644.6239199999991,
+    "Internal solid infill": 4238.562440000104,
+    "Sparse infill": 10174.359760001242,
+    "Floating vertical shell": 854.1020300000105,
+    "Bridge": 1481.354559999978,
+    "Top surface": 1068.3674900000094,
+    "Support interface": 132.06728000000035,
+    "Overhang wall": 56.40448999999982
+  },
+  "model_translation_xy_mm": [
+    68.5000114440918,
+    128.0
+  ],
+  "model_bounds_mm": [
+    -36,
+    155,
+    -40,
+    40,
+    0,
+    68
+  ],
+  "profile": "P2S / 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / tree(auto), supports everywhere",
+  "region_note": "Support region totals classify deposited paths by position; they are not a topology or removability guarantee."
+}
