@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "70958b0b72be303873883660df142b95444a922cb4ac076908d743ed4af76e91",
-  "validation_source_sha256": "3708272b9d469ddc90d836a54d1689a51dd3ea1a48b4afe768e611c9ec5f8de5",
+  "source_sha256": "9123818ca069fb2d6339fa7442d2936272c0a92622573847585349aa327e0bde",
+  "validation_source_sha256": "e7a65fb022e179d07f2ffe52bf5664b7d4c6a9cb03036d37bfd560ccc35ec255",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -1401,6 +1401,14 @@
       }
     ],
     "grid_pitch_mm": 31,
+    "lid_row_x_mm": [
+      10.5,
+      41.5,
+      72.5,
+      103.5,
+      134.5
+    ],
+    "lid_last_row_edge_distance_mm": 11.5,
     "base_count": 20,
     "lid_count": 20,
     "pattern_center_xy_mm": [
@@ -3401,6 +3409,65 @@
     ],
     "passed": true
   },
+  "base_lightening": {
+    "floor": {
+      "before_mm3": 246677.95021597197,
+      "after_mm3": 233167.83319123945,
+      "removed_mm3": 13510.117048936896,
+      "reduction_percent": 5.476823946813443,
+      "cutout_count": 8
+    },
+    "sides": {
+      "before_mm3": 233167.83316703507,
+      "after_mm3": 226044.84437626708,
+      "removed_mm3": 7122.988790767995,
+      "reduction_percent": 3.054876264027929,
+      "cutout_count": 8
+    },
+    "total": {
+      "before_mm3": 246677.95021597197,
+      "after_mm3": 226044.84437626708,
+      "removed_mm3": 20633.10583970489,
+      "reduction_percent": 8.36439001606757,
+      "cutout_count": 24
+    },
+    "protected_supports": [
+      {
+        "index": 0,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 1,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 2,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 3,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 4,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 5,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 6,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 7,
+        "missing_mm3": 0.0
+      }
+    ],
+    "blocked_cutouts_mm3": 0.0,
+    "passed": true
+  },
   "lid_lightening": {
     "before_mm3": 66116.75740179255,
     "after_mm3": 56432.541812107054,
@@ -3478,6 +3545,10 @@
           -34.85640646055102,
           50.0
         ],
+        "swept_x_mm": [
+          15.0,
+          71.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       },
@@ -3487,6 +3558,10 @@
           63.0,
           34.85640646055102,
           50.0
+        ],
+        "swept_x_mm": [
+          15.0,
+          71.0
         ],
         "missing_track_mm3": 0.0,
         "passed": true
@@ -3498,6 +3573,10 @@
           -21.0,
           26.0
         ],
+        "swept_x_mm": [
+          15.0,
+          71.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       },
@@ -3507,6 +3586,10 @@
           63.0,
           21.0,
           26.0
+        ],
+        "swept_x_mm": [
+          15.0,
+          71.0
         ],
         "missing_track_mm3": 0.0,
         "passed": true
@@ -3518,6 +3601,10 @@
           -34.85640646055102,
           50.0
         ],
+        "swept_x_mm": [
+          89.0,
+          145.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       },
@@ -3527,6 +3614,10 @@
           137.0,
           34.85640646055102,
           50.0
+        ],
+        "swept_x_mm": [
+          89.0,
+          145.0
         ],
         "missing_track_mm3": 0.0,
         "passed": true
@@ -3538,6 +3629,10 @@
           -21.0,
           26.0
         ],
+        "swept_x_mm": [
+          89.0,
+          145.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       },
@@ -3548,12 +3643,17 @@
           21.0,
           26.0
         ],
+        "swept_x_mm": [
+          89.0,
+          145.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       }
     ],
     "skin_thickness_mm": 2,
     "track_width_mm": 7,
+    "coverage": "Full travel plus the entire 8 mm bearing radius at both limits",
     "passed": true
   },
   "guidance": {
@@ -4709,10 +4809,10 @@
       {
         "part": "base",
         "before_mm3": 246677.95021597197,
-        "after_mm3": 234839.72031593075,
-        "removed_mm3": 11838.229900041217,
-        "reduction_percent": 4.799062863006842,
-        "cutout_count": 8,
+        "after_mm3": 226044.84437626708,
+        "removed_mm3": 20633.10583970489,
+        "reduction_percent": 8.36439001606757,
+        "cutout_count": 24,
         "blocked_cutouts_mm3": 0.0,
         "passed": true
       },
@@ -4849,10 +4949,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 35300,
+        "triangles": 39108,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 235338.41772643637
+        "volume_mm3": 226544.35381222554
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
@@ -4870,8 +4970,5 @@
       }
     ],
     "passed": true
-  },
-  "validation_source_file": "experiments/t8-leadscrew/provenance/validate_full_span_v24.py",
-  "current_validator_source_sha256": "102c688e3057c21cb469791aa017b02e52e8db9cbbd565f143b32bca44261394",
-  "validation_provenance_note": "This passing report was produced by the preserved full-span validator. Its running-skin check covers the entire guide length, including the full bearing sweep. The current validator checks the full swept bearing envelope instead. The CAD generator and exported geometry are unchanged; prior results are retained with their original validator hash."
+  }
 }

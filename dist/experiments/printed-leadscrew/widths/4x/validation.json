@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "70958b0b72be303873883660df142b95444a922cb4ac076908d743ed4af76e91",
-  "validation_source_sha256": "102c688e3057c21cb469791aa017b02e52e8db9cbbd565f143b32bca44261394",
+  "source_sha256": "9123818ca069fb2d6339fa7442d2936272c0a92622573847585349aa327e0bde",
+  "validation_source_sha256": "e7a65fb022e179d07f2ffe52bf5664b7d4c6a9cb03036d37bfd560ccc35ec255",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -1578,6 +1578,14 @@
       }
     ],
     "grid_pitch_mm": 31,
+    "lid_row_x_mm": [
+      10.5,
+      41.5,
+      72.5,
+      103.5,
+      134.5
+    ],
+    "lid_last_row_edge_distance_mm": 11.5,
     "base_count": 30,
     "lid_count": 30,
     "pattern_center_xy_mm": [
@@ -4498,6 +4506,65 @@
     ],
     "passed": true
   },
+  "base_lightening": {
+    "floor": {
+      "before_mm3": 340708.24890233093,
+      "after_mm3": 309918.59117249225,
+      "removed_mm3": 30789.657764342963,
+      "reduction_percent": 9.03695694587344,
+      "cutout_count": 12
+    },
+    "sides": {
+      "before_mm3": 309918.59113798797,
+      "after_mm3": 302795.6023429201,
+      "removed_mm3": 7122.988795067882,
+      "reduction_percent": 2.2983418867880845,
+      "cutout_count": 8
+    },
+    "total": {
+      "before_mm3": 340708.24890233093,
+      "after_mm3": 302795.6023429201,
+      "removed_mm3": 37912.646559410845,
+      "reduction_percent": 11.127598665883509,
+      "cutout_count": 32
+    },
+    "protected_supports": [
+      {
+        "index": 0,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 1,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 2,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 3,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 4,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 5,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 6,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 7,
+        "missing_mm3": 0.0
+      }
+    ],
+    "blocked_cutouts_mm3": 0.0,
+    "passed": true
+  },
   "lid_lightening": {
     "before_mm3": 112543.91968715955,
     "after_mm3": 91668.16764763327,
@@ -6198,10 +6265,10 @@
       {
         "part": "base",
         "before_mm3": 340708.24890233093,
-        "after_mm3": 312771.7890601412,
-        "removed_mm3": 27936.45984218974,
-        "reduction_percent": 8.199525527249016,
-        "cutout_count": 12,
+        "after_mm3": 302795.6023429201,
+        "removed_mm3": 37912.646559410845,
+        "reduction_percent": 11.127598665883509,
+        "cutout_count": 32,
         "blocked_cutouts_mm3": 0.0,
         "passed": true
       },
@@ -6338,10 +6405,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 45528,
+        "triangles": 50064,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 313271.37339232804
+        "volume_mm3": 303296.14571118174
       },
       {
         "file": "shared_lower_bearing_carrier.stl",

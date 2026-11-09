@@ -156,7 +156,9 @@ def validate():
   central={(cx+dx,y) for dx in [-15.5,15.5] for y in [-15.5,15.5]}
   ok=set(map(tuple,layout['hole_centers_xy_mm']))==supported and central<=supported and len(supported)=={1:4,2:8,4:10}[w]
   layout_checks.append(dict(**layout,passed=ok))
- pattern_ok=set(BASE_MOUNT_HOLES)==expected==set(LID_MOUNTS) and len(BASE_MOUNT_HOLES)=={1:10,2:20,4:30}[WIDTH] and all(q['passed'] for q in layout_checks)
+ expected_lid={(10.5+31*i,y) for i in range(math.floor((EXIT_X-23.5)/31)+1) for y in GRID_Y}
+ lid_edge=EXIT_X-9-max(x for x,y in LID_MOUNTS)
+ pattern_ok=set(BASE_MOUNT_HOLES)==expected and set(LID_MOUNTS)==expected_lid and 4<=lid_edge<35 and len(BASE_MOUNT_HOLES)=={1:10,2:20,4:30}[WIDTH] and all(q['passed'] for q in layout_checks)
 
  height=max(p['shape'].BoundingBox().zmax for p in parts)
  closed_walls=[]
@@ -167,10 +169,15 @@ def validate():
   for sign in [-1,1]:
    missing=cyl(.8,5.8,(x,wide(sign*34)+sign*.1,z),(0,sign,0)).cut(chassis_shape).Volume()
    side_holes.append(dict(center_xz_mm=[x,z],side=sign,missing_wall_mm3=missing,passed=missing<.01))
- report['external_mount_inserts']={'specification':MOUNT_INSERT,'patterns':BASE_MOUNT_PATTERNS,'mounting_layouts':layout_checks,'grid_pitch_mm':31,'base_count':len(BASE_MOUNT_HOLES),'lid_count':len(LID_MOUNTS),'pattern_center_xy_mm':[26,0],'checks':mounts,'plastic_displacement':displaced,'access_collisions':attachment_access,'pattern_matches':pattern_ok,'passed':pattern_ok and not attachment_access and all(q['passed'] for q in mounts+displaced)}
+ report['external_mount_inserts']={'specification':MOUNT_INSERT,'patterns':BASE_MOUNT_PATTERNS,'mounting_layouts':layout_checks,'grid_pitch_mm':31,'lid_row_x_mm':LID_GRID_X,'lid_last_row_edge_distance_mm':lid_edge,'base_count':len(BASE_MOUNT_HOLES),'lid_count':len(LID_MOUNTS),'pattern_center_xy_mm':[26,0],'checks':mounts,'plastic_displacement':displaced,'access_collisions':attachment_access,'pattern_matches':pattern_ok,'passed':pattern_ok and not attachment_access and all(q['passed'] for q in mounts+displaced)}
  report['lid_and_attachment']={'lid_fixings':len(LID_FIXINGS),'lid_fixing_thread':'M3 three-ridge, 12 mm pilot depth','lid_thickness_mm':4,'lid_bottom_z_mm':64,'lid_top_z_mm':68,'assembly_height_mm':height,'original_height_limit_mm':68,'external_mount_thread':'M3 short heat-set insert','lid_open_bottom':True,'base_backing':'Retained below structural feet; otherwise open','top_mount_count':len(LID_MOUNTS),'side_mount_count':0,'floor_mount_count':len(BASE_MOUNT_HOLES),'floor_mount_type':'M3 insert seats entered from underside','checks':mounts,'insertion_collisions':attachment_access,'closed_lower_access_missing_mm3':closed_walls,'removed_side_hole_checks':side_holes,'passed':report['external_mount_inserts']['passed'] and height<=68.00001 and max(closed_walls)<.01 and not SIDE_MOUNTS and all(q['passed'] for q in side_holes)}
  print('Low lid / M3 insert patterns / closed sides',report['lid_and_attachment']['passed'],flush=True)
  if not report['lid_and_attachment']['passed']:save();return report
+ guard_checks=[dict(index=i,missing_mm3=base_before_lightening.intersect(g).cut(base_after_lightening).Volume()) for i,g in enumerate(BASE_CUT_GUARDS)]
+ base_empty=sum(overlap(c,chassis_print_without_pins) for c in CUTOUTS['base'])
+ report['base_lightening']={'floor':LIGHTENING['base_floor'],'sides':LIGHTENING['base_sides'],'total':LIGHTENING['base'],'protected_supports':guard_checks,'blocked_cutouts_mm3':base_empty,'passed':all(q['missing_mm3']<.01 for q in guard_checks) and base_empty<.01 and all(LIGHTENING[k]['removed_mm3']>0 for k in ['base_floor','base_sides']) and chassis_print_without_pins.isValid() and len(chassis_print_without_pins.Solids())==1}
+ print('Base floor / side windows',report['base_lightening']['passed'],flush=True)
+ if not report['base_lightening']['passed']:save();return report
  lid_removed=LIGHTENING['lid']['removed_mm3'];lid_blocked=sum(overlap(cut,lid) for cut in CUTOUTS['lid'])
  report['lid_lightening']={**LIGHTENING['lid'],'blocked_cutouts_mm3':lid_blocked,'passed':lid_removed>0 and lid_blocked<.01 and lid.isValid() and len(lid.Solids())==1}
  if not report['lid_lightening']['passed']:save();return report

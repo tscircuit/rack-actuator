@@ -1,6 +1,6 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 24,
+  "revision": 25,
   "guideBearingCount": 8,
   "lowerBearingCount": 4,
   "lowerBearingY": [
@@ -60,12 +60,26 @@
       "reduction_percent": 18.548982563922603,
       "cutout_count": 18
     },
+    "base_floor": {
+      "before_mm3": 340708.24890233093,
+      "after_mm3": 309918.59117249225,
+      "removed_mm3": 30789.657764342963,
+      "reduction_percent": 9.03695694587344,
+      "cutout_count": 12
+    },
+    "base_sides": {
+      "before_mm3": 309918.59113798797,
+      "after_mm3": 302795.6023429201,
+      "removed_mm3": 7122.988795067882,
+      "reduction_percent": 2.2983418867880845,
+      "cutout_count": 8
+    },
     "base": {
       "before_mm3": 340708.24890233093,
-      "after_mm3": 312771.7890601412,
-      "removed_mm3": 27936.45984218974,
-      "reduction_percent": 8.199525527249016,
-      "cutout_count": 12
+      "after_mm3": 302795.6023429201,
+      "removed_mm3": 37912.646559410845,
+      "reduction_percent": 11.127598665883509,
+      "cutout_count": 32
     }
   },
   "motorBraces": {
@@ -90,7 +104,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "70958b0b72be303873883660df142b95444a922cb4ac076908d743ed4af76e91",
+  "modelSourceSha256": "9123818ca069fb2d6339fa7442d2936272c0a92622573847585349aa327e0bde",
   "stations": [
     63.0,
     137.0
@@ -915,6 +929,13 @@
       103.5,
       134.5
     ],
+    "lid_x_mm": [
+      10.5,
+      41.5,
+      72.5,
+      103.5,
+      134.5
+    ],
     "y_mm": [
       -77.5,
       -46.5,
@@ -922,7 +943,9 @@
       15.5,
       46.5,
       77.5
-    ]
+    ],
+    "lid_end_mm": 146.0,
+    "lid_last_row_edge_distance_mm": 11.5
   },
   "mountingLayouts": [
     {

@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "70958b0b72be303873883660df142b95444a922cb4ac076908d743ed4af76e91",
-  "validation_source_sha256": "3708272b9d469ddc90d836a54d1689a51dd3ea1a48b4afe768e611c9ec5f8de5",
+  "source_sha256": "9123818ca069fb2d6339fa7442d2936272c0a92622573847585349aa327e0bde",
+  "validation_source_sha256": "e7a65fb022e179d07f2ffe52bf5664b7d4c6a9cb03036d37bfd560ccc35ec255",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -1141,8 +1141,22 @@
       }
     ],
     "grid_pitch_mm": 31,
+    "lid_row_x_mm": [
+      10.5,
+      41.5,
+      72.5,
+      103.5,
+      134.5,
+      165.5,
+      196.5,
+      227.5,
+      258.5,
+      289.5,
+      320.5
+    ],
+    "lid_last_row_edge_distance_mm": 21.5,
     "base_count": 10,
-    "lid_count": 10,
+    "lid_count": 22,
     "pattern_center_xy_mm": [
       26,
       0
@@ -1360,6 +1374,282 @@
         "host": "Structural mounting lid",
         "center_mm": [
           134.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          165.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          165.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          196.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          196.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          227.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          227.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          258.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          258.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          289.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          289.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          320.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          320.5,
           15.5,
           68
         ],
@@ -1636,7 +1926,7 @@
     "external_mount_thread": "M3 short heat-set insert",
     "lid_open_bottom": true,
     "base_backing": "Retained below structural feet; otherwise open",
-    "top_mount_count": 10,
+    "top_mount_count": 22,
     "side_mount_count": 0,
     "floor_mount_count": 10,
     "floor_mount_type": "M3 insert seats entered from underside",
@@ -1853,6 +2143,282 @@
         "host": "Structural mounting lid",
         "center_mm": [
           134.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          165.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          165.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          196.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          196.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          227.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          227.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          258.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          258.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          289.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          289.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          320.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "open_bottom": true,
+        "backing_beyond_pilot_mm3": 0.0,
+        "insert_tip_clearance_mm": 0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          320.5,
           15.5,
           68
         ],
@@ -2221,11 +2787,70 @@
     ],
     "passed": true
   },
+  "base_lightening": {
+    "floor": {
+      "before_mm3": 360202.3905769316,
+      "after_mm3": 327920.6027288563,
+      "removed_mm3": 32281.78784807527,
+      "reduction_percent": 8.962124819985215,
+      "cutout_count": 14
+    },
+    "sides": {
+      "before_mm3": 327920.6027288563,
+      "after_mm3": 291877.0903239083,
+      "removed_mm3": 36043.51240494801,
+      "reduction_percent": 10.991536397836784,
+      "cutout_count": 28
+    },
+    "total": {
+      "before_mm3": 360202.3905769316,
+      "after_mm3": 291877.0903239083,
+      "removed_mm3": 68325.30025302328,
+      "reduction_percent": 18.968586006213762,
+      "cutout_count": 42
+    },
+    "protected_supports": [
+      {
+        "index": 0,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 1,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 2,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 3,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 4,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 5,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 6,
+        "missing_mm3": 0.0
+      },
+      {
+        "index": 7,
+        "missing_mm3": 0.0
+      }
+    ],
+    "blocked_cutouts_mm3": 0.0,
+    "passed": true
+  },
   "lid_lightening": {
-    "before_mm3": 105992.29245195491,
-    "after_mm3": 61374.735083487445,
-    "removed_mm3": 44617.55736846747,
-    "reduction_percent": 42.09509610209827,
+    "before_mm3": 105377.84719439525,
+    "after_mm3": 72464.28982592747,
+    "removed_mm3": 32913.55736846778,
+    "reduction_percent": 31.23384871181764,
     "cutout_count": 16,
     "blocked_cutouts_mm3": 0.0,
     "passed": true
@@ -2298,6 +2923,10 @@
           -13.85640646055102,
           50.0
         ],
+        "swept_x_mm": [
+          15.0,
+          301.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       },
@@ -2307,6 +2936,10 @@
           293.0,
           13.85640646055102,
           50.0
+        ],
+        "swept_x_mm": [
+          15.0,
+          301.0
         ],
         "missing_track_mm3": 0.0,
         "passed": true
@@ -2318,6 +2951,10 @@
           -1.0,
           26.0
         ],
+        "swept_x_mm": [
+          15.0,
+          301.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       },
@@ -2327,6 +2964,10 @@
           333.0,
           -13.85640646055102,
           50.0
+        ],
+        "swept_x_mm": [
+          55.0,
+          341.0
         ],
         "missing_track_mm3": 0.0,
         "passed": true
@@ -2338,6 +2979,10 @@
           13.85640646055102,
           50.0
         ],
+        "swept_x_mm": [
+          55.0,
+          341.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       },
@@ -2348,12 +2993,17 @@
           1.0,
           26.0
         ],
+        "swept_x_mm": [
+          55.0,
+          341.0
+        ],
         "missing_track_mm3": 0.0,
         "passed": true
       }
     ],
     "skin_thickness_mm": 2,
     "track_width_mm": 7,
+    "coverage": "Full travel plus the entire 8 mm bearing radius at both limits",
     "passed": true
   },
   "guidance": {
@@ -3141,10 +3791,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 24152,
+        "triangles": 40720,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 360700.0415604439
+        "volume_mm3": 292378.014591624
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
@@ -3155,15 +3805,12 @@
       },
       {
         "file": "structural_mounting_lid.stl",
-        "triangles": 21556,
+        "triangles": 30604,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 61376.64258332467
+        "volume_mm3": 72466.60388596117
       }
     ],
     "passed": true
-  },
-  "validation_source_file": "experiments/t8-leadscrew/provenance/validate_full_span_v24.py",
-  "current_validator_source_sha256": "102c688e3057c21cb469791aa017b02e52e8db9cbbd565f143b32bca44261394",
-  "validation_provenance_note": "This passing report was produced by the preserved full-span validator. Its running-skin check covers the entire guide length, including the full bearing sweep. The current validator checks the full swept bearing envelope instead. The CAD generator and exported geometry are unchanged; prior results are retained with their original validator hash."
+  }
 }
