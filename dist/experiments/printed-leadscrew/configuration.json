@@ -1,6 +1,27 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 28,
+  "revision": 29,
+  "outputBoltAccess": {
+    "pocket_width_mm": 7,
+    "pocket_length_mm": 20,
+    "roof_degrees": 45,
+    "loading": "Load lower bolts from underneath with carriage fully extended; upper bolts enter from above.",
+    "bolt": "M3x12 socket-head reference",
+    "head_diameter_mm": 5.5,
+    "head_height_mm": 3,
+    "driver_diameter_mm": 3,
+    "lower_centers_yz_mm": [
+      [
+        -15.5,
+        26.5
+      ],
+      [
+        15.5,
+        26.5
+      ]
+    ],
+    "flange_thickness_mm": 8
+  },
   "printability": {
     "orientation": "base floor on bed, Z up",
     "side_window_roof_degrees": 45,
@@ -320,10 +341,10 @@
     },
     "carriage": {
       "before_mm3": 107030.82258980615,
-      "after_mm3": 102270.67209510636,
-      "removed_mm3": 4760.150494699788,
-      "reduction_percent": 4.44745763838795,
-      "cutout_count": 2
+      "after_mm3": 101522.13455619178,
+      "removed_mm3": 5508.688033614366,
+      "reduction_percent": 5.146823971190356,
+      "cutout_count": 4
     },
     "lid": {
       "before_mm3": 43159.19511642583,
@@ -355,7 +376,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "f65433439526be80c406a34ba0c8915367e32df020718d60e8a700751ae87c5e",
+  "modelSourceSha256": "1bf198f42f194d050f38c332dfdac735f30337fd851eb3cc49949906ac71b4d9",
   "stations": [
     63.0,
     137.0

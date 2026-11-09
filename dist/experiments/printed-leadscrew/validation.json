@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "f65433439526be80c406a34ba0c8915367e32df020718d60e8a700751ae87c5e",
-  "validation_source_sha256": "d2f1551fdcf1d3398f875371bd8de442c0e0e60006df7b612f133fc482281078",
+  "source_sha256": "1bf198f42f194d050f38c332dfdac735f30337fd851eb3cc49949906ac71b4d9",
+  "validation_source_sha256": "b16d3b9e05af61d3a5712a789d919f617c5cc44aedecc5eb8c4bda2f6990ab8d",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -71,6 +71,56 @@
       }
     ],
     "passed": true
+  },
+  "output_bolt_access": {
+    "applicable": true,
+    "reference_bolt": "M3x12 socket head, diameter 5.5 mm, height 3 mm",
+    "driver_envelope_diameter_mm": 3,
+    "installation_travel_mm": 40.0,
+    "checks": [
+      {
+        "center_yz_mm": [
+          -15.5,
+          26.5
+        ],
+        "carriage_blockage_mm3": 0.0,
+        "extended_loading_collisions": [],
+        "installed_travel_collisions": [],
+        "passed": true
+      },
+      {
+        "center_yz_mm": [
+          -15.5,
+          57.5
+        ],
+        "carriage_blockage_mm3": 0.0,
+        "extended_loading_collisions": [],
+        "installed_travel_collisions": [],
+        "passed": true
+      },
+      {
+        "center_yz_mm": [
+          15.5,
+          26.5
+        ],
+        "carriage_blockage_mm3": 0.0,
+        "extended_loading_collisions": [],
+        "installed_travel_collisions": [],
+        "passed": true
+      },
+      {
+        "center_yz_mm": [
+          15.5,
+          57.5
+        ],
+        "carriage_blockage_mm3": 0.0,
+        "extended_loading_collisions": [],
+        "installed_travel_collisions": [],
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "note": "1x output plate only. Full flange thickness and three-ridge pilots are retained. Insert from the inside with the carriage fully extended; thread forming is bounded to the pilot ribs."
   },
   "plastic_thread_seats": {
     "method": "Three axial rounded ribs at 120 degrees, with tapered entry. Unformed rib/shaft overlap is intentional and bounded to each verified rib solid. Thread forming and stripping torque are not simulated.",
@@ -3344,10 +3394,10 @@
       {
         "part": "carriage",
         "before_mm3": 107030.82258980615,
-        "after_mm3": 102270.67209510636,
-        "removed_mm3": 4760.150494699788,
-        "reduction_percent": 4.44745763838795,
-        "cutout_count": 2,
+        "after_mm3": 101522.13455619178,
+        "removed_mm3": 5508.688033614366,
+        "reduction_percent": 5.146823971190356,
+        "cutout_count": 4,
         "blocked_cutouts_mm3": 0.0,
         "passed": true
       }
@@ -3460,10 +3510,10 @@
     "checks": [
       {
         "file": "hollow_triangular_carriage.stl",
-        "triangles": 11152,
+        "triangles": 11354,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 102300.9471936964
+        "volume_mm3": 101552.44646038818
       },
       {
         "file": "printed_20_mm_lead_screw_with_integral_shaft_clamp.stl",

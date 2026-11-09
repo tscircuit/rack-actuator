@@ -82,3 +82,5 @@ Install `python -m pip install -r experiments/printed-leadscrew/requirements.txt
 The 40 mm, 1× assets stay at the experiment root; other widths use `widths/2x/` and `widths/4x/`. The longer 1× design uses `travel/120mm/`. `--quick` produces an unvalidated preview only.
 
 Print the base with its floor on the bed (CAD Z up). A before/after Bambu Studio slice for the 40 mm, 1x printed-screw base is available in the site’s slice preview. It uses P2S 0.4 mm, Generic PETG, 0.20 mm layers, four walls, 25% gyroid and automatic tree supports everywhere. Remaining axle and shelf supports still need removal; the preview is not a physical removal or strength test.
+
+The 1x output plate has two underside access openings behind its lower mounting holes (7 mm wide, 20 mm long, rounded at the rear with a 45-degree roof). Extend the carriage fully before fitting M3 socket-head bolts from the inside. Clearance is checked for M3x12 bolts with 5.5 mm diameter, 3 mm high heads and a 3 mm envelope for a short hex key. The upper pair loads from above. The 31 mm pattern, 8 mm flange and three-ridge pilots remain unchanged. The 2x/4x plates retain their existing geometry.

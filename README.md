@@ -327,3 +327,5 @@ All six supported lead-screw configurations are rebuilt and checked with the bun
 Lead-screw bearing axles use tapered, rounded-root relief slots and clearance behind the inner-race seats. The retained 6.4 mm heads and extended 30° tips are unchanged. Assembly checks distinguish undeformed head contact from unexpected collisions; physical snap force and fatigue remain unmeasured.
 
 The lead-screw bases use filled motor feet, 45-degree side-window roofs and bottom access below the adjustment shelves. Inspect the actual 40 mm, 1x printed-screw base slice at [the support preview](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/printed-leadscrew/slice/). Reproduction profiles and G-code extraction are in `experiments/printed-leadscrew/slicing/`.
+
+The 1x T8 and printed-screw output plates have two underside openings for fitting the lower M3 mounting bolts from inside. Fully extend the carriage for access. The front 31 mm pattern, 8 mm flange thickness and bearing tracks are retained. Use the viewer’s **Bolt access** view to inspect them.

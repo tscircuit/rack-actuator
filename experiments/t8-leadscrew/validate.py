@@ -29,6 +29,37 @@ def validate():
   q['passed']=q['ridge_count']==3 and max(q[k] for k in ['missing_ridge_mm3','blocked_pilot_mm3','missing_wall_mm3'])<.01
   output_seats.append(q)
  report['output_mount']={'pattern':'Uniform 31 mm grid of overlapping NEMA17 patterns','pitch_mm':[31,31],'outer_pitch_mm':[max(GRID_Y)-min(GRID_Y),31] if WIDTH>1 else None,'thread':'M3 three-ridge plastic forming pilot','pilot_depth_mm':8,'full_depth_thread_length_mm':7.4,'maximum_screw_entry_mm':8,'face_size_mm':[OUTPUT_WIDTH,42],'face_home_x_mm':EXIT_X,'holes':output_seats,'passed':len(output_seats)=={1:4,2:8,4:12}[WIDTH] and set(output_holes)=={(y,SCREW_Z+z) for y in [-15.5,15.5] for z in [-15.5,15.5]}|{(31*(j-({1:2,2:4,4:6}[WIDTH]-1)/2),SCREW_Z+z) for j in range({1:2,2:4,4:6}[WIDTH]) for z in [-15.5,15.5]} and all(q['passed'] for q in output_seats)}
+ # Test the actual M3 head, shank and short hex-key route, not just the pilot.
+ output_access=[]
+ if WIDTH==1:
+  for y,z in output_holes:
+   end=GUIDE_END
+   ribs=ridge_material(3,8,(EXIT_X,y,z),(-1,0,0))
+   initial=xcyl(2.75,3,end-15,y,z).fuse(xcyl(1.5,12,end-12,y,z))
+   load_direction=-1 if z<SCREW_Z else 1
+   radial=[initial.translate((0,0,load_direction*d)) for d in [20,15,10,5,2,0]]
+   axial=xcyl(2.75,15,end-15,y,z).fuse(xcyl(1.5,24,end-12,y,z))
+   # Short arm along X, with its long arm entering through the same opening.
+   driver=xcyl(1.5,15,end-18,y,z).fuse(cyl(1.5,20,(end-18,y,z),(0,0,load_direction)))
+   host_blocked=max([overlap(beam,q) for q in radial]+[beam.intersect(axial).cut(ribs).Volume(),overlap(beam,driver)])
+   approach_obstacles=[]
+   for part in parts:
+    if part['name']=='Hollow triangular carriage':continue
+    placed=pose(part,STROKE)
+    for q in radial+[axial,driver]:
+     v=overlap(q.translate((STROKE,0,0)),placed)
+     if v>.01:approach_obstacles.append(dict(part=part['name'],overlap_mm3=v))
+   # Exact swept cylinders cover installed bolt heads/shanks throughout travel.
+   installed_sweep=xcyl(2.75,STROKE+3,end-3,y,z).fuse(xcyl(1.5,STROKE+12,end,y,z))
+   running_obstacles=[]
+   for part in parts:
+    if part['group']=='carriage':continue
+    v=overlap(installed_sweep,part['shape'])
+    if v>.01:running_obstacles.append(dict(part=part['name'],overlap_mm3=v))
+   output_access.append(dict(center_yz_mm=[y,z],carriage_blockage_mm3=host_blocked,extended_loading_collisions=approach_obstacles,installed_travel_collisions=running_obstacles,passed=host_blocked<.01 and not approach_obstacles and not running_obstacles))
+ report['output_bolt_access']={'applicable':WIDTH==1,'reference_bolt':'M3x12 socket head, diameter 5.5 mm, height 3 mm','driver_envelope_diameter_mm':3,'installation_travel_mm':STROKE,'checks':output_access,'passed':all(q['passed'] for q in output_access),'note':'1x output plate only. Full flange thickness and three-ridge pilots are retained. Insert from the inside with the carriage fully extended; thread forming is bounded to the pilot ribs.'}
+ print('Inside output-bolt access',report['output_bolt_access']['passed'],flush=True)
+ if not report['output_bolt_access']['passed']:save();return report
  report['plastic_thread_seats']={'method':'Three axial rounded ribs at 120 degrees, with tapered entry. Unformed rib/shaft overlap is intentional and bounded to each verified rib solid. Thread forming and stripping torque are not simulated.',
   'profiles':THREAD_PROFILES,'fastener_nuts':1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 10)}
  save();print('Three-ridge seats',report['plastic_thread_seats']['passed'],flush=True)
@@ -388,5 +419,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['output_bolt_access']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report
