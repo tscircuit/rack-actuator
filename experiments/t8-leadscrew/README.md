@@ -17,18 +17,18 @@ T8 output plates remain 42 mm wide with the centered four-hole pattern. Compatib
 
 The output plate has two rows 31 mm apart and 2, 4 or 6 columns: Y=±15.5 mm for 1×; add ±46.5 mm for 2×; add ±77.5 mm for 4×. This gives 4, 8 or 12 M3 three-ridge holes. All three retain the centered 31×31 mm NEMA17 square.
 
-The base retains five X rows at **10.5, 41.5, 72.5, 103.5 and 134.5 mm**, measured forward from the motor front. The lid extends this same alignment toward the exit in 31 mm steps, adding every row with at least 4 mm of material radius around the hole center. Its longitudinal ribs extend with the grid. The first NEMA17 square remains centered at X=26, Y=0 mm.
+The base and lid extend the existing grid toward their exit edges in 31 mm steps from X=10.5 mm, measured forward from the motor front. Each adds every row with at least 4 mm of material radius around the hole center. Continuous floor and lid ribs connect the insert seats around the cutouts. The first NEMA17 square remains centered at X=26, Y=0 mm.
 
-| Configuration | Base insert seats | Lid insert seats | Last lid row X | Distance to lid exit edge |
-|---|---:|---:|---:|---:|
-| Printed 40 mm, 1× / 2× / 4× | 10 / 20 / 30 | 10 / 20 / 30 | 134.5 mm | 11.5 mm |
-| Printed 120 mm, 1× | 10 | 14 | 196.5 mm | 29.5 mm |
-| T8 100 mm screw, 1× | 10 | 10 | 134.5 mm | 7.5 mm |
-| T8 300 mm screw, 1× | 10 | 22 | 320.5 mm | 21.5 mm |
+| Configuration | Base insert seats | Lid insert seats | Last base / lid row X | Distance to base / lid exit edge |
+|---|---:|---:|---|---|
+| Printed 40 mm, 1× / 2× / 4× | 10 / 20 / 30 | 10 / 20 / 30 | 134.5 / 134.5 mm | 20.5 / 11.5 mm |
+| Printed 120 mm, 1× | 16 | 14 | 227.5 / 196.5 mm | 7.5 / 29.5 mm |
+| T8 100 mm screw, 1× | 10 | 10 | 134.5 / 134.5 mm | 16.5 / 7.5 mm |
+| T8 300 mm screw, 1× | 22 | 22 | 320.5 / 320.5 mm | 30.5 / 21.5 mm |
 
-The next 31 mm row would fall outside the lid or its required edge margin. Lid and base share the original five rows; only the longer lids receive additional rows.
+The next 31 mm row would fall outside the relevant face or its required edge margin. The 120 mm printed-screw base extends farther than its lid and supports one additional row.
 
-A wider actuator plate can also be mounted with its width along the host length (X), including on a narrow 1× host:
+A wider actuator plate can also be mounted with its width along the host length (X), including on a narrow 1× host. The original five rows support these positions; the longer grids additionally support the forward outer pair:
 
 | Mounted plate | Center X | Supported X rows (at Y=±15.5) | Bolts |
 |---|---|---|---|
@@ -37,7 +37,7 @@ A wider actuator plate can also be mounted with its width along the host length 
 | 4×, rear overhang | 57 mm | All five grid rows | 10 of 12 |
 | 4×, front overhang | 88 mm | All five grid rows | 10 of 12 |
 
-On the base or short lid, the unused 4× outer pair is at X=−20.5 mm or X=165.5 mm, outside the original five-row grid. Longer lids also support X=165.5 mm. These are alternative mounting positions, not a simultaneous two-actuator arrangement. An overhanging plate and its attached mechanism still require a load and clearance check for the actual application. The CAD report verifies matching holes and screw access, not attached-actuator strength.
+On a short base or lid, the unused 4× outer pair is at X=−20.5 mm or X=165.5 mm, outside the original five-row grid. Longer bases and lids also support X=165.5 mm, allowing all 12 holes of a 4× plate in the forward position. These are alternative mounting positions, not a simultaneous two-actuator arrangement. An overhanging plate and its attached mechanism still require a load and clearance check for the actual application. The CAD report verifies matching holes and screw access, not attached-actuator strength.
 
 Use [ruthex RX-M3Sx4.0 short inserts](https://www.ruthex.de/en/collections/gewindeeinsatze/products/ruthex-gewindeeinsatz-m3s-100stuck-rx-m3x4-0-short-messing-gewindebuchsen-fur-3d-druck), nominal Ø4.6×4 mm. Printed pilots are Ø4 mm with a Ø4.8 mm entry taper; the pilot diameter is a prototype fit to calibrate on the actual PETG print. Install lid inserts from above and base inserts from below. Lid seats are open-bottomed. Base pilots are 5 mm deep, leaving 1 mm beyond the 4 mm insert; where a grid hole lies below a structural foot, backing is retained above the pilot instead of drilling through the foot. Other base seats pass through the floor. Limit external screw entry to 4 mm from the lid top or 5 mm from the base underside. External mounting screws are not included because their length depends on the attached structure. The viewer shows installed Ø4.64 mm cavities around the insert references; STLs retain undersized pilots.
 
@@ -45,13 +45,17 @@ External side mounting bosses and side holes are removed. The former perimeter M
 
 ## Windowed base and structural lid
 
-Rounded windows in the floor and side walls reduce base volume. Solid bands remain around the motor foot, bearing stations, carrier stops, adjustment shelves and insert seats. A continuous floor perimeter and side rails connect the supports. The validation report checks these protected regions, empty cutouts and a single connected solid; it does not establish stiffness under load.
+Volume-reduction cutouts are applied as a final post-processing pass after every printed feature, mounting hole, installed insert cavity, bearing relief and axle has been placed. The base uses one coordinated floor-window pattern, replacing the overlapping old and new patterns. Whole rounded windows are laid out between complete protected bands, with at least 6 mm between neighboring windows; narrow leftover openings are omitted rather than clipped into fragments. Lid windows use the same planning method. Carriage and motor-brace cutouts are also deferred to this final pass.
+
+Rounded windows in the floor and side walls reduce base volume. Solid bands remain around the motor foot, bearing stations, carrier stops, adjustment shelves and insert seats. A continuous floor perimeter and side rails connect the supports. The validation report checks protected regions, window spacing, empty cutouts and a single connected solid; it does not establish stiffness under load.
 
 The lid stays at Z=64–68 mm and does not increase the 68 mm assembly height. Rounded through-windows remove material between a continuous 8 mm perimeter and transverse fixing/mounting ribs. Longitudinal ribs preserve every insert seat; transverse fixing bands and intermediate ribs connect them to the perimeter. The geometry report records the exact CAD volume reduction for the selected configuration, not printed mass or a stiffness rating.
 
 Six recessed M3×12 button-head screws fasten the lid into the base's 12 mm-deep three-ridge pilots. These structural fasteners are separate from the external M3 insert patterns. Driver access remains for the four carrier-adjustment bolts and motor bolts; extend the carriage to reach the motor bolts.
 
 ## Bearings and running faces
+
+All four fixed upper-bearing supports extend 4 mm downward. Their undersides are at Z=28 mm, flush with the underside of the adjacent carrier-adjustment bolt shelves. This fills the former Z=28–32 mm recess beside each bolt. The shared carrier, bearing seats, bolt bores and adjustment travel remain unchanged. CAD checks verify the filled regions, underside level and carrier/assembly clearance. Slicer support requirements elsewhere still depend on print orientation and settings.
 
 The carriage runs on smooth flats with no raised side rails. The CAD checks include nominal bearing alignment and ±1 mm axial displacement relative to the carriage. The base and carrier retain their existing clearance channels. Solid Ø4.8 mm axles keep the 6.4 mm-wide retaining shoulders and extended 30° bent tips, without relief slots. The Ø7.4 mm inner-race lands and surrounding Ø17 mm face relief keep the outer rings and shields clear.
 

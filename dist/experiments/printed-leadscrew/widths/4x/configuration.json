@@ -1,6 +1,312 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 25,
+  "revision": 26,
+  "cutoutPlanning": {
+    "stage": "final post-processing after all features",
+    "minimum_web_mm": 6.0,
+    "layouts": {
+      "base_floor": {
+        "plane": "XY",
+        "rectangles_mm": [
+          [
+            18.0,
+            36.0,
+            -95.0,
+            -83.0
+          ],
+          [
+            18.0,
+            36.0,
+            -72.0,
+            -52.0
+          ],
+          [
+            18.0,
+            36.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            18.0,
+            36.0,
+            -10.0,
+            10.0
+          ],
+          [
+            18.0,
+            36.0,
+            21.0,
+            41.0
+          ],
+          [
+            18.0,
+            36.0,
+            52.0,
+            72.0
+          ],
+          [
+            18.0,
+            36.0,
+            83.0,
+            95.0
+          ],
+          [
+            78.0,
+            98.0,
+            -95.0,
+            -83.0
+          ],
+          [
+            78.0,
+            98.0,
+            -72.0,
+            -52.0
+          ],
+          [
+            78.0,
+            98.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            78.0,
+            98.0,
+            -10.0,
+            10.0
+          ],
+          [
+            78.0,
+            98.0,
+            21.0,
+            41.0
+          ],
+          [
+            78.0,
+            98.0,
+            52.0,
+            72.0
+          ],
+          [
+            78.0,
+            98.0,
+            83.0,
+            95.0
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_-1_12": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            12,
+            23
+          ],
+          [
+            98.0,
+            115.0,
+            12,
+            23
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_-1_36": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            36,
+            43
+          ],
+          [
+            98.0,
+            115.0,
+            36,
+            43
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_1_12": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            12,
+            23
+          ],
+          [
+            98.0,
+            115.0,
+            12,
+            23
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_1_36": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            36,
+            43
+          ],
+          [
+            98.0,
+            115.0,
+            36,
+            43
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "lid": {
+        "plane": "XY",
+        "rectangles_mm": [
+          [
+            23.0,
+            36.0,
+            -95.0,
+            -83.0
+          ],
+          [
+            23.0,
+            36.0,
+            -72.0,
+            -52.0
+          ],
+          [
+            23.0,
+            36.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            23.0,
+            36.0,
+            -10.0,
+            10.0
+          ],
+          [
+            23.0,
+            36.0,
+            21.0,
+            41.0
+          ],
+          [
+            23.0,
+            36.0,
+            52.0,
+            72.0
+          ],
+          [
+            23.0,
+            36.0,
+            83.0,
+            95.0
+          ],
+          [
+            78.0,
+            98.0,
+            -95.0,
+            -83.0
+          ],
+          [
+            78.0,
+            98.0,
+            -72.0,
+            -52.0
+          ],
+          [
+            78.0,
+            98.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            78.0,
+            98.0,
+            -10.0,
+            10.0
+          ],
+          [
+            78.0,
+            98.0,
+            21.0,
+            41.0
+          ],
+          [
+            78.0,
+            98.0,
+            52.0,
+            72.0
+          ],
+          [
+            78.0,
+            98.0,
+            83.0,
+            95.0
+          ],
+          [
+            109.0,
+            119.0,
+            -95.0,
+            -83.0
+          ],
+          [
+            109.0,
+            119.0,
+            -72.0,
+            -52.0
+          ],
+          [
+            109.0,
+            119.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            109.0,
+            119.0,
+            -10.0,
+            10.0
+          ],
+          [
+            109.0,
+            119.0,
+            21.0,
+            41.0
+          ],
+          [
+            109.0,
+            119.0,
+            52.0,
+            72.0
+          ],
+          [
+            109.0,
+            119.0,
+            83.0,
+            95.0
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      }
+    }
+  },
+  "bearingSupportFeet": {
+    "bottom_z_mm": 28.0,
+    "adjustment_shelf_bottom_z_mm": 28,
+    "extended_down_mm": 4,
+    "count": 4
+  },
   "guideBearingCount": 8,
   "lowerBearingCount": 4,
   "lowerBearingY": [
@@ -46,6 +352,27 @@
     "nut_installation": "Insert from underneath into the hex pocket before fitting the screw to the motor; start the bolt, align the D flat, then tighten through the lid access hole with the carriage extended."
   },
   "lightening": {
+    "base_floor": {
+      "before_mm3": 347375.90766948246,
+      "after_mm3": 324356.7044426087,
+      "removed_mm3": 23019.203226873768,
+      "reduction_percent": 6.626597503928175,
+      "cutout_count": 14
+    },
+    "base_sides": {
+      "before_mm3": 324356.7044426087,
+      "after_mm3": 316164.47095084056,
+      "removed_mm3": 8192.23349176813,
+      "reduction_percent": 2.525686498710143,
+      "cutout_count": 8
+    },
+    "base": {
+      "before_mm3": 347375.90766948246,
+      "after_mm3": 311622.40705845493,
+      "removed_mm3": 35753.50061102753,
+      "reduction_percent": 10.29245259145775,
+      "cutout_count": 24
+    },
     "carriage": {
       "before_mm3": 769606.5256865431,
       "after_mm3": 555706.5468283071,
@@ -55,31 +382,10 @@
     },
     "lid": {
       "before_mm3": 112543.91968715955,
-      "after_mm3": 91668.16764763327,
-      "removed_mm3": 20875.752039526284,
-      "reduction_percent": 18.548982563922603,
-      "cutout_count": 18
-    },
-    "base_floor": {
-      "before_mm3": 340708.24890233093,
-      "after_mm3": 309918.59117249225,
-      "removed_mm3": 30789.657764342963,
-      "reduction_percent": 9.03695694587344,
-      "cutout_count": 12
-    },
-    "base_sides": {
-      "before_mm3": 309918.59113798797,
-      "after_mm3": 302795.6023429201,
-      "removed_mm3": 7122.988795067882,
-      "reduction_percent": 2.2983418867880845,
-      "cutout_count": 8
-    },
-    "base": {
-      "before_mm3": 340708.24890233093,
-      "after_mm3": 302795.6023429201,
-      "removed_mm3": 37912.646559410845,
-      "reduction_percent": 11.127598665883509,
-      "cutout_count": 32
+      "after_mm3": 91864.87564104567,
+      "removed_mm3": 20679.04404611388,
+      "reduction_percent": 18.37419924914274,
+      "cutout_count": 21
     }
   },
   "motorBraces": {
@@ -104,7 +410,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "9123818ca069fb2d6339fa7442d2936272c0a92622573847585349aa327e0bde",
+  "modelSourceSha256": "8780ac3a1680128c2dad36b07fa9e2017761ac072b7f7056ce98d0761bf343b6",
   "stations": [
     63.0,
     137.0
@@ -944,6 +1250,8 @@
       46.5,
       77.5
     ],
+    "base_end_mm": 155.0,
+    "base_last_row_edge_distance_mm": 20.5,
     "lid_end_mm": 146.0,
     "lid_last_row_edge_distance_mm": 11.5
   },

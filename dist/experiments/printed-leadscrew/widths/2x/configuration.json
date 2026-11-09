@@ -1,6 +1,192 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 25,
+  "revision": 26,
+  "cutoutPlanning": {
+    "stage": "final post-processing after all features",
+    "minimum_web_mm": 6.0,
+    "layouts": {
+      "base_floor": {
+        "plane": "XY",
+        "rectangles_mm": [
+          [
+            18.0,
+            36.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            18.0,
+            36.0,
+            -10.0,
+            10.0
+          ],
+          [
+            18.0,
+            36.0,
+            21.0,
+            41.0
+          ],
+          [
+            78.0,
+            98.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            78.0,
+            98.0,
+            -10.0,
+            10.0
+          ],
+          [
+            78.0,
+            98.0,
+            21.0,
+            41.0
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_-1_12": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            12,
+            23
+          ],
+          [
+            98.0,
+            115.0,
+            12,
+            23
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_-1_36": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            36,
+            43
+          ],
+          [
+            98.0,
+            115.0,
+            36,
+            43
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_1_12": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            12,
+            23
+          ],
+          [
+            98.0,
+            115.0,
+            12,
+            23
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "base_side_1_36": {
+        "plane": "XZ",
+        "rectangles_mm": [
+          [
+            73.0,
+            90.0,
+            36,
+            43
+          ],
+          [
+            98.0,
+            115.0,
+            36,
+            43
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      },
+      "lid": {
+        "plane": "XY",
+        "rectangles_mm": [
+          [
+            23.0,
+            36.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            23.0,
+            36.0,
+            -10.0,
+            10.0
+          ],
+          [
+            23.0,
+            36.0,
+            21.0,
+            41.0
+          ],
+          [
+            78.0,
+            98.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            78.0,
+            98.0,
+            -10.0,
+            10.0
+          ],
+          [
+            78.0,
+            98.0,
+            21.0,
+            41.0
+          ],
+          [
+            109.0,
+            119.0,
+            -41.0,
+            -21.0
+          ],
+          [
+            109.0,
+            119.0,
+            -10.0,
+            10.0
+          ],
+          [
+            109.0,
+            119.0,
+            21.0,
+            41.0
+          ]
+        ],
+        "minimum_web_mm": 6.0
+      }
+    }
+  },
+  "bearingSupportFeet": {
+    "bottom_z_mm": 28.0,
+    "adjustment_shelf_bottom_z_mm": 28,
+    "extended_down_mm": 4,
+    "count": 4
+  },
   "guideBearingCount": 8,
   "lowerBearingCount": 4,
   "lowerBearingY": [
@@ -46,6 +232,27 @@
     "nut_installation": "Insert from underneath into the hex pocket before fitting the screw to the motor; start the bolt, align the D flat, then tighten through the lid access hole with the carriage extended."
   },
   "lightening": {
+    "base_floor": {
+      "before_mm3": 253345.6089774334,
+      "after_mm3": 242177.37903976432,
+      "removed_mm3": 11168.229937669093,
+      "reduction_percent": 4.40829820684356,
+      "cutout_count": 6
+    },
+    "base_sides": {
+      "before_mm3": 242177.37903976432,
+      "after_mm3": 233985.14555909406,
+      "removed_mm3": 8192.233480670257,
+      "reduction_percent": 3.3827409947008853,
+      "cutout_count": 8
+    },
+    "base": {
+      "before_mm3": 253345.6089774334,
+      "after_mm3": 229443.08167120052,
+      "removed_mm3": 23902.527306232892,
+      "reduction_percent": 9.434750972282291,
+      "cutout_count": 16
+    },
     "carriage": {
       "before_mm3": 334512.46183301735,
       "after_mm3": 297182.3955275762,
@@ -55,31 +262,10 @@
     },
     "lid": {
       "before_mm3": 66116.75740179255,
-      "after_mm3": 56432.541812107054,
-      "removed_mm3": 9684.215589685497,
-      "reduction_percent": 14.647142373958797,
-      "cutout_count": 12
-    },
-    "base_floor": {
-      "before_mm3": 246677.95021597197,
-      "after_mm3": 233167.83319123945,
-      "removed_mm3": 13510.117048936896,
-      "reduction_percent": 5.476823946813443,
-      "cutout_count": 8
-    },
-    "base_sides": {
-      "before_mm3": 233167.83316703507,
-      "after_mm3": 226044.84437626708,
-      "removed_mm3": 7122.988790767995,
-      "reduction_percent": 3.054876264027929,
-      "cutout_count": 8
-    },
-    "base": {
-      "before_mm3": 246677.95021597197,
-      "after_mm3": 226044.84437626708,
-      "removed_mm3": 20633.10583970489,
-      "reduction_percent": 8.36439001606757,
-      "cutout_count": 24
+      "after_mm3": 56074.88138202961,
+      "removed_mm3": 10041.876019762938,
+      "reduction_percent": 15.188095143169686,
+      "cutout_count": 9
     }
   },
   "motorBraces": {
@@ -104,7 +290,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "9123818ca069fb2d6339fa7442d2936272c0a92622573847585349aa327e0bde",
+  "modelSourceSha256": "8780ac3a1680128c2dad36b07fa9e2017761ac072b7f7056ce98d0761bf343b6",
   "stations": [
     63.0,
     137.0
@@ -717,6 +903,8 @@
       15.5,
       46.5
     ],
+    "base_end_mm": 155.0,
+    "base_last_row_edge_distance_mm": 20.5,
     "lid_end_mm": 146.0,
     "lid_last_row_edge_distance_mm": 11.5
   },

@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "9123818ca069fb2d6339fa7442d2936272c0a92622573847585349aa327e0bde",
-  "validation_source_sha256": "e7a65fb022e179d07f2ffe52bf5664b7d4c6a9cb03036d37bfd560ccc35ec255",
+  "source_sha256": "8780ac3a1680128c2dad36b07fa9e2017761ac072b7f7056ce98d0761bf343b6",
+  "validation_source_sha256": "ac642795313119b710acf5cbab44752f974194f98cc46d59744089c0db0fd6a4",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -1141,6 +1141,14 @@
       }
     ],
     "grid_pitch_mm": 31,
+    "base_row_x_mm": [
+      10.5,
+      41.5,
+      72.5,
+      103.5,
+      134.5
+    ],
+    "base_last_row_edge_distance_mm": 16.5,
     "lid_row_x_mm": [
       10.5,
       41.5,
@@ -2229,27 +2237,77 @@
     ],
     "passed": true
   },
+  "cutout_planning": {
+    "stage": "final post-processing after all features",
+    "minimum_web_mm": 6,
+    "checks": [
+      {
+        "name": "base_floor",
+        "count": 6,
+        "minimum_gap_mm": 11.0,
+        "minimum_opening_mm": 11.0,
+        "passed": true
+      },
+      {
+        "name": "base_side_-1_12",
+        "count": 2,
+        "minimum_gap_mm": 35.0,
+        "minimum_opening_mm": 8.0,
+        "passed": true
+      },
+      {
+        "name": "base_side_-1_36",
+        "count": 1,
+        "minimum_gap_mm": null,
+        "minimum_opening_mm": 7,
+        "passed": true
+      },
+      {
+        "name": "base_side_1_12",
+        "count": 2,
+        "minimum_gap_mm": 35.0,
+        "minimum_opening_mm": 8.0,
+        "passed": true
+      },
+      {
+        "name": "base_side_1_36",
+        "count": 1,
+        "minimum_gap_mm": null,
+        "minimum_opening_mm": 7,
+        "passed": true
+      },
+      {
+        "name": "lid",
+        "count": 6,
+        "minimum_gap_mm": 11.0,
+        "minimum_opening_mm": 11.0,
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "note": "Window bounds are non-overlapping and separated by at least 6 mm. Complete insert/support bands and rounded windows replace overlapping or clipped legacy patterns. This checks planned webs, not a universal minimum-wall or structural-strength certification."
+  },
   "base_lightening": {
     "floor": {
-      "before_mm3": 172202.39065613563,
-      "after_mm3": 167323.27577628792,
-      "removed_mm3": 4879.114879847708,
-      "reduction_percent": 2.833360710764246,
+      "before_mm3": 174327.9855385454,
+      "after_mm3": 166579.75561702493,
+      "removed_mm3": 7748.229921520484,
+      "reduction_percent": 4.444627692785037,
       "cutout_count": 6
     },
     "sides": {
-      "before_mm3": 167323.27577628792,
-      "after_mm3": 164162.10831739623,
-      "removed_mm3": 3161.167458891694,
-      "reduction_percent": 1.889257453409047,
-      "cutout_count": 8
+      "before_mm3": 166579.75561702493,
+      "after_mm3": 161952.94688772058,
+      "removed_mm3": 4626.80872930435,
+      "reduction_percent": 2.7775336277606333,
+      "cutout_count": 6
     },
     "total": {
-      "before_mm3": 172202.39065613563,
-      "after_mm3": 164162.10831739623,
-      "removed_mm3": 8040.282338739402,
-      "reduction_percent": 4.669088685763216,
-      "cutout_count": 14
+      "before_mm3": 174327.9855385454,
+      "after_mm3": 161952.94688772058,
+      "removed_mm3": 12375.038650824834,
+      "reduction_percent": 7.0987102917498035,
+      "cutout_count": 12
     },
     "protected_supports": [
       {
@@ -2290,12 +2348,55 @@
   },
   "lid_lightening": {
     "before_mm3": 41992.29245195508,
-    "after_mm3": 33249.708438779635,
-    "removed_mm3": 8742.584013175445,
-    "reduction_percent": 20.81949687118929,
+    "after_mm3": 35877.708438779744,
+    "removed_mm3": 6114.584013175336,
+    "reduction_percent": 14.561205535923659,
     "cutout_count": 6,
     "blocked_cutouts_mm3": 0.0,
     "passed": true
+  },
+  "bearing_support_feet": {
+    "shelf_underside_z_mm": 28,
+    "checks": [
+      {
+        "station_x_mm": 93.0,
+        "side": -1,
+        "underside_z_mm": 28,
+        "added_depth_mm": 4,
+        "missing_fill_mm3": 0.0,
+        "below_underside_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 93.0,
+        "side": 1,
+        "underside_z_mm": 28,
+        "added_depth_mm": 4,
+        "missing_fill_mm3": 0.0,
+        "below_underside_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 133.0,
+        "side": -1,
+        "underside_z_mm": 28,
+        "added_depth_mm": 4,
+        "missing_fill_mm3": 0.0,
+        "below_underside_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "station_x_mm": 133.0,
+        "side": 1,
+        "underside_z_mm": 28,
+        "added_depth_mm": 4,
+        "missing_fill_mm3": 0.0,
+        "below_underside_mm3": 0.0,
+        "passed": true
+      }
+    ],
+    "passed": true,
+    "note": "The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports."
   },
   "adjustable_bearings": {
     "count": 2,
@@ -3233,10 +3334,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 26744,
+        "triangles": 29568,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 164660.20515848795
+        "volume_mm3": 162614.10130135753
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
@@ -3247,10 +3348,10 @@
       },
       {
         "file": "structural_mounting_lid.stl",
-        "triangles": 17004,
+        "triangles": 16884,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 33250.97824248867
+        "volume_mm3": 35878.978266047015
       }
     ],
     "passed": true

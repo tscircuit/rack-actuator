@@ -46,6 +46,18 @@
     "M3 base mounting insert 30",
     "M3 base mounting insert 31",
     "M3 base mounting insert 32",
+    "M3 base mounting insert 33",
+    "M3 base mounting insert 34",
+    "M3 base mounting insert 35",
+    "M3 base mounting insert 36",
+    "M3 base mounting insert 37",
+    "M3 base mounting insert 38",
+    "M3 base mounting insert 39",
+    "M3 base mounting insert 40",
+    "M3 base mounting insert 41",
+    "M3 base mounting insert 42",
+    "M3 base mounting insert 43",
+    "M3 base mounting insert 44",
     "M3x12 button-head lid bolt 1",
     "M3x12 button-head lid bolt 2",
     "M3x12 button-head lid bolt 3",
@@ -92,7 +104,7 @@
     "retaining_head": true,
     "installation": "Force the bearing past the retained head while supporting the inner race. Head passage requires PETG deformation; insertion force and strain are not validated. The viewer retains the actual solid geometry without simulated bending."
   },
-  "heat_set_inserts": 36,
+  "heat_set_inserts": 48,
   "carrier_heat_set_inserts": 4,
   "heat_set_insert_spec": {
     "type": "ruthex RX-M5x9.5",
@@ -104,7 +116,7 @@
     "entry_diameter_mm": 7.2,
     "minimum_wall_mm": 2.6
   },
-  "external_mount_inserts": 32,
+  "external_mount_inserts": 44,
   "external_mount_insert_spec": {
     "type": "ruthex RX-M3Sx4.0",
     "thread": "M3",

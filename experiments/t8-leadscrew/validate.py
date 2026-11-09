@@ -147,18 +147,19 @@ def validate():
   for j in MOUNT_SEATS:
    if j['host']==name:extra=extra.cut(cyl(2.32,4,j['center'],j['axis']))
   displaced.append(dict(host=name,unexpected_displacement_mm3=extra.Volume(),passed=extra.Volume()<.01))
- expected={(10.5+31*i,31*(j-({1:2,2:4,4:6}[WIDTH]-1)/2)) for i in range(5) for j in range({1:2,2:4,4:6}[WIDTH])}
+ expected={(10.5+31*i,31*(j-({1:2,2:4,4:6}[WIDTH]-1)/2)) for i in range(math.floor((EXIT_X-14.5)/31)+1) for j in range({1:2,2:4,4:6}[WIDTH])}
  layout_checks=[]
  for layout in MOUNT_LAYOUTS:
   w=layout['width_multiple'];cx=layout['center_xy_mm'][0];n={1:2,2:4,4:6}[w]
   full={(cx+31*(j-(n-1)/2),y) for j in range(n) for y in [-15.5,15.5]}
   supported=full & expected
   central={(cx+dx,y) for dx in [-15.5,15.5] for y in [-15.5,15.5]}
-  ok=set(map(tuple,layout['hole_centers_xy_mm']))==supported and central<=supported and len(supported)=={1:4,2:8,4:10}[w]
+  ok=set(map(tuple,layout['hole_centers_xy_mm']))==supported and central<=supported and len(supported)==(12 if w==4 and cx==88 and EXIT_X>=169.5 else {1:4,2:8,4:10}[w])
   layout_checks.append(dict(**layout,passed=ok))
  expected_lid={(10.5+31*i,y) for i in range(math.floor((EXIT_X-23.5)/31)+1) for y in GRID_Y}
+ base_edge=EXIT_X-max(x for x,y in BASE_MOUNT_HOLES)
  lid_edge=EXIT_X-9-max(x for x,y in LID_MOUNTS)
- pattern_ok=set(BASE_MOUNT_HOLES)==expected and set(LID_MOUNTS)==expected_lid and 4<=lid_edge<35 and len(BASE_MOUNT_HOLES)=={1:10,2:20,4:30}[WIDTH] and all(q['passed'] for q in layout_checks)
+ pattern_ok=set(BASE_MOUNT_HOLES)==expected and set(LID_MOUNTS)==expected_lid and 4<=lid_edge<35 and 4<=base_edge<35 and expected_lid<=expected and all(q['passed'] for q in layout_checks)
 
  height=max(p['shape'].BoundingBox().zmax for p in parts)
  closed_walls=[]
@@ -169,10 +170,21 @@ def validate():
   for sign in [-1,1]:
    missing=cyl(.8,5.8,(x,wide(sign*34)+sign*.1,z),(0,sign,0)).cut(chassis_shape).Volume()
    side_holes.append(dict(center_xz_mm=[x,z],side=sign,missing_wall_mm3=missing,passed=missing<.01))
- report['external_mount_inserts']={'specification':MOUNT_INSERT,'patterns':BASE_MOUNT_PATTERNS,'mounting_layouts':layout_checks,'grid_pitch_mm':31,'lid_row_x_mm':LID_GRID_X,'lid_last_row_edge_distance_mm':lid_edge,'base_count':len(BASE_MOUNT_HOLES),'lid_count':len(LID_MOUNTS),'pattern_center_xy_mm':[26,0],'checks':mounts,'plastic_displacement':displaced,'access_collisions':attachment_access,'pattern_matches':pattern_ok,'passed':pattern_ok and not attachment_access and all(q['passed'] for q in mounts+displaced)}
+ report['external_mount_inserts']={'specification':MOUNT_INSERT,'patterns':BASE_MOUNT_PATTERNS,'mounting_layouts':layout_checks,'grid_pitch_mm':31,'base_row_x_mm':GRID_X,'base_last_row_edge_distance_mm':base_edge,'lid_row_x_mm':LID_GRID_X,'lid_last_row_edge_distance_mm':lid_edge,'base_count':len(BASE_MOUNT_HOLES),'lid_count':len(LID_MOUNTS),'pattern_center_xy_mm':[26,0],'checks':mounts,'plastic_displacement':displaced,'access_collisions':attachment_access,'pattern_matches':pattern_ok,'passed':pattern_ok and not attachment_access and all(q['passed'] for q in mounts+displaced)}
  report['lid_and_attachment']={'lid_fixings':len(LID_FIXINGS),'lid_fixing_thread':'M3 three-ridge, 12 mm pilot depth','lid_thickness_mm':4,'lid_bottom_z_mm':64,'lid_top_z_mm':68,'assembly_height_mm':height,'original_height_limit_mm':68,'external_mount_thread':'M3 short heat-set insert','lid_open_bottom':True,'base_backing':'Retained below structural feet; otherwise open','top_mount_count':len(LID_MOUNTS),'side_mount_count':0,'floor_mount_count':len(BASE_MOUNT_HOLES),'floor_mount_type':'M3 insert seats entered from underside','checks':mounts,'insertion_collisions':attachment_access,'closed_lower_access_missing_mm3':closed_walls,'removed_side_hole_checks':side_holes,'passed':report['external_mount_inserts']['passed'] and height<=68.00001 and max(closed_walls)<.01 and not SIDE_MOUNTS and all(q['passed'] for q in side_holes)}
  print('Low lid / M3 insert patterns / closed sides',report['lid_and_attachment']['passed'],flush=True)
  if not report['lid_and_attachment']['passed']:save();return report
+ window_checks=[]
+ for name,layout in WINDOW_LAYOUTS.items():
+  rects=layout['rectangles_mm'];gaps=[]
+  for i,a in enumerate(rects):
+   for b in rects[i+1:]:
+    dx=max(a[0]-b[1],b[0]-a[1],0);dy=max(a[2]-b[3],b[2]-a[3],0)
+    gaps.append(math.hypot(dx,dy))
+  window_checks.append(dict(name=name,count=len(rects),minimum_gap_mm=min(gaps) if gaps else None,minimum_opening_mm=min(min(r[1]-r[0],r[3]-r[2]) for r in rects) if rects else None,passed=all(g>=6-1e-6 for g in gaps) and all(r[1]-r[0]>=8-1e-6 and r[3]-r[2]>=7-1e-6 for r in rects)))
+ report['cutout_planning']={'stage':'final post-processing after all features','minimum_web_mm':6,'checks':window_checks,'passed':all(q['passed'] for q in window_checks),'note':'Window bounds are non-overlapping and separated by at least 6 mm. Complete insert/support bands and rounded windows replace overlapping or clipped legacy patterns. This checks planned webs, not a universal minimum-wall or structural-strength certification.'}
+ print('Final cutout layout / minimum webs',report['cutout_planning']['passed'],flush=True)
+ if not report['cutout_planning']['passed']:save();return report
  guard_checks=[dict(index=i,missing_mm3=base_before_lightening.intersect(g).cut(base_after_lightening).Volume()) for i,g in enumerate(BASE_CUT_GUARDS)]
  base_empty=sum(overlap(c,chassis_print_without_pins) for c in CUTOUTS['base'])
  report['base_lightening']={'floor':LIGHTENING['base_floor'],'sides':LIGHTENING['base_sides'],'total':LIGHTENING['base'],'protected_supports':guard_checks,'blocked_cutouts_mm3':base_empty,'passed':all(q['missing_mm3']<.01 for q in guard_checks) and base_empty<.01 and all(LIGHTENING[k]['removed_mm3']>0 for k in ['base_floor','base_sides']) and chassis_print_without_pins.isValid() and len(chassis_print_without_pins.Solids())==1}
@@ -181,6 +193,19 @@ def validate():
  lid_removed=LIGHTENING['lid']['removed_mm3'];lid_blocked=sum(overlap(cut,lid) for cut in CUTOUTS['lid'])
  report['lid_lightening']={**LIGHTENING['lid'],'blocked_cutouts_mm3':lid_blocked,'passed':lid_removed>0 and lid_blocked<.01 and lid.isValid() and len(lid.Solids())==1}
  if not report['lid_lightening']['passed']:save();return report
+ # The formerly recessed Z=32 underside is filled down to the Z=28 bolt shelf.
+ feet=[]
+ for b in bearings:
+  if b['kind']!='upper':continue
+  x,sign=b['station'],b['sign'];ya,yb=sorted([wide(sign*21.1),wide(sign*36.9)])
+  filled=rect(x-5.9,x+5.9,ya,yb,28.001,31.999)
+  y=wide(sign*25.885)
+  below=rect(x+.841,x+1.841,y-.5,y+.5,27.6,27.99)
+  missing=filled.cut(chassis_print_without_pins).Volume();below_volume=overlap(below,chassis_print_without_pins)
+  feet.append(dict(station_x_mm=x,side=sign,underside_z_mm=28,added_depth_mm=4,missing_fill_mm3=missing,below_underside_mm3=below_volume,passed=missing<.01 and below_volume<.01))
+ report['bearing_support_feet']={'shelf_underside_z_mm':28,'checks':feet,'passed':len(feet)==4 and all(q['passed'] for q in feet),'note':'The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports.'}
+ print('Flush bearing-support undersides',report['bearing_support_feet']['passed'],flush=True)
+ if not report['bearing_support_feet']['passed']:save();return report
  # Adjustment is a rigid guided translation, not flexure deformation.
  adjustment_checks=[]
  for values in [(0,),(.25,),(.5,),(.75,),(1,)]:
@@ -349,5 +374,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['solid_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['solid_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report
