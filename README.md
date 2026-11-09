@@ -18,6 +18,15 @@ The **flat enclosure has the same dimensions, mounting-hole coordinates and moun
 
 [![Enclosed NEMA17 40 mm worm-drive prototype with compatible mounting interfaces](docs/images/worm-overview.png)](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/worm-rack/)
 
+## Lead-screw experiments
+
+Both lead-screw families use a hollow carriage, two bearing stations and one four-bolt adjustable lower bearing carrier. Each supports 1×, 2× and 4× output widths with individual STL downloads and an exploded assembly.
+
+- [Printed Ø20 mm screw](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/printed-leadscrew/?travel=120): select **40 or 120 mm travel**. Two threaded carriage bands stay engaged throughout travel, with the screw contained inside the retracted carriage. [Build details](experiments/printed-leadscrew/README.md).
+- [T8×8 screw](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/t8-leadscrew/): select **100 or 300 mm purchased screw length**, providing 70 or 270 mm travel. [Build details](experiments/t8-leadscrew/README.md).
+
+Both have windowed lids and matching nested NEMA17-width mounting patterns in the lid and base, just ahead of the motor. These external mounts use **short Ø4.6 × 4 mm M3 heat-set inserts**, with open-bottom Ø4 mm printed pilots. Install lid inserts from above and base inserts from below. External side mounting bosses and holes have been removed. The shared lower carrier still uses four M5 inserts. Print fit and structural performance require physical testing.
+
 ## Choose a model
 
 All twelve combinations are generated and available to view and download:

@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "70800aa8be9fe825c0b8da896f03a9df660244e25974bed708b25108d126f4fd",
-  "validation_source_sha256": "97dc3778d5f4f993e889cd4ace353f073d46489ad7fc3f25342e2735f6e0d1c0",
+  "source_sha256": "9ade11ab1c131bfa717fbccc969224b9dd6bf5fe3bdb45744ffe1647cad5659b",
+  "validation_source_sha256": "c3ac1b5eeae74c72c502d62d7bb83d436747c8d85b989654fcebb8a0c5e626af",
   "output_mount": {
     "pattern": "Central NEMA17 mounting pitch with extra outer holes on wider plates",
     "pitch_mm": [
@@ -830,279 +830,263 @@
     "passed": true,
     "note": "Raised side rails are removed. Checks cover nominal bearing geometry and +/-1 mm axial displacement relative to the carriage, not bearing tilt, preload or printed surface friction. Existing support clearance channels are retained."
   },
+  "external_mount_inserts": {
+    "specification": {
+      "type": "ruthex RX-M3Sx4.0",
+      "thread": "M3",
+      "od_mm": 4.6,
+      "length_mm": 4,
+      "pilot_diameter_mm": 4,
+      "entry_diameter_mm": 4.8,
+      "minimum_wall_mm": 1.65,
+      "open_bottom": true,
+      "lid_max_screw_entry_mm": 4,
+      "base_max_screw_entry_mm": 5
+    },
+    "patterns": [
+      {
+        "width_multiple": 1,
+        "pitch_xy_mm": [
+          31,
+          31
+        ],
+        "center_xy_mm": [
+          26,
+          0
+        ],
+        "hole_centers_xy_mm": [
+          [
+            10.5,
+            -15.5
+          ],
+          [
+            10.5,
+            15.5
+          ],
+          [
+            41.5,
+            -15.5
+          ],
+          [
+            41.5,
+            15.5
+          ]
+        ]
+      }
+    ],
+    "base_count": 4,
+    "lid_count": 4,
+    "pattern_center_xy_mm": [
+      26,
+      0
+    ],
+    "checks": [
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          10.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          10.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          41.5,
+          -15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "lid",
+        "host": "Structural mounting lid",
+        "center_mm": [
+          41.5,
+          15.5,
+          68
+        ],
+        "axis": [
+          0,
+          0,
+          -1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          10.5,
+          -15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          10.5,
+          15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          41.5,
+          -15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          41.5,
+          15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      }
+    ],
+    "plastic_displacement": [
+      {
+        "host": "Adjustable six-bearing base",
+        "unexpected_displacement_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "host": "Structural mounting lid",
+        "unexpected_displacement_mm3": 0.0,
+        "passed": true
+      }
+    ],
+    "access_collisions": [],
+    "pattern_matches": true,
+    "passed": true
+  },
   "lid_and_attachment": {
     "lid_fixings": 6,
     "lid_fixing_thread": "M3 three-ridge, 12 mm pilot depth",
     "lid_thickness_mm": 4,
     "lid_bottom_z_mm": 64,
     "lid_top_z_mm": 68,
-    "assembly_height_mm": 68.0000001,
+    "assembly_height_mm": 68.0,
     "original_height_limit_mm": 68,
-    "external_mount_thread": "M5 three-ridge blind pilot",
-    "external_pilot_depth_mm": 9,
+    "external_mount_thread": "M3 short heat-set insert",
+    "open_bottom": true,
     "top_mount_count": 4,
-    "side_mount_count": 12,
+    "side_mount_count": 0,
     "floor_mount_count": 4,
-    "floor_mount_type": "plain \u00d85.5 mm through-hole",
+    "floor_mount_type": "M3 insert seats entered from underside",
     "checks": [
       {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          22,
-          -40.0,
-          12
-        ],
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          22,
-          40.0,
-          12
-        ],
-        "axis": [
-          0,
-          -1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          36,
-          -40.0,
-          12
-        ],
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          36,
-          40.0,
-          12
-        ],
-        "axis": [
-          0,
-          -1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          288.0,
-          -40.0,
-          44
-        ],
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          288.0,
-          40.0,
-          44
-        ],
-        "axis": [
-          0,
-          -1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          288.0,
-          -40.0,
-          56
-        ],
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          288.0,
-          40.0,
-          56
-        ],
-        "axis": [
-          0,
-          -1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          328.0,
-          -40.0,
-          44
-        ],
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          328.0,
-          40.0,
-          44
-        ],
-        "axis": [
-          0,
-          -1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          328.0,
-          -40.0,
-          56
-        ],
-        "axis": [
-          0,
-          1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
-        "kind": "side",
-        "host": "Adjustable six-bearing base",
-        "center_mm": [
-          328.0,
-          40.0,
-          56
-        ],
-        "axis": [
-          0,
-          -1,
-          0
-        ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
-        "missing_wall_mm3": 0.0,
-        "passed": true
-      },
-      {
         "kind": "lid",
         "host": "Structural mounting lid",
         "center_mm": [
-          36,
-          -27.0,
+          10.5,
+          -15.5,
           68
         ],
         "axis": [
@@ -1110,20 +1094,20 @@
           0,
           -1
         ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
         "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       },
       {
         "kind": "lid",
         "host": "Structural mounting lid",
         "center_mm": [
-          36,
-          27.0,
+          10.5,
+          15.5,
           68
         ],
         "axis": [
@@ -1131,20 +1115,20 @@
           0,
           -1
         ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
         "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       },
       {
         "kind": "lid",
         "host": "Structural mounting lid",
         "center_mm": [
-          309.0,
-          -27.0,
+          41.5,
+          -15.5,
           68
         ],
         "axis": [
@@ -1152,20 +1136,20 @@
           0,
           -1
         ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
         "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       },
       {
         "kind": "lid",
         "host": "Structural mounting lid",
         "center_mm": [
-          309.0,
-          27.0,
+          41.5,
+          15.5,
           68
         ],
         "axis": [
@@ -1173,12 +1157,96 @@
           0,
           -1
         ],
-        "diameter": 5,
-        "pilot_depth_mm": 9,
-        "ridge_count": 3,
-        "missing_ridge_mm3": 0.0,
-        "blocked_pilot_mm3": 0.0,
+        "pilot_diameter_mm": 4,
+        "depth_mm": 4,
+        "blocked_printed_pilot_mm3": 0.0,
         "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          10.5,
+          -15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          10.5,
+          15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          41.5,
+          -15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          41.5,
+          15.5,
+          0
+        ],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       }
     ],
@@ -1189,6 +1257,125 @@
       0.0,
       0.0
     ],
+    "removed_side_hole_checks": [
+      {
+        "center_xz_mm": [
+          22,
+          12
+        ],
+        "side": -1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          22,
+          12
+        ],
+        "side": 1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          36,
+          12
+        ],
+        "side": -1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          36,
+          12
+        ],
+        "side": 1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          288.0,
+          44
+        ],
+        "side": -1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          288.0,
+          44
+        ],
+        "side": 1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          288.0,
+          56
+        ],
+        "side": -1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          288.0,
+          56
+        ],
+        "side": 1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          328.0,
+          44
+        ],
+        "side": -1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          328.0,
+          44
+        ],
+        "side": 1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          328.0,
+          56
+        ],
+        "side": -1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      },
+      {
+        "center_xz_mm": [
+          328.0,
+          56
+        ],
+        "side": 1,
+        "missing_wall_mm3": 0.0,
+        "passed": true
+      }
+    ],
+    "passed": true
+  },
+  "lid_lightening": {
+    "before_mm3": 106299.51508073488,
+    "after_mm3": 52969.95771226718,
+    "removed_mm3": 53329.5573684677,
+    "reduction_percent": 50.16914454215873,
+    "cutout_count": 16,
+    "blocked_cutouts_mm3": 0.0,
     "passed": true
   },
   "adjustable_bearings": {
@@ -1459,75 +1646,128 @@
     "passed": true
   },
   "base_mount_access": {
-    "insertion_direction": "vertical from above (-Z)",
-    "thread": null,
-    "hole_type": "plain \u00d85.5 mm through bores; inherited positions have \u00d810.5 mm 90-degree countersinks",
-    "clearance_diameter_mm": 5.5,
-    "through_depth_mm": 10,
-    "outer_washer_diameter_mm": 10,
-    "outer_socket_head_diameter_mm": 8.5,
-    "inherited_head_max_diameter_mm": 10,
-    "inherited_head_top_z_mm": 9.75,
-    "driver_diameter_mm": 11,
-    "access_well_diameter_mm": 12,
-    "travel_samples": 541,
-    "assembly_samples": 106,
-    "preserved_width_patterns": [
-      1
+    "insertion_direction": "from underside (+Z)",
+    "thread": "M3 heat-set insert",
+    "hole_type": "open-bottom \u00d84 mm printed pilot",
+    "maximum_screw_entry_mm": 5,
+    "pattern_center_xy_mm": [
+      26,
+      0
     ],
-    "pattern_nesting_passed": true,
-    "installed_fastener_collisions": [],
+    "patterns": [
+      {
+        "width_multiple": 1,
+        "pitch_xy_mm": [
+          31,
+          31
+        ],
+        "center_xy_mm": [
+          26,
+          0
+        ],
+        "hole_centers_xy_mm": [
+          [
+            10.5,
+            -15.5
+          ],
+          [
+            10.5,
+            15.5
+          ],
+          [
+            41.5,
+            -15.5
+          ],
+          [
+            41.5,
+            15.5
+          ]
+        ]
+      }
+    ],
     "holes": [
       {
-        "center_xy_mm": [
-          -3,
-          -34
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          10.5,
+          -15.5,
+          0
         ],
-        "inherited": false,
-        "installation_state": "assembled at any travel",
-        "missing_landing_mm3": 0.0,
-        "blocked_through_bore_mm3": 0.0,
-        "blocked_countersink_mm3": 0,
-        "collisions": [],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       },
       {
-        "center_xy_mm": [
-          -3,
-          34
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          10.5,
+          15.5,
+          0
         ],
-        "inherited": false,
-        "installation_state": "assembled at any travel",
-        "missing_landing_mm3": 0.0,
-        "blocked_through_bore_mm3": 0.0,
-        "blocked_countersink_mm3": 0,
-        "collisions": [],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       },
       {
-        "center_xy_mm": [
-          345.0,
-          -34
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          41.5,
+          -15.5,
+          0
         ],
-        "inherited": false,
-        "installation_state": "assembled at any travel",
-        "missing_landing_mm3": 0.0,
-        "blocked_through_bore_mm3": 0.0,
-        "blocked_countersink_mm3": 0,
-        "collisions": [],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       },
       {
-        "center_xy_mm": [
-          345.0,
-          34
+        "kind": "base",
+        "host": "Adjustable six-bearing base",
+        "center_mm": [
+          41.5,
+          15.5,
+          0
         ],
-        "inherited": false,
-        "installation_state": "assembled at any travel",
-        "missing_landing_mm3": 0.0,
-        "blocked_through_bore_mm3": 0.0,
-        "blocked_countersink_mm3": 0,
-        "collisions": [],
+        "axis": [
+          0,
+          0,
+          1
+        ],
+        "pilot_diameter_mm": 4,
+        "depth_mm": 5,
+        "blocked_printed_pilot_mm3": 0.0,
+        "missing_wall_mm3": 0.0,
+        "insert_collision_mm3": 0.0,
+        "blocked_open_bottom_mm3": 0.0,
         "passed": true
       }
     ],
@@ -1774,7 +2014,7 @@
   "width_variant": {
     "multiple": 1,
     "output_plate_width_mm": 42.0,
-    "base_width_mm": 80.0000002,
+    "base_width_mm": 80.0,
     "upper_bearing_center_span_mm": 41.569219381653056,
     "upper_bearing_centers_mm": [
       [
@@ -1812,7 +2052,7 @@
     ],
     "outward_shift_per_side_mm": 0.0,
     "motor_and_screw_center_y_mm": 0,
-    "height_mm": 68.0000001,
+    "height_mm": 68.0,
     "passed": true
   },
   "kinematics": {
@@ -1883,10 +2123,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 31616,
+        "triangles": 19704,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 362774.0703703365
+        "volume_mm3": 360114.4140407671
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
@@ -1897,10 +2137,10 @@
       },
       {
         "file": "structural_mounting_lid.stl",
-        "triangles": 12964,
+        "triangles": 16964,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 107464.10890591094
+        "volume_mm3": 52971.661901518564
       }
     ],
     "passed": true

@@ -3,26 +3,28 @@ Hardware meshes are fit envelopes. Lower bearings share one rigid four-bolt adju
 """
 import argparse,gzip,hashlib,json,math,pathlib,sys,zipfile
 import cadquery as cq
-P=argparse.ArgumentParser();P.add_argument('--check',action='store_true');P.add_argument('--quick',action='store_true');P.add_argument('--width',type=int,choices=[1,2,4],default=1);P.add_argument('--width-build-root',type=pathlib.Path);P.add_argument('--screw-length',type=int,default=100,help='Overall purchased T8 rod length in mm, including coupling engagement');P.add_argument('--variant',choices=['t8','printed'],default='t8');args=P.parse_args();PRINTED=args.variant=='printed';EXPERIMENT='printed-leadscrew' if PRINTED else 't8-leadscrew'
+P=argparse.ArgumentParser();P.add_argument('--travel',type=int,choices=[40,120],default=40,help='Printed-screw usable travel in mm');P.add_argument('--check',action='store_true');P.add_argument('--quick',action='store_true');P.add_argument('--width',type=int,choices=[1,2,4],default=1);P.add_argument('--width-build-root',type=pathlib.Path);P.add_argument('--screw-length',type=int,default=100,help='Overall purchased T8 rod length in mm, including coupling engagement');P.add_argument('--variant',choices=['t8','printed'],default='t8');args=P.parse_args();PRINTED=args.variant=='printed';EXPERIMENT='printed-leadscrew' if PRINTED else 't8-leadscrew'
 if not PRINTED and args.screw_length<70:P.error('T8 screw length must be at least 70 mm for this bearing layout.')
 WIDTH=args.width;WIDEN=21.*(WIDTH-1);HALF_WIDTH=40+WIDEN
 def wide(y):return y+math.copysign(WIDEN,y) if y else 0.
 ROOT=pathlib.Path(__file__).resolve().parents[2];OUT=ROOT/'dist/experiments'/EXPERIMENT;OUT=(args.width_build_root/EXPERIMENT if args.width_build_root else OUT)
 if not PRINTED and args.screw_length!=100:OUT=OUT/'lengths'/f'{args.screw_length}mm'
+if PRINTED and args.travel!=40:OUT=OUT/'travel'/f'{args.travel}mm'
 if WIDTH!=1:OUT=OUT/'widths'/f'{WIDTH}x'
 OUT.mkdir(parents=True,exist_ok=True)
 SQ=math.sqrt(.5);LEAD=8.;AXIS=(1,0,0);SCREW_Z=42.
 # T8 sizes describe the whole purchased rod, including 8 mm inside the coupling.
 # Retain full 15 mm nut engagement and 4.5 mm screw beyond its front face.
 T8_LENGTH=float(args.screw_length);ROD_START=26.;NUT_HOME=48.;NUT_REAR=11.5;NUT_FRONT=3.5;TIP_MARGIN=4.5
-ROD_END=152. if PRINTED else ROD_START+T8_LENGTH
-STROKE=40. if PRINTED else ROD_END-(NUT_HOME+NUT_FRONT)-TIP_MARGIN
-TAIL_HOME=10.;STATIONS=[63.,137.] if PRINTED else [TAIL_HOME+STROKE+13,TAIL_HOME+STROKE+53]
+ROD_END=112.+args.travel if PRINTED else ROD_START+T8_LENGTH
+STROKE=float(args.travel) if PRINTED else ROD_END-(NUT_HOME+NUT_FRONT)-TIP_MARGIN
+TAIL_HOME=10.;STATIONS=[STROKE+23,STROKE+97] if PRINTED else [TAIL_HOME+STROKE+13,TAIL_HOME+STROKE+53]
 EXIT_X=STATIONS[-1]+18;GUIDE_END=EXIT_X-8;BASE_REAR=-8.;MOTOR_FRONT=0.;GUIDE_RADIUS=16.;TRI_SQ=math.sqrt(3);THREAD_BANDS=[(36.,48.),(96.,108.)]
 BASE_NAME='Adjustable six-bearing base';CARRIER_NAME='Shared lower bearing carrier';ADJUST_CENTERS=[(x-12,wide(y)) for x in STATIONS for y in [-26,26]]
-CARRIAGE_WITHDRAWAL=200. if PRINTED else 2*EXIT_X-42.
-LID_NAME='Structural mounting lid';LID_Z=64.;LID_FIXINGS=[(12,wide(y)) for y in [-24,24]]+[(x+2,wide(y)) for x in STATIONS for y in [-35,35]];LID_MOUNTS=[(x,wide(y)) for x in [36,sum(STATIONS)/2-4] for y in [-27,27]];SIDE_MOUNTS=[(22,12),(36,12)]+[(x-5,z) for x in STATIONS for z in [44,56]]
-ATTACH_PILOTS=[]
+CARRIAGE_WITHDRAWAL=2*EXIT_X-110 if PRINTED else 2*EXIT_X-42.
+LID_NAME='Structural mounting lid';LID_Z=64.;LID_FIXINGS=[(12,wide(y)) for y in [-24,24]]+[(x+2,wide(y)) for x in STATIONS for y in [-35,35]];LID_MOUNTS=[];SIDE_MOUNTS=[]
+ATTACH_PILOTS=[];MOUNT_SEATS=[]
+MOUNT_INSERT=dict(type='ruthex RX-M3Sx4.0',thread='M3',od_mm=4.6,length_mm=4,pilot_diameter_mm=4,entry_diameter_mm=4.8,minimum_wall_mm=1.65,open_bottom=True,lid_max_screw_entry_mm=4,base_max_screw_entry_mm=5)
 LIGHTENING={};CUTOUTS={};MOTOR_BRACES=[]
 CLAMP=dict(shaft_diameter_mm=5,shaft_across_flat_mm=4.5,bore_diameter_mm=5.3,bore_across_flat_mm=4.8,radial_clearance_mm=.15,flat_clearance_mm=.15,hub_diameter_mm=22,shaft_engagement_mm=15,split_gap_mm=1,bolt='M3x12 socket-head',nut='M3 hex nut',nut_across_flats_mm=5.5,nut_thickness_mm=2.4,nut_pocket_across_flats_mm=5.9,nut_pocket_top_z_mm=36.9,bolt_center_xy_mm=[17,5],nut_installation='Insert from underneath into the hex pocket before fitting the screw to the motor; start the bolt, align the D flat, then tighten through the lid access hole with the carriage extended.')
 INSERT=dict(type='ruthex RX-M5x9.5',thread='M5',od_mm=7.1,length_mm=9.5,pilot_diameter_mm=6.4,pilot_depth_mm=10.5,entry_diameter_mm=7.2,minimum_wall_mm=2.6)
@@ -57,6 +59,8 @@ def ridge_hole(d,length,c,u,t=0):
   hole=hole.cut(cyl(rr,length,center,u))
  lead=cq.Solid.makeCone(spec['relief_radius']+.1,spec['tip_radius'],spec['lead_in'],cq.Vector(*start),cq.Vector(*u))
  return hole.fuse(lead)
+def mount_pilot(c,u,depth):
+ return cyl(2,depth,c,u).fuse(cq.Solid.makeCone(2.4,2,.35,cq.Vector(*c),cq.Vector(*u)))
 def ridge_material(d,length,c,u,t=0):
  return cyl(THREAD_PROFILES[d]['relief_radius'],length,c,u,t).cut(ridge_hole(d,length,c,u,t))
 THREAD_JOINTS=[];OUTPUT_PILOTS=[]
@@ -101,7 +105,7 @@ def helical_ridge(radius0,radius1,halfroot,halfcrest,length):
  return q.rotate((0,0,0),(0,1,0),90).translate((30,0,SCREW_Z))
 if PRINTED:
  print('Building printable helix and two threaded bands',flush=True)
- male=helical_ridge(7.9,10,2.5,1,122).fuse(xcyl(8,122,30)).intersect(xcyl(10.1,122,30)).clean()
+ male=helical_ridge(7.9,10,2.5,1,ROD_END-30).fuse(xcyl(8,ROD_END-30,30)).intersect(xcyl(10.1,ROD_END-30,30)).clean()
  # Matching continuous phase in both bands, with .35 radial / .25 axial relief.
  cutter=helical_ridge(8.25,10.35,2.75,1.25,122).fuse(xcyl(8.35,124,29)).clean()
  beam=beam.cut(xcyl(13.5,25,9))
@@ -121,9 +125,9 @@ for y,z in output_holes:
  beam=beam.cut(ridge_hole(3,8,(EXIT_X,y,z),(-1,0,0))).cut(xcyl(1.65,2,GUIDE_END-2,y,z))
  OUTPUT_PILOTS.append(dict(diameter=3,length=8,center=(EXIT_X,y,z),axis=(-1,0,0),start=0))
 if PRINTED:
- cuts=[rounded_cut(a,b,-4,4,42,65,2.5) for a,b in [(52,88),(112,139)]]
+ cuts=[rounded_cut(a,b,-4,4,42,65,2.5) for a,b in [(52,88)]+bays(112,GUIDE_END-8,32,6)]
  if WIDTH>1:
-  for a,b in [(18,30),(52,88),(112,139)]:
+  for a,b in [(18,30),(52,88)]+bays(112,GUIDE_END-8,32,6):
    for lo,hi in bays(16,WIDEN+2,24,5):
     for sign in [-1,1]:
      ya,yb=sorted([sign*lo,sign*hi]);cuts.append(rounded_cut(a,b,ya,yb,30,65,2.5))
@@ -171,10 +175,10 @@ base=base.cut(rect(-41,0,-21.5,21.5,SCREW_Z-21.5,SCREW_Z+21.5)).cut(xcyl(11.3,8,
 motor_holes=[(y,SCREW_Z+z) for y in [-15.5,15.5] for z in [-15.5,15.5]]
 for y,z in motor_holes:base=base.cut(xcyl(1.7,8,-1,y,z)).cut(xcyl(4,35,6,y,z))
 BASE_MOUNT_WIDTHS=[w for w in [1,2,4] if w<=WIDTH]
-BASE_MOUNT_PATTERNS=[dict(width_multiple=w,hole_centers_xy_mm=[(x,sign*(34+21*(w-1))) for x in [-3,EXIT_X-6] for sign in [-1,1]]) for w in BASE_MOUNT_WIDTHS]
-BASE_MOUNT_OUTER=BASE_MOUNT_PATTERNS[-1]['hole_centers_xy_mm']
+BASE_MOUNT_PATTERNS=[dict(width_multiple=w,pitch_xy_mm=[31,31+42*(w-1)],center_xy_mm=[26,0],hole_centers_xy_mm=[(x,sign*(15.5+21*(w-1))) for x in [10.5,41.5] for sign in [-1,1]]) for w in BASE_MOUNT_WIDTHS]
 BASE_MOUNT_HOLES=[c for pattern in BASE_MOUNT_PATTERNS for c in pattern['hole_centers_xy_mm']]
-BASE_MOUNT_INNER=[c for c in BASE_MOUNT_HOLES if c not in BASE_MOUNT_OUTER]
+BASE_MOUNT_OUTER=BASE_MOUNT_PATTERNS[-1]['hole_centers_xy_mm'];BASE_MOUNT_INNER=[c for c in BASE_MOUNT_HOLES if c not in BASE_MOUNT_OUTER]
+LID_MOUNTS=BASE_MOUNT_HOLES.copy()
 motor=rect(-40,0,-21,21,SCREW_Z-21,SCREW_Z+21).fuse(xcyl(11,2,0)).cut(xcyl(2.6,2.2,-.1))
 for y,z in motor_holes:motor=motor.cut(xcyl(1.65,7,-6,y,z))
 add('NEMA17 42x42x40 reference',motor,'#26394a','motor')
@@ -275,14 +279,7 @@ for x,y in LID_FIXINGS:
  if x==12:frame=frame.fuse(rect(4,17,y-5,y+5,60,LID_Z),rect(7,17,y-5,y+5,51,LID_Z))
  else:frame=frame.fuse(rect(x-5,x+5,y-5,y+5,51,LID_Z))
  frame=frame.cut(ridge_hole(3,12,(x,y,LID_Z),(0,0,-1)))
-# Six blind three-ridge M5 attachment pilots on each side; bosses grow inward.
-for x,z in SIDE_MOUNTS:
- for sign in [-1,1]:
-  ya,yb=sorted([wide(sign*30),wide(sign*40)])
-  frame=frame.fuse(rect(x-7,x+7,ya,yb,max(39,z-7) if z>20 else z-7,z+7))
-  c=(x,wide(sign*40),z);u=(0,-sign,0)
-  frame=frame.cut(ridge_hole(5,9,c,u))
-  ATTACH_PILOTS.append(dict(host=BASE_NAME,kind='side',diameter=5,length=9,center=c,axis=u))
+# External side bosses and side attachment holes are removed.
 for x,y in ADJUST_CENTERS:frame=frame.cut(cyl(5.2,90,(x,y,32)))
 for x,y in LID_FIXINGS:frame=frame.cut(ridge_hole(3,12,(x,y,LID_Z),(0,0,-1)))
 lid=rect(6.3,EXIT_X-9,-HALF_WIDTH,HALF_WIDTH,LID_Z,LID_Z+4)
@@ -291,36 +288,49 @@ for x,y in LID_FIXINGS:
  # Recessed button heads stay below the original motor-mount height.
  lid=lid.cut(cyl(1.7,6,(x,y,LID_Z-1))).cut(cyl(3.2,2,(x,y,66.2)))
 for x,y in LID_MOUNTS:
- lid=lid.fuse(cyl(5,10,(x,y,58)))
- lid=lid.cut(ridge_hole(5,9,(x,y,68),(0,0,-1)))
- ATTACH_PILOTS.append(dict(host=LID_NAME,kind='lid',diameter=5,length=9,center=(x,y,68),axis=(0,0,-1)))
+ lid=lid.cut(mount_pilot((x,y,68),(0,0,-1),4))
+ MOUNT_SEATS.append(dict(host=LID_NAME,center=(x,y,68),axis=(0,0,-1),depth=4,kind='lid'))
 if PRINTED:lid=lid.cut(cyl(3,6,(17,5,LID_Z-1)))
 for x,y in ADJUST_CENTERS:lid=lid.cut(cyl(3,6,(x,y,LID_Z-1)))
-for x,y in BASE_MOUNT_OUTER:lid=lid.cut(cyl(6,6,(x,y,LID_Z-1)))
-# Preserve each narrower floor pattern. Inner mounts use flush countersunk
-# heads so the carrier can still slide through its existing assembly path.
+# Through pilot seats accept short M3 inserts from the underside of the base.
 for x,y in BASE_MOUNT_HOLES:
- inherited=(x,y) in BASE_MOUNT_INNER
- half=5.8 if inherited else 5
- frame=frame.fuse(rect(x-half,x+half,y-half,y+half,0,10))
- frame=frame.cut(cyl(6,120,(x,y,10)))
- if not inherited:
-  ya,yb=(y,wide(41)) if y>0 else (wide(-41),y)
-  frame=frame.cut(rect(x-6,x+6,ya,yb,10,125))
- frame=frame.cut(cyl(2.75,12,(x,y,-1)))
- if inherited:
-  frame=frame.cut(cq.Solid.makeCone(2.75,5.25,2.5,cq.Vector(x,y,7.5),cq.Vector(0,0,1)))
+ frame=frame.cut(mount_pilot((x,y,0),(0,0,1),5))
+ MOUNT_SEATS.append(dict(host=BASE_NAME,center=(x,y,0),axis=(0,0,1),depth=5,kind='base'))
+# Window grid keeps continuous perimeter, transverse fixing/insert ribs, and
+# rounded corners; it never increases the four-millimetre lid thickness.
+keep_rows=[(6.3,14.3),(EXIT_X-17,EXIT_X-9)]+[(x-5.5,x+5.5) for x,y in LID_MOUNTS]+[(x-6,x+6) for x,y in LID_FIXINGS]+[(x-5,x+5) for x,y in ADJUST_CENTERS]
+if PRINTED:keep_rows.append((12,22))
+intervals=[]
+for a,b in sorted(keep_rows):
+ a=max(6.3,a);b=min(EXIT_X-9,b)
+ if intervals and a<=intervals[-1][1]:intervals[-1]=(intervals[-1][0],max(b,intervals[-1][1]))
+ else:intervals.append((a,b))
+lid_cuts=[]
+for (_,a),(b,_) in zip(intervals,intervals[1:]):
+ if b-a<7:continue
+ for xa,xb in bays(a,b,36,6):
+  for ya,yb in bays(-HALF_WIDTH+8,HALF_WIDTH-8,30,6):
+   lid_cuts.append(rounded_cut(xa,xb,ya,yb,63,69,3))
+lid=lighten(lid,lid_cuts,'lid')
 for x in STATIONS:frame=frame.cut(rect(x-8.7,x+8.7,wide(-30),wide(30),56,76))
 for b in bearings:
  if b['kind']=='upper':frame=inner_race_seat(frame,b['center'],b['axis'])
 if PRINTED:
  cuts=[]
- for a,b in [(14,39),(70,116)]:
+ for a,b in [(14,39),(STATIONS[0]+7,STATIONS[1]-21)]:
   for lo,hi in bays(7,HALF_WIDTH-11):
    for sign in [-1,1]:
     ya,yb=sorted([sign*lo,sign*hi]);cuts.append(rounded_cut(a,b,ya,yb,-1,6))
+ for i,cut in enumerate(cuts):
+  for x,y in BASE_MOUNT_HOLES:cut=cut.cut(cyl(5.5,8,(x,y,-1)))
+  cuts[i]=cut
  frame=lighten(frame,cuts,'base')
 frame=relieve_tracks(frame)
+chassis_print_without_pins=frame.clean();lid_print=lid
+for seat in MOUNT_SEATS:
+ cavity=cyl(2.32,4,seat['center'],seat['axis'])
+ if seat['kind']=='base':frame=frame.cut(cavity)
+ else:lid=lid.cut(cavity)
 chassis_without_pins=frame.clean();carrier_print_without_pins=shared_carrier();carrier_without_pins=carrier_print_without_pins
 # The viewer depicts the installed cavity after heat setting; the STL retains
 # the undersized printed pilot. The displaced annulus is checked explicitly.
@@ -330,9 +340,12 @@ def with_pins(shape,kind,compression=0,printed=False):
   if b['kind']==kind:shape=shape.fuse(snap_pin(b['center'],b['axis'],compression,printed=printed))
  return shape.clean()
 chassis_shape=with_pins(chassis_without_pins,'upper');carrier_shape=with_pins(carrier_without_pins,'lower')
-add(BASE_NAME,chassis_shape,'#475b70',printed=True,freeShape=with_pins(chassis_without_pins,'upper',printed=True),snapBearings=[b for b in bearings if b['kind']=='upper'])
+add(BASE_NAME,chassis_shape,'#475b70',printed=True,freeShape=with_pins(chassis_print_without_pins,'upper',printed=True),snapBearings=[b for b in bearings if b['kind']=='upper'])
 add(CARRIER_NAME,carrier_shape,'#748aa0',printed=True,freeShape=with_pins(carrier_print_without_pins,'lower',printed=True),adjustIndex=0,explodeKind='block',snapBearings=[b for b in bearings if b['kind']=='lower'])
-add(LID_NAME,lid,'#607d91',printed=True,explodeKind='lid')
+add(LID_NAME,lid,'#607d91',printed=True,freeShape=lid_print,explodeKind='lid')
+for j,seat in enumerate(MOUNT_SEATS):
+ name=f"M3 {seat['kind']} mounting insert {j+1}";seat['insert_name']=name
+ add(name,ring(2.3,1.5,4,seat['center'],seat['axis']),'#d8ad4c',heatSet=True,mountHost=seat['host'],**({'explodeKind':'lid'} if seat['kind']=='lid' else {}))
 for j,(x,y) in enumerate(LID_FIXINGS):
  name=f'M3x12 button-head lid bolt {j+1}'
  add(name,bolt(1.45,12,2.85,1.65,(x,y,54.2)),'#94a3b8',explodeKind='lidBolt')
@@ -359,7 +372,7 @@ def explosion_offset(p,fraction):
  if p.get('explodeKind')=='lid':return [0,(90+2*WIDEN)*max(0,min(1,(fraction-.14)/.06)),18*max(0,min(1,(fraction-.08)/.06))]
  if p['group']=='carriage':v[0]=CARRIAGE_WITHDRAWAL*ramp(0,.2)+(60*ramp(.7,.8) if PRINTED else 0)
  if p['name'].startswith('M3x10 motor bolt'):v[0]=35*ramp(.2,.3);v[2]=80*ramp(.3,.45)
- if p['group'] in ['motor','rotor']:v[0]=(-180 if PRINTED else -(ROD_END+28))*ramp(.3,.45)
+ if p['group'] in ['motor','rotor']:v[0]=-(ROD_END+28)*ramp(.3,.45)
  if p.get('explodeKind')=='clampBolt':v[2]+=30*ramp(.45,.53)
  if p.get('explodeKind')=='clampNut':v[2]-=25*ramp(.45,.53)
  if p.get('explodeKind')=='axle':
@@ -440,14 +453,14 @@ def export(report=None):
    with gzip.open(str(dest)+'.gz','wb') as f:f.write(dest.read_bytes())
   scene.append(row)
  source_hash=hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest()
- data=dict(experiment=EXPERIMENT,revision=22,guideBearingCount=len(bearings),lowerBearingCount=LOWER_COUNT,lowerBearingY=[lower_positions(x) for x in STATIONS],carrierInserts=INSERT,shaftClamp=CLAMP if PRINTED else None,lightening=LIGHTENING,motorBraces={'rear_x_mm':-36,'length_mm':42,'width_mm':12,'motor_side_gap_mm':1.5} if PRINTED else None,widthMultiple=WIDTH,outputPlateWidth=42*WIDTH,upperBearingSpan=24*math.sqrt(3)+2*WIDEN,baseWidth=2*HALF_WIDTH,stroke=STROKE,lead=LEAD,sizingBasis='screw_length' if not PRINTED else 'travel',screwLength=T8_LENGTH if not PRINTED else None,screwStartX=ROD_START if not PRINTED else 9,nutAxialBounds=[NUT_HOME-NUT_REAR,NUT_HOME+NUT_FRONT] if not PRINTED else None,motor='NEMA17',axisOrigin=[0,0,SCREW_Z],modelSourceSha256=source_hash,parts=scene,stations=STATIONS,adjustmentRange=[0,1],adjustmentHome=[1],carrierName=CARRIER_NAME,lidName=LID_NAME,lidFixings=LID_FIXINGS,lidMounts=LID_MOUNTS,sideMounts=SIDE_MOUNTS,attachmentPilots=ATTACH_PILOTS,envelopeHeight=68,lidTopZ=68,snapAxle=SNAP,solidAxle=SOLID_AXLE,retainingTracks=[],retainingRailSize=[0,0],bearingRunningFaces=TRACKS,explosionPrelude=.2,carriageWithdrawal=CARRIAGE_WITHDRAWAL,adjustmentBoltCenters=ADJUST_CENTERS,bearingSeat={'land_diameter_mm':7.4,'relief_diameter_mm':17,'relief_depth_mm':2},baseName=BASE_NAME,printedDrive=PRINTED,threadBands=THREAD_BANDS if PRINTED else [],screwEndX=ROD_END,printedScrewDiameter=20 if PRINTED else None,exitPlaneX=EXIT_X,tailHomeX=TAIL_HOME,guideEndX=GUIDE_END,nutHomeX=NUT_HOME,homeTravel=0,baseBounds=[-36 if PRINTED else BASE_REAR,EXIT_X,-HALF_WIDTH,HALF_WIDTH,0,5],outputMount={'pitch_mm':[31,31],'outer_pitch_mm':[31+2*WIDEN,31] if WIDTH>1 else None,'face_size_mm':[42*WIDTH,42],'hole_centers_yz_mm':output_holes,'thread':'M3 three-ridge forming pilot','thread_depth_mm':8},threadProfiles=THREAD_PROFILES,cornerChamferRadialDepth=12,baseMount={'hole_centers_xy_mm':BASE_MOUNT_HOLES,'patterns':BASE_MOUNT_PATTERNS,'outer_holes_xy_mm':BASE_MOUNT_OUTER,'inherited_holes_xy_mm':BASE_MOUNT_INNER,'inherited_countersink':{'diameter_mm':10.5,'angle_degrees':90,'depth_mm':2.5,'screw':'M5 countersunk, head diameter at most 10 mm; seat flush'},'inherited_installation':'Fasten from above before installing the bearing carrier and carriage. The original outer holes remain accessible while assembled.','thread':None,'hole_type':'plain through-hole','clearance_diameter_mm':5.5,'through_depth_mm':10,'mount_landing_z_mm':10,'vertical_access_diameter_mm':12,'base_thickness_mm':5,'maximum_washer_diameter_mm':10,'checked_driver_diameter_mm':11},explosion='Staged disassembly: carriage withdrawal, motor bolts, drive, axles, bearing packs, flange bolts and nut')
+ data=dict(experiment=EXPERIMENT,revision=23,guideBearingCount=len(bearings),lowerBearingCount=LOWER_COUNT,lowerBearingY=[lower_positions(x) for x in STATIONS],carrierInserts=INSERT,shaftClamp=CLAMP if PRINTED else None,lightening=LIGHTENING,motorBraces={'rear_x_mm':-36,'length_mm':42,'width_mm':12,'motor_side_gap_mm':1.5} if PRINTED else None,widthMultiple=WIDTH,outputPlateWidth=42*WIDTH,upperBearingSpan=24*math.sqrt(3)+2*WIDEN,baseWidth=2*HALF_WIDTH,stroke=STROKE,lead=LEAD,sizingBasis='screw_length' if not PRINTED else 'travel',screwLength=T8_LENGTH if not PRINTED else None,screwStartX=ROD_START if not PRINTED else 9,nutAxialBounds=[NUT_HOME-NUT_REAR,NUT_HOME+NUT_FRONT] if not PRINTED else None,motor='NEMA17',axisOrigin=[0,0,SCREW_Z],modelSourceSha256=source_hash,parts=scene,stations=STATIONS,adjustmentRange=[0,1],adjustmentHome=[1],carrierName=CARRIER_NAME,lidName=LID_NAME,lidFixings=LID_FIXINGS,lidMounts=LID_MOUNTS,sideMounts=SIDE_MOUNTS,attachmentPilots=ATTACH_PILOTS,envelopeHeight=68,lidTopZ=68,snapAxle=SNAP,solidAxle=SOLID_AXLE,retainingTracks=[],retainingRailSize=[0,0],bearingRunningFaces=TRACKS,explosionPrelude=.2,carriageWithdrawal=CARRIAGE_WITHDRAWAL,adjustmentBoltCenters=ADJUST_CENTERS,bearingSeat={'land_diameter_mm':7.4,'relief_diameter_mm':17,'relief_depth_mm':2},baseName=BASE_NAME,printedDrive=PRINTED,threadBands=THREAD_BANDS if PRINTED else [],screwEndX=ROD_END,printedScrewDiameter=20 if PRINTED else None,exitPlaneX=EXIT_X,tailHomeX=TAIL_HOME,guideEndX=GUIDE_END,nutHomeX=NUT_HOME,homeTravel=0,baseBounds=[-36 if PRINTED else BASE_REAR,EXIT_X,-HALF_WIDTH,HALF_WIDTH,0,5],outputMount={'pitch_mm':[31,31],'outer_pitch_mm':[31+2*WIDEN,31] if WIDTH>1 else None,'face_size_mm':[42*WIDTH,42],'hole_centers_yz_mm':output_holes,'thread':'M3 three-ridge forming pilot','thread_depth_mm':8},threadProfiles=THREAD_PROFILES,cornerChamferRadialDepth=12,baseMount={'hole_centers_xy_mm':BASE_MOUNT_HOLES,'patterns':BASE_MOUNT_PATTERNS,'center_xy_mm':[26,0],'thread':'M3 heat-set insert','hole_type':'open-bottom insert pilot','pilot_diameter_mm':4,'through_depth_mm':5,'entry_face':'underside','maximum_screw_entry_mm':5},externalMountInserts=MOUNT_INSERT,externalMountSeats=MOUNT_SEATS,explosion='Staged disassembly: carriage withdrawal, motor bolts, drive, axles, bearing packs, flange bolts and nut')
  with gzip.open(OUT/'assembly.json.gz','wt') as f:json.dump(data,f,separators=(',',':'))
  (OUT/'configuration.json').write_text(json.dumps({k:v for k,v in data.items() if k!='parts'},indent=2))
  if report:
   report['print_meshes']={'checks':print_checks,'passed':all(q['watertight'] for q in print_checks)}
   (OUT/'validation.json').write_text(json.dumps(report,indent=2))
- (OUT/'bill-of-materials.json').write_text(json.dumps({'printed_parts':[p['name'] for p in parts if p['printed']],'hardware_references':[p['name'] for p in parts if not p['printed']],'fastener_nuts':1 if PRINTED else 0,'shaft_clamp':CLAMP if PRINTED else None,'integral_solid_axles':len(bearings),'bearing_axle_fit':SOLID_AXLE,'heat_set_inserts':4,'heat_set_insert_spec':INSERT,'bearing_axle_bolts':0,'lid_fasteners':len(LID_FIXINGS),'plastic_thread_joints':len(THREAD_JOINTS),'output_mount_thread_pilots':len(OUTPUT_PILOTS),'guide_bearings':len(bearings),'screw_support_bearings':0,'note':'Bought coupling includes its own locking screws. Hardware envelopes do not substitute for vendor drawings.'},indent=2))
- (OUT/'README.txt').write_text((f'T8 screw length: {T8_LENGTH:g} mm. Usable travel: {STROKE:g} mm. Overall retracted length: {EXIT_X+40:g} mm.\n' if not PRINTED else '')+f'Width variant: {WIDTH}x. Output plate: {42*WIDTH:g} x 42 mm. Base width: {2*HALF_WIDTH:g} mm. Upper bearing span: {24*math.sqrt(3)+2*WIDEN:.3f} mm.\n\n'+(ROOT/'experiments'/EXPERIMENT/'README.md').read_text())
+ (OUT/'bill-of-materials.json').write_text(json.dumps({'printed_parts':[p['name'] for p in parts if p['printed']],'hardware_references':[p['name'] for p in parts if not p['printed']],'fastener_nuts':1 if PRINTED else 0,'shaft_clamp':CLAMP if PRINTED else None,'integral_solid_axles':len(bearings),'bearing_axle_fit':SOLID_AXLE,'heat_set_inserts':4+len(MOUNT_SEATS),'carrier_heat_set_inserts':4,'heat_set_insert_spec':INSERT,'external_mount_inserts':len(MOUNT_SEATS),'external_mount_insert_spec':MOUNT_INSERT,'bearing_axle_bolts':0,'lid_fasteners':len(LID_FIXINGS),'plastic_thread_joints':len(THREAD_JOINTS),'output_mount_thread_pilots':len(OUTPUT_PILOTS),'guide_bearings':len(bearings),'screw_support_bearings':0,'note':'Bought coupling includes its own locking screws. Hardware envelopes do not substitute for vendor drawings.'},indent=2))
+ (OUT/'README.txt').write_text((f'T8 screw length: {T8_LENGTH:g} mm. Usable travel: {STROKE:g} mm. Overall retracted length: {EXIT_X+40:g} mm.\n' if not PRINTED else f'Printed screw travel: {STROKE:g} mm. Screw tip X={ROD_END:g} mm. Overall retracted length: {EXIT_X+40:g} mm.\n')+f'Width variant: {WIDTH}x. Output plate: {42*WIDTH:g} x 42 mm. Base width: {2*HALF_WIDTH:g} mm. Upper bearing span: {24*math.sqrt(3)+2*WIDEN:.3f} mm.\n\n'+(ROOT/'experiments'/EXPERIMENT/'README.md').read_text())
  if args.quick:return
  with zipfile.ZipFile(OUT/(EXPERIMENT+'-prototype.zip'),'w',zipfile.ZIP_DEFLATED) as z:
   for f in stls.glob('*.stl'):z.write(f,'stl/'+f.name)

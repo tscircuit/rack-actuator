@@ -127,33 +127,44 @@ def validate():
  report['smooth_running_faces']={'raised_retaining_rails':False,'axial_displacement_checked_mm':[-1,1],'former_rail_regions':face_checks,'bearing_clearance':float_checks,'passed':all(q['passed'] for q in face_checks+float_checks),'note':'Raised side rails are removed. Checks cover nominal bearing geometry and +/-1 mm axial displacement relative to the carriage, not bearing tilt, preload or printed surface friction. Existing support clearance channels are retained.'}
  print('Smooth running faces',report['smooth_running_faces']['passed'],flush=True)
  if not report['smooth_running_faces']['passed']:save();return report
- # Lid and side attachment receivers have three full axial ribs and a blind
- # end. Screw/thread interference is checked only against those actual ribs.
+ # Matched NEMA17 patterns use short, open-bottom M3 insert seats.
  mounts=[];attachment_access=[]
- for j in ATTACH_PILOTS:
-  c,u=j['center'],j['axis'];host=by_name[j['host']]['shape'];length=j['length']
-  ribs=ridge_material(5,length,c,u);hole=ridge_hole(5,length,c,u);wall=ring(4.5,2.8,length,c,u)
-  row=dict(kind=j['kind'],host=j['host'],center_mm=list(c),axis=list(u),diameter=5,pilot_depth_mm=length,ridge_count=len(ribs.Solids()),missing_ridge_mm3=ribs.cut(host).Volume(),blocked_pilot_mm3=overlap(hole,host),missing_wall_mm3=wall.cut(host).Volume())
-  row['passed']=row['ridge_count']==3 and max(row[k] for k in ['missing_ridge_mm3','blocked_pilot_mm3','missing_wall_mm3'])<.01;mounts.append(row)
-  # Enter from outside, leaving 0.6 mm to the blind bottom. Tool/head above face.
-  probe=cyl(2.45,length-.6,c,u).fuse(cyl(5.2,65,c,tuple(-q for q in u),.01))
+ for j in MOUNT_SEATS:
+  c,u=j['center'],j['axis'];host=by_name[j['host']];length=j['depth']
+  printed=host['freeShape'];installed=host['shape'];insert=by_name[j['insert_name']]['shape']
+  hole=mount_pilot(c,u,length);wall=ring(4,2.41,4,c,u)
+  row=dict(kind=j['kind'],host=j['host'],center_mm=list(c),axis=list(u),pilot_diameter_mm=4,depth_mm=length,blocked_printed_pilot_mm3=overlap(hole,printed),missing_wall_mm3=wall.cut(printed).Volume(),insert_collision_mm3=overlap(insert,installed),blocked_open_bottom_mm3=overlap(cyl(1.45,length+.2,c,u,-.1),printed))
+  row['passed']=max(row[k] for k in ['blocked_printed_pilot_mm3','missing_wall_mm3','insert_collision_mm3','blocked_open_bottom_mm3'])<.01;mounts.append(row)
+  probe=cyl(1.45,length,c,u).fuse(cyl(3,40,c,tuple(-q for q in u),.01))
   for travel in [0,STROKE/2,STROKE]:
    for p in parts:
-    body=pose(p,travel)
-    if overlap(probe,body)<.01:continue
-    hit=probe.intersect(body)
-    if p['name']==j['host']:hit=hit.cut(ribs)
-    if hit.Volume()>.01:attachment_access.append(dict(mount=j['kind'],center_mm=list(c),travel_mm=travel,part=p['name'],overlap_mm3=hit.Volume()))
- # The top of the original motor plate was 68 mm before adding a lid.
+    v=overlap(probe,pose(p,travel))
+    if v>.01:attachment_access.append(dict(mount=j['kind'],center_mm=list(c),travel_mm=travel,part=p['name'],overlap_mm3=v))
+ # Verify that the only print/installed difference is displaced insert plastic.
+ displaced=[]
+ for name in [BASE_NAME,LID_NAME]:
+  host=by_name[name];extra=host['freeShape'].cut(host['shape'])
+  for j in MOUNT_SEATS:
+   if j['host']==name:extra=extra.cut(cyl(2.32,4,j['center'],j['axis']))
+  displaced.append(dict(host=name,unexpected_displacement_mm3=extra.Volume(),passed=extra.Volume()<.01))
+ expected=[(x,sign*(15.5+21*(w-1))) for w in [1,2,4] if w<=WIDTH for x in [10.5,41.5] for sign in [-1,1]]
+ pattern_ok=set(BASE_MOUNT_HOLES)==set(expected)==set(LID_MOUNTS) and len(BASE_MOUNT_HOLES)==4*len(BASE_MOUNT_WIDTHS)
  height=max(p['shape'].BoundingBox().zmax for p in parts)
  closed_walls=[]
  for x in STATIONS:
+  for sign in [-1,1]:closed_walls.append(cyl(5,6,(x,wide(sign*34),18),(0,sign,0)).cut(chassis_shape).Volume())
+ side_holes=[]
+ for x,z in [(22,12),(36,12)]+[(x-5,z) for x in STATIONS for z in [44,56]]:
   for sign in [-1,1]:
-   region=cyl(5,6,(x,wide(sign*34),18),(0,sign,0))
-   closed_walls.append(region.cut(chassis_shape).Volume())
- report['lid_and_attachment']={'lid_fixings':len(LID_FIXINGS),'lid_fixing_thread':'M3 three-ridge, 12 mm pilot depth','lid_thickness_mm':4,'lid_bottom_z_mm':64,'lid_top_z_mm':68,'assembly_height_mm':height,'original_height_limit_mm':68,'external_mount_thread':'M5 three-ridge blind pilot','external_pilot_depth_mm':9,'top_mount_count':len(LID_MOUNTS),'side_mount_count':2*len(SIDE_MOUNTS),'floor_mount_count':len(BASE_MOUNT_HOLES),'floor_mount_type':'plain Ø5.5 mm through-hole','checks':mounts,'insertion_collisions':attachment_access,'closed_lower_access_missing_mm3':closed_walls,'passed':not attachment_access and all(q['passed'] for q in mounts) and height<=68.00001 and max(closed_walls)<.01}
- print('Low lid / threaded mounts / closed walls',report['lid_and_attachment']['passed'],flush=True)
+   missing=cyl(.8,5.8,(x,wide(sign*34)+sign*.1,z),(0,sign,0)).cut(chassis_shape).Volume()
+   side_holes.append(dict(center_xz_mm=[x,z],side=sign,missing_wall_mm3=missing,passed=missing<.01))
+ report['external_mount_inserts']={'specification':MOUNT_INSERT,'patterns':BASE_MOUNT_PATTERNS,'base_count':len(BASE_MOUNT_HOLES),'lid_count':len(LID_MOUNTS),'pattern_center_xy_mm':[26,0],'checks':mounts,'plastic_displacement':displaced,'access_collisions':attachment_access,'pattern_matches':pattern_ok,'passed':pattern_ok and not attachment_access and all(q['passed'] for q in mounts+displaced)}
+ report['lid_and_attachment']={'lid_fixings':len(LID_FIXINGS),'lid_fixing_thread':'M3 three-ridge, 12 mm pilot depth','lid_thickness_mm':4,'lid_bottom_z_mm':64,'lid_top_z_mm':68,'assembly_height_mm':height,'original_height_limit_mm':68,'external_mount_thread':'M3 short heat-set insert','open_bottom':True,'top_mount_count':len(LID_MOUNTS),'side_mount_count':0,'floor_mount_count':len(BASE_MOUNT_HOLES),'floor_mount_type':'M3 insert seats entered from underside','checks':mounts,'insertion_collisions':attachment_access,'closed_lower_access_missing_mm3':closed_walls,'removed_side_hole_checks':side_holes,'passed':report['external_mount_inserts']['passed'] and height<=68.00001 and max(closed_walls)<.01 and not SIDE_MOUNTS and all(q['passed'] for q in side_holes)}
+ print('Low lid / M3 insert patterns / closed sides',report['lid_and_attachment']['passed'],flush=True)
  if not report['lid_and_attachment']['passed']:save();return report
+ lid_removed=LIGHTENING['lid']['removed_mm3'];lid_blocked=sum(overlap(cut,lid) for cut in CUTOUTS['lid'])
+ report['lid_lightening']={**LIGHTENING['lid'],'blocked_cutouts_mm3':lid_blocked,'passed':lid_removed>0 and lid_blocked<.01 and lid.isValid() and len(lid.Solids())==1}
+ if not report['lid_lightening']['passed']:save();return report
  # Adjustment is a rigid guided translation, not flexure deformation.
  adjustment_checks=[]
  for values in [(0,),(.25,),(.5,),(.75,),(1,)]:
@@ -234,57 +245,8 @@ def validate():
   for p in parts:
    v=overlap(tool,pose(p,travel))
    if v>.01:access.append({'tool':name,'extension_mm':travel,'part':p['name'],'overlap_mm3':v})
- # Outer holes retain assembled top access. Inherited holes are fastened
- # to the mounting surface first, with countersunk heads below the pad top.
- mounting=[];floor_heads=[]
- for x,y in BASE_MOUNT_HOLES:
-  inherited=(x,y) in BASE_MOUNT_INNER
-  swept=cyl(5.5,120,(x,y,10.01));landing=ring(5,2.8,1,(x,y,9))
-  if inherited:
-   seat=cq.Solid.makeCone(2.75,5.25,2.5,cq.Vector(x,y,7.5),cq.Vector(0,0,1))
-   landing=ring(5.5,2.8,1,(x,y,6.4))
-   head=cq.Solid.makeCone(2.45,4.95,2.5,cq.Vector(x,y,7.25),cq.Vector(0,0,1)).fuse(cyl(2.45,12.25,(x,y,-5)))
-   floor_heads.append((x,y,head))
-  row={'center_xy_mm':[x,y],'inherited':inherited,'installation_state':'base mounted before bearing carrier and carriage assembly' if inherited else 'assembled at any travel','missing_landing_mm3':landing.cut(chassis_shape).Volume(),'blocked_through_bore_mm3':overlap(cyl(2.75,12,(x,y,-1)),chassis_shape),'blocked_countersink_mm3':overlap(seat,chassis_shape) if inherited else 0,'collisions':[]}
-  for p in parts:
-   if inherited:
-    v=overlap(swept,exploded_pose(p,1))
-    if v>.01:row['collisions'].append({'part':p['name'],'assembly_fraction':1,'overlap_mm3':v})
-   else:
-    for travel in (np.linspace(0,STROKE,int(STROKE*2)+1) if p['group']=='carriage' else [0]):
-     v=overlap(swept,pose(p,float(travel)))
-     if v>.01:row['collisions'].append({'part':p['name'],'travel_mm':float(travel),'overlap_mm3':v})
-  row['passed']=not row['collisions'] and max(row[k] for k in ['missing_landing_mm3','blocked_through_bore_mm3','blocked_countersink_mm3'])<.01;mounting.append(row)
- # Verify installed flush heads through the complete stroke and the existing
- # staged assembly path. They must not obstruct insertion of the carrier.
- floor_collisions=[]
- floor_samples=sorted(set([round(float(t),6) for t in np.linspace(0,1,101)]+EXPLODE_KEYS))
- for x,y,head in floor_heads:
-  head_box=head.BoundingBox()
-  for p in parts:
-   body_box=p['shape'].BoundingBox()
-   offsets=[(0.,0.,0.)]+[tuple(explosion_offset(p,t)) for t in floor_samples]
-   if p['group']=='carriage':offsets.append((STROKE,0.,0.))
-   # The original candidate poses use zero rotation for assembly; any actual
-   # contact is still rechecked with exploded_pose below, including rotation.
-   if any(getattr(body_box,k+'min')+min(o[i] for o in offsets)>getattr(head_box,k+'max')+1e-7 or getattr(body_box,k+'max')+max(o[i] for o in offsets)<getattr(head_box,k+'min')-1e-7 for i,k in enumerate('xyz')):continue
-   poses=[('travel',float(t),pose(p,float(t))) for t in (np.linspace(0,STROKE,int(STROKE*2)+1) if p['group']=='carriage' else [0])]
-   # The pin-only deformation is far above these floor heads, but use full
-   # exploded solids for any bounding-box candidate before recording a hit.
-   seen={(0.,0.,0.)}
-   for t in floor_samples:
-    offset=tuple(explosion_offset(p,t))
-    if offset in seen:continue
-    seen.add(offset);poses.append(('assembly',t,pose(p,0).translate(offset)))
-   for mode,t,body in poses:
-    v=overlap(head,body)
-    if v>.01:
-     if mode=='assembly':v=overlap(head,exploded_pose(p,t))
-     if v>.01:floor_collisions.append({'center_xy_mm':[x,y],'part':p['name'],'mode':mode,'position':t,'overlap_mm3':v})
- expected=[(x,sign*(34+21*(w-1))) for w in [1,2,4] if w<=WIDTH for x in [-3,EXIT_X-6] for sign in [-1,1]]
- patterns_ok=set(BASE_MOUNT_HOLES)==set(expected) and len(BASE_MOUNT_HOLES)==len(expected)
- report['base_mount_access']={'insertion_direction':'vertical from above (-Z)','thread':None,'hole_type':'plain Ø5.5 mm through bores; inherited positions have Ø10.5 mm 90-degree countersinks','clearance_diameter_mm':5.5,'through_depth_mm':10,'outer_washer_diameter_mm':10,'outer_socket_head_diameter_mm':8.5,'inherited_head_max_diameter_mm':10,'inherited_head_top_z_mm':9.75,'driver_diameter_mm':11,'access_well_diameter_mm':12,'travel_samples':int(STROKE*2)+1,'assembly_samples':len(floor_samples),'preserved_width_patterns':BASE_MOUNT_WIDTHS,'pattern_nesting_passed':patterns_ok,'installed_fastener_collisions':floor_collisions,'holes':mounting,'passed':patterns_ok and not floor_collisions and all(q['passed'] for q in mounting)}
- print('Base mounting access',report['base_mount_access']['passed'],flush=True)
+ report['base_mount_access']={'insertion_direction':'from underside (+Z)','thread':'M3 heat-set insert','hole_type':'open-bottom Ø4 mm printed pilot','maximum_screw_entry_mm':5,'pattern_center_xy_mm':[26,0],'patterns':BASE_MOUNT_PATTERNS,'holes':[q for q in mounts if q['kind']=='base'],'passed':report['external_mount_inserts']['passed']}
+ print('Base insert mounting access',report['base_mount_access']['passed'],flush=True)
  report['tool_access']={'probe_count':len(probes),'collisions':access,'passed':not access}
  exploded=[];press_on=[]
  compressed_models={}
@@ -351,9 +313,9 @@ def validate():
  if PRINTED:
   thread_checks=[]
   screw=by_name['Printed 20 mm lead screw with integral shaft clamp']
-  for travel in [0,1,2,3,4,8,20,40]:
+  for travel in sorted(set([0,1,2,3,4,8,STROKE/2,STROKE])):
    thread_checks.append({'travel_mm':travel,'screw_angle_deg':-travel*360/LEAD,'overlap_mm3':overlap(pose(screw,travel),pose(by_name['Hollow triangular carriage'],travel))})
-  bands=[{'home_x_mm':[lo,hi],'full_extension_x_mm':[lo+40,hi+40],'fully_engaged':lo>=30 and hi+40<=ROD_END} for lo,hi in THREAD_BANDS]
+  bands=[{'home_x_mm':[lo,hi],'full_extension_x_mm':[lo+STROKE,hi+STROKE],'fully_engaged':lo>=30 and hi+STROKE<=ROD_END} for lo,hi in THREAD_BANDS]
   report['printed_thread']={'major_diameter_mm':20,'root_diameter_mm':16,'lead_mm':8,'starts':1,'radial_relief_mm':.35,'axial_relief_per_flank_mm':.25,'smooth_bore_diameter_mm':21.2,'threaded_bands':bands,'checks':thread_checks,'tip_recess_mm':EXIT_X-ROD_END,'passed':all(q['overlap_mm3']<.01 for q in thread_checks) and len(bands)==2 and all(q['fully_engaged'] for q in bands) and EXIT_X-ROD_END>=3}
   print('Printed thread',report['printed_thread']['passed'],flush=True)
  if not PRINTED:
@@ -368,5 +330,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['solid_axles']['passed'] and report['lid_and_attachment']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['solid_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report
