@@ -97,10 +97,10 @@
     "625ZZ upper 63 +1",
     "625ZZ lower 63 -1",
     "625ZZ lower 63 +1",
-    "625ZZ upper 137 -1",
-    "625ZZ upper 137 +1",
-    "625ZZ lower 137 -1",
-    "625ZZ lower 137 +1"
+    "625ZZ upper 123 -1",
+    "625ZZ upper 123 +1",
+    "625ZZ lower 123 -1",
+    "625ZZ lower 123 +1"
   ],
   "fastener_nuts": 1,
   "shaft_clamp": {

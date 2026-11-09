@@ -7,10 +7,11 @@ Select 40 or 120 mm of extension beyond the base exit. Only 40 mm travel offers 
 
 | Travel | Bearing X stations | Screw tip X | Overall retracted length | Overall extended length | Base length |
 |---|---|---|---|---|---|
-| 40 mm | 63 / 137 mm | 152 mm | 195 mm | 235 mm | 191 mm |
+| 40 mm, 1× | 63 / 137 mm | 152 mm | 195 mm | 235 mm | 191 mm |
+| 40 mm, 2× / 4× | 63 / 123 mm | 152 mm | 195 mm | 235 mm | 191 mm |
 | 120 mm | 143 / 217 mm | 232 mm | 275 mm | 395 mm | 271 mm |
 
-All variants keep 74 mm station spacing, 68 mm total height, and a 3 mm screw-tip recess at home. The base-length figure includes the rear motor braces. Parts are single-piece STLs; check print-bed fit for the selected length and width.
+The 1× variants keep 74 mm station spacing; the wide 40 mm variants use 60 mm spacing to leave an unobstructed bolt-access nose. All keep 68 mm total height and a 3 mm screw-tip recess at home. The base-length figure includes the rear motor braces. Parts are single-piece STLs; check print-bed fit for the selected length and width.
 
 ## Printed screw and motor coupling
 
@@ -85,3 +86,5 @@ Install `python -m pip install -r experiments/printed-leadscrew/requirements.txt
 The 40 mm, 1× assets stay at the experiment root; other widths use `widths/2x/` and `widths/4x/`. The longer 1× design uses `travel/120mm/`. `--quick` produces an unvalidated preview only.
 
 Print the base with its floor on the bed (CAD Z up). A before/after Bambu Studio slice for the 40 mm, 1x printed-screw base is available in the site’s slice preview. It uses P2S 0.4 mm, Generic PETG, 0.20 mm layers, four walls, 25% gyroid and automatic tree supports everywhere. Remaining axle and shelf supports still need removal; the preview is not a physical removal or strength test.
+
+The 1x output plate has two underside access openings behind its lower mounting holes (7 mm wide, 20 mm long, rounded at the rear with a 45-degree roof). Extend the carriage fully before fitting M3 socket-head bolts from the inside. Clearance is checked for M3x12 bolts with 5.5 mm diameter, 3 mm high heads and a 3 mm envelope for a short hex key. The upper pair loads from above. The 31 mm pattern, 8 mm flange and three-ridge pilots remain unchanged. The 2x/4x printed-screw plates also provide upper and lower 7 × 16 mm access pockets for their repeated mounting patterns. Use a short hex key with a 14 mm reach at the wide plates. Their front bearing station moves inward by 14 mm (60 mm station spacing) to keep the pockets outside the running surfaces without increasing the 40 mm actuator envelope. Reprint the matching wide base, carrier, lid and carriage together; these revised wide carriages are not compatible with the old front bearing location. All output holes are checked for bolt loading, driver access and installed clearance through travel.

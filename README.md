@@ -329,3 +329,5 @@ Lead-screw bearing axles use tapered, rounded-root relief slots and clearance be
 The lead-screw bases use filled motor feet, 45-degree side-window roofs and bottom access below the adjustment shelves. Inspect the actual 40 mm, 1x printed-screw base slice at [the support preview](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/printed-leadscrew/slice/). Reproduction profiles and G-code extraction are in `experiments/printed-leadscrew/slicing/`.
 
 The 1x T8 and printed-screw output plates have two underside openings for fitting the lower M3 mounting bolts from inside. Fully extend the carriage for access. The front 31 mm pattern, 8 mm flange thickness and bearing tracks are retained. Use the viewer’s **Bolt access** view to inspect them.
+
+The 2×/4× printed-screw plates now have bolt-access openings for every repeated output pattern. The front bearing station moves inward 14 mm to protect the full rolling surfaces (60 mm between stations); overall size and 40 mm extension are unchanged. Use the updated wide base, carrier, lid and carriage together. The previously published 1× geometry and example base slice are unchanged.
