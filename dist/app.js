@@ -102,7 +102,7 @@ function openPartMenu(part,x,y){
  menu.hidden=false;const rect=menu.getBoundingClientRect();menu.style.left=Math.max(8,Math.min(x,innerWidth-rect.width-8))+'px';menu.style.top=Math.max(8,Math.min(y,innerHeight-rect.height-8))+'px';
  (part?$('menuHide'):$('menuShowAll')).focus({preventScroll:true});
 }
-$('menuDownload').onclick=()=>{const part=menuTarget?.userData;if(!part)return;closePartMenu();const name=part.name.replaceAll(' ','_');downloadPart(part,{url:basePath+'downloads/'+encodeURIComponent(name)+'.stl?v=57',filename:`${variant}-${enclosureVariant}-${presetStroke}mm-${part.printed?'':'reference-'}${name}.stl`})};
+$('menuDownload').onclick=()=>{const part=menuTarget?.userData;if(!part)return;closePartMenu();const name=part.name.replaceAll(' ','_');downloadPart(part,{url:basePath+'downloads/'+presetInfo.bundleFile+'?v=67',zipEntry:part.printed?name+'.stl':undefined,filename:`${variant}-${enclosureVariant}-${presetStroke}mm-${part.printed?'':'reference-'}${name}.stl`})};
 $('menuHide').onclick=()=>hidePart(menuTarget);$('menuIsolate').onclick=()=>isolatePart(menuTarget);$('menuShowAll').onclick=showAllParts;
 $('hideSelected').onclick=()=>hidePart(selected);$('showAll').onclick=showAllParts;
 let start;

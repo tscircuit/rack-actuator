@@ -319,3 +319,5 @@ These checks do not replace a physical tolerance, side-load or fatigue test. The
 ## License and credits
 
 MIT; see [LICENSE](LICENSE). The compliant tooth principle is inspired by [seveibar/compliant-spur-gear](https://github.com/seveibar/compliant-spur-gear). Its license is included in the CAD bundles.
+
+For Site packaging after regenerating spur presets, run `python scripts/prune-bundled-stls.py`. It verifies loose STL files against the existing ZIP bundles before removing duplicate payloads; individual viewer downloads extract the same STL bytes from those bundles.
