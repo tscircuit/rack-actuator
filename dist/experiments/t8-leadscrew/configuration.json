@@ -1,6 +1,6 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 26,
+  "revision": 27,
   "cutoutPlanning": {
     "stage": "final post-processing after all features",
     "minimum_web_mm": 6.0,
@@ -180,24 +180,24 @@
   "shaftClamp": null,
   "lightening": {
     "base_floor": {
-      "before_mm3": 174327.9855385454,
-      "after_mm3": 166579.75561702493,
-      "removed_mm3": 7748.229921520484,
-      "reduction_percent": 4.444627692785037,
+      "before_mm3": 173549.31038183114,
+      "after_mm3": 165801.08045929176,
+      "removed_mm3": 7748.22992253938,
+      "reduction_percent": 4.464569698083077,
       "cutout_count": 6
     },
     "base_sides": {
-      "before_mm3": 166579.75561702493,
-      "after_mm3": 161952.94688772058,
-      "removed_mm3": 4626.80872930435,
-      "reduction_percent": 2.7775336277606333,
+      "before_mm3": 165801.08045929176,
+      "after_mm3": 161174.27173005402,
+      "removed_mm3": 4626.808729237731,
+      "reduction_percent": 2.790578153303245,
       "cutout_count": 6
     },
     "base": {
-      "before_mm3": 174327.9855385454,
-      "after_mm3": 161952.94688772058,
-      "removed_mm3": 12375.038650824834,
-      "reduction_percent": 7.0987102917498035,
+      "before_mm3": 173549.31038183114,
+      "after_mm3": 161174.27173005402,
+      "removed_mm3": 12375.038651777111,
+      "reduction_percent": 7.130560544752618,
       "cutout_count": 12
     },
     "lid": {
@@ -228,7 +228,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "8780ac3a1680128c2dad36b07fa9e2017761ac072b7f7056ce98d0761bf343b6",
+  "modelSourceSha256": "d9043dffd9c94bcdb34b17a0285197a90f8e15efde633100fe7b520dcd9c4173",
   "stations": [
     93.0,
     133.0
@@ -318,7 +318,7 @@
     "shaft_radius": 2.4,
     "head_radius": 3.2,
     "tip_radius": 2.3,
-    "slot_width": 0,
+    "slot_width": 1.2,
     "root_t": 9.6,
     "head_back_t": -2.75,
     "tip_t": -8.1,
@@ -328,21 +328,21 @@
     "tip_bend_degrees": 30,
     "extension_mm": 3,
     "bearing_release_mm": 12,
-    "head_slot_width": 0,
-    "tip_slot_width": 0
+    "head_slot_width": 2.0,
+    "tip_slot_width": 2.2
   },
-  "solidAxle": {
-    "type": "solid retained-head axle",
+  "bearingAxle": {
+    "type": "split retained-head axle",
     "material": "PETG",
     "printed_diameter_mm": 4.8,
     "assembled_diameter_mm": 4.8,
     "bearing_bore_mm": 5,
     "head_width_mm": 6.4,
     "tip_bend_degrees": 30,
-    "relief_slot": false,
+    "relief_slot": true,
     "bent_tip": true,
     "retaining_head": true,
-    "installation": "Force the bearing past the retained head while supporting the inner race. Head passage requires PETG deformation; insertion force and strain are not validated. The viewer retains the actual solid geometry without simulated bending."
+    "installation": "Pinch the split retaining head and slide the bearing on while supporting its inner race. The tapered relief slot and root clearance allow inward flex. Insertion force and strain are not validated; the viewer shows the undeformed geometry."
   },
   "retainingTracks": [],
   "retainingRailSize": [

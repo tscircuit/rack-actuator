@@ -105,19 +105,19 @@
     ],
     "nut_installation": "Insert from underneath into the hex pocket before fitting the screw to the motor; start the bolt, align the D flat, then tighten through the lid access hole with the carriage extended."
   },
-  "integral_solid_axles": 8,
+  "integral_split_axles": 8,
   "bearing_axle_fit": {
-    "type": "solid retained-head axle",
+    "type": "split retained-head axle",
     "material": "PETG",
     "printed_diameter_mm": 4.8,
     "assembled_diameter_mm": 4.8,
     "bearing_bore_mm": 5,
     "head_width_mm": 6.4,
     "tip_bend_degrees": 30,
-    "relief_slot": false,
+    "relief_slot": true,
     "bent_tip": true,
     "retaining_head": true,
-    "installation": "Force the bearing past the retained head while supporting the inner race. Head passage requires PETG deformation; insertion force and strain are not validated. The viewer retains the actual solid geometry without simulated bending."
+    "installation": "Pinch the split retaining head and slide the bearing on while supporting its inner race. The tapered relief slot and root clearance allow inward flex. Insertion force and strain are not validated; the viewer shows the undeformed geometry."
   },
   "heat_set_inserts": 44,
   "carrier_heat_set_inserts": 4,

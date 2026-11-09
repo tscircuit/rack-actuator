@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "8780ac3a1680128c2dad36b07fa9e2017761ac072b7f7056ce98d0761bf343b6",
-  "validation_source_sha256": "ac642795313119b710acf5cbab44752f974194f98cc46d59744089c0db0fd6a4",
+  "source_sha256": "d9043dffd9c94bcdb34b17a0285197a90f8e15efde633100fe7b520dcd9c4173",
+  "validation_source_sha256": "e59ffabed8bcac88c65d01ca1c6634807d031ef803a3ad38a455f096bb35acd7",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -582,123 +582,139 @@
     ],
     "passed": true
   },
-  "solid_axles": {
+  "split_axles": {
     "count": 8,
     "specification": {
-      "type": "solid retained-head axle",
+      "type": "split retained-head axle",
       "material": "PETG",
       "printed_diameter_mm": 4.8,
       "assembled_diameter_mm": 4.8,
       "bearing_bore_mm": 5,
       "head_width_mm": 6.4,
       "tip_bend_degrees": 30,
-      "relief_slot": false,
+      "relief_slot": true,
       "bent_tip": true,
       "retaining_head": true,
-      "installation": "Force the bearing past the retained head while supporting the inner race. Head passage requires PETG deformation; insertion force and strain are not validated. The viewer retains the actual solid geometry without simulated bending."
+      "installation": "Pinch the split retaining head and slide the bearing on while supporting its inner race. The tapered relief slot and root clearance allow inward flex. Insertion force and strain are not validated; the viewer shows the undeformed geometry."
     },
     "checks": [
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 63.0,
         "kind": "upper",
         "side": -1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.61241166713682,
+        "bent_tip_volume_mm3": 32.61384023856537,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.27794258764969,
+        "head_passage_interference_mm3": 17.144324777249306,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       },
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 63.0,
         "kind": "upper",
         "side": 1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.612411667139696,
+        "bent_tip_volume_mm3": 32.613840238568216,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.27790198586154,
+        "head_passage_interference_mm3": 17.144324777248265,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       },
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 63.0,
         "kind": "lower",
         "side": -1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.61241166712532,
+        "bent_tip_volume_mm3": 32.6138402385539,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.277944133758176,
+        "head_passage_interference_mm3": 17.144324777259193,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       },
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 63.0,
         "kind": "lower",
         "side": 1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.61241166711828,
+        "bent_tip_volume_mm3": 32.61384023854688,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.277901936321857,
+        "head_passage_interference_mm3": 17.144324777233496,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       },
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 137.0,
         "kind": "upper",
         "side": -1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.612411667115744,
+        "bent_tip_volume_mm3": 32.61384023854426,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.277943101196115,
+        "head_passage_interference_mm3": 17.144324777249857,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       },
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 137.0,
         "kind": "upper",
         "side": 1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.61241166713069,
+        "bent_tip_volume_mm3": 32.61384023855919,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.27790167307781,
+        "head_passage_interference_mm3": 17.14432477724697,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       },
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 137.0,
         "kind": "lower",
         "side": -1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.612411667148066,
+        "bent_tip_volume_mm3": 32.61384023857676,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.27794237283116,
+        "head_passage_interference_mm3": 17.144324777275017,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       },
       {
+        "blocked_relief_slot_mm3": 0.0,
+        "blocked_root_clearance_mm3": 0.0,
         "station_x_mm": 137.0,
         "kind": "lower",
         "side": 1,
-        "missing_solid_journal_mm3": 0.0,
-        "missing_solid_root_mm3": 0.0,
+        "missing_split_journal_mm3": 0.0,
+        "missing_split_root_mm3": 0.0,
         "missing_retaining_shoulder_mm3": 0.0,
-        "bent_tip_volume_mm3": 54.61241166714912,
+        "bent_tip_volume_mm3": 32.61384023857782,
         "seated_bearing_overlap_mm3": 0.0,
-        "head_passage_interference_mm3": 20.277901913597326,
+        "head_passage_interference_mm3": 17.14432477726869,
         "unexpected_insertion_path_overlap_mm3": 0.0,
         "passed": true
       }
@@ -706,7 +722,7 @@
     "passed": true,
     "head_passage_requires_deformation": true,
     "physical_installability_verified": false,
-    "note": "Solid \u00d84.8 mm journals retain the existing 6.4 mm head and 30-degree bent tip. Relief slots and the deep root clearance are filled. Passing the 5 mm bearing bore over the head requires material deformation; force, strain and retention are not simulated."
+    "note": "Split \u00d84.8 mm journals retain the existing 6.4 mm head and 30-degree bent tip. Tapered slots end in a 0.6 mm radius; deep root clearance frees both prongs. Passing the bearing bore over the head requires inward flex; force, strain and retention are not simulated."
   },
   "smooth_running_faces": {
     "raised_retaining_rails": false,
@@ -3469,24 +3485,24 @@
   },
   "base_lightening": {
     "floor": {
-      "before_mm3": 253345.6089774334,
-      "after_mm3": 242177.37903976432,
-      "removed_mm3": 11168.229937669093,
-      "reduction_percent": 4.40829820684356,
+      "before_mm3": 252566.93382010568,
+      "after_mm3": 241398.70388179997,
+      "removed_mm3": 11168.22993830571,
+      "reduction_percent": 4.42188918770358,
       "cutout_count": 6
     },
     "sides": {
-      "before_mm3": 242177.37903976432,
-      "after_mm3": 233985.14555909406,
-      "removed_mm3": 8192.233480670257,
-      "reduction_percent": 3.3827409947008853,
+      "before_mm3": 241398.70388179997,
+      "after_mm3": 233206.47040142855,
+      "removed_mm3": 8192.233480371418,
+      "reduction_percent": 3.393652637166899,
       "cutout_count": 8
     },
     "total": {
-      "before_mm3": 253345.6089774334,
-      "after_mm3": 229443.08167120052,
-      "removed_mm3": 23902.527306232892,
-      "reduction_percent": 9.434750972282291,
+      "before_mm3": 252566.93382010568,
+      "after_mm3": 228664.40651358268,
+      "removed_mm3": 23902.527306523,
+      "reduction_percent": 9.463838731774725,
       "cutout_count": 16
     },
     "protected_supports": [
@@ -4628,7 +4644,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 63 -1"
         ],
-        "head_interference_mm3": 9.421025645953481
+        "head_interference_mm3": 9.402164179792134
       },
       {
         "fraction": 0.71,
@@ -4636,7 +4652,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 63 +1"
         ],
-        "head_interference_mm3": 9.421025643350175
+        "head_interference_mm3": 9.40216417747063
       },
       {
         "fraction": 0.71,
@@ -4644,7 +4660,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 137 -1"
         ],
-        "head_interference_mm3": 9.421025645985305
+        "head_interference_mm3": 9.402164179825318
       },
       {
         "fraction": 0.71,
@@ -4652,7 +4668,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 137 +1"
         ],
-        "head_interference_mm3": 9.4210256433476
+        "head_interference_mm3": 9.402164177472205
       },
       {
         "fraction": 0.71,
@@ -4660,7 +4676,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 63 -1"
         ],
-        "head_interference_mm3": 9.421025607598262
+        "head_interference_mm3": 9.402164101234794
       },
       {
         "fraction": 0.71,
@@ -4668,7 +4684,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 63 +1"
         ],
-        "head_interference_mm3": 9.421025604979324
+        "head_interference_mm3": 9.402164098901464
       },
       {
         "fraction": 0.71,
@@ -4676,7 +4692,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 137 -1"
         ],
-        "head_interference_mm3": 9.42102560761724
+        "head_interference_mm3": 9.402164101254828
       },
       {
         "fraction": 0.71,
@@ -4684,7 +4700,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 137 +1"
         ],
-        "head_interference_mm3": 9.421025605001002
+        "head_interference_mm3": 9.40216409892924
       },
       {
         "fraction": 0.72,
@@ -4692,7 +4708,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 63 -1"
         ],
-        "head_interference_mm3": 17.6937452451512
+        "head_interference_mm3": 14.560128337575232
       },
       {
         "fraction": 0.72,
@@ -4700,7 +4716,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 63 +1"
         ],
-        "head_interference_mm3": 17.69370498671261
+        "head_interference_mm3": 14.56012833756573
       },
       {
         "fraction": 0.72,
@@ -4708,7 +4724,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 137 -1"
         ],
-        "head_interference_mm3": 17.693746467382166
+        "head_interference_mm3": 14.560128337552664
       },
       {
         "fraction": 0.72,
@@ -4716,7 +4732,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 137 +1"
         ],
-        "head_interference_mm3": 17.693705001528656
+        "head_interference_mm3": 14.560128337562857
       },
       {
         "fraction": 0.72,
@@ -4724,7 +4740,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 63 -1"
         ],
-        "head_interference_mm3": 17.69374674788504
+        "head_interference_mm3": 14.560128337571296
       },
       {
         "fraction": 0.72,
@@ -4732,7 +4748,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 63 +1"
         ],
-        "head_interference_mm3": 17.69370512388466
+        "head_interference_mm3": 14.56012833754844
       },
       {
         "fraction": 0.72,
@@ -4740,7 +4756,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 137 -1"
         ],
-        "head_interference_mm3": 17.693745168149096
+        "head_interference_mm3": 14.560128337590935
       },
       {
         "fraction": 0.72,
@@ -4748,7 +4764,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 137 +1"
         ],
-        "head_interference_mm3": 17.693705103618417
+        "head_interference_mm3": 14.560128337582302
       },
       {
         "fraction": 0.73,
@@ -4756,7 +4772,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 63 -1"
         ],
-        "head_interference_mm3": 10.856887835571403
+        "head_interference_mm3": 7.742173371293646
       },
       {
         "fraction": 0.73,
@@ -4764,7 +4780,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 63 +1"
         ],
-        "head_interference_mm3": 10.856890242397663
+        "head_interference_mm3": 7.742173369919598
       },
       {
         "fraction": 0.73,
@@ -4772,7 +4788,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 137 -1"
         ],
-        "head_interference_mm3": 10.856887779100964
+        "head_interference_mm3": 7.7421733712898355
       },
       {
         "fraction": 0.73,
@@ -4780,7 +4796,7 @@
           "Adjustable six-bearing base",
           "625ZZ upper 137 +1"
         ],
-        "head_interference_mm3": 10.856890151904999
+        "head_interference_mm3": 7.742173369919335
       },
       {
         "fraction": 0.73,
@@ -4788,7 +4804,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 63 -1"
         ],
-        "head_interference_mm3": 10.856888359293738
+        "head_interference_mm3": 7.742173328882783
       },
       {
         "fraction": 0.73,
@@ -4796,7 +4812,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 63 +1"
         ],
-        "head_interference_mm3": 10.856890218432763
+        "head_interference_mm3": 7.7421733275054265
       },
       {
         "fraction": 0.73,
@@ -4804,7 +4820,7 @@
           "Shared lower bearing carrier",
           "625ZZ lower 137 -1"
         ],
-        "head_interference_mm3": 10.856887795730156
+        "head_interference_mm3": 7.7421733288940775
       },
       {
         "fraction": 0.73,
@@ -4812,13 +4828,13 @@
           "Shared lower bearing carrier",
           "625ZZ lower 137 +1"
         ],
-        "head_interference_mm3": 10.856890210991061
+        "head_interference_mm3": 7.742173327517502
       }
     ],
     "passed": true,
     "collision_free": false,
     "physical_head_passage_verified": false,
-    "note": "Staged disassembly with synchronized screw rotation. Solid retaining heads visibly intersect their own bearing bores during forced removal/insertion. These exact head contacts are recorded separately; every other collision fails. No elastic bending is animated or validated. Thread rib contact is bounded separately."
+    "note": "Staged disassembly with synchronized screw rotation. Undeformed retaining heads visibly intersect their own bearing bores during snap removal/insertion. These exact head contacts are recorded separately; every other collision fails. No elastic bending is animated or validated. Thread rib contact is bounded separately."
   },
   "valid_single_solids": true,
   "compact_layout": {
@@ -4909,10 +4925,10 @@
     "checks": [
       {
         "part": "base",
-        "before_mm3": 253345.6089774334,
-        "after_mm3": 229443.08167120052,
-        "removed_mm3": 23902.527306232892,
-        "reduction_percent": 9.434750972282291,
+        "before_mm3": 252566.93382010568,
+        "after_mm3": 228664.40651358268,
+        "removed_mm3": 23902.527306523,
+        "reduction_percent": 9.463838731774725,
         "cutout_count": 16,
         "blocked_cutouts_mm3": 0.0,
         "passed": true
@@ -5050,17 +5066,17 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 38820,
+        "triangles": 41524,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 230105.05764664788
+        "volume_mm3": 229474.05211213048
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
-        "triangles": 9760,
+        "triangles": 12464,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 53767.23211067773
+        "volume_mm3": 53136.226550253166
       },
       {
         "file": "structural_mounting_lid.stl",

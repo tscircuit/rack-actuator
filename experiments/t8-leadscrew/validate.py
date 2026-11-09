@@ -88,23 +88,27 @@ def validate():
  report['bearing_face_relief']={'inner_race_land_diameter_mm':7.4,'surrounding_relief_diameter_mm':17,'recess_depth_mm':2,'loose_support_spacers':0,'seats':seats,'passed':len(seats)==len(bearings) and all(q['passed'] for q in seats)}
  print('Bearing face relief',report['bearing_face_relief']['passed'],flush=True)
  if not report['bearing_face_relief']['passed']:save();return report
- # Validate solid journals/roots and preserve the retained head and bent tip.
+ # Validate open relief slots, free prongs, retained heads and connected roots.
  # Record head passage as required material deformation, never a free slide fit.
  axles=[]
  for b in bearings:
   c,u=b['center'],b['axis'];host=by_name[BASE_NAME if b['kind']=='upper' else CARRIER_NAME]
   printed=host['freeShape'];installed=host['shape'];pin=snap_pin(c,u)
-  journal=cyl(2.4,5,c,u,-2.5);root=cyl(2.4,7,c,u,2.5)
+  slot=axle_slot(c,u)
+  journal=cyl(2.4,5,c,u,-2.5).cut(slot);root=cyl(2.4,7,c,u,2.5).cut(slot)
+  slot_probe=slot.intersect(local_box(c,u,-4,4,-2.3,2.3,-3.3,9.59))
+  clearance=ring(2.69,2.41,8.3,c,u,2.6)
   bearing=ring(8,2.5,5,c,u,-2.5);swept=ring(8,2.5,5+SNAP['bearing_release_mm'],c,u,-2.5-SNAP['bearing_release_mm'])
   shoulder=cyl(3.2,.55,c,u,SNAP['head_back_t']-.55).intersect(local_box(c,u,-3.4,3.4,-1.2,1.2,-3.31,-2.74))
+  shoulder=shoulder.cut(slot)
   bent_end=pin.intersect(local_box(c,u,-6,6,-6,6,SNAP['tip_t']-.1,SNAP['bend_start_t']))
   head_passage=overlap(pin,swept);unexpected=installed.intersect(swept).cut(pin).Volume()
-  row=dict(station_x_mm=b['station'],kind=b['kind'],side=b['sign'],missing_solid_journal_mm3=journal.cut(printed).Volume(),missing_solid_root_mm3=root.cut(printed).Volume(),missing_retaining_shoulder_mm3=shoulder.cut(printed).Volume(),bent_tip_volume_mm3=bent_end.Volume(),seated_bearing_overlap_mm3=overlap(installed,bearing),head_passage_interference_mm3=head_passage,unexpected_insertion_path_overlap_mm3=unexpected)
-  row['passed']=max(row[k] for k in ['missing_solid_journal_mm3','missing_solid_root_mm3','missing_retaining_shoulder_mm3','seated_bearing_overlap_mm3','unexpected_insertion_path_overlap_mm3'])<.01 and head_passage>.1 and bent_end.Volume()>1 and pin.isValid() and len(pin.Solids())==1
+  row=dict(blocked_relief_slot_mm3=overlap(printed,slot_probe),blocked_root_clearance_mm3=overlap(printed,clearance),station_x_mm=b['station'],kind=b['kind'],side=b['sign'],missing_split_journal_mm3=journal.cut(printed).Volume(),missing_split_root_mm3=root.cut(printed).Volume(),missing_retaining_shoulder_mm3=shoulder.cut(printed).Volume(),bent_tip_volume_mm3=bent_end.Volume(),seated_bearing_overlap_mm3=overlap(installed,bearing),head_passage_interference_mm3=head_passage,unexpected_insertion_path_overlap_mm3=unexpected)
+  row['passed']=max(row[k] for k in ['blocked_relief_slot_mm3','blocked_root_clearance_mm3','missing_split_journal_mm3','missing_split_root_mm3','missing_retaining_shoulder_mm3','seated_bearing_overlap_mm3','unexpected_insertion_path_overlap_mm3'])<.01 and head_passage>.1 and bent_end.Volume()>1 and pin.isValid() and len(pin.Solids())==1
   axles.append(row)
- report['solid_axles']={'count':len(bearings),'specification':SOLID_AXLE,'checks':axles,'passed':all(q['passed'] for q in axles),'head_passage_requires_deformation':True,'physical_installability_verified':False,'note':'Solid Ø4.8 mm journals retain the existing 6.4 mm head and 30-degree bent tip. Relief slots and the deep root clearance are filled. Passing the 5 mm bearing bore over the head requires material deformation; force, strain and retention are not simulated.'}
- print('Solid bearing axles / retained heads',report['solid_axles']['passed'],flush=True)
- if not report['solid_axles']['passed']:save();return report
+ report['split_axles']={'count':len(bearings),'specification':AXLE_SPEC,'checks':axles,'passed':all(q['passed'] for q in axles),'head_passage_requires_deformation':True,'physical_installability_verified':False,'note':'Split Ø4.8 mm journals retain the existing 6.4 mm head and 30-degree bent tip. Tapered slots end in a 0.6 mm radius; deep root clearance frees both prongs. Passing the bearing bore over the head requires inward flex; force, strain and retention are not simulated.'}
+ print('Split bearing axles / relief slots',report['split_axles']['passed'],flush=True)
+ if not report['split_axles']['passed']:save();return report
  # Smooth running faces must have no raised side rails. Check the entire
  # former rail region above each face, plus +/-1 mm axial bearing displacement.
  face_checks=[]
@@ -330,7 +334,7 @@ def validate():
       press_on.append({'fraction':float(t),'parts':[host['name'],br['name']],'head_interference_mm3':contact})
       v=max(0,v-contact)
    if v>.01:exploded.append({'fraction':float(t),'parts':[parts[i]['name'],parts[j]['name']],'overlap_mm3':v})
- report['explosion']={'samples':len(explosion_samples),'collisions':exploded,'press_on_head_interferences':press_on,'passed':not exploded,'collision_free':not(exploded or press_on),'physical_head_passage_verified':False,'note':'Staged disassembly with synchronized screw rotation. Solid retaining heads visibly intersect their own bearing bores during forced removal/insertion. These exact head contacts are recorded separately; every other collision fails. No elastic bending is animated or validated. Thread rib contact is bounded separately.'}
+ report['explosion']={'samples':len(explosion_samples),'collisions':exploded,'press_on_head_interferences':press_on,'passed':not exploded,'collision_free':not(exploded or press_on),'physical_head_passage_verified':False,'note':'Staged disassembly with synchronized screw rotation. Undeformed retaining heads visibly intersect their own bearing bores during snap removal/insertion. These exact head contacts are recorded separately; every other collision fails. No elastic bending is animated or validated. Thread rib contact is bounded separately.'}
  print('Explosion collisions',exploded[:15],flush=True)
  report['valid_single_solids']=all(p['shape'].isValid() and len(p['shape'].Solids())==1 for p in parts)
  output_positions=[]
@@ -374,5 +378,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['solid_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report

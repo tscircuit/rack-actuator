@@ -60,9 +60,9 @@ Six recessed M3×12 button-head screws fasten the lid into the base's 12 mm-deep
 
 All four fixed upper-bearing supports extend 4 mm downward. Their undersides are at Z=28 mm, flush with the underside of the adjacent carrier-adjustment bolt shelves. This fills the former Z=28–32 mm recess beside each bolt. The shared carrier, bearing seats, bolt bores and adjustment travel remain unchanged. CAD checks verify the filled regions, underside level and carrier/assembly clearance. Slicer support requirements elsewhere still depend on print orientation and settings.
 
-The carriage runs on smooth flats with no raised side rails. The CAD checks include nominal bearing alignment and ±1 mm axial displacement relative to the carriage. The base and carrier retain their existing clearance channels. Solid Ø4.8 mm axles keep the 6.4 mm-wide retaining shoulders and extended 30° bent tips, without relief slots. The Ø7.4 mm inner-race lands and surrounding Ø17 mm face relief keep the outer rings and shields clear.
+The carriage runs on smooth flats with no raised side rails. The CAD checks include nominal bearing alignment and ±1 mm axial displacement relative to the carriage. The base and carrier retain their existing clearance channels. Split Ø4.8 mm axles keep the 6.4 mm-wide retaining shoulders and extended 30° bent tips. Restored through-slots taper from 2.2 mm at the tip through 2.0 mm at the head to 1.2 mm near the root, ending in a 0.6 mm radius. A Ø5.4 mm clearance behind the inner-race seat frees the prongs to flex inward. The Ø7.4 mm inner-race lands and surrounding Ø17 mm face relief keep the outer rings and shields clear.
 
-The bearings must be forced over the solid heads. The assembly report records these head/bore contacts separately; it does not validate insertion force, PETG strain or the ability to force the bearing on without damage. The viewer does not simulate bending. Tilt, preload, friction, wear and print fit need physical testing.
+Pinch the split retaining head and slide the bearing on while supporting its inner race. The assembly report records these head/bore contacts separately; it does not validate insertion force, PETG strain or the snap-fit durability. The viewer does not simulate bending. Tilt, preload, friction, wear and print fit need physical testing.
 
 ## Assembly and downloads
 

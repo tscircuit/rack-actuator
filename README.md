@@ -323,3 +323,5 @@ MIT; see [LICENSE](LICENSE). The compliant tooth principle is inspired by [sevei
 For Site packaging after regenerating spur presets, run `python scripts/prune-bundled-stls.py`. It verifies loose STL files against the existing ZIP bundles before removing duplicate payloads; individual viewer downloads extract the same STL bytes from those bundles.
 
 All six supported lead-screw configurations are rebuilt and checked with the bundled generator and validator. Reports retain their exact SHA-256 hashes. Checks cover the full bearing sweep, motion and assembly clearance, insert access, mounting grids, preserved base supports and connected printable solids.
+
+Lead-screw bearing axles use tapered, rounded-root relief slots and clearance behind the inner-race seats. The retained 6.4 mm heads and extended 30° tips are unchanged. Assembly checks distinguish undeformed head contact from unexpected collisions; physical snap force and fatigue remain unmeasured.
