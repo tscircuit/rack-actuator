@@ -42,17 +42,25 @@ wall = rect(0,4,-26,26,16,68).cut(xcyl(11.3,4,0))
 holder = rect(HOLDER_BACK,HOLDER_FRONT,-26,26,16,68).cut(xcyl(17.5,10.1,HOLDER_BACK))
 for y,z in holes:
     wall = wall.cut(xcyl(1.7,4,0,y,z))
-    holder = holder.fuse(xcyl(6.,HOLDER_BACK-4,4,y,z))
-    holder = holder.cut(xcyl(1.7,6,4,y,z)).cut(xcyl(3.2,HOLDER_FRONT-10,10,y,z))
-# A continuous rear loading clearance also trims the inner edges of the posts.
-holder = holder.cut(xcyl(18.6,27.4,4))
+    sy,sz=math.copysign(1,y),math.copysign(1,z-42)
+    ya,yb=sorted((sy*10,sy*26));za,zb=sorted((42+sz*10,42+sz*26))
+    # Broad exposed foot flanges retain the original 6 mm mounting stack.
+    foot=rect(4,10,ya,yb,za,zb)
+    foot=cq.Workplane(obj=foot).edges('|X').fillet(1.5).val()
+    holder=holder.fuse(foot)
+    # Support ribs sit above/below the bolt heads, outside the lateral entry path.
+    ra,rb=sorted((42+sz*22,42+sz*26))
+    holder=holder.fuse(rect(9,HOLDER_BACK,ya,yb,ra,rb))
+    holder=holder.cut(xcyl(1.7,6,4,y,z))
+# Clear the complete rear bearing-loading path after the flange/rib unions.
+holder=holder.cut(xcyl(18.6,27.4,4))
 for y,z in holes:
-    # Open the thin strip between each counterbore and the bearing recess.
-    # These radial tool channels leave robust outer C-shaped post sections.
-    angle=math.degrees(math.atan2(z-42,y))
-    channel=rect(10,HOLDER_FRONT,0,math.hypot(y,z-42),38.8,45.2)
-    channel=channel.rotate((0,0,42),(1,0,42),angle)
-    holder=holder.cut(channel)
+    sy=math.copysign(1,y)
+    ya,yb=sorted((sy*11.5,sy*27))
+    # Open 9 mm side windows reach the head-loading position in the front plate.
+    # Keep a front web with a short driver port to tie all flange ribs together.
+    holder=holder.cut(rect(10,30.2,ya,yb,z-4.5,z+4.5))
+    holder=holder.cut(xcyl(3.5,HOLDER_FRONT-10,10,y,z))
 holder=holder.clean()
 
 # Internal race/shield geometry is illustrative; d/D/B are authoritative.
@@ -80,7 +88,8 @@ for name,shape,color,group in [('6805 inner race reference',inner,'#c2ced7','bea
 add('M3x12 shaft clamp bolt',bolt(1.45,12,2.75,3,(17,5,33)),'#94a3b8',group='rotor',stage=4,vector=(-190,0,0))
 add('M3 shaft clamp nut',hex_prism(5.5,2.4,(17,5,34.5)).cut(cyl(1.55,2.6,(17,5,34.4))),'#b7c8d5',group='rotor',stage=4,vector=(-190,0,0))
 for i,(y,z) in enumerate(holes):
-    add(f'M3x16 motor bolt {i+1}',bolt(1.45,16,2.75,3,(-6,y,z),AXIS),'#a5b7c5',stage=1,vector=(120,0,0))
+    add(f'M3x16 motor bolt {i+1}',bolt(1.45,16,2.75,3,(-6,y,z),AXIS),'#a5b7c5',stage=1,vector=(16,0,0))
+    parts[-1]['sideLoadY']=math.copysign(45,y)
 
 def overlap(a,b):
     return max(0.,a.intersect(b).Volume())
@@ -106,6 +115,19 @@ def validate():
     assert overlap(tool,holder)+overlap(tool,wall)<1e-5
     for y,z in holes:
         assert overlap(xcyl(1.5,60,13,y,z),holder)<1e-5
+    # Continuous insertion envelopes: lateral loading followed by axial seating.
+    # Allow 0.5 mm radially around the M3 head, and 0.15 around its shank.
+    def lateral_sweep(radius,x0,x1,y0,y1,z):
+        return xcyl(radius,x1-x0,x0,y0,z).fuse(xcyl(radius,x1-x0,x0,y1,z)).fuse(rect(x0,x1,min(y0,y1),max(y0,y1),z-radius,z+radius))
+    insertion_checks=[]
+    for y,z in holes:
+        far_y=y+math.copysign(45,y)
+        envelope=xcyl(3.25,19,10,y,z).fuse(xcyl(1.6,32,-6,y,z))
+        envelope=envelope.fuse(lateral_sweep(3.25,26,29,y,far_y,z)).fuse(lateral_sweep(1.6,10,26,y,far_y,z))
+        obstacles=[('holder',holder),('wall',wall),('motor',motor),('screw',screw),('bearing',inner.fuse(outer).fuse(shield))]
+        for name,obstacle in obstacles:
+            assert overlap(envelope,obstacle)<1e-5,('bolt insertion envelope',y,z,name)
+        insertion_checks.append(dict(center_yz_mm=[y,z],lateral_head_clearance_mm=.5,axial_then_lateral_removal=True,passed=True))
     # The bearing loads from behind the holder; it never passes through the lip.
     rear_path=annulus(18.5,12.5,4,BEARING_FRONT)
     assert overlap(rear_path,holder)<1e-5
@@ -118,7 +140,7 @@ def validate():
     forward=screw.intersect(rect(BEARING_BACK,153,-30,30,12,72))
     bearing_path=annulus(18.5,12.5,BEARING_BACK,159.2)
     assert overlap(forward,bearing_path)<1e-5
-    return dict(passed=True,assembled_collisions=collisions,source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),existing_screw_removed_mm3=removed,addition_outside_bearing_ring_mm3=outside,full_rotation_envelope_clear=True,coupling_tool_access=True,motor_bolt_tool_access=True,bearing_axial_installation_clear=True,rear_loading_path_clear=True,bearing_mm=[25,37,7],bearing_x_mm=[BEARING_BACK,BEARING_FRONT],holder_projection_mm=30.3,holder_projection_reduction_mm=1.,recess_opening='motor-facing side',housing_bore_mm=37.2,seat_diameter_mm=24.9,inner_race_shoulder_od_mm=27,outer_race_abutment_bore_mm=35,forward_lip_retained_fraction=retained/lip.Volume(),forward_lip_clearance_mm=.1,load_case_static_n=4.44822,limitations=['Geometry checks only: no fatigue, PETG creep, vibration or load rating.','One-direction thrust support toward the screw tip; no independent reverse-direction axial retainer.','Bearing internal race/shield geometry is illustrative; verify the purchased bearing.','New ring occupies X22.3–31.3; this is a separate assembly, not a drop-in carriage retrofit.'])
+    return dict(passed=True,mounting_flanges={'count':4,'thickness_mm':6,'side_window_height_mm':9,'overall_width_mm':52,'bolt_insertion':insertion_checks},assembled_collisions=collisions,source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),existing_screw_removed_mm3=removed,addition_outside_bearing_ring_mm3=outside,full_rotation_envelope_clear=True,coupling_tool_access=True,motor_bolt_tool_access=True,bearing_axial_installation_clear=True,rear_loading_path_clear=True,bearing_mm=[25,37,7],bearing_x_mm=[BEARING_BACK,BEARING_FRONT],holder_projection_mm=30.3,holder_projection_reduction_mm=1.,recess_opening='motor-facing side',housing_bore_mm=37.2,seat_diameter_mm=24.9,inner_race_shoulder_od_mm=27,outer_race_abutment_bore_mm=35,forward_lip_retained_fraction=retained/lip.Volume(),forward_lip_clearance_mm=.1,load_case_static_n=4.44822,limitations=['Geometry checks only: no fatigue, PETG creep, vibration or load rating.','One-direction thrust support toward the screw tip; no independent reverse-direction axial retainer.','Bearing internal race/shield geometry is illustrative; verify the purchased bearing.','New ring occupies X22.3–31.3; this is a separate assembly, not a drop-in carriage retrofit.'])
 
 if __name__=='__main__':
     report=validate();scene=[];checks=[]
@@ -139,7 +161,7 @@ if __name__=='__main__':
         scene.append(row)
     report['print_meshes']=checks
     (OUT/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
-    data=dict(revision=2,explosionStages=5,experiment='bearing-supported-screw',parts=scene,sourceRevision=hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest())
+    data=dict(revision=3,explosionStages=5,experiment='bearing-supported-screw',parts=scene,sourceRevision=hashlib.sha256(pathlib.Path(__file__).read_bytes()).hexdigest())
     (OUT/'assembly.json.gz').write_bytes(gzip.compress(json.dumps(data,separators=(',',':')).encode(),mtime=0))
     with zipfile.ZipFile(OUT/'bearing-supported-screw.zip','w',zipfile.ZIP_DEFLATED) as z:
         for f in stls.glob('*.stl'):z.write(f,'stl/'+f.name)

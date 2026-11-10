@@ -1,4 +1,4 @@
-6805 bearing-supported screw — independent prototype, revision 2
+6805 bearing-supported screw — independent prototype, revision 3
 Units: mm. Based on the existing 40 mm travel printed lead screw (tip X152).
 
 LAYOUT
@@ -15,7 +15,7 @@ parts are unchanged; this is a separate assembly without a carriage.
 
 PRINTED PARTS
 1. 4 mm NEMA17 wall, with M3 clearance holes.
-2. Bearing holder: motor-facing recess, forward lip and four open standoffs.
+2. Bearing holder: motor-facing recess, forward lip and four exposed flanges.
 3. Existing printed screw plus additive bearing journal and shoulder.
 
 HARDWARE
@@ -34,8 +34,11 @@ continues through the added ring to X26, preserving the coupling's opening.
 Holder body: X24.2..34.3. Rear recess: diameter 37.2, ending at X31.4.
 Bearing: X24.3..31.3; 0.1 mm nominal clearance to the forward retaining lip.
 Front lip: 35 mm opening; contacts only the outer race.
-The rear bearing-loading path is clear between the standoffs. Open radial
-motor-bolt channels replace fragile strips between the recess and bolt bores.
+The rear bearing-loading path stays clear. Four rounded 6 mm-thick mounting
+flanges expose the M3 seats. Support ribs move above/below the screw heads.
+9 mm-high windows open to the left/right sides, so screws can be side-loaded
+before sliding axially into their holes. The 52 mm width and 31 mm motor hole
+pattern are unchanged. Continuous clearance checks allow 0.5 mm around heads.
 All original screw material is retained. The ring covers the first 1.3 mm
 of the original helical region. This is not a drop-in carriage retrofit.
 
@@ -45,12 +48,16 @@ ASSEMBLY
    SIDE until the shoulder rests against the bearing's inner race. Fit the
    original coupling nut and loose clamp bolt.
 3. Fit the flat 4 mm wall and motor, engaging the D shaft in the coupling.
-4. Attach the holder and wall using four M3x16 motor screws.
+4. Side-load each M3x16 screw through the open window: its tip starts at the
+   front of the flange (X10), with the head at X26. Slide it axially toward the
+   motor to engage the flange, wall and motor hole. Tighten using a straight
+   driver through the open window. Repeat for the other three flanges.
 5. Tighten the shaft clamp through the open side of the holder. Check free
    rotation and bearing seating before applying load.
 
 EXPLODED VIEW / DISASSEMBLY
-Loosen the shaft clamp first. Remove the motor screws, motor and wall. Withdraw
+Loosen the shaft clamp first. Withdraw each motor screw 16 mm axially, then
+move it out through its side window. Remove the motor and wall. Withdraw
 THE SCREW toward the motor side through the stationary bearing. After the screw
 clears it, remove the bearing from the rear recess. The bearing does not pass
 through the front lip. The clamp hardware remains on the screw in the viewer.
@@ -61,7 +68,8 @@ Screw: use the existing screw printing orientation/profile.
 STLs have assembly coordinates; use the slicer's place-on-face/drop-to-bed tools.
 No sliced print profile or printer upload is included.
 CAD checks cover valid single solids, watertight oriented print meshes, assembled
-intersections, full rotational envelopes, bolt/tool access, rear bearing passage,
+intersections, full rotational envelopes, continuous bolt insertion envelopes,
+straight-driver access, rear bearing passage,
 original screw preservation and 41 sampled disassembly poses.
 
 The shoulder/bearing/holder load path supports thrust TOWARD THE SCREW TIP.

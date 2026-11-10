@@ -1,5 +1,49 @@
 {
   "passed": true,
+  "mounting_flanges": {
+    "count": 4,
+    "thickness_mm": 6,
+    "side_window_height_mm": 9,
+    "overall_width_mm": 52,
+    "bolt_insertion": [
+      {
+        "center_yz_mm": [
+          -15.5,
+          26.5
+        ],
+        "lateral_head_clearance_mm": 0.5,
+        "axial_then_lateral_removal": true,
+        "passed": true
+      },
+      {
+        "center_yz_mm": [
+          -15.5,
+          57.5
+        ],
+        "lateral_head_clearance_mm": 0.5,
+        "axial_then_lateral_removal": true,
+        "passed": true
+      },
+      {
+        "center_yz_mm": [
+          15.5,
+          26.5
+        ],
+        "lateral_head_clearance_mm": 0.5,
+        "axial_then_lateral_removal": true,
+        "passed": true
+      },
+      {
+        "center_yz_mm": [
+          15.5,
+          57.5
+        ],
+        "lateral_head_clearance_mm": 0.5,
+        "axial_then_lateral_removal": true,
+        "passed": true
+      }
+    ]
+  },
   "assembled_collisions": [],
   "source_sha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
   "existing_screw_removed_mm3": 0.0,
@@ -25,7 +69,7 @@
   "seat_diameter_mm": 24.9,
   "inner_race_shoulder_od_mm": 27,
   "outer_race_abutment_bore_mm": 35,
-  "forward_lip_retained_fraction": 0.7724360857954241,
+  "forward_lip_retained_fraction": 1.0,
   "forward_lip_clearance_mm": 0.1,
   "load_case_static_n": 4.44822,
   "limitations": [
@@ -44,10 +88,10 @@
     },
     {
       "file": "bearing_holder.stl",
-      "triangles": 4594,
+      "triangles": 5864,
       "watertight": true,
       "consistently_oriented": true,
-      "volume_mm3": 20487.841122686637
+      "volume_mm3": 22191.014174420834
     },
     {
       "file": "printed_lead_screw_with_bearing_seat.stl",

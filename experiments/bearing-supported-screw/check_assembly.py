@@ -17,6 +17,8 @@ for t in poses:
         progress=clamp(t*5-(p['stage']-1)) if p['stage'] else 0
         shape=p['shape']
         delta=[v*progress for v in p['vector']]
+        if 'sideLoadY' in p:
+            delta=[16*clamp(progress*2),p['sideLoadY']*clamp(progress*2-1),0]
         shape=shape.translate(tuple(delta))
         shapes.append((p['name'],shape,shape.BoundingBox()))
     pairs=0
@@ -27,7 +29,7 @@ for t in poses:
             if volume>1e-4:collisions.append(dict(pose=t,a=an,b=bn,volume_mm3=volume))
     checks.append(dict(explosion_percent=100*t,exact_intersection_pairs=pairs))
     print(f'{100*t:.2f}%: {pairs} exact pair checks; {len(collisions)} collisions',flush=True)
-report=dict(passed=not collisions,poses=checks,collisions=collisions,sequence='Motor bolts, motor, wall, screw withdrawn through the bearing toward the motor side, then bearing withdrawn from the motor-facing recess.',scope='Sampled rigid disassembly poses, not a continuous swept-volume proof.')
+report=dict(passed=not collisions,poses=checks,collisions=collisions,sequence='Motor bolts lift axially off the flanges and leave through the side windows, then motor, wall, screw withdrawn through the bearing toward the motor side, then bearing withdrawn from the motor-facing recess.',scope='Sampled rigid disassembly poses, not a continuous swept-volume proof.')
 (m.OUT/'assembly-checks.json').write_text(json.dumps(report,indent=2)+'\n')
 assert not collisions,collisions
 with zipfile.ZipFile(m.OUT/'bearing-supported-screw.zip','a',zipfile.ZIP_DEFLATED) as z:

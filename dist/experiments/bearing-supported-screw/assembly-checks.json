@@ -7,19 +7,19 @@
     },
     {
       "explosion_percent": 2.5,
-      "exact_intersection_pairs": 41
+      "exact_intersection_pairs": 37
     },
     {
       "explosion_percent": 5.0,
-      "exact_intersection_pairs": 41
+      "exact_intersection_pairs": 33
     },
     {
       "explosion_percent": 7.5,
-      "exact_intersection_pairs": 25
+      "exact_intersection_pairs": 41
     },
     {
       "explosion_percent": 10.0,
-      "exact_intersection_pairs": 25
+      "exact_intersection_pairs": 41
     },
     {
       "explosion_percent": 12.5,
@@ -27,83 +27,83 @@
     },
     {
       "explosion_percent": 15.0,
-      "exact_intersection_pairs": 25
+      "exact_intersection_pairs": 21
     },
     {
       "explosion_percent": 17.5,
-      "exact_intersection_pairs": 25
+      "exact_intersection_pairs": 21
     },
     {
       "explosion_percent": 20.0,
-      "exact_intersection_pairs": 25
+      "exact_intersection_pairs": 21
     },
     {
       "explosion_percent": 22.5,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 25.0,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 27.500000000000004,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 30.0,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 32.5,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 35.0,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 37.5,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 40.0,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 42.5,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 45.0,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 47.5,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 50.0,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 52.5,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 55.00000000000001,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 57.49999999999999,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 60.0,
-      "exact_intersection_pairs": 20
+      "exact_intersection_pairs": 16
     },
     {
       "explosion_percent": 62.5,
-      "exact_intersection_pairs": 18
+      "exact_intersection_pairs": 14
     },
     {
       "explosion_percent": 65.0,
@@ -167,6 +167,6 @@
     }
   ],
   "collisions": [],
-  "sequence": "Motor bolts, motor, wall, screw withdrawn through the bearing toward the motor side, then bearing withdrawn from the motor-facing recess.",
+  "sequence": "Motor bolts lift axially off the flanges and leave through the side windows, then motor, wall, screw withdrawn through the bearing toward the motor side, then bearing withdrawn from the motor-facing recess.",
   "scope": "Sampled rigid disassembly poses, not a continuous swept-volume proof."
 }
