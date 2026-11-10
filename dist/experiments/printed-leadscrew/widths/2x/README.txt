@@ -93,4 +93,4 @@ The two lid mounts beside the motor now grow from continuous gussets, rooted 2 m
 
 ## Lower carrier clearance
 
-The blocks behind the lower bearings now finish at Z=20 mm, flush with the carrier side rails, removing their former 4.5 mm raised shoulders. The circular inner-race seats, split axles, bearing centers and four M5 insert mounts are unchanged. Clearance to the base is checked throughout the 0–1 mm adjustment range. Only the carrier needs reprinting; the existing base and hardware remain compatible.
+The blocks behind the lower bearings rise just 1 mm above the Z=20 mm side rails, with 1 mm, 45-degree chamfers around their tops. At Z=21 mm they remain 3.5 mm lower than the original tall blocks, adding local support behind the bearing seats without restoring the tall bumps. The circular inner-race seats, split axles, bearing centers and four M5 insert mounts are unchanged. Clearance to the base is checked throughout the 0–1 mm adjustment range. Only the carrier needs reprinting; the existing base and hardware remain compatible.

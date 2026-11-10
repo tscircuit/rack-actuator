@@ -270,24 +270,27 @@ def validate():
  report['bearing_support_feet']={'shelf_underside_z_mm':28,'checks':feet,'passed':len(feet)==4 and all(q['passed'] for q in feet),'note':'The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports.'}
  print('Flush bearing-support undersides',report['bearing_support_feet']['passed'],flush=True)
  if not report['bearing_support_feet']['passed']:save();return report
- # Only remove the raised blocks; the annular seats and all axle geometry stay.
- legacy_carrier_body=shared_carrier(24.5)
+ # Keep a small chamfered reinforcement, well below the old tall blocks.
+ legacy_carrier_body=shared_carrier(24.5,False)
  added=carrier_print_without_pins.cut(legacy_carrier_body).Volume()
  removed=legacy_carrier_body.cut(carrier_print_without_pins).Volume()
+ flat_carrier_body=shared_carrier(20,False)
+ reinforcement=carrier_print_without_pins.cut(flat_carrier_body).Volume()
+ lost_flat_body=flat_carrier_body.cut(carrier_print_without_pins).Volume()
  shoulders=[]
  for bearing in bearings:
   if bearing['kind']!='lower':continue
   x=bearing['station'];cy=bearing['center'][1];sign=bearing['sign'];end=wide(16) if sign>0 else wide(-22)
   ya,yb=sorted([cy+sign*5.2,end])
-  probe=rect(x-4.9,x+4.9,ya,yb,20.001,24.6)
-  shoulders.append(dict(station_x_mm=x,bearing_y_mm=cy,body_top_z_mm=20,remaining_bump_mm3=overlap(probe,carrier_print_without_pins)))
+  probe=rect(x-4.9,x+4.9,ya,yb,21.001,24.6)
+  shoulders.append(dict(station_x_mm=x,bearing_y_mm=cy,body_top_z_mm=21,remaining_bump_mm3=overlap(probe,carrier_print_without_pins)))
  from OCP.BRepExtrema import BRepExtrema_DistShapeShape
  clearances=[]
  for setting in [0,.25,.5,.75,1]:
   support=carrier_shape.translate((0,0,setting-1))
   distance=BRepExtrema_DistShapeShape(support.wrapped,chassis_shape.wrapped);distance.Perform()
   clearances.append(dict(adjustment_mm=setting,base_clearance_mm=distance.Value(),base_overlap_mm3=overlap(support,chassis_shape)))
- report['carrier_shoulders']={'body_top_z_mm':20,'previous_top_z_mm':24.5,'lowered_mm':4.5,'unexpected_added_body_mm3':added,'removed_mm3':removed,'checks':shoulders,'base_clearances':clearances,'passed':added<.01 and removed>1 and all(q['remaining_bump_mm3']<.01 for q in shoulders) and all(q['base_overlap_mm3']<.01 for q in clearances),'note':'Only the tall support blocks are lowered to rail height. Circular inner-race lands, split axles, insert seats and adjustment positions are retained; stiffness and physical tolerances are not simulated.'}
+ report['carrier_shoulders']={'body_top_z_mm':21,'rail_top_z_mm':20,'rise_mm':1,'chamfer_mm':1,'reinforcement_mm3':reinforcement,'lost_flat_body_mm3':lost_flat_body,'previous_top_z_mm':24.5,'lowered_mm':3.5,'unexpected_added_body_mm3':added,'removed_mm3':removed,'checks':shoulders,'base_clearances':clearances,'passed':added<.01 and removed>1 and reinforcement>1 and lost_flat_body<.01 and all(q['remaining_bump_mm3']<.01 for q in shoulders) and all(q['base_overlap_mm3']<.01 for q in clearances),'note':'Support blocks rise only 1 mm above the rails with 1 mm, 45-degree top chamfers; they remain 3.5 mm below the original tall blocks. Circular inner-race lands, split axles, insert seats and adjustment positions are retained; stiffness and physical tolerances are not simulated.'}
  print('Lowered carrier shoulders',report['carrier_shoulders']['passed'],flush=True)
  if not report['carrier_shoulders']['passed']:save();return report
  # Adjustment is a rigid guided translation, not flexure deformation.

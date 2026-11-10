@@ -1,10 +1,13 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 32,
+  "revision": 33,
   "carrierShoulders": {
-    "body_top_z_mm": 20,
+    "body_top_z_mm": 21,
+    "rail_top_z_mm": 20,
+    "rise_mm": 1,
+    "chamfer_mm": 1,
     "previous_top_z_mm": 24.5,
-    "lowered_mm": 4.5,
+    "lowered_mm": 3.5,
     "bearing_seats_and_axles_preserved": true
   },
   "motorLidBraces": {
@@ -571,7 +574,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "d0b802adb5b9da15e1246e320a2a8fb7bc50f3c807874c42006f6e30a0dc40d0",
+  "modelSourceSha256": "f6952800eb3d5a71ff4f8e8f47a59ff3fd4deab2cba3d9f431489e3316d3a89c",
   "stations": [
     143.0,
     217.0

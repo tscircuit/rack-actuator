@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "d0b802adb5b9da15e1246e320a2a8fb7bc50f3c807874c42006f6e30a0dc40d0",
-  "validation_source_sha256": "ba03ce03be35f0b0d99185d279f8f2af0e12b689e54411eece71425cae9d31f1",
+  "source_sha256": "f6952800eb3d5a71ff4f8e8f47a59ff3fd4deab2cba3d9f431489e3316d3a89c",
+  "validation_source_sha256": "2e177c99a1843322ef68ef7c75b53ae929fc64a295fa7c821ac16fb7478dca00",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -3710,22 +3710,27 @@
     "note": "The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports."
   },
   "carrier_shoulders": {
-    "body_top_z_mm": 20,
+    "body_top_z_mm": 21,
+    "rail_top_z_mm": 20,
+    "rise_mm": 1,
+    "chamfer_mm": 1,
+    "reinforcement_mm3": 171.29701016688318,
+    "lost_flat_body_mm3": 0.0,
     "previous_top_z_mm": 24.5,
-    "lowered_mm": 4.5,
+    "lowered_mm": 3.5,
     "unexpected_added_body_mm3": 0.0,
-    "removed_mm3": 801.6382079931838,
+    "removed_mm3": 630.3411978263011,
     "checks": [
       {
         "station_x_mm": 293.0,
         "bearing_y_mm": -1,
-        "body_top_z_mm": 20,
+        "body_top_z_mm": 21,
         "remaining_bump_mm3": 0.0
       },
       {
         "station_x_mm": 333.0,
         "bearing_y_mm": 1,
-        "body_top_z_mm": 20,
+        "body_top_z_mm": 21,
         "remaining_bump_mm3": 0.0
       }
     ],
@@ -3757,7 +3762,7 @@
       }
     ],
     "passed": true,
-    "note": "Only the tall support blocks are lowered to rail height. Circular inner-race lands, split axles, insert seats and adjustment positions are retained; stiffness and physical tolerances are not simulated."
+    "note": "Support blocks rise only 1 mm above the rails with 1 mm, 45-degree top chamfers; they remain 3.5 mm below the original tall blocks. Circular inner-race lands, split axles, insert seats and adjustment positions are retained; stiffness and physical tolerances are not simulated."
   },
   "adjustable_bearings": {
     "count": 2,
@@ -5026,10 +5031,10 @@
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
-        "triangles": 8600,
+        "triangles": 8588,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 28623.805487009304
+        "volume_mm3": 28793.01496447269
       },
       {
         "file": "structural_mounting_lid.stl",
