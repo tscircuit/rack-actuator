@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "part": "T8 Z shared-bolt 6805 holder",
+  "source_stl_sha256": "59f9db21a5e9ac3e95d946f5c3e277b3e49c8e9b5b2589dbe96aa08cad9c2179",
+  "orientation": "Front bearing face down",
+  "support_grams": 0.06742070424215052,
+  "support_height_range_mm": [
+    0.2,
+    1.8
+  ],
+  "support_location": "Only the four shallow 2 mm bolt-head recesses, open to the build plate; no support in the bearing tunnel",
+  "support_free": false,
+  "profile": "P2S / 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / tree(auto), supports everywhere",
+  "gcode_sha256": "2b83a691a799d48c1da66d49b8b09988e17409f5c04dcaf1c9744a17d926b9f9",
+  "print_stl_sha256": "75c6b7ca69db8fa7dda1ab47a091361e3423e821c1445c489f044202fbf8ee56",
+  "scope": "Actual slicer paths; physical removal not tested."
+}

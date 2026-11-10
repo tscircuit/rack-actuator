@@ -1,21 +1,21 @@
 {
   "passed": true,
-  "part": "Shared outward 6805 holder",
+  "part": "Shared-bolt 6805 holder",
   "orientation": "Front bearing face on bed, columns upward",
   "rotation": "CAD (x,y,z) -> print (z-42,y,34.3-x)",
-  "source_stl_sha256": "120ac1cf998479a21145ed75671e537bbe786fe22120aec950a0ce9e54fcf63c",
-  "print_stl_sha256": "39d3bbcccebd485571a971bc053dc6a80b465b0005474e20501b2a23a9d33ed8",
-  "gcode_sha256": "f9545a25cb6b64449567e11ae0cf814961805f61c97c421d20661d589390df25",
+  "source_stl_sha256": "c039d97b6b02ba74ae19a4e5bde70a2d0f31f678d29e92d6c31c147decb1a804",
+  "print_stl_sha256": "fceb9b7e0ce8757b67e0c4c7a30187edde508a2f8b848bbe4cf9c7257e262a6a",
+  "gcode_sha256": "84a8f289d3572005ea08350857d4512073a666f1b25ba23e5cda14e3fcef9862",
   "slicer": "Bambu Studio 2.9.1.70",
   "profile": "P2S 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / automatic tree supports everywhere",
   "support_extrusion_moves": 0,
-  "estimated_seconds": 3802.13818359375,
+  "estimated_seconds": 3587.587890625,
   "filaments": [
     {
       "filament_id": "GFG99",
       "id": 1,
-      "main_used_g": 20.33802604675293,
-      "total_used_g": 20.33802604675293
+      "main_used_g": 18.67015838623047,
+      "total_used_g": 18.67015838623047
     }
   ],
   "scope": "Slicer output for the holder only, not a physical print or structural load test."

@@ -17,7 +17,7 @@ const markers=createPointMarkers({THREE,getObjects:()=>objects,getContext:()=>({
 function select(o){selected=o;$('partSelect').value=o?.userData.name||'';for(const id of ['isolate','download'])$(id).disabled=!o;}
 function isolate(){if(selected){for(const o of objects)o.visible=o===selected;closeMenu();fit();}}
 function showAll(){for(const o of objects)o.visible=true;closeMenu();}
-async function download(p=selected?.userData){if(!p)return;await downloadPart(p,{url:p.stl?p.stl+'?v=4':undefined,filename:'6805-prototype-'+p.name.toLowerCase().replaceAll(' ','_')+'.stl'});closeMenu();}
+async function download(p=selected?.userData){if(!p)return;await downloadPart(p,{url:p.stl?p.stl+'?v=5':undefined,filename:'6805-prototype-'+p.name.toLowerCase().replaceAll(' ','_')+'.stl'});closeMenu();}
 function pose(){
  const exploded=$('viewMode').value==='exploded',t=exploded?+$('explode').value/100:0;
  $('explodeControls').hidden=!exploded;$('explodeValue').value=(100*t).toFixed(0)+'%';$('play').disabled=exploded;
@@ -58,9 +58,9 @@ document.addEventListener('pointerdown',e=>{if(!$('partMenu').contains(e.target)
 new ResizeObserver(()=>{camera.aspect=viewport.clientWidth/viewport.clientHeight;camera.updateProjectionMatrix();renderer.setSize(viewport.clientWidth,viewport.clientHeight);}).observe(viewport);
 let last=performance.now();renderer.setAnimationLoop(now=>{if(playing){angle+=(now-last)*.0005;pose();}last=now;controls.update();renderer.render(scene,camera);});
 try{
- const response=await fetch('assembly.json.gz?v=4');if(!response.ok)throw Error('Assembly request failed');data=await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).json();
+ const response=await fetch('assembly.json.gz?v=5');if(!response.ok)throw Error('Assembly request failed');data=await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).json();
  for(const p of data.parts){const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(p.vertices.flat(),3));geometry.setIndex(p.triangles.flat());geometry.computeVertexNormals();const material=new THREE.MeshStandardMaterial({color:p.color,roughness:.62,metalness:p.printed?.08:.38,side:THREE.DoubleSide});const mesh=new THREE.Mesh(geometry,material);mesh.userData=p;scene.add(mesh);objects.push(mesh);const opt=document.createElement('option');opt.value=p.name;opt.textContent=p.name;$('partSelect').appendChild(opt);if(p.printed){const button=document.createElement('button');button.textContent=p.name+' ↓';button.onclick=()=>download(p);$('printedDownloads').appendChild(button);}}
- const result=await fetch('validation.json?v=4');if(!result.ok)throw Error('Check report request failed');const report=await result.json();if(!report.passed)throw Error('Geometry checks failed');
- $('checkSummary').textContent=`Passed: ${report.print_meshes.length} watertight printed meshes; no assembled intersections; full rotating-envelope clearance; coupling and motor-bolt tool access; rear bearing-loading clearance; straight loading envelopes for four outboard through-bolts and a continuous outer-race shoulder. Original screw material preserved; additions confined to the bearing ring.`;
+ const result=await fetch('validation.json?v=5');if(!result.ok)throw Error('Check report request failed');const report=await result.json();if(!report.passed)throw Error('Geometry checks failed');
+ $('checkSummary').textContent=`Passed: ${report.print_meshes.length} watertight printed meshes; no assembled intersections; full rotating-envelope clearance; coupling and motor-bolt tool access; rear bearing-loading clearance; captured removal and front hex-key access for four shared NEMA17 screws and a continuous outer-race shoulder. Original screw material preserved; additions confined to the bearing ring.`;
  $('loading').hidden=true;markers.restore();reset();window.bearingViewer={data,objects,camera,controls,fit,pose,markers};
 }catch(error){console.error(error);$('loading').textContent='Could not load the prototype. Reload to retry.';$('status').textContent=error.message;}

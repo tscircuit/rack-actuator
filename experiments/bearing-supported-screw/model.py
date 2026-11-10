@@ -41,9 +41,9 @@ seat = seat.cut(xcyl(7.9, 9.2, BEARING_BACK-2.1))
 seat = seat.cut(rect(8,26,0,14,41.5,42.5))
 screw = original_screw.fuse(seat).clean()
 holes = [(y, 42+z) for y in (-15.5,15.5) for z in (-15.5,15.5)]
-wall = rect(0,4,-32,32,16,68).cut(xcyl(11.3,4,0))
+wall = rect(0,4,-26,26,16,68).cut(xcyl(11.3,4,0))
 holder, holder_holes, holder_columns = _holder.make_holder(4,BEARING_BACK,BEARING_FRONT,HOLDER_FRONT)
-for y,z in holes+holder_holes:wall=wall.cut(xcyl(1.7,4,0,y,z))
+for y,z in holes:wall=wall.cut(xcyl(1.7,4,0,y,z))
 
 # Internal race/shield geometry is illustrative; d/D/B are authoritative.
 inner = annulus(13.5,12.5,BEARING_BACK,BEARING_FRONT)
@@ -70,24 +70,15 @@ for name,shape,color,group in [('6805 inner race reference',inner,'#c2ced7','bea
 add('M3x12 shaft clamp bolt',bolt(1.45,12,2.75,3,(17,5,33)),'#94a3b8',group='rotor',stage=4,vector=(-190,0,0))
 add('M3 shaft clamp nut',hex_prism(5.5,2.4,(17,5,34.5)).cut(cyl(1.55,2.6,(17,5,34.4))),'#b7c8d5',group='rotor',stage=4,vector=(-190,0,0))
 for i,(y,z) in enumerate(holes):
-    add(f'M3x10 motor bolt {i+1}',bolt(1.45,10,2.75,3,(-6,y,z),AXIS),'#a5b7c5')
-for i,(y,z) in enumerate(holder_holes):
-    # Rear-loaded bolt: washer at the wall rear and exposed nut at the front.
-    add(f'M3x45 holder tie bolt {i+1}',bolt(1.45,45,2.75,3,(44.5,y,z),(-1,0,0)),'#a5b7c5')
-    add(f'M3 holder front washer {i+1}',ring(3.5,1.6,.5,(HOLDER_FRONT,y,z),AXIS),'#b7c8d5')
-    add(f'M3 holder rear washer {i+1}',ring(3.5,1.6,.5,(-.5,y,z),AXIS),'#b7c8d5')
-    add(f'M3 holder locknut {i+1}',_holder.axial_locknut(HOLDER_FRONT+.5,y,z),'#b7c8d5')
+    add(f'M3x40 shared motor holder bolt {i+1}',bolt(1.45,40,2.75,3,(-5.7,y,z),AXIS),'#a5b7c5')
 
 def explosion_offset(p,t):
     def ramp(a,b):return max(0.,min(1.,(t-a)/(b-a)))
     name=p['name']
-    if 'holder tie bolt' in name:return [-55*ramp(0,.1),math.copysign(45,p['shape'].Center().y)*ramp(.1,.2),0]
-    if 'holder front washer' in name or 'holder locknut' in name:return [10*ramp(0,.1),math.copysign(45,p['shape'].Center().y)*ramp(.1,.2),0]
-    if 'holder rear washer' in name:return [-20*ramp(0,.1),math.copysign(45,p['shape'].Center().y)*ramp(.1,.2),0]
-    if name.startswith('M3x10 motor bolt'):return [60*ramp(.5,.6),0,0]
     if name.startswith('NEMA17'):return [-120*ramp(.6,.7),0,0]
     if name=='4 mm NEMA17 wall':return [-80*ramp(.7,.8),0,0]
     delta=[30*ramp(.2,.35),0,100*ramp(.35,.5)]
+    if name.startswith('M3x40 shared'):delta[0]+=6*ramp(0,.1)+40*ramp(.5,.6)
     if p['group']=='rotor':delta[0]-=190*ramp(.8,.9)
     if name.startswith('6805 '):delta[0]-=55*ramp(.9,1)
     return delta
@@ -117,12 +108,14 @@ def validate():
     assert overlap(tool,holder)+overlap(tool,wall)<1e-5
     insertion_checks=[]
     for y,z in holder_holes:
-        envelope=xcyl(1.6,100,-55.5,y,z).fuse(xcyl(3.25,58.5,-59,y,z))
-        for name,obstacle in [('holder',holder),('wall',wall),('motor',motor),('screw',screw),('bearing',inner.fuse(outer).fuse(shield))]:
-            assert overlap(envelope,obstacle)<1e-5,('straight holder bolt insertion',y,z,name)
-        insertion_checks.append(dict(center_yz_mm=[y,z],straight_rear_loading=True,passed=True))
-    # The separate motor screws are fitted before the support module.
-    for y,z in holes:assert overlap(xcyl(3,40,4,y,z),wall)<1e-5
+        # Loosen from the motor while captured in the housing, then remove the
+        # module. Full bolt extraction happens once the module is clear.
+        envelope=xcyl(1.6,40,-5.7,y,z).fuse(xcyl(2.8,9,34.3,y,z))
+        for name,obstacle in [('holder',holder),('wall',wall),('motor',motor),('screw',screw)]:
+            assert overlap(envelope,obstacle)<1e-5,('shared bolt access',y,z,name)
+        tool=xcyl(1.5,12,37.3,y,z).fuse(cyl(1.5,45,(47,y,z)))
+        assert overlap(tool,holder)+overlap(tool,screw)<1e-5
+        insertion_checks.append(dict(center_yz_mm=[y,z],captured_unthreading_mm=6,motor_engagement_mm=5.7,passed=True))
     # The bearing loads from behind the holder; it never passes through the lip.
     rear_path=annulus(18.5,12.5,4,BEARING_FRONT)
     assert overlap(rear_path,holder)<1e-5
@@ -136,10 +129,10 @@ def validate():
     bearing_path=annulus(18.5,12.5,BEARING_BACK,159.2)
     assert overlap(forward,bearing_path)<1e-5
     by_name={p['name']:p['shape'] for p in parts}
-    hardware=[tuple(by_name[f'M3 {label} {i+1}'] if label!='holder tie bolt' else by_name[f'M3x45 {label} {i+1}'] for label in ['holder tie bolt','holder front washer','holder rear washer','holder locknut']) for i in range(4)]
+    hardware=[by_name[f'M3x40 shared motor holder bolt {i+1}'] for i in range(4)]
     structural=_holder.inspect_load_path(holder,wall,HOLDER_FRONT,BEARING_FRONT,holder_columns,hardware)
     assert structural['passed'],structural
-    return dict(passed=True,structural_load_path=structural,mounting_flanges={'count':4,'pattern_mm':[52,31],'continuous_column_length_mm':HOLDER_FRONT-4,'overall_width_mm':62,'bolt':'M3x45 through bolt with front/rear washers and DIN 985 locknut','bolt_insertion':insertion_checks},assembled_collisions=collisions,source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),existing_screw_removed_mm3=removed,addition_outside_bearing_ring_mm3=outside,full_rotation_envelope_clear=True,coupling_tool_access=True,motor_bolt_tool_access=True,bearing_axial_installation_clear=True,rear_loading_path_clear=True,bearing_mm=[25,37,7],bearing_x_mm=[BEARING_BACK,BEARING_FRONT],holder_projection_mm=30.3,holder_projection_reduction_mm=1.,recess_opening='motor-facing side',housing_bore_mm=37.2,seat_diameter_mm=24.9,inner_race_shoulder_od_mm=27,outer_race_abutment_bore_mm=35,forward_lip_retained_fraction=retained/lip.Volume(),forward_lip_clearance_mm=.1,load_case_static_n=4.44822,limitations=['Geometry checks only: no fatigue, PETG creep, vibration or load rating.','One-direction thrust support toward the screw tip; no independent reverse-direction axial retainer.','Bearing internal race/shield geometry is illustrative; verify the purchased bearing.','New ring occupies X22.3–31.3; this is a separate assembly, not a drop-in carriage retrofit.'])
+    return dict(passed=True,structural_load_path=structural,mounting_flanges={'count':4,'pattern_mm':[31,31],'continuous_column_length_mm':HOLDER_FRONT-4,'overall_width_mm':43,'bolt':'Four M3x40 shared holder/motor bolts; no extra holder fasteners','bolt_insertion':insertion_checks},assembled_collisions=collisions,source_sha256=hashlib.sha256(SOURCE.read_bytes()).hexdigest(),existing_screw_removed_mm3=removed,addition_outside_bearing_ring_mm3=outside,full_rotation_envelope_clear=True,coupling_tool_access=True,motor_bolt_tool_access=True,bearing_axial_installation_clear=True,rear_loading_path_clear=True,bearing_mm=[25,37,7],bearing_x_mm=[BEARING_BACK,BEARING_FRONT],holder_projection_mm=30.3,holder_projection_reduction_mm=1.,recess_opening='motor-facing side',housing_bore_mm=37.2,seat_diameter_mm=24.9,inner_race_shoulder_od_mm=27,outer_race_abutment_bore_mm=35,forward_lip_retained_fraction=retained/lip.Volume(),forward_lip_clearance_mm=.1,load_case_static_n=4.44822,limitations=['Geometry checks only: no fatigue, PETG creep, vibration or load rating.','One-direction thrust support toward the screw tip; no independent reverse-direction axial retainer.','Bearing internal race/shield geometry is illustrative; verify the purchased bearing.','New ring occupies X22.3–31.3; this is a separate assembly, not a drop-in carriage retrofit.'])
 
 if __name__=='__main__':
     report=validate();scene=[];checks=[]
@@ -160,7 +153,7 @@ if __name__=='__main__':
         scene.append(row)
     report['print_meshes']=checks
     (OUT/'validation.json').write_text(json.dumps(report,indent=2)+'\n')
-    data=dict(revision=4,explosionStages=5,experiment='bearing-supported-screw',parts=scene,sourceRevision=hashlib.sha256(pathlib.Path(__file__).read_bytes()+pathlib.Path(__file__).with_name('holder_geometry.py').read_bytes()).hexdigest())
+    data=dict(revision=5,explosionStages=5,experiment='bearing-supported-screw',parts=scene,sourceRevision=hashlib.sha256(pathlib.Path(__file__).read_bytes()+pathlib.Path(__file__).with_name('holder_geometry.py').read_bytes()).hexdigest())
     (OUT/'assembly.json.gz').write_bytes(gzip.compress(json.dumps(data,separators=(',',':')).encode(),mtime=0))
     with zipfile.ZipFile(OUT/'bearing-supported-screw.zip','w',zipfile.ZIP_DEFLATED) as z:
         for f in stls.glob('*.stl'):z.write(f,'stl/'+f.name)

@@ -26,7 +26,7 @@ for t in poses:
             if volume>1e-4:collisions.append(dict(pose=t,a=an,b=bn,volume_mm3=volume))
     checks.append(dict(explosion_percent=100*t,exact_intersection_pairs=pairs))
     print(f'{100*t:.2f}%: {pairs} exact pair checks; {len(collisions)} collisions',flush=True)
-report=dict(passed=not collisions,poses=checks,collisions=collisions,sequence='Remove the front locknuts and withdraw the four outboard tie bolts rearward, slide the support module off the motor shaft and lift it clear, remove the motor screws/motor/wall, then withdraw the screw and bearing from the rear of the holder.',scope='Sampled rigid disassembly poses, not a continuous swept-volume proof.')
+report=dict(passed=not collisions,poses=checks,collisions=collisions,sequence='Unthread the four shared M3x40 bolts 6 mm, keeping them captured in the holder. Slide the support module off the shaft and lift it clear, finish withdrawing the bolts, remove motor/wall, then withdraw the screw and bearing from the rear of the holder.',scope='Sampled rigid disassembly poses, not a continuous swept-volume proof.')
 (m.OUT/'assembly-checks.json').write_text(json.dumps(report,indent=2)+'\n')
 assert not collisions,collisions
 with zipfile.ZipFile(m.OUT/'bearing-supported-screw.zip','a',zipfile.ZIP_DEFLATED) as z:

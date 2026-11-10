@@ -62,7 +62,7 @@ def validate():
  print('Inside output-bolt access',report['output_bolt_access']['passed'],flush=True)
  if not report['output_bolt_access']['passed']:save();return report
  report['plastic_thread_seats']={'method':'Three axial rounded ribs at 120 degrees, with tapered entry. Unformed rib/shaft overlap is intentional and bounded to each verified rib solid. Thread forming and stripping torque are not simulated.',
-  'profiles':THREAD_PROFILES,'fastener_nuts':6 if Z_SUPPORT else 1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 14 if Z_SUPPORT else 10)}
+  'profiles':THREAD_PROFILES,'fastener_nuts':2 if Z_SUPPORT else 1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 14 if Z_SUPPORT else 10)}
  save();print('Three-ridge seats',report['plastic_thread_seats']['passed'],flush=True)
  if not report['plastic_thread_seats']['passed'] or not report['output_mount']['passed']:return report
  insert_checks=[];printed_carrier=by_name[CARRIER_NAME]['freeShape'];installed_carrier=by_name[CARRIER_NAME]['shape']

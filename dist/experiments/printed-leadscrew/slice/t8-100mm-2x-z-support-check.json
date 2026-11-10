@@ -1,5 +1,5 @@
 {
-  "stl_sha256": "06304312ff91c12ee397524adf4e82e6279c05803c3e84f130207b04e19997a9",
+  "stl_sha256": "03b16424678f1672d1a81864c7d2b1b9d01ba404c5aba2a92672acc87a115a47",
   "support_grams": 0.9552188548820796,
   "checks": [
     {
@@ -72,45 +72,45 @@
   },
   "meta": {
     "slicer": "Bambu Studio 2.9.1.70",
-    "gcode_sha256": "f1093aff0504c9e528e1a696b4e9996d73218e911fedb59f2e3d72edf22dd41f",
-    "stl_sha256": "06304312ff91c12ee397524adf4e82e6279c05803c3e84f130207b04e19997a9",
+    "gcode_sha256": "6ef6bd6b589db2836fe9996c7473e240b43ecb764df87dba9d745d028144582e",
+    "stl_sha256": "03b16424678f1672d1a81864c7d2b1b9d01ba404c5aba2a92672acc87a115a47",
     "layer_count": 340,
     "layer_height_mm": 0.2,
-    "estimated_seconds": 25443.671875,
-    "estimated_grams": 190.45530700683594,
+    "estimated_seconds": 25350.99609375,
+    "estimated_grams": 190.28662109375,
     "support_grams": 0.9552188548820796,
     "support_regions_grams": {
       "other bearing / lid features": 0.6252470076609523,
       "motor underside": 0.32997184722112716
     },
-    "extrusion_segments": 1110721,
+    "extrusion_segments": 1110069,
     "role_segments": {
       "Support": 23753,
-      "Inner wall": 236383,
-      "Outer wall": 122653,
-      "Gap infill": 19796,
+      "Inner wall": 235311,
+      "Outer wall": 121595,
       "Bottom surface": 3467,
-      "Internal solid infill": 36059,
-      "Sparse infill": 641908,
-      "Floating vertical shell": 13641,
-      "Bridge": 7355,
-      "Top surface": 5100,
+      "Gap infill": 19785,
+      "Internal solid infill": 35227,
+      "Sparse infill": 644941,
+      "Floating vertical shell": 13380,
+      "Bridge": 7037,
+      "Top surface": 4999,
       "Support interface": 466,
-      "Overhang wall": 140
+      "Overhang wall": 108
     },
     "role_filament_mm": {
       "Support": 294.60631000000063,
-      "Inner wall": 26707.155519997767,
-      "Outer wall": 8666.45021000294,
-      "Gap infill": 227.465350000001,
+      "Inner wall": 26720.29673999783,
+      "Outer wall": 8656.727440002802,
       "Bottom surface": 1184.1320299999925,
-      "Internal solid infill": 7103.284680000509,
-      "Sparse infill": 13513.808679991502,
-      "Floating vertical shell": 732.1222699999984,
-      "Bridge": 2201.6194299999624,
-      "Top surface": 1685.3542099999609,
+      "Gap infill": 227.25385000000097,
+      "Internal solid infill": 7027.481760000408,
+      "Sparse infill": 13584.161329991319,
+      "Floating vertical shell": 713.7487799999989,
+      "Bridge": 2175.7249599999636,
+      "Top surface": 1677.413249999958,
       "Support interface": 18.097509999999982,
-      "Overhang wall": 14.02144000000002
+      "Overhang wall": 13.254400000000011
     },
     "model_translation_xy_mm": [
       44.5,

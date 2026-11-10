@@ -1,6 +1,6 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 36,
+  "revision": 37,
   "screwSupport": "6805",
   "support6805": {
     "bearing_mm": [
@@ -32,13 +32,16 @@
     "recess_opening": "motor-facing",
     "reverse_retainer": false,
     "mount_pattern_mm": [
-      52,
+      31,
       31
     ],
-    "mount_bolts": "4 M3x45 through bolts, 8 washers, 4 DIN 985 locknuts",
-    "motor_bolts": "4 M3x12, separate from holder",
-    "holder_outer_width_mm": 62,
-    "continuous_columns": 4
+    "mount_bolts": "4 M3x40 shared holder/wall/motor screws",
+    "motor_bolts": "Same four screws; no separate holder bolts or nuts",
+    "holder_outer_width_mm": 43,
+    "continuous_columns": 4,
+    "side_walls": 2,
+    "head_seat_x_mm": 34.3,
+    "motor_thread_engagement_mm": 5.7
   },
   "carrierShoulders": {
     "body_top_z_mm": 21,
@@ -397,24 +400,24 @@
   "shaftClamp": null,
   "lightening": {
     "base_floor": {
-      "before_mm3": 261496.50976511516,
-      "after_mm3": 244676.9524404204,
-      "removed_mm3": 16819.55732469476,
-      "reduction_percent": 6.43203893612295,
+      "before_mm3": 261723.63752933685,
+      "after_mm3": 244904.08020544267,
+      "removed_mm3": 16819.557323894172,
+      "reduction_percent": 6.426457114332615,
       "cutout_count": 10
     },
     "base_sides": {
-      "before_mm3": 244676.9524404204,
-      "after_mm3": 240548.95245255134,
-      "removed_mm3": 4127.999987869058,
-      "reduction_percent": 1.687122528990236,
+      "before_mm3": 244904.08020544267,
+      "after_mm3": 240776.08021726832,
+      "removed_mm3": 4127.999988174357,
+      "reduction_percent": 1.6855578660475978,
       "cutout_count": 10
     },
     "base": {
-      "before_mm3": 261496.50976511516,
-      "after_mm3": 240548.95245255134,
-      "removed_mm3": 20947.55731256382,
-      "reduction_percent": 8.010645087148433,
+      "before_mm3": 261723.63752933685,
+      "after_mm3": 240776.08021726832,
+      "removed_mm3": 20947.55731206853,
+      "reduction_percent": 8.003693326981404,
       "cutout_count": 20
     },
     "carriage": {
@@ -452,7 +455,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "dc1bc295ecccc5d3ae8f9f66536b329c90dfb221a0dca28c802175cfefe38dcd",
+  "modelSourceSha256": "a3a080090027adf5f302df72fe0bffc9d6316bec9f3b9de63d77e94aa3dbe742",
   "stations": [
     103.0,
     143.0

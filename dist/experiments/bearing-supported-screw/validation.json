@@ -10,90 +10,89 @@
       0.0,
       0.0
     ],
-    "abutment_overlap_checks_mm3": [
+    "shared_motor_bolts": [
       {
-        "holder_to_front_washer": 2.940530723760088,
-        "front_washer_to_nut": 1.815479127128971,
-        "bolt_head_to_rear_washer": 1.5715817249582926,
-        "rear_washer_to_wall": 2.9405307237600464
+        "holder_to_bolt_head_mm3": 1.4679091673898517,
+        "motor_thread_engagement_mm": 5.7,
+        "passed": true
       },
       {
-        "holder_to_front_washer": 2.9405307237600877,
-        "front_washer_to_nut": 1.8154791271289705,
-        "bolt_head_to_rear_washer": 1.5715817249582926,
-        "rear_washer_to_wall": 2.940530723760046
+        "holder_to_bolt_head_mm3": 1.4679091673898512,
+        "motor_thread_engagement_mm": 5.7,
+        "passed": true
       },
       {
-        "holder_to_front_washer": 2.940530723760088,
-        "front_washer_to_nut": 1.8154791271289705,
-        "bolt_head_to_rear_washer": 1.5715817249582926,
-        "rear_washer_to_wall": 2.9405307237600464
+        "holder_to_bolt_head_mm3": 1.4679091673898517,
+        "motor_thread_engagement_mm": 5.7,
+        "passed": true
       },
       {
-        "holder_to_front_washer": 2.9405307237600877,
-        "front_washer_to_nut": 1.8154791271289705,
-        "bolt_head_to_rear_washer": 1.5715817249582926,
-        "rear_washer_to_wall": 2.940530723760046
+        "holder_to_bolt_head_mm3": 1.4679091673898514,
+        "motor_thread_engagement_mm": 5.7,
+        "passed": true
       }
     ],
-    "column_net_areas_mm2": [
-      108.48716784548466,
-      108.48716784548466,
-      108.48716784548466,
-      108.48716784548466
+    "mount_pattern_mm": [
+      31,
+      31
     ],
-    "minimum_bolt_hole_edge_web_mm": 3.3,
+    "side_wall_minimum_mm": 2.9,
+    "bearing_recess_to_bolt_bore_web_mm": 1.6203102167829713,
     "load_case_n": 4.44822,
     "nominal_outer_race_contact_area_mm2": 113.09733552923255,
     "nominal_average_seat_pressure_mpa": 0.03933090005334615,
-    "limitations": "Average contact pressure and rigid abutment checks do not establish plate bending strength, bolt preload, printed PETG layer strength, creep, fatigue, or tested load capacity."
+    "limitations": "Rigid abutment and nominal engagement checks do not establish motor thread strength/depth, plate bending, PETG layer strength, creep, fatigue, or tested capacity. Verify the actual motor permits 5.7 mm screw insertion; do not bottom out screws."
   },
   "mounting_flanges": {
     "count": 4,
     "pattern_mm": [
-      52,
+      31,
       31
     ],
     "continuous_column_length_mm": 30.299999999999997,
-    "overall_width_mm": 62,
-    "bolt": "M3x45 through bolt with front/rear washers and DIN 985 locknut",
+    "overall_width_mm": 43,
+    "bolt": "Four M3x40 shared holder/motor bolts; no extra holder fasteners",
     "bolt_insertion": [
       {
         "center_yz_mm": [
-          -26.0,
+          -15.5,
           26.5
         ],
-        "straight_rear_loading": true,
+        "captured_unthreading_mm": 6,
+        "motor_engagement_mm": 5.7,
         "passed": true
       },
       {
         "center_yz_mm": [
-          -26.0,
+          -15.5,
           57.5
         ],
-        "straight_rear_loading": true,
+        "captured_unthreading_mm": 6,
+        "motor_engagement_mm": 5.7,
         "passed": true
       },
       {
         "center_yz_mm": [
-          26.0,
+          15.5,
           26.5
         ],
-        "straight_rear_loading": true,
+        "captured_unthreading_mm": 6,
+        "motor_engagement_mm": 5.7,
         "passed": true
       },
       {
         "center_yz_mm": [
-          26.0,
+          15.5,
           57.5
         ],
-        "straight_rear_loading": true,
+        "captured_unthreading_mm": 6,
+        "motor_engagement_mm": 5.7,
         "passed": true
       }
     ]
   },
   "assembled_collisions": [],
-  "source_sha256": "9452da28b467e4439f83b610df43b5b694d463652d06fc3ae7de93d553a90485",
+  "source_sha256": "14396b58b4650056d8a168e1eb21c658e239a26583240096f9ecce9ace7a0880",
   "existing_screw_removed_mm3": 0.0,
   "addition_outside_bearing_ring_mm3": 0.0,
   "full_rotation_envelope_clear": true,
@@ -129,17 +128,17 @@
   "print_meshes": [
     {
       "file": "4_mm_nema17_wall.stl",
-      "triangles": 3828,
+      "triangles": 2132,
       "watertight": true,
       "consistently_oriented": true,
-      "volume_mm3": 11417.996480775582
+      "volume_mm3": 9067.177030532786
     },
     {
       "file": "bearing_holder.stl",
-      "triangles": 4576,
+      "triangles": 3442,
       "watertight": true,
       "consistently_oriented": true,
-      "volume_mm3": 20533.5578340709
+      "volume_mm3": 18036.740932668552
     },
     {
       "file": "printed_lead_screw_with_bearing_seat.stl",
