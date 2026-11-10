@@ -1,6 +1,12 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 31,
+  "revision": 32,
+  "carrierShoulders": {
+    "body_top_z_mm": 20,
+    "previous_top_z_mm": 24.5,
+    "lowered_mm": 4.5,
+    "bearing_seats_and_axles_preserved": true
+  },
   "motorLidBraces": {
     "count": 2,
     "minimum_underside_angle_degrees": 45,
@@ -565,7 +571,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
+  "modelSourceSha256": "d0b802adb5b9da15e1246e320a2a8fb7bc50f3c807874c42006f6e30a0dc40d0",
   "stations": [
     143.0,
     217.0

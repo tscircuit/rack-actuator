@@ -270,6 +270,26 @@ def validate():
  report['bearing_support_feet']={'shelf_underside_z_mm':28,'checks':feet,'passed':len(feet)==4 and all(q['passed'] for q in feet),'note':'The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports.'}
  print('Flush bearing-support undersides',report['bearing_support_feet']['passed'],flush=True)
  if not report['bearing_support_feet']['passed']:save();return report
+ # Only remove the raised blocks; the annular seats and all axle geometry stay.
+ legacy_carrier_body=shared_carrier(24.5)
+ added=carrier_print_without_pins.cut(legacy_carrier_body).Volume()
+ removed=legacy_carrier_body.cut(carrier_print_without_pins).Volume()
+ shoulders=[]
+ for bearing in bearings:
+  if bearing['kind']!='lower':continue
+  x=bearing['station'];cy=bearing['center'][1];sign=bearing['sign'];end=wide(16) if sign>0 else wide(-22)
+  ya,yb=sorted([cy+sign*5.2,end])
+  probe=rect(x-4.9,x+4.9,ya,yb,20.001,24.6)
+  shoulders.append(dict(station_x_mm=x,bearing_y_mm=cy,body_top_z_mm=20,remaining_bump_mm3=overlap(probe,carrier_print_without_pins)))
+ from OCP.BRepExtrema import BRepExtrema_DistShapeShape
+ clearances=[]
+ for setting in [0,.25,.5,.75,1]:
+  support=carrier_shape.translate((0,0,setting-1))
+  distance=BRepExtrema_DistShapeShape(support.wrapped,chassis_shape.wrapped);distance.Perform()
+  clearances.append(dict(adjustment_mm=setting,base_clearance_mm=distance.Value(),base_overlap_mm3=overlap(support,chassis_shape)))
+ report['carrier_shoulders']={'body_top_z_mm':20,'previous_top_z_mm':24.5,'lowered_mm':4.5,'unexpected_added_body_mm3':added,'removed_mm3':removed,'checks':shoulders,'base_clearances':clearances,'passed':added<.01 and removed>1 and all(q['remaining_bump_mm3']<.01 for q in shoulders) and all(q['base_overlap_mm3']<.01 for q in clearances),'note':'Only the tall support blocks are lowered to rail height. Circular inner-race lands, split axles, insert seats and adjustment positions are retained; stiffness and physical tolerances are not simulated.'}
+ print('Lowered carrier shoulders',report['carrier_shoulders']['passed'],flush=True)
+ if not report['carrier_shoulders']['passed']:save();return report
  # Adjustment is a rigid guided translation, not flexure deformation.
  adjustment_checks=[]
  for values in [(0,),(.25,),(.5,),(.75,),(1,)]:
@@ -438,5 +458,5 @@ def validate():
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
   report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
  report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=(not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['motor_lid_braces']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['output_bolt_access']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+ report['passed']=report['carrier_shoulders']['passed'] and (not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['motor_lid_braces']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['output_bolt_access']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report

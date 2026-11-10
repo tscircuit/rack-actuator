@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
-  "validation_source_sha256": "9c45c962e210b2f61cac8b3321fc2c0fa3bacb264f10e3554405cbec2b0095db",
+  "source_sha256": "d0b802adb5b9da15e1246e320a2a8fb7bc50f3c807874c42006f6e30a0dc40d0",
+  "validation_source_sha256": "ba03ce03be35f0b0d99185d279f8f2af0e12b689e54411eece71425cae9d31f1",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -1709,7 +1709,7 @@
     "lid_thickness_mm": 4,
     "lid_bottom_z_mm": 64,
     "lid_top_z_mm": 68,
-    "assembly_height_mm": 68.00000010000012,
+    "assembly_height_mm": 68.0000001,
     "original_height_limit_mm": 68,
     "external_mount_thread": "M3 short heat-set insert",
     "lid_open_bottom": true,
@@ -2545,6 +2545,56 @@
     ],
     "passed": true,
     "note": "The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports."
+  },
+  "carrier_shoulders": {
+    "body_top_z_mm": 20,
+    "previous_top_z_mm": 24.5,
+    "lowered_mm": 4.5,
+    "unexpected_added_body_mm3": 0.0,
+    "removed_mm3": 801.638207993184,
+    "checks": [
+      {
+        "station_x_mm": 93.0,
+        "bearing_y_mm": -1,
+        "body_top_z_mm": 20,
+        "remaining_bump_mm3": 0.0
+      },
+      {
+        "station_x_mm": 133.0,
+        "bearing_y_mm": 1,
+        "body_top_z_mm": 20,
+        "remaining_bump_mm3": 0.0
+      }
+    ],
+    "base_clearances": [
+      {
+        "adjustment_mm": 0,
+        "base_clearance_mm": 0.29999999999999716,
+        "base_overlap_mm3": 0.0
+      },
+      {
+        "adjustment_mm": 0.25,
+        "base_clearance_mm": 0.29999999999999716,
+        "base_overlap_mm3": 0.0
+      },
+      {
+        "adjustment_mm": 0.5,
+        "base_clearance_mm": 0.29999999999999716,
+        "base_overlap_mm3": 0.0
+      },
+      {
+        "adjustment_mm": 0.75,
+        "base_clearance_mm": 0.29999999999999716,
+        "base_overlap_mm3": 0.0
+      },
+      {
+        "adjustment_mm": 1,
+        "base_clearance_mm": 0.29999999999999716,
+        "base_overlap_mm3": 0.0
+      }
+    ],
+    "passed": true,
+    "note": "Only the tall support blocks are lowered to rail height. Circular inner-race lands, split axles, insert seats and adjustment positions are retained; stiffness and physical tolerances are not simulated."
   },
   "adjustable_bearings": {
     "count": 2,
@@ -3411,7 +3461,7 @@
     ],
     "outward_shift_per_side_mm": 0.0,
     "motor_and_screw_center_y_mm": 0,
-    "height_mm": 68.00000010000012,
+    "height_mm": 68.0000001,
     "passed": true
   },
   "kinematics": {
@@ -3489,10 +3539,10 @@
       },
       {
         "file": "shared_lower_bearing_carrier.stl",
-        "triangles": 8592,
+        "triangles": 8600,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 29423.33646773215
+        "volume_mm3": 28623.805600144715
       },
       {
         "file": "structural_mounting_lid.stl",
