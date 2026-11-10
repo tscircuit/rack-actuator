@@ -27,20 +27,23 @@ for x,label in [(17,'motor shaft'),(49,'T8 locking')]:
  cy=6.5 if x==49 else 5
  add(f'M3x12 {label} clamp bolt',bolt(1.45,12,2.75,3,(x,cy,34 if x==49 else 33)),'#94a3b8','rotor')
  add(f'M3 {label} clamp hex nut',hex_prism(5.5,2.4,(x,cy,35.5 if x==49 else 34.5)).cut(cyl(1.55,2.6,(x,cy,35.4 if x==49 else 34.4))),'#b7c8d5','rotor')
-# Compact flanges share the NEMA17 bolts, but stay inside the lid gussets.
-z_holder=rect(26.2,36.3,-20.5,20.5,21.5,62.5).cut(xcyl(17.5,10.1,26.2))
+# Four outboard full-depth columns and tie bolts; motor fasteners are separate.
+import importlib.util
+_hspec=importlib.util.spec_from_file_location('outward_holder',ROOT/'experiments/bearing-supported-screw/holder_geometry.py')
+_housing=importlib.util.module_from_spec(_hspec);_hspec.loader.exec_module(_housing)
+z_holder,z_holder_holes,z_holder_columns=_housing.make_holder(6,26.3,33.3,36.3)
+# Widen the motor-wall bearing surface without enlarging the base footprint.
+base=base.fuse(rect(0,6,-max(wide(26),40),max(wide(26),40),16,68)).cut(xcyl(11.3,8,-1))
+for y,z in motor_holes:base=base.cut(xcyl(1.7,8,-1,y,z))
+for i,(y,z) in enumerate(z_holder_holes):
+ base=base.cut(xcyl(1.7,8,-1,y,z)).cut(xcyl(4.5,9,-9,y,z))
+ add(f'M3x45 holder tie bolt {i+1}',bolt(1.45,45,2.75,3,(44.5,y,z),(-1,0,0)),'#94a3b8',explodeKind='holderTieBolt',side=1 if y>0 else -1)
+ add(f'M3 holder front washer {i+1}',ring(3.5,1.6,.5,(36.3,y,z),AXIS),'#b7c8d5',explodeKind='holderFrontWasher',side=1 if y>0 else -1)
+ add(f'M3 holder rear washer {i+1}',ring(3.5,1.6,.5,(-.5,y,z),AXIS),'#b7c8d5',explodeKind='holderRearHardware')
+ add(f'M3 holder locknut {i+1}',_housing.axial_locknut(36.8,y,z),'#b7c8d5',explodeKind='holderFrontWasher',side=1 if y>0 else -1)
 for y,z in motor_holes:
- sy,sz=math.copysign(1,y),math.copysign(1,z-42)
- ya,yb=sorted((sy*10,sy*20.5));za,zb=sorted((42+sz*10,42+sz*20.5))
- foot=cq.Workplane(obj=rect(6,12,ya,yb,za,zb)).edges('|X').fillet(1).val()
- ra,rb=sorted((42+sz*18.5,42+sz*20.5))
- z_holder=z_holder.fuse(foot,rect(11,26.3,ya,yb,ra,rb)).cut(xcyl(1.7,6,6,y,z))
-z_holder=z_holder.cut(xcyl(18.6,27.4,6))
-for y,z in motor_holes:
- ya,yb=sorted((math.copysign(11.5,y),math.copysign(21,y)))
- z_holder=z_holder.cut(rect(12,34.2,ya,yb,z-4.5,z+4.5)).cut(xcyl(3.5,24.3,12,y,z))
- add(f'M3x18 support motor bolt {y:g} {z:g}',bolt(1.45,18,2.75,3,(-6,y,z),AXIS),'#94a3b8',explodeKind='supportMotorBolt',side=1 if y>0 else -1)
-z_holder=z_holder.clean()
+ add(f'M3x12 separate motor bolt {y:g} {z:g}',bolt(1.45,12,2.75,3,(-6,y,z),AXIS),'#94a3b8',explodeKind='supportMotorBolt')
 add(SUPPORT_HOLDER_NAME,z_holder,'#39556c',printed=True,explodeKind='supportHousing')
+SUPPORT_6805.update(mount_pattern_mm=[52,31],mount_bolts='4 M3x45 through bolts, 8 washers, 4 DIN 985 locknuts',motor_bolts='4 M3x12, separate from holder',holder_outer_width_mm=62,continuous_columns=4)
 for name,ro,ri,x0,x1 in [('inner race',13.5,12.5,26.3,33.3),('outer race',18.5,17.5,26.3,33.3),('shield envelope',17.4,13.6,26.45,33.15)]:
  add('6805 '+name+' reference',xcyl(ro,x1-x0,x0).cut(xcyl(ri,x1-x0,x0)),'#a9bbc9','rotor' if name=='inner race' else 'fixed',explodeKind='supportBearing')

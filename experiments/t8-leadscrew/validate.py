@@ -62,7 +62,7 @@ def validate():
  print('Inside output-bolt access',report['output_bolt_access']['passed'],flush=True)
  if not report['output_bolt_access']['passed']:save();return report
  report['plastic_thread_seats']={'method':'Three axial rounded ribs at 120 degrees, with tapered entry. Unformed rib/shaft overlap is intentional and bounded to each verified rib solid. Thread forming and stripping torque are not simulated.',
-  'profiles':THREAD_PROFILES,'fastener_nuts':2 if Z_SUPPORT else 1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 14 if Z_SUPPORT else 10)}
+  'profiles':THREAD_PROFILES,'fastener_nuts':6 if Z_SUPPORT else 1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 14 if Z_SUPPORT else 10)}
  save();print('Three-ridge seats',report['plastic_thread_seats']['passed'],flush=True)
  if not report['plastic_thread_seats']['passed'] or not report['output_mount']['passed']:return report
  insert_checks=[];printed_carrier=by_name[CARRIER_NAME]['freeShape'];installed_carrier=by_name[CARRIER_NAME]['shape']
@@ -233,7 +233,7 @@ def validate():
   drilled=gusset.cut(ridge_hole(3,12,c,(0,0,-1)))
   expected=relieve_tracks(drilled) # Retain the existing, explicitly modeled carriage channels.
   missing=expected.cut(chassis_shape).Volume()
-  ya,yb=sorted([sign*wide(21),sign*q['motor_half']])
+  ya,yb=sorted([sign*q.get('inner_y',wide(21)),sign*q['motor_half']])
   root=rect(4.1,5.9,ya+.1,yb-.1,q['root_z']+2.1,59.9)
   root_missing=root.cut(chassis_shape).Volume()
   angles=[]
@@ -367,8 +367,8 @@ def validate():
  probes=[]
  # Extend the carriage to expose the two lower motor bolts. Their heads
  # still clear the retracted carriage by 1 mm in the assembled fit check.
- for y,z in motor_holes:probes.append(('motor at full extension',xcyl(1.5,22 if Z_SUPPORT else 20,15.1 if Z_SUPPORT else 9.1,y,z),STROKE))
- for y,z in motor_holes:probes.append(('motor key long leg at full extension',cyl(1.5,45,(31 if Z_SUPPORT else 29,y,z),(0,1 if y>0 else -1,0)),STROKE))
+ for y,z in ([] if Z_SUPPORT else motor_holes):probes.append(('motor at full extension',xcyl(1.5,22 if Z_SUPPORT else 20,15.1 if Z_SUPPORT else 9.1,y,z),STROKE))
+ for y,z in ([] if Z_SUPPORT else motor_holes):probes.append(('motor key long leg at full extension',cyl(1.5,45,(31 if Z_SUPPORT else 29,y,z),(0,1 if y>0 else -1,0)),STROKE))
  for travel in [0,STROKE]:
   for y,z in nut_holes:probes.append(('flange',xcyl(1.5,max(100,EXIT_X-NUT_HOME+20),NUT_HOME+6.6+travel,y,z),travel))
   for x,y in LID_FIXINGS:probes.append(('lid screw',cyl(1.2,55,(x,y,67.95)),travel))

@@ -1,88 +1,81 @@
-6805 bearing-supported screw — independent prototype, revision 3
-Units: mm. Based on the existing 40 mm travel printed lead screw (tip X152).
+6805 bearing-supported screw — outward through-bolt holder, revision 4
+Units: mm. Independent assembly using the original 40 mm printed screw.
 
-LAYOUT
-The bearing sits in the MOTOR-FACING recess of the holder. The screw is inserted
-from the motor side: its threaded end passes through the bearing and holder,
-until the added shoulder contacts the inner race. The holder's forward lip
-supports the outer race. There is no bearing retaining cap, steel circlip,
-inner-race spacer, cap screw or cap nut.
+WHAT CHANGED
+The old inward feet, thin ribs and access slots are removed. Four full-depth
+mounting columns project outside the 43 mm bearing-seat body. Their through
+holes form a 52 x 31 mm rectangle, separate from the motor's 31 x 31 mm pattern.
+The front plate has an uninterrupted 360-degree outer-race shoulder. Long steel
+bolts, front and rear washers and front-facing locknuts tie it to the wall.
+The holder is 62 mm wide and still projects 30.3 mm. The wall is now 64 x 52 x
+4 mm, with both the original NEMA17 holes and four external support holes.
+The original screw, bearing journal, shaft clamp and axial positions are retained.
 
-The holder projects 30.3 mm from the wall's front face, 1 mm less than revision 1.
-The wall remains 52 x 52 x 4 mm, with a 31 x 31 mm NEMA17 hole pattern.
-Motor and screw retain their original relative positions. Existing actuator
-parts are unchanged; this is a separate assembly without a carriage.
-
-PRINTED PARTS
-1. 4 mm NEMA17 wall, with M3 clearance holes.
-2. Bearing holder: motor-facing recess, forward lip and four exposed flanges.
-3. Existing printed screw plus additive bearing journal and shoulder.
+LOAD PATH
+For load pulling the screw AWAY FROM THE MOTOR:
+screw shoulder -> inner race -> 6805 -> continuous outer-race lip -> front
+plate/washer -> front locknut -> steel through-bolt -> rear washer -> wall.
+The bolted columns replace the thin cantilever ribs. The bearing journal is
+24.9 mm diameter; the shoulder OD is 27 mm; the housing abutment bore is 35 mm.
+Those shoulder dimensions follow the NSK 6805 mounting recommendations.
+This remains a ONE-DIRECTION thrust support. There is no reverse retaining cap
+or circlip. Mount it so gravity pulls the screw toward its tip. Reverse axial
+retention still depends on the coupling. A bearing does not prevent back-driving.
 
 HARDWARE
-1 NEMA17 motor: 5 mm D shaft, 4.5 mm across flat, 24 mm shaft projection.
-1 6805 bearing, 25 mm bore x 37 mm OD x 7 mm width.
-4 M3x16 socket-head screws for holder + wall + motor (6 mm engagement).
-1 M3x12 socket-head screw + M3 hex nut for the original shaft clamp.
-Check actual motor thread depth before using 6 mm engagement. Tighten without
-crushing PETG or forcing axial preload into the motor through the coupling.
-
-FITS
-Printed journal: diameter 24.9, X24.3..31.3.
-Shoulder: diameter 27, X22.3..24.3; contacts only the inner race.
-Original shaft bore, clamp split and bolt/nut pockets stay clear. The split
-continues through the added ring to X26, preserving the coupling's opening.
-Holder body: X24.2..34.3. Rear recess: diameter 37.2, ending at X31.4.
-Bearing: X24.3..31.3; 0.1 mm nominal clearance to the forward retaining lip.
-Front lip: 35 mm opening; contacts only the outer race.
-The rear bearing-loading path stays clear. Four rounded 6 mm-thick mounting
-flanges expose the M3 seats. Support ribs move above/below the screw heads.
-9 mm-high windows open to the left/right sides, so screws can be side-loaded
-before sliding axially into their holes. The 52 mm width and 31 mm motor hole
-pattern are unchanged. Continuous clearance checks allow 0.5 mm around heads.
-All original screw material is retained. The ring covers the first 1.3 mm
-of the original helical region. This is not a drop-in carriage retrofit.
+1 NEMA17 motor, 5 mm D shaft / 4.5 mm flat-to-opposite-side.
+1 6805 bearing: 25 x 37 x 7 mm.
+4 M3x45 socket-head steel holder bolts, loaded from behind the wall.
+8 M3 flat washers: nominal OD 7 mm / ID 3.2 mm / thickness 0.5 mm.
+4 M3 DIN 985 nylon-insert locknuts on the FRONT of the holder.
+4 M3x10 socket-head motor screws (6 mm engagement into the motor).
+Original M3x12 shaft-clamp screw and M3 hex nut.
+Use the actual motor's permitted screw engagement. Locknuts resist loosening;
+this is not a substitute for checking PETG creep and clamp relaxation.
+The same holder geometry fits the revised T8 Z variants, translated by 2 mm in
+assembly coordinates. Their 6 mm base wall uses M3x12 motor screws.
 
 ASSEMBLY
-1. Seat the bearing in the holder's rear, motor-facing recess.
-2. Feed the screw's threaded end through the bearing and holder FROM THE MOTOR
-   SIDE until the shoulder rests against the bearing's inner race. Fit the
-   original coupling nut and loose clamp bolt.
-3. Fit the flat 4 mm wall and motor, engaging the D shaft in the coupling.
-4. Side-load each M3x16 screw through the open window: its tip starts at the
-   front of the flange (X10), with the head at X26. Slide it axially toward the
-   motor to engage the flange, wall and motor hole. Tighten using a straight
-   driver through the open window. Repeat for the other three flanges.
-5. Tighten the shaft clamp through the open side of the holder. Check free
-   rotation and bearing seating before applying load.
+1. Mount the motor to the 4 mm wall with its four separate M3x10 screws.
+2. Seat the 6805 in the holder's motor-facing recess, then feed the screw's
+   threaded end through it from the motor side until the shoulder meets the
+   inner race. Fit the coupling bolt and nut loosely.
+3. Slide this module onto the D shaft, against the wall.
+4. Insert the four M3x45 bolts with rear washers from the motor side of the
+   wall. Add the front washers and locknuts. The nuts are entirely outside
+   the bearing-seat body and can be reached with a straight socket.
+5. Tighten evenly without crushing PETG. Gently seat the screw toward its tip
+   so the outer race touches the housing lip, then tighten the shaft clamp
+   in this seated position without preloading the motor shaft. Check rotation.
+Loosen the coupling before disassembly. Remove front nuts/washers and withdraw
+bolts rearward, slide the module 30 mm off the shaft, and lift it clear. Motor
+screws are then accessible. The screw and bearing leave the holder from its rear.
 
-EXPLODED VIEW / DISASSEMBLY
-Loosen the shaft clamp first. Withdraw each motor screw 16 mm axially, then
-move it out through its side window. Remove the motor and wall. Withdraw
-THE SCREW toward the motor side through the stationary bearing. After the screw
-clears it, remove the bearing from the rear recess. The bearing does not pass
-through the front lip. The clamp hardware remains on the screw in the viewer.
+PRINTING
+Print the holder with its FRONT bearing face on the bed, columns pointing up.
+The vertical through holes and open recess avoid internal support pockets.
+Print the wall flat. STLs retain assembly coordinates; orient and drop to bed.
+The screw keeps its original print orientation/profile.
 
-PRINT / CHECK
-Wall: broad face on bed. Holder: front face on bed, standoffs upward.
-Screw: use the existing screw printing orientation/profile.
-STLs have assembly coordinates; use the slicer's place-on-face/drop-to-bed tools.
-No sliced print profile or printer upload is included.
-CAD checks cover valid single solids, watertight oriented print meshes, assembled
-intersections, full rotational envelopes, continuous bolt insertion envelopes,
-straight-driver access, rear bearing passage,
-original screw preservation and 41 sampled disassembly poses.
+VALIDATION AND LIMITS
+Checks cover valid solids/meshes, rotation, bearing loading, complete columns,
+continuous outer-race shoulder, bolt loading, the abutments along the axial load
+path, and 41 sampled rigid disassembly poses. The earlier 1 lb (4.448 N) load is
+an input, not a tested rating. Average seat pressure is about 0.039 MPa; that is
+not a stress analysis of the flange, wall or printed layer interfaces. Physical
+proof-load, creep and vibration testing are still required before assigning a
+working-load rating. Bearing internal geometry is a reference envelope.
 
-The shoulder/bearing/holder load path supports thrust TOWARD THE SCREW TIP.
-There is no independent reverse-direction retainer; reverse retention relies
-on the motor coupling. About 1 lb = 4.45 N static is the intended input, not a
-physically tested load rating. PETG creep and vibration require testing.
-This bearing does not prevent back-driving with motor power removed.
-
-DIMENSION SOURCE
+REFERENCES
+NSK 6805 dimensions and mounting shoulders:
 https://www.nsk.com/engineering/6805-dgbb-sr.html
+Four-bolt outward flange arrangement reference (not a rating for this print):
+https://www.skf.com/si/productinfo/productid-UCF%20206%2FH
+DIN 985 locknut dimensions:
+https://www.westfieldfasteners.co.uk/Standards/Nut-HexNy-M.html
 
 REBUILD
-Extract the bundle; install CadQuery 2.7; run:
-python experiments/bearing-supported-screw/model.py
-python experiments/bearing-supported-screw/check_assembly.py
-The referenced legacy generator is read via AST, not executed or modified.
+With CadQuery 2.7, run experiments/bearing-supported-screw/model.py then
+experiments/bearing-supported-screw/check_assembly.py. holder_geometry.py is
+shared with the optional T8 Z support. The original screw is extracted from
+its generator via AST and preserved exactly apart from its existing added ring.

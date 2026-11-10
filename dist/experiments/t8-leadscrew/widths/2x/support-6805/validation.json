@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "36ca34b51216438215d98e9444ea077372c3a6a2536ed32954c5eb82a1c73627",
-  "validation_source_sha256": "608a54ff1279605627e936f6e2f10f741ecfd44247975c4a3f1a044d71972d3d",
+  "source_sha256": "dc1bc295ecccc5d3ae8f9f66536b329c90dfb221a0dca28c802175cfefe38dcd",
+  "validation_source_sha256": "ba46d1c9bcb4f591cbccfeda75c8b37dc73b38e2e3325d9c90b763943a5c2dd0",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -229,7 +229,7 @@
         "lead_in": 0.6
       }
     },
-    "fastener_nuts": 2,
+    "fastener_nuts": 6,
     "joints": [
       {
         "host": "6805 T8 captured-nut drive hub",
@@ -689,6 +689,54 @@
   "assembled_collisions": [],
   "support_6805": {
     "passed": true,
+    "structural_load_path": {
+      "passed": true,
+      "direction": "+X, screw tip away from motor",
+      "continuous_lip_missing_mm3": 0.0,
+      "continuous_columns_missing_mm3": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "abutment_overlap_checks_mm3": [
+        {
+          "holder_to_front_washer": 2.940530723760088,
+          "front_washer_to_nut": 1.8154791271289756,
+          "bolt_head_to_rear_washer": 1.5715817249582926,
+          "rear_washer_to_wall": 2.940530723760046
+        },
+        {
+          "holder_to_front_washer": 2.9405307237600877,
+          "front_washer_to_nut": 1.8154791271289756,
+          "bolt_head_to_rear_washer": 1.5715817249582926,
+          "rear_washer_to_wall": 2.9405307237600455
+        },
+        {
+          "holder_to_front_washer": 2.940530723760088,
+          "front_washer_to_nut": 1.8154791271289756,
+          "bolt_head_to_rear_washer": 1.5715817249582926,
+          "rear_washer_to_wall": 2.940530723760046
+        },
+        {
+          "holder_to_front_washer": 2.9405307237600877,
+          "front_washer_to_nut": 1.8154791271289756,
+          "bolt_head_to_rear_washer": 1.5715817249582926,
+          "rear_washer_to_wall": 2.9405307237600455
+        }
+      ],
+      "column_net_areas_mm2": [
+        108.48716784548468,
+        108.48716784548466,
+        108.48716784548466,
+        108.48716784548466
+      ],
+      "minimum_bolt_hole_edge_web_mm": 3.3,
+      "load_case_n": 4.44822,
+      "nominal_outer_race_contact_area_mm2": 113.09733552923255,
+      "nominal_average_seat_pressure_mpa": 0.03933090005334615,
+      "limitations": "Average contact pressure and rigid abutment checks do not establish plate bending strength, bolt preload, printed PETG layer strength, creep, fatigue, or tested load capacity."
+    },
     "checks": {
       "rear_bearing_loading_clear": true,
       "journal_bore_clear": true,
@@ -711,10 +759,15 @@
       "nut_bolt_driver_4": true,
       "rotation_envelope_clear": true,
       "mounting_bolt_loading_clear": true,
+      "separate_motor_screw_access": true,
+      "continuous_outer_race_lip": true,
+      "full_depth_mount_columns": true,
+      "outward_mount_bosses": true,
       "motor shaft_bolt_access": true,
       "motor shaft_nut_access": true,
       "T8 locking_bolt_access": true,
-      "T8 locking_nut_access": true
+      "T8 locking_nut_access": true,
+      "structural_abutment_path": true
     },
     "rotation_envelope": [
       {
@@ -742,36 +795,37 @@
         "overlap_mm3": 0.0
       }
     ],
-    "motor_bolt_insertion": [
+    "holder_bolt_insertion": [
       {
         "center_yz_mm": [
-          -15.5,
+          -26.0,
           26.5
         ],
         "collisions": []
       },
       {
         "center_yz_mm": [
-          -15.5,
+          -26.0,
           57.5
         ],
         "collisions": []
       },
       {
         "center_yz_mm": [
-          15.5,
+          26.0,
           26.5
         ],
         "collisions": []
       },
       {
         "center_yz_mm": [
-          15.5,
+          26.0,
           57.5
         ],
         "collisions": []
       }
     ],
+    "motor_service": "Remove support module before accessing the separate NEMA17 screws",
     "specification": {
       "bearing_mm": [
         25,
@@ -800,9 +854,17 @@
       "additional_t8_nuts": 1,
       "load_direction": "+X toward screw tip",
       "recess_opening": "motor-facing",
-      "reverse_retainer": false
+      "reverse_retainer": false,
+      "mount_pattern_mm": [
+        52,
+        31
+      ],
+      "mount_bolts": "4 M3x45 through bolts, 8 washers, 4 DIN 985 locknuts",
+      "motor_bolts": "4 M3x12, separate from holder",
+      "holder_outer_width_mm": 62,
+      "continuous_columns": 4
     },
-    "load_path": "Rod \u2192 captured T8 flange nut \u2192 four M3 bolts / printed hub \u2192 inner-race shoulder \u2192 6805 \u2192 housing lip \u2192 four NEMA17 bolts / base",
+    "load_path": "Rod \u2192 captured T8 flange nut \u2192 four M3 bolts / printed hub \u2192 inner-race shoulder \u2192 6805 \u2192 continuous housing lip \u2192 front flange / washers \u2192 four outboard M3 through-bolts / rear washers \u2192 base wall",
     "service_travel_mm": 40,
     "limitations": [
       "Geometry only; no validated PETG creep, vibration endurance or axial load rating.",
@@ -4096,24 +4158,24 @@
   },
   "base_lightening": {
     "floor": {
-      "before_mm3": 261723.63752933685,
-      "after_mm3": 244904.08020544267,
-      "removed_mm3": 16819.557323894172,
-      "reduction_percent": 6.426457114332615,
+      "before_mm3": 261496.50976511516,
+      "after_mm3": 244676.9524404204,
+      "removed_mm3": 16819.55732469476,
+      "reduction_percent": 6.43203893612295,
       "cutout_count": 10
     },
     "sides": {
-      "before_mm3": 244904.08020544267,
-      "after_mm3": 240776.08021726832,
-      "removed_mm3": 4127.999988174357,
-      "reduction_percent": 1.6855578660475978,
+      "before_mm3": 244676.9524404204,
+      "after_mm3": 240548.95245255134,
+      "removed_mm3": 4127.999987869058,
+      "reduction_percent": 1.687122528990236,
       "cutout_count": 10
     },
     "total": {
-      "before_mm3": 261723.63752933685,
-      "after_mm3": 240776.08021726832,
-      "removed_mm3": 20947.55731206853,
-      "reduction_percent": 8.003693326981404,
+      "before_mm3": 261496.50976511516,
+      "after_mm3": 240548.95245255134,
+      "removed_mm3": 20947.55731256382,
+      "reduction_percent": 8.010645087148433,
       "cutout_count": 20
     },
     "protected_supports": [
@@ -5413,7 +5475,7 @@
     "passed": true
   },
   "tool_access": {
-    "probe_count": 34,
+    "probe_count": 26,
     "collisions": [],
     "passed": true
   },
@@ -5843,17 +5905,17 @@
       },
       {
         "file": "6805_flanged_bearing_holder.stl",
-        "triangles": 5806,
+        "triangles": 4576,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 6056.27950081082
+        "volume_mm3": 20533.557596266215
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 42068,
+        "triangles": 43944,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 241585.24704218947
+        "volume_mm3": 241358.25760379896
       },
       {
         "file": "shared_lower_bearing_carrier.stl",

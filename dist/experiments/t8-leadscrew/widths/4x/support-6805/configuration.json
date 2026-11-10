@@ -1,6 +1,6 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 35,
+  "revision": 36,
   "screwSupport": "6805",
   "support6805": {
     "bearing_mm": [
@@ -30,7 +30,15 @@
     "additional_t8_nuts": 1,
     "load_direction": "+X toward screw tip",
     "recess_opening": "motor-facing",
-    "reverse_retainer": false
+    "reverse_retainer": false,
+    "mount_pattern_mm": [
+      52,
+      31
+    ],
+    "mount_bolts": "4 M3x45 through bolts, 8 washers, 4 DIN 985 locknuts",
+    "motor_bolts": "4 M3x12, separate from holder",
+    "holder_outer_width_mm": 62,
+    "continuous_columns": 4
   },
   "carrierShoulders": {
     "body_top_z_mm": 21,
@@ -575,24 +583,24 @@
   "shaftClamp": null,
   "lightening": {
     "base_floor": {
-      "before_mm3": 363753.461726034,
-      "after_mm3": 335742.9311105556,
-      "removed_mm3": 28010.530615478405,
-      "reduction_percent": 7.700416233172491,
+      "before_mm3": 363526.3339598309,
+      "after_mm3": 335515.8033440672,
+      "removed_mm3": 28010.53061576374,
+      "reduction_percent": 7.705227379444499,
       "cutout_count": 18
     },
     "base_sides": {
-      "before_mm3": 335742.9311105556,
-      "after_mm3": 330026.1311173582,
-      "removed_mm3": 5716.799993197375,
-      "reduction_percent": 1.702731305254171,
+      "before_mm3": 335515.8033440672,
+      "after_mm3": 329799.0033515156,
+      "removed_mm3": 5716.799992551561,
+      "reduction_percent": 1.7038839707615965,
       "cutout_count": 14
     },
     "base": {
-      "before_mm3": 363753.461726034,
-      "after_mm3": 330026.1311173582,
-      "removed_mm3": 33727.33060867578,
-      "reduction_percent": 9.272030140589559,
+      "before_mm3": 363526.3339598309,
+      "after_mm3": 329799.0033515156,
+      "removed_mm3": 33727.3306083153,
+      "reduction_percent": 9.277823215977007,
       "cutout_count": 32
     },
     "carriage": {
@@ -630,7 +638,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "36ca34b51216438215d98e9444ea077372c3a6a2536ed32954c5eb82a1c73627",
+  "modelSourceSha256": "dc1bc295ecccc5d3ae8f9f66536b329c90dfb221a0dca28c802175cfefe38dcd",
   "stations": [
     103.0,
     143.0

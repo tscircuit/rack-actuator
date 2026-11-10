@@ -1,51 +1,99 @@
 {
   "passed": true,
+  "structural_load_path": {
+    "passed": true,
+    "direction": "+X, screw tip away from motor",
+    "continuous_lip_missing_mm3": 0.0,
+    "continuous_columns_missing_mm3": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "abutment_overlap_checks_mm3": [
+      {
+        "holder_to_front_washer": 2.940530723760088,
+        "front_washer_to_nut": 1.815479127128971,
+        "bolt_head_to_rear_washer": 1.5715817249582926,
+        "rear_washer_to_wall": 2.9405307237600464
+      },
+      {
+        "holder_to_front_washer": 2.9405307237600877,
+        "front_washer_to_nut": 1.8154791271289705,
+        "bolt_head_to_rear_washer": 1.5715817249582926,
+        "rear_washer_to_wall": 2.940530723760046
+      },
+      {
+        "holder_to_front_washer": 2.940530723760088,
+        "front_washer_to_nut": 1.8154791271289705,
+        "bolt_head_to_rear_washer": 1.5715817249582926,
+        "rear_washer_to_wall": 2.9405307237600464
+      },
+      {
+        "holder_to_front_washer": 2.9405307237600877,
+        "front_washer_to_nut": 1.8154791271289705,
+        "bolt_head_to_rear_washer": 1.5715817249582926,
+        "rear_washer_to_wall": 2.940530723760046
+      }
+    ],
+    "column_net_areas_mm2": [
+      108.48716784548466,
+      108.48716784548466,
+      108.48716784548466,
+      108.48716784548466
+    ],
+    "minimum_bolt_hole_edge_web_mm": 3.3,
+    "load_case_n": 4.44822,
+    "nominal_outer_race_contact_area_mm2": 113.09733552923255,
+    "nominal_average_seat_pressure_mpa": 0.03933090005334615,
+    "limitations": "Average contact pressure and rigid abutment checks do not establish plate bending strength, bolt preload, printed PETG layer strength, creep, fatigue, or tested load capacity."
+  },
   "mounting_flanges": {
     "count": 4,
-    "thickness_mm": 6,
-    "side_window_height_mm": 9,
-    "overall_width_mm": 52,
+    "pattern_mm": [
+      52,
+      31
+    ],
+    "continuous_column_length_mm": 30.299999999999997,
+    "overall_width_mm": 62,
+    "bolt": "M3x45 through bolt with front/rear washers and DIN 985 locknut",
     "bolt_insertion": [
       {
         "center_yz_mm": [
-          -15.5,
+          -26.0,
           26.5
         ],
-        "lateral_head_clearance_mm": 0.5,
-        "axial_then_lateral_removal": true,
+        "straight_rear_loading": true,
         "passed": true
       },
       {
         "center_yz_mm": [
-          -15.5,
+          -26.0,
           57.5
         ],
-        "lateral_head_clearance_mm": 0.5,
-        "axial_then_lateral_removal": true,
+        "straight_rear_loading": true,
         "passed": true
       },
       {
         "center_yz_mm": [
-          15.5,
+          26.0,
           26.5
         ],
-        "lateral_head_clearance_mm": 0.5,
-        "axial_then_lateral_removal": true,
+        "straight_rear_loading": true,
         "passed": true
       },
       {
         "center_yz_mm": [
-          15.5,
+          26.0,
           57.5
         ],
-        "lateral_head_clearance_mm": 0.5,
-        "axial_then_lateral_removal": true,
+        "straight_rear_loading": true,
         "passed": true
       }
     ]
   },
   "assembled_collisions": [],
-  "source_sha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
+  "source_sha256": "9452da28b467e4439f83b610df43b5b694d463652d06fc3ae7de93d553a90485",
   "existing_screw_removed_mm3": 0.0,
   "addition_outside_bearing_ring_mm3": 0.0,
   "full_rotation_envelope_clear": true,
@@ -81,17 +129,17 @@
   "print_meshes": [
     {
       "file": "4_mm_nema17_wall.stl",
-      "triangles": 2132,
+      "triangles": 3828,
       "watertight": true,
       "consistently_oriented": true,
-      "volume_mm3": 9067.177030532786
+      "volume_mm3": 11417.996480775582
     },
     {
       "file": "bearing_holder.stl",
-      "triangles": 5864,
+      "triangles": 4576,
       "watertight": true,
       "consistently_oriented": true,
-      "volume_mm3": 22191.014174420834
+      "volume_mm3": 20533.5578340709
     },
     {
       "file": "printed_lead_screw_with_bearing_seat.stl",
