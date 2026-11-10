@@ -3,146 +3,170 @@
   "poses": [
     {
       "explosion_percent": 0.0,
-      "exact_intersection_pairs": 67
+      "exact_intersection_pairs": 37
     },
     {
-      "explosion_percent": 3.125,
-      "exact_intersection_pairs": 51
+      "explosion_percent": 2.5,
+      "exact_intersection_pairs": 41
     },
     {
-      "explosion_percent": 6.25,
-      "exact_intersection_pairs": 51
+      "explosion_percent": 5.0,
+      "exact_intersection_pairs": 41
     },
     {
-      "explosion_percent": 9.375,
-      "exact_intersection_pairs": 51
+      "explosion_percent": 7.5,
+      "exact_intersection_pairs": 25
+    },
+    {
+      "explosion_percent": 10.0,
+      "exact_intersection_pairs": 25
     },
     {
       "explosion_percent": 12.5,
-      "exact_intersection_pairs": 51
+      "exact_intersection_pairs": 25
     },
     {
-      "explosion_percent": 15.625,
-      "exact_intersection_pairs": 49
+      "explosion_percent": 15.0,
+      "exact_intersection_pairs": 25
     },
     {
-      "explosion_percent": 18.75,
-      "exact_intersection_pairs": 48
+      "explosion_percent": 17.5,
+      "exact_intersection_pairs": 25
     },
     {
-      "explosion_percent": 21.875,
-      "exact_intersection_pairs": 48
+      "explosion_percent": 20.0,
+      "exact_intersection_pairs": 25
+    },
+    {
+      "explosion_percent": 22.5,
+      "exact_intersection_pairs": 20
     },
     {
       "explosion_percent": 25.0,
-      "exact_intersection_pairs": 48
-    },
-    {
-      "explosion_percent": 26.25,
-      "exact_intersection_pairs": 48
+      "exact_intersection_pairs": 20
     },
     {
       "explosion_percent": 27.500000000000004,
-      "exact_intersection_pairs": 48
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 28.125,
-      "exact_intersection_pairs": 48
+      "explosion_percent": 30.0,
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 31.25,
-      "exact_intersection_pairs": 48
+      "explosion_percent": 32.5,
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 34.375,
-      "exact_intersection_pairs": 47
+      "explosion_percent": 35.0,
+      "exact_intersection_pairs": 20
     },
     {
       "explosion_percent": 37.5,
-      "exact_intersection_pairs": 47
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 40.625,
-      "exact_intersection_pairs": 39
+      "explosion_percent": 40.0,
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 43.75,
-      "exact_intersection_pairs": 39
+      "explosion_percent": 42.5,
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 46.875,
-      "exact_intersection_pairs": 35
+      "explosion_percent": 45.0,
+      "exact_intersection_pairs": 20
+    },
+    {
+      "explosion_percent": 47.5,
+      "exact_intersection_pairs": 20
     },
     {
       "explosion_percent": 50.0,
-      "exact_intersection_pairs": 35
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 53.125,
-      "exact_intersection_pairs": 23
+      "explosion_percent": 52.5,
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 56.25,
-      "exact_intersection_pairs": 19
+      "explosion_percent": 55.00000000000001,
+      "exact_intersection_pairs": 20
     },
     {
-      "explosion_percent": 59.375,
-      "exact_intersection_pairs": 19
+      "explosion_percent": 57.49999999999999,
+      "exact_intersection_pairs": 20
+    },
+    {
+      "explosion_percent": 60.0,
+      "exact_intersection_pairs": 20
     },
     {
       "explosion_percent": 62.5,
-      "exact_intersection_pairs": 19
+      "exact_intersection_pairs": 18
     },
     {
-      "explosion_percent": 65.625,
-      "exact_intersection_pairs": 15
-    },
-    {
-      "explosion_percent": 68.75,
+      "explosion_percent": 65.0,
       "exact_intersection_pairs": 14
     },
     {
-      "explosion_percent": 71.875,
+      "explosion_percent": 67.5,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 70.0,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 72.5,
       "exact_intersection_pairs": 14
     },
     {
       "explosion_percent": 75.0,
-      "exact_intersection_pairs": 14
+      "exact_intersection_pairs": 11
     },
     {
-      "explosion_percent": 78.125,
-      "exact_intersection_pairs": 14
+      "explosion_percent": 77.5,
+      "exact_intersection_pairs": 10
     },
     {
-      "explosion_percent": 81.25,
-      "exact_intersection_pairs": 14
+      "explosion_percent": 80.0,
+      "exact_intersection_pairs": 10
     },
     {
-      "explosion_percent": 84.375,
-      "exact_intersection_pairs": 14
+      "explosion_percent": 82.5,
+      "exact_intersection_pairs": 10
+    },
+    {
+      "explosion_percent": 85.0,
+      "exact_intersection_pairs": 10
     },
     {
       "explosion_percent": 87.5,
-      "exact_intersection_pairs": 14
+      "exact_intersection_pairs": 10
     },
     {
-      "explosion_percent": 90.625,
-      "exact_intersection_pairs": 14
+      "explosion_percent": 90.0,
+      "exact_intersection_pairs": 7
     },
     {
-      "explosion_percent": 93.75,
-      "exact_intersection_pairs": 11
+      "explosion_percent": 92.5,
+      "exact_intersection_pairs": 7
     },
     {
-      "explosion_percent": 96.875,
-      "exact_intersection_pairs": 11
+      "explosion_percent": 95.0,
+      "exact_intersection_pairs": 7
+    },
+    {
+      "explosion_percent": 97.5,
+      "exact_intersection_pairs": 7
     },
     {
       "explosion_percent": 100.0,
-      "exact_intersection_pairs": 14
+      "exact_intersection_pairs": 7
     }
   ],
   "collisions": [],
-  "circlip_expansion": "Illustrative radial 6% expansion before axial withdrawal; not a stress/force simulation.",
+  "sequence": "Motor bolts, motor, wall, screw withdrawn through the bearing toward the motor side, then bearing withdrawn from the motor-facing recess.",
   "scope": "Sampled rigid disassembly poses, not a continuous swept-volume proof."
 }
