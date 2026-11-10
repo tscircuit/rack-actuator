@@ -2,7 +2,7 @@
 def validate():
  import itertools,time
  import numpy as np
- report={'passed':False,'units':'mm','intersection_tolerance_mm3':.01,'source_sha256':hashlib.sha256((ROOT/'experiments/t8-leadscrew/model.py').read_bytes()).hexdigest(),'validation_source_sha256':hashlib.sha256((ROOT/'experiments/t8-leadscrew/validate.py').read_bytes()).hexdigest()}
+ report={'passed':False,'units':'mm','intersection_tolerance_mm3':.01,'source_sha256':model_source_hash(),'validation_source_sha256':hashlib.sha256((ROOT/'experiments/t8-leadscrew/validate.py').read_bytes()).hexdigest()}
  def save(): (OUT/'validation.json').write_text(json.dumps(report,indent=2))
  # Only screw/rib intersections are intentional. Verify the actual intersection
  # is confined to those three ribs; never waive an entire fastener/host pair.
@@ -62,7 +62,7 @@ def validate():
  print('Inside output-bolt access',report['output_bolt_access']['passed'],flush=True)
  if not report['output_bolt_access']['passed']:save();return report
  report['plastic_thread_seats']={'method':'Three axial rounded ribs at 120 degrees, with tapered entry. Unformed rib/shaft overlap is intentional and bounded to each verified rib solid. Thread forming and stripping torque are not simulated.',
-  'profiles':THREAD_PROFILES,'fastener_nuts':1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 10)}
+  'profiles':THREAD_PROFILES,'fastener_nuts':2 if Z_SUPPORT else 1 if PRINTED else 0,'joints':joints,'passed':all(q['passed'] for q in joints) and len(joints)==(6 if PRINTED else 14 if Z_SUPPORT else 10)}
  save();print('Three-ridge seats',report['plastic_thread_seats']['passed'],flush=True)
  if not report['plastic_thread_seats']['passed'] or not report['output_mount']['passed']:return report
  insert_checks=[];printed_carrier=by_name[CARRIER_NAME]['freeShape'];installed_carrier=by_name[CARRIER_NAME]['shape']
@@ -83,6 +83,11 @@ def validate():
   if v>.01:collisions.append({'parts':[a['name'],b['name']],'overlap_mm3':v})
  report['assembled_collisions']=collisions;save();print('Static collisions',collisions,flush=True)
  if collisions:return report
+ if Z_SUPPORT:
+  exec(compile((ROOT/'experiments/t8-leadscrew/check_support_6805.py').read_text(),'check-t8-6805','exec'),globals())
+  report['support_6805']=check_support_6805(by_name)
+  print('6805 load path / fits / rotation',report['support_6805']['passed'],flush=True)
+  if not report['support_6805']['passed']:save();return report
  if PRINTED:
   host=by_name['Printed 20 mm lead screw with integral shaft clamp']['shape'];nut=by_name['M3 shaft clamp hex nut']['shape'];clamp_bolt=by_name['M3x12 shaft clamp bolt']['shape']
   shaft_fit=shaft.intersect(rect(9,24,-4,4,38,46))
@@ -358,19 +363,21 @@ def validate():
   n=np.array(q['normal']);r=np.array(q['contact_mm']);r[2]-=SCREW_Z
   torque=np.cross(r,n);rows.append([n[1],n[2],*torque])
  constraint_rank=int(np.linalg.matrix_rank(np.array(rows)))
- report['guidance']={'screw_axis_yz_mm':[0,SCREW_Z],'section_reference_yz_mm':[0,SCREW_Z],'width_multiple':WIDTH,'external_screw_bearings':0,'bearing_mount':'fixed base','carriage_type':'moving chamfered tube with two integral threaded bands' if PRINTED else 'moving hollow triangular tube with internal flange nut','transverse_constraint_rank':constraint_rank,'fully_constrained':True,'note':'At nominal contact, the two triangles provide rank-5 constraint, leaving X translation free. This is not a stiffness or load rating.','lower_contact_y_mm':[lower_positions(x) for x in STATIONS],'bearing_count':len(bearings),'bearing_type':'625ZZ, 5x16x5','station_count':2,'bearings_per_station':len(bearings)//2,'station_spacing_mm':STATIONS[-1]-STATIONS[0],'contacts':contacts,'passed':constraint_rank==5 and STATIONS[1]-STATIONS[0]>=40 and all(q['plane_error_mm']<1e-7 and q['rear_running_face_margin_mm']>=1-1e-7 and q['front_end_margin_at_retraction_mm']>=2-1e-7 for q in contacts)}
+ report['guidance']={'screw_axis_yz_mm':[0,SCREW_Z],'section_reference_yz_mm':[0,SCREW_Z],'width_multiple':WIDTH,'external_screw_bearings':1 if Z_SUPPORT else 0,'bearing_mount':'fixed base','carriage_type':'moving chamfered tube with two integral threaded bands' if PRINTED else 'moving hollow triangular tube with internal flange nut','transverse_constraint_rank':constraint_rank,'fully_constrained':True,'note':'At nominal contact, the two triangles provide rank-5 constraint, leaving X translation free. This is not a stiffness or load rating.','lower_contact_y_mm':[lower_positions(x) for x in STATIONS],'bearing_count':len(bearings),'bearing_type':'625ZZ, 5x16x5','station_count':2,'bearings_per_station':len(bearings)//2,'station_spacing_mm':STATIONS[-1]-STATIONS[0],'contacts':contacts,'passed':constraint_rank==5 and STATIONS[1]-STATIONS[0]>=40 and all(q['plane_error_mm']<1e-7 and q['rear_running_face_margin_mm']>=1-1e-7 and q['front_end_margin_at_retraction_mm']>=2-1e-7 for q in contacts)}
  # Straight tool approaches to motor, flange and guide axles. Each probe begins
  # outside the head/socket; screw bodies and sockets are not compared to themselves.
  probes=[]
  # Extend the carriage to expose the two lower motor bolts. Their heads
  # still clear the retracted carriage by 1 mm in the assembled fit check.
- for y,z in motor_holes:probes.append(('motor at full extension',xcyl(1.5,20,9.1,y,z),STROKE))
- for y,z in motor_holes:probes.append(('motor key long leg at full extension',cyl(1.5,45,(29,y,z),(0,1 if y>0 else -1,0)),STROKE))
+ for y,z in motor_holes:probes.append(('motor at full extension',xcyl(1.5,22 if Z_SUPPORT else 20,15.1 if Z_SUPPORT else 9.1,y,z),STROKE))
+ for y,z in motor_holes:probes.append(('motor key long leg at full extension',cyl(1.5,45,(31 if Z_SUPPORT else 29,y,z),(0,1 if y>0 else -1,0)),STROKE))
  for travel in [0,STROKE]:
   for y,z in nut_holes:probes.append(('flange',xcyl(1.5,max(100,EXIT_X-NUT_HOME+20),NUT_HOME+6.6+travel,y,z),travel))
   for x,y in LID_FIXINGS:probes.append(('lid screw',cyl(1.2,55,(x,y,67.95)),travel))
  for x,y in ADJUST_CENTERS:probes.append(('carrier adjustment',cyl(2.35,75,(x,y,38.1)),0))
  if PRINTED:probes.append(('shaft clamp at full extension',cyl(1.5,65,(17,5,48.1)),STROKE))
+ if Z_SUPPORT:
+  for x,y in [(17,5),(49,6.5)]:probes.append(('Z hub clamp at whole-revolution service pose',cyl(1.5,65,(x,y,49.1 if x==49 else 48.1)),8*math.floor(STROKE/8)))
  access=[]
  for name,tool,travel in probes:
   for p in parts:
@@ -459,7 +466,7 @@ def validate():
   for travel in [0,STROKE/2,STROKE]:
    lo,hi=nut.xmin+travel,nut.xmax+travel
    engagement.append(dict(travel_mm=travel,nut_bounds_x_mm=[lo,hi],engaged_length_mm=max(0,min(rod.xmax,hi)-max(rod.xmin,lo)),tip_margin_mm=rod.xmax-hi))
-  report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and 34-rod.xmin>=8-1e-5 and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
- report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
- report['passed']=report['carrier_shoulders']['passed'] and (not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['motor_lid_braces']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['output_bolt_access']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
+  report['t8_screw_length']={'nominal_length_mm':T8_LENGTH,'measured_length_mm':rod.xlen,'rod_bounds_x_mm':[rod.xmin,rod.xmax],'coupling_engagement_mm':15 if Z_SUPPORT else 34-rod.xmin,'nut_length_mm':nut.xlen,'usable_stroke_mm':STROKE,'checks':engagement,'passed':abs(rod.xlen-T8_LENGTH)<1e-5 and abs(rod.xmin-ROD_START)<1e-5 and ((41.5-rod.xmin>=15-1e-5) if Z_SUPPORT else (34-rod.xmin>=8-1e-5)) and EXIT_X-rod.xmax>=3 and all(abs(q['engaged_length_mm']-nut.xlen)<1e-5 and q['tip_margin_mm']>=TIP_MARGIN-1e-5 for q in engagement)}
+ report['limits']=['Geometry prototype; no stress, stiffness, fatigue or physical fit validation.',('Printed screw and female bands have real helices and synchronized motion; thread clearance is checked, but friction, wear and print fit require testing.' if PRINTED else 'T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.'),'Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. The optional 6805 support carries thrust toward the screw tip; it has no independent reverse-direction retainer.','Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.','Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread.']
+ report['passed']=(not Z_SUPPORT or report['support_6805']['passed']) and report['carrier_shoulders']['passed'] and (not PRINTED or report['shaft_clamp']['passed']) and (PRINTED or report['t8_screw_length']['passed']) and report['smooth_running_faces']['passed'] and report['carrier_heat_set_inserts']['passed'] and report['running_faces']['passed'] and (not PRINTED or (report['lightening']['passed'] and report['motor_bracing']['passed'])) and report['width_variant']['passed'] and not(collisions or motion or access or exploded) and report['printability']['passed'] and report['motor_lid_braces']['passed'] and report['cutout_planning']['passed'] and report['bearing_support_feet']['passed'] and report['adjustable_bearings']['passed'] and report['bearing_face_relief']['passed'] and report['split_axles']['passed'] and report['lid_and_attachment']['passed'] and report['lid_lightening']['passed'] and report['guidance']['passed'] and report['valid_single_solids'] and report['compact_layout']['passed'] and report['output_mount']['passed'] and report['output_bolt_access']['passed'] and report['base_mount_access']['passed'] and (not PRINTED or report['printed_thread']['passed'])
  save();print('Validation',report['passed'],flush=True);return report

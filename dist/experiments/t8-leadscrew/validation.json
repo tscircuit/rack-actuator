@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "f6952800eb3d5a71ff4f8e8f47a59ff3fd4deab2cba3d9f431489e3316d3a89c",
-  "validation_source_sha256": "2e177c99a1843322ef68ef7c75b53ae929fc64a295fa7c821ac16fb7478dca00",
+  "source_sha256": "74852878c61fcf03c9d4acea659541a8e9b690b54891d0fe4147a8ae0d44045e",
+  "validation_source_sha256": "dec9136ac8814a978ef0dc9af0c21d55a37ec0b98bf12b006a1c28333ff770a6",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -3522,7 +3522,7 @@
   "limits": [
     "Geometry prototype; no stress, stiffness, fatigue or physical fit validation.",
     "T8 screw and nut use smooth fit envelopes; helical thread engagement, backlash and friction are not simulated.",
-    "Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. No external screw-support bearings are modeled.",
+    "Motor and purchased hardware dimensions are reference assumptions; confirm actual parts. The optional 6805 support carries thrust toward the screw tip; it has no independent reverse-direction retainer.",
     "Bearing-block adjustment is rigid translation; clamp force, stiffness and print creep require physical testing.",
     "Three-ridge pilot dimensions are prototype values; test forming torque and pull-out with the actual screw and print material. Unformed ridge overlap is intentional, not a simulated formed thread."
   ],

@@ -1,6 +1,8 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 33,
+  "revision": 34,
+  "screwSupport": "standard",
+  "support6805": null,
   "carrierShoulders": {
     "body_top_z_mm": 21,
     "rail_top_z_mm": 20,
@@ -341,7 +343,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "f6952800eb3d5a71ff4f8e8f47a59ff3fd4deab2cba3d9f431489e3316d3a89c",
+  "modelSourceSha256": "74852878c61fcf03c9d4acea659541a8e9b690b54891d0fe4147a8ae0d44045e",
   "stations": [
     93.0,
     133.0
@@ -542,6 +544,7 @@
     ]
   ],
   "adjustmentRearOffsetMm": 0.0,
+  "adjustmentFrontOffsetMm": 0.0,
   "bearingSeat": {
     "land_diameter_mm": 7.4,
     "relief_diameter_mm": 17,

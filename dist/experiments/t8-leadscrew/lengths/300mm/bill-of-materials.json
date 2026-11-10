@@ -76,9 +76,9 @@
     "M5x25 carrier adjustment bolt 4",
     "M5 adjustment washer 4",
     "M5 heat-set insert 4",
-    "625ZZ upper 293 -1",
-    "625ZZ upper 293 +1",
-    "625ZZ lower 293",
+    "625ZZ upper 253 -1",
+    "625ZZ upper 253 +1",
+    "625ZZ lower 253",
     "625ZZ upper 333 -1",
     "625ZZ upper 333 +1",
     "625ZZ lower 333",
@@ -136,5 +136,7 @@
   "output_mount_thread_pilots": 4,
   "guide_bearings": 6,
   "screw_support_bearings": 0,
-  "note": "Bought coupling includes its own locking screws. Hardware envelopes do not substitute for vendor drawings."
+  "screw_support": "standard",
+  "t8_brass_nuts": 1,
+  "note": "Z variant uses a captured second T8 flange nut and printed bolt/nut locking clamps; standard T8 uses a purchased 5-to-8 mm coupling. Hardware envelopes do not substitute for vendor drawings."
 }

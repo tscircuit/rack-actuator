@@ -3,20 +3,32 @@ Width variant: 1x. Output plate: 42 x 42 mm. Base width: 80 mm. Upper bearing sp
 
 # T8×8 — 100 and 300 mm screw lengths
 
-Select a 100 or 300 mm purchased rod. Both T8 designs are 1× width only; wide variants are reserved for the printed-screw 40 mm stroke. The 100 mm screw gives 70 mm usable travel; the 300 mm screw gives 270 mm. Both bearing stations stay 40 mm apart and support the carriage throughout travel. The rod engages a rigid 5-to-8 mm coupling by 8 mm, with a bolted brass flange nut in the hollow carriage.
+Select a 100 or 300 mm purchased T8×8 rod, then choose **Standard drive** or the separate **6805 bearing support · Z axis** variant. The 100 mm rod supports 1×, 2× and 4× widths. The 300 mm rod is 1× and now has **80 mm** between guide-bearing stations, twice its previous spacing. Its longer spacing reduces usable travel by 40 mm without increasing its base length.
 
-| Screw length | Travel | Bearing X stations | Base length | Overall retracted | Overall extended |
-|---|---|---|---|---|---|
-| 100 mm | 70 mm | 93 / 133 mm | 159 mm | 191 mm | 261 mm |
-| 300 mm | 270 mm | 293 / 333 mm | 359 mm | 391 mm | 661 mm |
+| Rod | Drive | Widths | Usable extension | Guide station spacing |
+|---|---|---|---|---|
+| 100 mm | Standard | 1× / 2× / 4× | 70 mm | 40 mm |
+| 100 mm | 6805 Z support | 1× / 2× / 4× | 44 mm | 40 mm |
+| 300 mm | Standard | 1× | 230 mm | 80 mm |
+| 300 mm | 6805 Z support | 1× | 204 mm | 80 mm |
 
-The screw starts at X=26 mm. The 15 mm nut remains fully engaged, with 4.5 mm of screw beyond its front face at full extension. The tip stays 25 mm inside the retracted output face. T8 threads use smooth fit envelopes in the viewer; actual helical engagement, backlash and friction are not simulated. The 300 mm rod is the lab-stock length. Long components are single-piece STLs, so check print-bed dimensions.
+Travel is extension beyond the base exit. It is limited by both complete moving-nut engagement and full bearing coverage, not the purchased rod length. Standard rods start at X=26 mm; Z rods at X=26.5 mm. Wide 100 mm versions have a 14 mm longer nose for inside output-bolt access while retaining the full guide spacing and travel. Long components are single-piece STLs; check your print-bed dimensions.
+
+### Optional Z support
+
+The Z variant uses a 6805 bearing (25×37×7 mm) in a flanged holder attached through the NEMA17 pattern. The bearing recess opens toward the motor. The printed hub has a Ø24.9 mm journal and Ø27 mm inner-race shoulder; the housing lip contacts the outer race. The holder fits below the existing lid. Four M3×18 screws pass through 6 mm holder flanges and the 6 mm motor wall, engaging the motor by 6 mm; verify actual motor thread depth.
+
+Use a **second T8 brass flange nut**, Ø22 mm flange / Ø10 mm body / 15 mm total length / four holes on Ø16 mm PCD. It is captured in the hub with four M3×12 screws and three-ridge pilots. Fit these four screws through the straight front access passages on the loose hub **before installing the T8 locking-clamp bolt**; that cross-bolt crosses one access passage after assembly. The retaining nut is oriented with its holes at the top, bottom, left and right. Its thread transfers axial load from the rod into the hub; the second split clamp prevents the rod winding out of this nut. The motor clamp fits a 5 mm D shaft, 4.5 mm flat-to-opposite side. Both clamps use M3×12 bolts and M3 hex nuts. Fit and clamp the T8 rod with its rear end at X=26.5 mm. The 100/300 mm rod is unchanged.
+
+Load path toward the screw tip: rod → captured nut → hub → inner-race shoulder → 6805 → housing lip → motor wall/base. **This is one-direction thrust support; there is no independent reverse-direction bearing retainer.** Orient the Z axis for this load direction. No cap, circlip or loose inner-race spacer is introduced. Geometry checks do not establish fatigue life, PETG creep, thread pull-out strength or vibration endurance.
+
+The 2× Z carrier shifts its front adjustment-bolt pair 6 mm rearward to keep the lid tool openings clear of the 31 mm insert grid. The Z variant needs its matching base/lid/carriage/carrier plus hub and holder; it is a selectable assembly, not a retrofit of the standard carriage. The standalone 6805 experiment and printed-lead-screw family remain separate. The exploded view separates the motor, lifts the supported drive module, then separates the housing and rear-loaded bearing. The retaining nut and clamps remain assembled to the hub.
 
 ## Width and external mounting patterns
 
-T8 uses a 42 mm output plate and an 80 mm base. Its six bearings include two lower bearings tightened together by one carrier and four M5 adjustment bolts. The carrier's ruthex RX-M5x9.5 inserts use Ø6.4 mm printed pilots, 10.5 mm deep. Heat-set these before assembly.
+The 1× T8 uses a 42 mm output plate and an 80 mm base. Its six bearings include two lower bearings tightened together by one carrier and four M5 adjustment bolts. The carrier's ruthex RX-M5x9.5 inserts use Ø6.4 mm printed pilots, 10.5 mm deep. Heat-set these before assembly.
 
-T8 output plates remain 42 mm wide with the centered four-hole pattern. Compatible 40 mm printed-screw plates are described below. All external mounting interfaces use a **31 mm square hole grid**. Every adjacent pair of columns and rows forms a complete NEMA17 pattern. The 1×, 2× and 4× output plates are **42, 104 and 168 mm wide**, respectively. The 2× plate was widened from 84 mm to keep a centered NEMA17 pattern while adding columns at the same 31 mm pitch; the carriage running section, bearings and base widths are unchanged.
+The 100 mm T8 offers 42/104/168 mm output plates, matching the 40 mm printed-screw width convention. Wider T8 versions move the four upper bearings outward and use four lower bearings on the shared carrier. All external mounting interfaces use a **31 mm square hole grid**. Every adjacent pair of columns and rows forms a complete NEMA17 pattern. The 1×, 2× and 4× output plates are **42, 104 and 168 mm wide**, respectively. The 2× plate was widened from 84 mm to keep a centered NEMA17 pattern while adding columns at the same 31 mm pitch; the carriage running section, bearings and base widths are unchanged.
 
 The output plate has two rows 31 mm apart and 2, 4 or 6 columns: Y=±15.5 mm for 1×; add ±46.5 mm for 2×; add ±77.5 mm for 4×. This gives 4, 8 or 12 M3 three-ridge holes. All three retain the centered 31×31 mm NEMA17 square.
 
@@ -68,7 +80,7 @@ Pinch the split retaining head and slide the bearing on while supporting its inn
 
 Individual STL downloads and each configuration's ZIP contain the matching printable geometry. The bundle includes CAD source, configuration, bill of materials and validation report. Heat-set the mounting inserts while the lid and base are accessible; mount the base from below. Install the adjustable carrier, bearings and drive before closing the lid. The exploded view removes lid screws, lid (with its inserts), carriage, drive and bearing packs, then the carrier. M5 inserts remain attached to the carrier. The printed screw rotates during carriage withdrawal.
 
-This is a geometry prototype, not a strength, stiffness or fatigue rating. No external screw-support bearings are fitted. Bought motor and hardware meshes are fit references. Printed threads, insert pilots and three-ridge holes require calibration for the actual print process.
+This is a geometry prototype, not a strength, stiffness or fatigue rating. The standard drive has no external screw-support bearing; the selectable Z variant adds one 6805. Bought motor and hardware meshes are fit references. Printed threads, insert pilots and three-ridge holes require calibration for the actual print process.
 
 ## Rebuilding
 
@@ -78,7 +90,7 @@ The 100 mm assets stay at the experiment root; the 300 mm assets use `lengths/30
 
 Print the base with its floor on the bed (CAD Z up). A before/after Bambu Studio slice for the 40 mm, 1x printed-screw base is available in the site’s slice preview. It uses P2S 0.4 mm, Generic PETG, 0.20 mm layers, four walls, 25% gyroid and automatic tree supports everywhere. Remaining axle and shelf supports still need removal; the preview is not a physical removal or strength test.
 
-The 1x output plate has two underside access openings behind its lower mounting holes (7 mm wide, 20 mm long, rounded at the rear with a 45-degree roof). Extend the carriage fully before fitting M3 socket-head bolts from the inside. Clearance is checked for M3x12 bolts with 5.5 mm diameter, 3 mm high heads and a 3 mm envelope for a short hex key. The upper pair loads from above. The 31 mm pattern, 8 mm flange and three-ridge pilots remain unchanged. The 2x/4x printed-screw plates also provide upper and lower 7 × 16 mm access pockets for their repeated mounting patterns. Use a short hex key with a 14 mm reach at the wide plates. Their front bearing station moves inward by 14 mm (60 mm station spacing) to keep the pockets outside the running surfaces without increasing the 40 mm actuator envelope. Reprint the matching wide base, carrier, lid and carriage together; these revised wide carriages are not compatible with the old front bearing location. All output holes are checked for bolt loading, driver access and installed clearance through travel.
+The 1x output plate has two underside access openings behind its lower mounting holes (7 mm wide, 20 mm long, rounded at the rear with a 45-degree roof). Extend the carriage fully before fitting M3 socket-head bolts from the inside. Clearance is checked for M3x12 bolts with 5.5 mm diameter, 3 mm high heads and a 3 mm envelope for a short hex key. The upper pair loads from above. The 31 mm pattern, 8 mm flange and three-ridge pilots remain unchanged. The 2x/4x printed-screw plates also provide upper and lower 7 × 16 mm access pockets for their repeated mounting patterns. Use a short hex key with a 14 mm reach at the wide plates. The printed-screw front bearing station moves inward by 14 mm (60 mm station spacing) to keep the pockets outside the running surfaces without increasing the 40 mm actuator envelope. Reprint the matching wide base, carrier, lid and carriage together; these revised wide carriages are not compatible with the old front bearing location. Wide T8 noses extend by 14 mm instead, retaining 40 mm station spacing. All output holes are checked for bolt loading, driver access and installed clearance through travel.
 
 The two lid mounts beside the motor now grow from continuous gussets, rooted 2 mm into the motor wall. Their undersides slope at least 45° above horizontal in both the forward and outward directions, replacing the hanging blocks and thin tabs. The existing lid holes and 68 mm assembly height are retained; only the base STL changes for this revision. Print with the base floor on the bed. The public slice preview uses the updated 40 mm, 1× printed-screw base.
 
