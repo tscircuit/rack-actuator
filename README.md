@@ -29,6 +29,10 @@ Both have windowed lids and a uniform 31 mm mounting grid on the output plate, l
 
 ## Choose a model
 
+### Independent 6805 bearing support
+
+The [6805 support prototype](https://flex17-compliant-linear-actuator.seveibar.chatgpt.site/experiments/bearing-supported-screw/) assembles a NEMA17, a flat 4 mm wall, an open bearing holder and the existing 40 mm-travel printed screw with an added bearing ring. A shoulder, inner-race spacer and steel DIN 471-25 circlip retain the screw; a removable cap captures the outer race. Existing actuator geometry is unchanged. This is a separate experiment, not a drop-in carriage retrofit. The viewer includes a section, staged explosion and five printable STLs. [Build notes](dist/experiments/bearing-supported-screw/README.txt), [CAD source](experiments/bearing-supported-screw/model.py) and [assembly checks](experiments/bearing-supported-screw/check_assembly.py) cover fits and sampled clearances; PETG creep and vibration retention require physical testing.
+
 All twelve combinations are generated and available to view and download:
 
 | Motor | Stroke | Enclosed rack | Rear pass-through |

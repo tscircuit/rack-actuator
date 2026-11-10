@@ -1,0 +1,148 @@
+{
+  "passed": true,
+  "poses": [
+    {
+      "explosion_percent": 0.0,
+      "exact_intersection_pairs": 67
+    },
+    {
+      "explosion_percent": 3.125,
+      "exact_intersection_pairs": 51
+    },
+    {
+      "explosion_percent": 6.25,
+      "exact_intersection_pairs": 51
+    },
+    {
+      "explosion_percent": 9.375,
+      "exact_intersection_pairs": 51
+    },
+    {
+      "explosion_percent": 12.5,
+      "exact_intersection_pairs": 51
+    },
+    {
+      "explosion_percent": 15.625,
+      "exact_intersection_pairs": 49
+    },
+    {
+      "explosion_percent": 18.75,
+      "exact_intersection_pairs": 48
+    },
+    {
+      "explosion_percent": 21.875,
+      "exact_intersection_pairs": 48
+    },
+    {
+      "explosion_percent": 25.0,
+      "exact_intersection_pairs": 48
+    },
+    {
+      "explosion_percent": 26.25,
+      "exact_intersection_pairs": 48
+    },
+    {
+      "explosion_percent": 27.500000000000004,
+      "exact_intersection_pairs": 48
+    },
+    {
+      "explosion_percent": 28.125,
+      "exact_intersection_pairs": 48
+    },
+    {
+      "explosion_percent": 31.25,
+      "exact_intersection_pairs": 48
+    },
+    {
+      "explosion_percent": 34.375,
+      "exact_intersection_pairs": 47
+    },
+    {
+      "explosion_percent": 37.5,
+      "exact_intersection_pairs": 47
+    },
+    {
+      "explosion_percent": 40.625,
+      "exact_intersection_pairs": 39
+    },
+    {
+      "explosion_percent": 43.75,
+      "exact_intersection_pairs": 39
+    },
+    {
+      "explosion_percent": 46.875,
+      "exact_intersection_pairs": 35
+    },
+    {
+      "explosion_percent": 50.0,
+      "exact_intersection_pairs": 35
+    },
+    {
+      "explosion_percent": 53.125,
+      "exact_intersection_pairs": 23
+    },
+    {
+      "explosion_percent": 56.25,
+      "exact_intersection_pairs": 19
+    },
+    {
+      "explosion_percent": 59.375,
+      "exact_intersection_pairs": 19
+    },
+    {
+      "explosion_percent": 62.5,
+      "exact_intersection_pairs": 19
+    },
+    {
+      "explosion_percent": 65.625,
+      "exact_intersection_pairs": 15
+    },
+    {
+      "explosion_percent": 68.75,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 71.875,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 75.0,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 78.125,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 81.25,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 84.375,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 87.5,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 90.625,
+      "exact_intersection_pairs": 14
+    },
+    {
+      "explosion_percent": 93.75,
+      "exact_intersection_pairs": 11
+    },
+    {
+      "explosion_percent": 96.875,
+      "exact_intersection_pairs": 11
+    },
+    {
+      "explosion_percent": 100.0,
+      "exact_intersection_pairs": 14
+    }
+  ],
+  "collisions": [],
+  "circlip_expansion": "Illustrative radial 6% expansion before axial withdrawal; not a stress/force simulation.",
+  "scope": "Sampled rigid disassembly poses, not a continuous swept-volume proof."
+}

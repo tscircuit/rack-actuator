@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "assembled_collisions": [],
+  "source_sha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
+  "existing_screw_removed_mm3": 0.0,
+  "addition_outside_bearing_ring_mm3": 0.0,
+  "full_rotation_envelope_clear": true,
+  "coupling_tool_access": true,
+  "motor_bolt_tool_access": true,
+  "bearing_axial_installation_clear": true,
+  "bearing_mm": [
+    25,
+    37,
+    7
+  ],
+  "seat_diameter_mm": 24.9,
+  "housing_bore_mm": 37.2,
+  "inner_race_shoulder_od_mm": 27,
+  "outer_race_abutment_bore_mm": 35,
+  "groove_diameter_mm": 23.9,
+  "groove_width_mm": 1.3,
+  "groove_end_margin_mm": 1.7,
+  "axial_clearance_mm": {
+    "outer_race": 0.2,
+    "inner_stack": 0.25
+  },
+  "load_case_static_n": 4.44822,
+  "limitations": [
+    "Geometry checks only: no fatigue, PETG creep, vibration or load rating.",
+    "Circlip reference shows installed envelope; plier expansion is not simulated.",
+    "Bearing internal race/shield geometry is illustrative; verify the purchased bearing.",
+    "New ring occupies X26.2\u201339.3; this is a separate assembly, not a drop-in carriage retrofit."
+  ],
+  "print_meshes": [
+    {
+      "file": "4_mm_nema17_wall.stl",
+      "triangles": 2132,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 9067.177030532786
+    },
+    {
+      "file": "bearing_holder.stl",
+      "triangles": 7708,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 19207.882816170753
+    },
+    {
+      "file": "bearing_retaining_cap.stl",
+      "triangles": 3828,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 4732.690046462764
+    },
+    {
+      "file": "printed_lead_screw_with_bearing_seat.stl",
+      "triangles": 17026,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 40161.76557702494
+    },
+    {
+      "file": "inner_race_spacer.stl",
+      "triangles": 840,
+      "watertight": true,
+      "consistently_oriented": true,
+      "volume_mm3": 73.7519766477477
+    }
+  ]
+}
