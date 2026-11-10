@@ -1,10 +1,19 @@
 """Extract actual Bambu G-code extrusion paths for an inspectable layer preview."""
-import argparse,gzip,hashlib,json,math,re
+import argparse,gzip,hashlib,json,math,re,struct
 from pathlib import Path
-p=argparse.ArgumentParser();p.add_argument('folder',type=Path);p.add_argument('output',type=Path);args=p.parse_args()
+p=argparse.ArgumentParser();p.add_argument('folder',type=Path);p.add_argument('output',type=Path);p.add_argument('--configuration',type=Path);args=p.parse_args()
 root=args.folder;raw=(root/'plate_1.gcode').read_bytes();result=json.loads((root/'result.json').read_text());plate=result['sliced_plates'][0]
 assert result['return_code']==0 and plate['warning_message']=='',result
-bbox=plate['objects'][0]['bbox'];dx=bbox['x']+36;dy=bbox['y']+40
+config=json.loads(args.configuration.read_text()) if args.configuration else None
+stl=(root/'base.stl').read_bytes();triangles=struct.unpack_from('<I',stl,80)[0]
+assert len(stl)==84+50*triangles,'Expected binary STL'
+mins=[float('inf')]*3;maxs=[float('-inf')]*3
+for row in struct.iter_unpack('<12fH',stl[84:]):
+ for j in range(3):
+  for k in range(3):mins[k]=min(mins[k],row[3+3*j+k]);maxs[k]=max(maxs[k],row[3+3*j+k])
+bounds=[mins[0],maxs[0],mins[1],maxs[1],mins[2],maxs[2]]
+stations=config['stations'] if config else [63,137];widen=(config['baseWidth']-80)/2 if config else 0
+bbox=plate['objects'][0]['bbox'];dx=bbox['x']-bounds[0];dy=bbox['y']-bounds[2]
 layers=[];layer=None;role='Custom';x=y=z=e=0.;relative=True;absolute=True;extrusion={};counts={};regions={}
 for line in raw.decode().splitlines():
  if line.startswith('; Z_HEIGHT:'):
@@ -30,9 +39,9 @@ for line in raw.decode().splitlines():
   extrusion[role]=extrusion.get(role,0)+de;counts[role]=counts.get(role,0)+1
   if group in [1,2]:
    mx=(x+nx)/2-dx;my=(y+ny)/2-dy
-   region='motor underside' if -1<=mx<=7 and nz<16 else 'adjustment shelves' if any(a<=mx<=b for a,b in [(42,69),(116,143)]) and 19<=abs(my)<=36 and nz<28 else 'side windows' if abs(my)>31 and 10<nz<44 else 'other bearing / lid features'
+   region='motor underside' if -1<=mx<=7 and nz<16 else 'adjustment shelves' if any(a-28<=mx<=a+7 for a in stations) and 19+widen<=abs(my)<=36+widen and nz<43 else 'side windows' if abs(my)>31+widen and 10<nz<44 else 'other bearing / lid features'
    regions[region]=regions.get(region,0)+de
  x,y,z=nx,ny,nz
 factor=math.pi*(1.75/2)**2*1.27/1000
-meta={'slicer':'Bambu Studio 2.9.1.70','gcode_sha256':hashlib.sha256(raw).hexdigest(),'stl_sha256':hashlib.sha256((root/'base.stl').read_bytes()).hexdigest(),'layer_count':len(layers),'layer_height_mm':.2,'estimated_seconds':plate['total_predication'],'estimated_grams':plate['filaments'][0]['total_used_g'],'support_grams':sum(v for k,v in extrusion.items() if k in ['Support','Support interface'])*factor,'support_regions_grams':{k:v*factor for k,v in regions.items()},'extrusion_segments':sum(counts.values()),'role_segments':counts,'role_filament_mm':extrusion,'model_translation_xy_mm':[dx,dy],'model_bounds_mm':[-36,155,-40,40,0,68],'profile':'P2S / 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / tree(auto), supports everywhere','region_note':'Support region totals classify deposited paths by position; they are not a topology or removability guarantee.'}
+meta={'slicer':'Bambu Studio 2.9.1.70','gcode_sha256':hashlib.sha256(raw).hexdigest(),'stl_sha256':hashlib.sha256((root/'base.stl').read_bytes()).hexdigest(),'layer_count':len(layers),'layer_height_mm':.2,'estimated_seconds':plate['total_predication'],'estimated_grams':plate['filaments'][0]['total_used_g'],'support_grams':sum(v for k,v in extrusion.items() if k in ['Support','Support interface'])*factor,'support_regions_grams':{k:v*factor for k,v in regions.items()},'extrusion_segments':sum(counts.values()),'role_segments':counts,'role_filament_mm':extrusion,'model_translation_xy_mm':[dx,dy],'model_bounds_mm':bounds,'profile':'P2S / 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / tree(auto), supports everywhere','region_note':'Support region totals classify deposited paths by position; they are not a topology or removability guarantee.'}
 args.output.parent.mkdir(parents=True,exist_ok=True);args.output.write_bytes(gzip.compress(json.dumps({'meta':meta,'layers':layers},separators=(',',':')).encode(),mtime=0));args.output.with_suffix('').with_suffix('.json').write_text(json.dumps(meta,indent=2)+'\n');print(json.dumps(meta,indent=2))

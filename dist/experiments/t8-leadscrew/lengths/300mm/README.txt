@@ -70,7 +70,7 @@ Six recessed M3×12 button-head screws fasten the lid into the base's 12 mm-deep
 
 ## Bearings and running faces
 
-All four fixed upper-bearing supports extend 4 mm downward. Their undersides are at Z=28 mm, flush with the underside of the adjacent carrier-adjustment bolt shelves. This fills the former Z=28–32 mm recess beside each bolt. The shared carrier, bearing seats, bolt bores and adjustment travel remain unchanged. CAD checks verify the filled regions, underside level and carrier/assembly clearance. Slicer support requirements elsewhere still depend on print orientation and settings.
+All four upper-bearing blocks and adjacent adjustment shelves rise from the sidewalls on 45° undersides. The axle-root bosses are trimmed to the same slope so their lower arcs cannot seed trapped supports. The raised bolt seats use M5×40 socket-head adjustment bolts; carrier position and adjustment travel are unchanged.
 
 The carriage runs on smooth flats with no raised side rails. The CAD checks include nominal bearing alignment and ±1 mm axial displacement relative to the carriage. The base and carrier retain their existing clearance channels. Split Ø4.8 mm axles keep the 6.4 mm-wide retaining shoulders and extended 30° bent tips. Restored through-slots taper from 2.2 mm at the tip through 2.0 mm at the head to 1.2 mm near the root, ending in a 0.6 mm radius. A Ø5.4 mm clearance behind the inner-race seat frees the prongs to flex inward. The Ø7.4 mm inner-race lands and surrounding Ø17 mm face relief keep the outer rings and shields clear.
 
@@ -97,3 +97,7 @@ The two lid mounts beside the motor now grow from continuous gussets, rooted 2 m
 ## Lower carrier clearance
 
 The blocks behind the lower bearings rise just 1 mm above the Z=20 mm side rails, with 1 mm, 45-degree chamfers around their tops. At Z=21 mm they remain 3.5 mm lower than the original tall blocks, adding local support behind the bearing seats without restoring the tall bumps. The circular inner-race seats, split axles, bearing centers and four M5 insert mounts are unchanged. Clearance to the base is checked throughout the 0–1 mm adjustment range. Only the carrier needs reprinting; the existing base and hardware remain compatible.
+
+### Support-free bearing adjustment bays
+
+The base bearing blocks, axle-root bosses and adjustment shelves now have continuous 45° undersides rising from the sidewalls. The bolt seats are at Z=47 mm: use four M5×40 ISO 4762 socket-head screws (8.5 mm head diameter), with the existing washers and M5 inserts. The carrier, bearings, lid, moving carriage and mounting grid are unchanged. Remove the bolts before the bearings, then lift the washers after the upper bearings are withdrawn. Print the base floor-down. The published 40 mm, 1× printed-screw Bambu slice has no support extrusion in any of the four bearing-adjustment bays with automatic supports everywhere; the motor aperture still has accessible support. Other configurations receive CAD checks, not a claim of identical slicer output.

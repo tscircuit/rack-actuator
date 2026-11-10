@@ -1,0 +1,131 @@
+{
+  "stl_sha256": "03b16424678f1672d1a81864c7d2b1b9d01ba404c5aba2a92672acc87a115a47",
+  "support_grams": 0.9552188548820796,
+  "checks": [
+    {
+      "station_x_mm": 103.0,
+      "side": -1,
+      "region_xy_mm": [
+        81.0,
+        110.0,
+        -55.0,
+        -40.0
+      ],
+      "height_scope": "all sliced layers",
+      "extrusion_segments": {
+        "support": 0,
+        "interface": 0
+      }
+    },
+    {
+      "station_x_mm": 103.0,
+      "side": 1,
+      "region_xy_mm": [
+        81.0,
+        110.0,
+        40.0,
+        55.0
+      ],
+      "height_scope": "all sliced layers",
+      "extrusion_segments": {
+        "support": 0,
+        "interface": 0
+      }
+    },
+    {
+      "station_x_mm": 143.0,
+      "side": -1,
+      "region_xy_mm": [
+        115.0,
+        150.0,
+        -55.0,
+        -40.0
+      ],
+      "height_scope": "all sliced layers",
+      "extrusion_segments": {
+        "support": 0,
+        "interface": 0
+      }
+    },
+    {
+      "station_x_mm": 143.0,
+      "side": 1,
+      "region_xy_mm": [
+        115.0,
+        150.0,
+        40.0,
+        55.0
+      ],
+      "height_scope": "all sliced layers",
+      "extrusion_segments": {
+        "support": 0,
+        "interface": 0
+      }
+    }
+  ],
+  "configuration": {
+    "family": "t8-leadscrew",
+    "width": 2,
+    "stroke_mm": 44.0,
+    "screw_length_mm": 100.0,
+    "support": "6805"
+  },
+  "meta": {
+    "slicer": "Bambu Studio 2.9.1.70",
+    "gcode_sha256": "d1c82e18e4325bb1c299cce89a6c343aa7d1005a1d672070b46e4a420ead7d98",
+    "stl_sha256": "03b16424678f1672d1a81864c7d2b1b9d01ba404c5aba2a92672acc87a115a47",
+    "layer_count": 340,
+    "layer_height_mm": 0.2,
+    "estimated_seconds": 25358.3359375,
+    "estimated_grams": 190.2919158935547,
+    "support_grams": 0.9552188548820796,
+    "support_regions_grams": {
+      "other bearing / lid features": 0.6252470076609523,
+      "motor underside": 0.32997184722112716
+    },
+    "extrusion_segments": 1110369,
+    "role_segments": {
+      "Support": 23753,
+      "Inner wall": 235311,
+      "Outer wall": 121595,
+      "Bottom surface": 3467,
+      "Gap infill": 19785,
+      "Internal solid infill": 35227,
+      "Sparse infill": 644914,
+      "Floating vertical shell": 13671,
+      "Bridge": 7073,
+      "Top surface": 4999,
+      "Support interface": 466,
+      "Overhang wall": 108
+    },
+    "role_filament_mm": {
+      "Support": 294.60631000000063,
+      "Inner wall": 26720.29676999784,
+      "Outer wall": 8656.727440002802,
+      "Bottom surface": 1184.1320299999925,
+      "Gap infill": 227.25385000000097,
+      "Internal solid infill": 7027.481760000408,
+      "Sparse infill": 13583.70100999132,
+      "Floating vertical shell": 713.8275700000028,
+      "Bridge": 2177.836029999966,
+      "Top surface": 1677.413249999958,
+      "Support interface": 18.097509999999982,
+      "Overhang wall": 13.254400000000011
+    },
+    "model_translation_xy_mm": [
+      44.5,
+      128.0
+    ],
+    "model_bounds_mm": [
+      -8.0,
+      175.0,
+      -61.0,
+      61.0,
+      0.0,
+      68.0
+    ],
+    "profile": "P2S / 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / tree(auto), supports everywhere",
+    "region_note": "Support region totals classify deposited paths by position; they are not a topology or removability guarantee."
+  },
+  "passed": true
+}

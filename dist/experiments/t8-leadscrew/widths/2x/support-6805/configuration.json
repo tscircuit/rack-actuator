@@ -1,6 +1,6 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 34,
+  "revision": 35,
   "screwSupport": "6805",
   "support6805": {
     "bearing_mm": [
@@ -357,9 +357,11 @@
     }
   },
   "bearingSupportFeet": {
-    "bottom_z_mm": 28.0,
-    "adjustment_shelf_bottom_z_mm": 28,
-    "extended_down_mm": 4,
+    "inner_bottom_z_mm": 43.0,
+    "underside_angle_degrees": 45,
+    "adjustment_shelf_top_z_mm": 47.0,
+    "adjustment_bolt": "M5x40 ISO 4762 socket head",
+    "adjustment_head_diameter_mm": 8.5,
     "count": 4
   },
   "guideBearingCount": 8,
@@ -387,24 +389,24 @@
   "shaftClamp": null,
   "lightening": {
     "base_floor": {
-      "before_mm3": 261245.52841295087,
-      "after_mm3": 244425.97108685708,
-      "removed_mm3": 16819.55732609378,
-      "reduction_percent": 6.438218264737953,
+      "before_mm3": 261723.63752933685,
+      "after_mm3": 244904.08020544267,
+      "removed_mm3": 16819.557323894172,
+      "reduction_percent": 6.426457114332615,
       "cutout_count": 10
     },
     "base_sides": {
-      "before_mm3": 244425.97108685708,
-      "after_mm3": 240297.97109663868,
-      "removed_mm3": 4127.999990218406,
-      "reduction_percent": 1.6888549002640625,
+      "before_mm3": 244904.08020544267,
+      "after_mm3": 240776.08021726832,
+      "removed_mm3": 4127.999988174357,
+      "reduction_percent": 1.6855578660475978,
       "cutout_count": 10
     },
     "base": {
-      "before_mm3": 261245.52841295087,
-      "after_mm3": 240297.97109663868,
-      "removed_mm3": 20947.557316312188,
-      "reduction_percent": 8.018341000348293,
+      "before_mm3": 261723.63752933685,
+      "after_mm3": 240776.08021726832,
+      "removed_mm3": 20947.55731206853,
+      "reduction_percent": 8.003693326981404,
       "cutout_count": 20
     },
     "carriage": {
@@ -442,7 +444,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "74852878c61fcf03c9d4acea659541a8e9b690b54891d0fe4147a8ae0d44045e",
+  "modelSourceSha256": "36ca34b51216438215d98e9444ea077372c3a6a2536ed32954c5eb82a1c73627",
   "stations": [
     103.0,
     143.0

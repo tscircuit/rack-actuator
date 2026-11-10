@@ -60,45 +60,44 @@
   },
   "after": {
     "slicer": "Bambu Studio 2.9.1.70",
-    "gcode_sha256": "9a64be869faa46ab234bbe7e56c9bd1d1badae240aa3736d62055121f2f3cb70",
-    "stl_sha256": "920caaf00b79263470a96462f5bd6945c092e64875040857cd42aadbd00ed62a",
+    "gcode_sha256": "7093f0188f9830ea9dd87bad1139fe84a4061e02484468195b3d437e063f37f9",
+    "stl_sha256": "839a9036caabdc33740204ed873bcce99752f8c511db1ea36ab4eec9c6d8a070",
     "layer_count": 340,
     "layer_height_mm": 0.2,
-    "estimated_seconds": 22549.744140625,
-    "estimated_grams": 160.2137451171875,
-    "support_grams": 4.236787229772512,
+    "estimated_seconds": 21348.6875,
+    "estimated_grams": 157.13926696777344,
+    "support_grams": 0.6221703057817188,
     "support_regions_grams": {
-      "other bearing / lid features": 0.6255504623518592,
-      "adjustment shelves": 3.61123676742071
+      "other bearing / lid features": 0.6221703057817185
     },
-    "extrusion_segments": 979996,
+    "extrusion_segments": 907241,
     "role_segments": {
-      "Support": 113687,
-      "Inner wall": 178038,
-      "Outer wall": 96595,
-      "Gap infill": 18820,
+      "Support": 13627,
+      "Inner wall": 193776,
+      "Outer wall": 108349,
+      "Gap infill": 18545,
       "Bottom surface": 2574,
-      "Internal solid infill": 30398,
-      "Sparse infill": 511364,
-      "Floating vertical shell": 14022,
-      "Bridge": 7420,
-      "Top surface": 4488,
-      "Support interface": 1738,
-      "Overhang wall": 852
+      "Internal solid infill": 28214,
+      "Sparse infill": 515550,
+      "Floating vertical shell": 15109,
+      "Bridge": 6778,
+      "Top surface": 4545,
+      "Overhang wall": 120,
+      "Support interface": 54
     },
     "role_filament_mm": {
-      "Support": 1292.3599800000782,
-      "Inner wall": 23896.214000001026,
-      "Outer wall": 7816.4476200025765,
-      "Gap infill": 205.29716999999758,
+      "Support": 201.72517000000067,
+      "Inner wall": 24123.107359997608,
+      "Outer wall": 7901.304100003248,
+      "Gap infill": 220.4681299999975,
       "Bottom surface": 644.6239199999991,
-      "Internal solid infill": 4220.7872600001165,
-      "Sparse infill": 10833.187930000953,
-      "Floating vertical shell": 862.5886800000131,
-      "Bridge": 1472.1481399999686,
-      "Top surface": 1068.3674900000094,
-      "Support interface": 94.60966000000012,
-      "Overhang wall": 41.50233999999987
+      "Internal solid infill": 4001.77208000025,
+      "Sparse infill": 10877.470140001064,
+      "Floating vertical shell": 1022.1578800000145,
+      "Bridge": 1371.5399699999746,
+      "Top surface": 1067.958560000011,
+      "Overhang wall": 7.587320000000004,
+      "Support interface": 1.9506999999999999
     },
     "model_translation_xy_mm": [
       68.5000114440918,
@@ -115,7 +114,7 @@
     "profile": "P2S / 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / tree(auto), supports everywhere",
     "region_note": "Support region totals classify deposited paths by position; they are not a topology or removability guarantee."
   },
-  "support_reduction_percent": 64.03122013208046,
+  "support_reduction_percent": 94.7180007974532,
   "settings": {
     "machine": {
       "type": "machine",
@@ -1387,8 +1386,248 @@
       ]
     }
   },
+  "targeted_support_interface_segments": {
+    "motor_filled_region": 0,
+    "pitched_side_windows": 0
+  },
+  "model_source_sha256": "62a8a0befe1e18d84deb7f207ffa81ea3b915d02aed453eafa80bf830c4a206c",
+  "scope": "The interactive preview contains the 40 mm travel, 1x printed-screw base slice. A supplementary 100 mm T8 / 2x / 6805 Z slice also has zero support paths in all four bearing-adjustment bays. All twelve configurations receive CAD checks.",
+  "before_bearing_slopes": {
+    "slicer": "Bambu Studio 2.9.1.70",
+    "gcode_sha256": "9a64be869faa46ab234bbe7e56c9bd1d1badae240aa3736d62055121f2f3cb70",
+    "stl_sha256": "920caaf00b79263470a96462f5bd6945c092e64875040857cd42aadbd00ed62a",
+    "layer_count": 340,
+    "layer_height_mm": 0.2,
+    "estimated_seconds": 22549.744140625,
+    "estimated_grams": 160.2137451171875,
+    "support_grams": 4.236787229772512,
+    "support_regions_grams": {
+      "other bearing / lid features": 0.6255504623518592,
+      "adjustment shelves": 3.61123676742071
+    },
+    "extrusion_segments": 979996,
+    "role_segments": {
+      "Support": 113687,
+      "Inner wall": 178038,
+      "Outer wall": 96595,
+      "Gap infill": 18820,
+      "Bottom surface": 2574,
+      "Internal solid infill": 30398,
+      "Sparse infill": 511364,
+      "Floating vertical shell": 14022,
+      "Bridge": 7420,
+      "Top surface": 4488,
+      "Support interface": 1738,
+      "Overhang wall": 852
+    },
+    "role_filament_mm": {
+      "Support": 1292.3599800000782,
+      "Inner wall": 23896.214000001026,
+      "Outer wall": 7816.4476200025765,
+      "Gap infill": 205.29716999999758,
+      "Bottom surface": 644.6239199999991,
+      "Internal solid infill": 4220.7872600001165,
+      "Sparse infill": 10833.187930000953,
+      "Floating vertical shell": 862.5886800000131,
+      "Bridge": 1472.1481399999686,
+      "Top surface": 1068.3674900000094,
+      "Support interface": 94.60966000000012,
+      "Overhang wall": 41.50233999999987
+    },
+    "model_translation_xy_mm": [
+      68.5000114440918,
+      128.0
+    ],
+    "model_bounds_mm": [
+      -36,
+      155,
+      -40,
+      40,
+      0,
+      68
+    ],
+    "profile": "P2S / 0.4 mm / Generic PETG / 0.20 mm / 4 walls / 25% gyroid / tree(auto), supports everywhere",
+    "region_note": "Support region totals classify deposited paths by position; they are not a topology or removability guarantee."
+  },
+  "support_reduction_since_previous_revision_percent": 85.31504481958314,
+  "bearing_bay_supports": {
+    "scope": "Actual automatic-support-everywhere P2S PETG slice; all four bearing/adjustment bays checked by segment clipping.",
+    "comparisons": {
+      "before-bearing-slopes": {
+        "stl_sha256": "920caaf00b79263470a96462f5bd6945c092e64875040857cd42aadbd00ed62a",
+        "support_grams": 4.236787229772512,
+        "checks": [
+          {
+            "station_x_mm": 63,
+            "side": -1,
+            "region_xy_mm": [
+              41,
+              70,
+              -34,
+              -19
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 22529,
+              "interface": 320
+            }
+          },
+          {
+            "station_x_mm": 63,
+            "side": 1,
+            "region_xy_mm": [
+              41,
+              70,
+              19,
+              34
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 22406,
+              "interface": 547
+            }
+          },
+          {
+            "station_x_mm": 137,
+            "side": -1,
+            "region_xy_mm": [
+              115,
+              144,
+              -34,
+              -19
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 28230,
+              "interface": 389
+            }
+          },
+          {
+            "station_x_mm": 137,
+            "side": 1,
+            "region_xy_mm": [
+              115,
+              144,
+              19,
+              34
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 26895,
+              "interface": 428
+            }
+          }
+        ]
+      },
+      "after": {
+        "stl_sha256": "839a9036caabdc33740204ed873bcce99752f8c511db1ea36ab4eec9c6d8a070",
+        "support_grams": 0.6221703057817188,
+        "checks": [
+          {
+            "station_x_mm": 63,
+            "side": -1,
+            "region_xy_mm": [
+              41,
+              70,
+              -34,
+              -19
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 0,
+              "interface": 0
+            }
+          },
+          {
+            "station_x_mm": 63,
+            "side": 1,
+            "region_xy_mm": [
+              41,
+              70,
+              19,
+              34
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 0,
+              "interface": 0
+            }
+          },
+          {
+            "station_x_mm": 137,
+            "side": -1,
+            "region_xy_mm": [
+              115,
+              144,
+              -34,
+              -19
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 0,
+              "interface": 0
+            }
+          },
+          {
+            "station_x_mm": 137,
+            "side": 1,
+            "region_xy_mm": [
+              115,
+              144,
+              19,
+              34
+            ],
+            "height_scope": "all sliced layers",
+            "extrusion_segments": {
+              "support": 0,
+              "interface": 0
+            }
+          }
+        ]
+      }
+    }
+  },
+  "motor_lid_brace_supports": {
+    "scope": "Actual P2S / Generic PETG / 0.20 mm / tree(auto) everywhere slice of the 40 mm 1x base; checks both motor-side mount regions.",
+    "comparisons": {
+      "after": {
+        "stl_sha256": "839a9036caabdc33740204ed873bcce99752f8c511db1ea36ab4eec9c6d8a070",
+        "support_grams": 0.6221703057817188,
+        "checks": [
+          {
+            "side": -1,
+            "region_xy_mm": [
+              3,
+              18,
+              -41,
+              -20
+            ],
+            "below_z_mm": 64,
+            "extrusion_segments": {
+              "support": 0,
+              "interface": 0
+            }
+          },
+          {
+            "side": 1,
+            "region_xy_mm": [
+              3,
+              18,
+              20,
+              41
+            ],
+            "below_z_mm": 64,
+            "extrusion_segments": {
+              "support": 0,
+              "interface": 0
+            }
+          }
+        ]
+      }
+    }
+  },
   "floor_support_access": {
-    "before": [
+    "before-bearing-slopes": [
       {
         "opening_xy_mm": [
           46.0,
@@ -1396,9 +1635,9 @@
           -32.0,
           -21.0
         ],
-        "support_min_z_mm": null,
-        "support_max_z_mm": null,
-        "reaches_first_layer": false
+        "support_min_z_mm": 0.2,
+        "support_max_z_mm": 5.2,
+        "reaches_first_layer": true
       },
       {
         "opening_xy_mm": [
@@ -1407,9 +1646,9 @@
           21.0,
           32.0
         ],
-        "support_min_z_mm": null,
-        "support_max_z_mm": null,
-        "reaches_first_layer": false
+        "support_min_z_mm": 0.2,
+        "support_max_z_mm": 5.2,
+        "reaches_first_layer": true
       },
       {
         "opening_xy_mm": [
@@ -1418,9 +1657,9 @@
           -32.0,
           -21.0
         ],
-        "support_min_z_mm": null,
-        "support_max_z_mm": null,
-        "reaches_first_layer": false
+        "support_min_z_mm": 0.2,
+        "support_max_z_mm": 5.2,
+        "reaches_first_layer": true
       },
       {
         "opening_xy_mm": [
@@ -1429,9 +1668,9 @@
           21.0,
           32.0
         ],
-        "support_min_z_mm": null,
-        "support_max_z_mm": null,
-        "reaches_first_layer": false
+        "support_min_z_mm": 0.2,
+        "support_max_z_mm": 5.2,
+        "reaches_first_layer": true
       }
     ],
     "after": [
@@ -1442,9 +1681,9 @@
           -32.0,
           -21.0
         ],
-        "support_min_z_mm": 0.2,
-        "support_max_z_mm": 5.2,
-        "reaches_first_layer": true
+        "support_min_z_mm": null,
+        "support_max_z_mm": null,
+        "reaches_first_layer": false
       },
       {
         "opening_xy_mm": [
@@ -1453,9 +1692,9 @@
           21.0,
           32.0
         ],
-        "support_min_z_mm": 0.2,
-        "support_max_z_mm": 5.2,
-        "reaches_first_layer": true
+        "support_min_z_mm": null,
+        "support_max_z_mm": null,
+        "reaches_first_layer": false
       },
       {
         "opening_xy_mm": [
@@ -1464,9 +1703,9 @@
           -32.0,
           -21.0
         ],
-        "support_min_z_mm": 0.2,
-        "support_max_z_mm": 5.2,
-        "reaches_first_layer": true
+        "support_min_z_mm": null,
+        "support_max_z_mm": null,
+        "reaches_first_layer": false
       },
       {
         "opening_xy_mm": [
@@ -1475,91 +1714,12 @@
           21.0,
           32.0
         ],
-        "support_min_z_mm": 0.2,
-        "support_max_z_mm": 5.2,
-        "reaches_first_layer": true
+        "support_min_z_mm": null,
+        "support_max_z_mm": null,
+        "reaches_first_layer": false
       }
     ]
   },
-  "access_check_scope": "Actual support paths occupy all four floor openings from the first layer through the floor thickness. This confirms a bed route, not physical removal force or the topology of every support branch.",
-  "targeted_support_interface_segments": {
-    "motor_filled_region": 0,
-    "pitched_side_windows": 0
-  },
-  "model_source_sha256": "4da406a927190566fc61488109ea56631ddd1c6e5d24b3c442bd86e78350a2d6",
-  "scope": "Only the 40 mm travel, 1x printed-screw base is sliced. Shared geometry changes are separately CAD-validated across six lead-screw configurations.",
-  "motor_lid_brace_supports": {
-    "scope": "Actual P2S / Generic PETG / 0.20 mm / tree(auto) everywhere slice of the 40 mm 1x base; only the two motor-side mount regions are support-free.",
-    "comparisons": {
-      "before-lid-braces": {
-        "stl_sha256": "b3c3fe5033decddea47b4ce3087cdc498a1d58ba60f14afb8d0124dbc35d632e",
-        "support_grams": 7.015070195845861,
-        "checks": [
-          {
-            "side": -1,
-            "region_xy_mm": [
-              3,
-              18,
-              -41,
-              -20
-            ],
-            "below_z_mm": 64,
-            "extrusion_segments": {
-              "support": 19688,
-              "interface": 314
-            }
-          },
-          {
-            "side": 1,
-            "region_xy_mm": [
-              3,
-              18,
-              20,
-              41
-            ],
-            "below_z_mm": 64,
-            "extrusion_segments": {
-              "support": 22590,
-              "interface": 473
-            }
-          }
-        ]
-      },
-      "after": {
-        "stl_sha256": "920caaf00b79263470a96462f5bd6945c092e64875040857cd42aadbd00ed62a",
-        "support_grams": 4.236787229772512,
-        "checks": [
-          {
-            "side": -1,
-            "region_xy_mm": [
-              3,
-              18,
-              -41,
-              -20
-            ],
-            "below_z_mm": 64,
-            "extrusion_segments": {
-              "support": 0,
-              "interface": 0
-            }
-          },
-          {
-            "side": 1,
-            "region_xy_mm": [
-              3,
-              18,
-              20,
-              41
-            ],
-            "below_z_mm": 64,
-            "extrusion_segments": {
-              "support": 0,
-              "interface": 0
-            }
-          }
-        ]
-      }
-    },
-    "support_reduction_since_previous_revision_percent": 39.604492735063076
-  }
+  "access_check_scope": "The preceding geometry needed support paths through the four floor openings; the sloped bearing bays now contain no support paths there.",
+  "supplementary_t8_bay_check": "t8-100mm-2x-z-support-check.json"
 }

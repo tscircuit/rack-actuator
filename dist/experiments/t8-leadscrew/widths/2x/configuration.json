@@ -1,6 +1,6 @@
 {
   "experiment": "t8-leadscrew",
-  "revision": 34,
+  "revision": 35,
   "screwSupport": "standard",
   "support6805": null,
   "carrierShoulders": {
@@ -334,9 +334,11 @@
     }
   },
   "bearingSupportFeet": {
-    "bottom_z_mm": 28.0,
-    "adjustment_shelf_bottom_z_mm": 28,
-    "extended_down_mm": 4,
+    "inner_bottom_z_mm": 43.0,
+    "underside_angle_degrees": 45,
+    "adjustment_shelf_top_z_mm": 47.0,
+    "adjustment_bolt": "M5x40 ISO 4762 socket head",
+    "adjustment_head_diameter_mm": 8.5,
     "count": 4
   },
   "guideBearingCount": 8,
@@ -364,24 +366,24 @@
   "shaftClamp": null,
   "lightening": {
     "base_floor": {
-      "before_mm3": 249896.05112412342,
-      "after_mm3": 230252.3784049657,
-      "removed_mm3": 19643.67271915771,
-      "reduction_percent": 7.860737546989365,
+      "before_mm3": 250205.22603549913,
+      "after_mm3": 230561.55331455296,
+      "removed_mm3": 19643.672720946168,
+      "reduction_percent": 7.851024150134706,
       "cutout_count": 13
     },
     "base_sides": {
-      "before_mm3": 230252.3784049657,
-      "after_mm3": 227319.57841261354,
-      "removed_mm3": 2932.799992352171,
-      "reduction_percent": 1.2737327677866546,
+      "before_mm3": 230561.55331455296,
+      "after_mm3": 227628.75331848167,
+      "removed_mm3": 2932.7999960712914,
+      "reduction_percent": 1.2720247386909733,
       "cutout_count": 8
     },
     "base": {
-      "before_mm3": 249896.05112412342,
-      "after_mm3": 227319.57841261354,
-      "removed_mm3": 22576.47271150988,
-      "reduction_percent": 9.034345524850307,
+      "before_mm3": 250205.22603549913,
+      "after_mm3": 227628.75331848167,
+      "removed_mm3": 22576.47271701746,
+      "reduction_percent": 9.023181919395363,
       "cutout_count": 21
     },
     "carriage": {
@@ -419,7 +421,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "74852878c61fcf03c9d4acea659541a8e9b690b54891d0fe4147a8ae0d44045e",
+  "modelSourceSha256": "36ca34b51216438215d98e9444ea077372c3a6a2536ed32954c5eb82a1c73627",
   "stations": [
     93.0,
     133.0

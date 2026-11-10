@@ -1,6 +1,8 @@
 {
   "experiment": "printed-leadscrew",
-  "revision": 33,
+  "revision": 35,
+  "screwSupport": "standard",
+  "support6805": null,
   "carrierShoulders": {
     "body_top_z_mm": 21,
     "rail_top_z_mm": 20,
@@ -458,9 +460,11 @@
     }
   },
   "bearingSupportFeet": {
-    "bottom_z_mm": 28.0,
-    "adjustment_shelf_bottom_z_mm": 28,
-    "extended_down_mm": 4,
+    "inner_bottom_z_mm": 43.0,
+    "underside_angle_degrees": 45,
+    "adjustment_shelf_top_z_mm": 47.0,
+    "adjustment_bolt": "M5x40 ISO 4762 socket head",
+    "adjustment_head_diameter_mm": 8.5,
     "count": 4
   },
   "guideBearingCount": 8,
@@ -509,24 +513,24 @@
   },
   "lightening": {
     "base_floor": {
-      "before_mm3": 356316.6429360767,
-      "after_mm3": 328306.11184640107,
-      "removed_mm3": 28010.531089675613,
-      "reduction_percent": 7.861134652276322,
+      "before_mm3": 357013.52658323344,
+      "after_mm3": 329002.9954906102,
+      "removed_mm3": 28010.53109262325,
+      "reduction_percent": 7.845789867038253,
       "cutout_count": 18
     },
     "base_sides": {
-      "before_mm3": 328306.11184640107,
-      "after_mm3": 323264.11186942173,
-      "removed_mm3": 5041.999976979336,
-      "reduction_percent": 1.5357618378235522,
+      "before_mm3": 329002.9954906102,
+      "after_mm3": 323960.99550929293,
+      "removed_mm3": 5041.999981317262,
+      "reduction_percent": 1.532508837434327,
       "cutout_count": 12
     },
     "base": {
-      "before_mm3": 356316.6429360767,
-      "after_mm3": 318722.0479690493,
-      "removed_mm3": 37594.59496702737,
-      "reduction_percent": 10.550895028995841,
+      "before_mm3": 357013.52658323344,
+      "after_mm3": 319418.93160856597,
+      "removed_mm3": 37594.594974667474,
+      "reduction_percent": 10.530299883722401,
       "cutout_count": 32
     },
     "carriage": {
@@ -566,7 +570,7 @@
     0,
     42.0
   ],
-  "modelSourceSha256": "f6952800eb3d5a71ff4f8e8f47a59ff3fd4deab2cba3d9f431489e3316d3a89c",
+  "modelSourceSha256": "62a8a0befe1e18d84deb7f207ffa81ea3b915d02aed453eafa80bf830c4a206c",
   "stations": [
     63.0,
     123.0
@@ -866,6 +870,7 @@
     ]
   ],
   "adjustmentRearOffsetMm": 0.0,
+  "adjustmentFrontOffsetMm": 0.0,
   "bearingSeat": {
     "land_diameter_mm": 7.4,
     "relief_diameter_mm": 17,

@@ -2,8 +2,8 @@
   "passed": true,
   "units": "mm",
   "intersection_tolerance_mm3": 0.01,
-  "source_sha256": "74852878c61fcf03c9d4acea659541a8e9b690b54891d0fe4147a8ae0d44045e",
-  "validation_source_sha256": "dec9136ac8814a978ef0dc9af0c21d55a37ec0b98bf12b006a1c28333ff770a6",
+  "source_sha256": "36ca34b51216438215d98e9444ea077372c3a6a2536ed32954c5eb82a1c73627",
+  "validation_source_sha256": "608a54ff1279605627e936f6e2f10f741ecfd44247975c4a3f1a044d71972d3d",
   "output_mount": {
     "pattern": "Uniform 31 mm grid of overlapping NEMA17 patterns",
     "pitch_mm": [
@@ -3932,24 +3932,24 @@
   },
   "base_lightening": {
     "floor": {
-      "before_mm3": 391035.52839502506,
-      "after_mm3": 352017.16612436116,
-      "removed_mm3": 39018.3622706639,
-      "reduction_percent": 9.978214110316712,
+      "before_mm3": 391344.703248562,
+      "after_mm3": 352326.34098361613,
+      "removed_mm3": 39018.36226494587,
+      "reduction_percent": 9.970331000024656,
       "cutout_count": 31
     },
     "sides": {
-      "before_mm3": 352017.16612436116,
-      "after_mm3": 331595.299421336,
-      "removed_mm3": 20421.86670302518,
-      "reduction_percent": 5.801383758600713,
+      "before_mm3": 352326.34098361613,
+      "after_mm3": 331904.474285493,
+      "removed_mm3": 20421.866698123107,
+      "reduction_percent": 5.796292903082363,
       "cutout_count": 42
     },
     "total": {
-      "before_mm3": 391035.52839502506,
-      "after_mm3": 331595.299421336,
-      "removed_mm3": 59440.22897368908,
-      "reduction_percent": 15.200723376123106,
+      "before_mm3": 391344.703248562,
+      "after_mm3": 331904.474285493,
+      "removed_mm3": 59440.22896306898,
+      "reduction_percent": 15.188714314938768,
       "cutout_count": 73
     },
     "protected_supports": [
@@ -3999,47 +3999,100 @@
     "passed": true
   },
   "bearing_support_feet": {
-    "shelf_underside_z_mm": 28,
+    "adjustment_shelf_top_z_mm": 47.0,
+    "bolt": "M5x40 socket head, 8.5 mm head diameter",
     "checks": [
       {
-        "station_x_mm": 263.0,
+        "x_mm": [
+          257.0,
+          269.0
+        ],
         "side": -1,
-        "underside_z_mm": 28,
-        "added_depth_mm": 4,
-        "missing_fill_mm3": 0.0,
-        "below_underside_mm3": 0.0,
+        "underside_angles_degrees": [
+          45.0
+        ],
         "passed": true
       },
       {
-        "station_x_mm": 263.0,
+        "x_mm": [
+          257.0,
+          269.0
+        ],
         "side": 1,
-        "underside_z_mm": 28,
-        "added_depth_mm": 4,
-        "missing_fill_mm3": 0.0,
-        "below_underside_mm3": 0.0,
+        "underside_angles_degrees": [
+          45.0
+        ],
         "passed": true
       },
       {
-        "station_x_mm": 343.0,
+        "x_mm": [
+          337.0,
+          349.0
+        ],
         "side": -1,
-        "underside_z_mm": 28,
-        "added_depth_mm": 4,
-        "missing_fill_mm3": 0.0,
-        "below_underside_mm3": 0.0,
+        "underside_angles_degrees": [
+          45.0
+        ],
         "passed": true
       },
       {
-        "station_x_mm": 343.0,
+        "x_mm": [
+          337.0,
+          349.0
+        ],
         "side": 1,
-        "underside_z_mm": 28,
-        "added_depth_mm": 4,
-        "missing_fill_mm3": 0.0,
-        "below_underside_mm3": 0.0,
+        "underside_angles_degrees": [
+          45.0
+        ],
+        "passed": true
+      },
+      {
+        "x_mm": [
+          242.0,
+          258.0
+        ],
+        "side": -1,
+        "underside_angles_degrees": [
+          45.0
+        ],
+        "passed": true
+      },
+      {
+        "x_mm": [
+          242.0,
+          258.0
+        ],
+        "side": 1,
+        "underside_angles_degrees": [
+          45.0
+        ],
+        "passed": true
+      },
+      {
+        "x_mm": [
+          322.0,
+          338.0
+        ],
+        "side": -1,
+        "underside_angles_degrees": [
+          45.0
+        ],
+        "passed": true
+      },
+      {
+        "x_mm": [
+          322.0,
+          338.0
+        ],
+        "side": 1,
+        "underside_angles_degrees": [
+          45.0
+        ],
         "passed": true
       }
     ],
     "passed": true,
-    "note": "The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports."
+    "note": "Bearing blocks and adjustment shelves have 45-degree undersides instead of horizontal ceilings. Carrier, bearing seats and mounting locations remain unchanged. Real support toolpaths are checked separately with Bambu Studio."
   },
   "carrier_shoulders": {
     "body_top_z_mm": 21,
@@ -4104,7 +4157,7 @@
       0,
       1
     ],
-    "mechanism": "Four top-entry M5x25 bolts bear on fixed shelves and pull one rigid carrier holding all lower bearings upward into M5 heat-set inserts; nominal contact at 1 mm. Tighten evenly. No elastic preload or carrier tilt is simulated.",
+    "mechanism": "Four top-entry M5x40 bolts bear on fixed shelves and pull one rigid carrier holding all lower bearings upward into M5 heat-set inserts; nominal contact at 1 mm. Tighten evenly. No elastic preload or carrier tilt is simulated.",
     "flexures": 0,
     "checks": [
       {
@@ -5424,10 +5477,10 @@
       },
       {
         "file": "adjustable_six-bearing_base.stl",
-        "triangles": 52200,
+        "triangles": 52296,
         "watertight": true,
         "consistently_oriented": true,
-        "volume_mm3": 332405.8895214073
+        "volume_mm3": 332715.31958681956
       },
       {
         "file": "shared_lower_bearing_carrier.stl",

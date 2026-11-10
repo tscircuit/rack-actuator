@@ -262,18 +262,16 @@ def validate():
  lid_removed=LIGHTENING['lid']['removed_mm3'];lid_blocked=sum(overlap(cut,lid) for cut in CUTOUTS['lid'])
  report['lid_lightening']={**LIGHTENING['lid'],'blocked_cutouts_mm3':lid_blocked,'passed':lid_removed>0 and lid_blocked<.01 and lid.isValid() and len(lid.Solids())==1}
  if not report['lid_lightening']['passed']:save();return report
- # The formerly recessed Z=32 underside is filled down to the Z=28 bolt shelf.
+ # The load-carrying ledges now rise from the sidewalls on 45-degree slopes.
  feet=[]
- for b in bearings:
-  if b['kind']!='upper':continue
-  x,sign=b['station'],b['sign'];ya,yb=sorted([wide(sign*21.1),wide(sign*36.9)])
-  filled=rect(x-5.9,x+5.9,ya,yb,28.001,31.999)
-  y=wide(sign*25.885)
-  below=rect(x+.841,x+1.841,y-.5,y+.5,27.6,27.99)
-  missing=filled.cut(chassis_print_without_pins).Volume();below_volume=overlap(below,chassis_print_without_pins)
-  feet.append(dict(station_x_mm=x,side=sign,underside_z_mm=28,added_depth_mm=4,missing_fill_mm3=missing,below_underside_mm3=below_volume,passed=missing<.01 and below_volume<.01))
- report['bearing_support_feet']={'shelf_underside_z_mm':28,'checks':feet,'passed':len(feet)==4 and all(q['passed'] for q in feet),'note':'The four bearing-support undersides are coplanar with the adjacent adjustment-bolt shelves. This removes the local four-millimetre recess; it is not a claim that the whole print requires no supports.'}
- print('Flush bearing-support undersides',report['bearing_support_feet']['passed'],flush=True)
+ for q in BEARING_UNDERSIDES:
+  angles=[]
+  for face in q['shape'].Faces():
+   n=face.normalAt()
+   if n.z<-.01:angles.append(math.degrees(math.atan2(math.hypot(n.x,n.y),abs(n.z))))
+  feet.append(dict(x_mm=q['x_mm'],side=q['side'],underside_angles_degrees=angles,passed=bool(angles) and min(angles)>=45-1e-6))
+ report['bearing_support_feet']={'adjustment_shelf_top_z_mm':ADJUST_SHELF_TOP,'bolt':'M5x40 socket head, 8.5 mm head diameter','checks':feet,'passed':len(feet)==8 and all(q['passed'] for q in feet),'note':'Bearing blocks and adjustment shelves have 45-degree undersides instead of horizontal ceilings. Carrier, bearing seats and mounting locations remain unchanged. Real support toolpaths are checked separately with Bambu Studio.'}
+ print('Sloped bearing and adjustment ledges',report['bearing_support_feet']['passed'],flush=True)
  if not report['bearing_support_feet']['passed']:save();return report
  # Keep a small chamfered reinforcement, well below the old tall blocks.
  legacy_carrier_body=shared_carrier(24.5,False)
@@ -317,7 +315,7 @@ def validate():
       hit=hit.cut(ribs)
      if hit.Volume()>.01:hits.append({'parts':[a['name'],b['name']],'travel_mm':travel,'overlap_mm3':hit.Volume()})
   adjustment_checks.append({'settings_mm':values,'collisions':hits,'passed':not hits})
- report['adjustable_bearings']={'count':LOWER_COUNT,'carrier_count':1,'adjustment_bolts':4,'travel_mm':[0,1],'mechanism':'Four top-entry M5x25 bolts bear on fixed shelves and pull one rigid carrier holding all lower bearings upward into M5 heat-set inserts; nominal contact at 1 mm. Tighten evenly. No elastic preload or carrier tilt is simulated.','flexures':0,'checks':adjustment_checks,'passed':all(q['passed'] for q in adjustment_checks)}
+ report['adjustable_bearings']={'count':LOWER_COUNT,'carrier_count':1,'adjustment_bolts':4,'travel_mm':[0,1],'mechanism':'Four top-entry M5x40 bolts bear on fixed shelves and pull one rigid carrier holding all lower bearings upward into M5 heat-set inserts; nominal contact at 1 mm. Tighten evenly. No elastic preload or carrier tilt is simulated.','flexures':0,'checks':adjustment_checks,'passed':all(q['passed'] for q in adjustment_checks)}
  print('Adjustment checks',report['adjustable_bearings']['passed'],flush=True)
  if not report['adjustable_bearings']['passed']:save();return report
  # Accelerate exact confirmation with precise triangle screening. Cylindrical
@@ -374,7 +372,7 @@ def validate():
  for travel in [0,STROKE]:
   for y,z in nut_holes:probes.append(('flange',xcyl(1.5,max(100,EXIT_X-NUT_HOME+20),NUT_HOME+6.6+travel,y,z),travel))
   for x,y in LID_FIXINGS:probes.append(('lid screw',cyl(1.2,55,(x,y,67.95)),travel))
- for x,y in ADJUST_CENTERS:probes.append(('carrier adjustment',cyl(2.35,75,(x,y,38.1)),0))
+ for x,y in ADJUST_CENTERS:probes.append(('carrier adjustment',cyl(2.35,75,(x,y,53.1)),0))
  if PRINTED:probes.append(('shaft clamp at full extension',cyl(1.5,65,(17,5,48.1)),STROKE))
  if Z_SUPPORT:
   for x,y in [(17,5),(49,6.5)]:probes.append(('Z hub clamp at whole-revolution service pose',cyl(1.5,65,(x,y,49.1 if x==49 else 48.1)),8*math.floor(STROKE/8)))
